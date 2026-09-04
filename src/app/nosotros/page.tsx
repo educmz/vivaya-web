@@ -5,7 +5,6 @@ import { AboutGallery } from "@/components/about/AboutGallery";
 import { AboutHero } from "@/components/about/AboutHero";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { AboutValues } from "@/components/about/AboutValues";
-import { OrangeJourney } from "@/components/experiences/OrangeJourney";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -27,7 +26,6 @@ export default function AboutPage() {
       "
     >
       <AboutHero />
-      <OrangeJourney />
       <AboutTimeline />
       <AboutGallery />
       <AboutValues />

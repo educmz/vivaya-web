@@ -81,13 +81,13 @@ export function OrangeJourney() {
             ease: "none",
           },
           scrollTrigger: {
-            trigger: root,
-            start: "top top",
-            end: "+=5200",
-            scrub: 1.1,
-            pin: true,
-            anticipatePin: 1,
-          },
+  trigger: root,
+  start: "top top",
+  end: "+=3600",
+  scrub: 0.8,
+  pin: true,
+  anticipatePin: 1,
+},
         });
 
         timeline.to("[data-orange-whole]", {
