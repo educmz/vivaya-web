@@ -1,8 +1,10 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import type { MotionValue } from "motion/react";
 import { useRef } from "react";
+
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 function RibbonGraphic({ className, curveId, preserveAspectRatio, textOffset }: {
   className: string;

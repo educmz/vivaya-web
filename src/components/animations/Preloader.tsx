@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
+
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function Preloader() {
   const [isVisible, setIsVisible] = useState(true);
