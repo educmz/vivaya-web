@@ -29,7 +29,7 @@ export function CartaOrderBar() {
             x: 0,
           }}
           viewport={{
-            once: false,
+            once: true,
             amount: 0.45,
           }}
           transition={{
@@ -38,7 +38,7 @@ export function CartaOrderBar() {
           }}
           className="relative z-20"
         >
-          <p className="text-xs font-black uppercase tracking-[0.24em] text-[#F36B21]">
+          <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFB347]">
             ¿Ya elegiste?
           </p>
 
@@ -51,7 +51,7 @@ export function CartaOrderBar() {
           <div className="mt-8">
             <Button
               href="/productos"
-              className="min-h-14 bg-[#F36B21] px-8 text-[#FFF7E8] hover:bg-[#FFF7E8] hover:text-[#073B3A]"
+              className="min-h-14 bg-[#FF8A00] px-8 text-[#073B3A] hover:bg-[#FFF7E8]"
             >
               Ver productos
             </Button>
@@ -74,7 +74,7 @@ export function CartaOrderBar() {
             rotate: -4,
           }}
           viewport={{
-            once: false,
+            once: true,
             amount: 0.25,
           }}
           transition={{
@@ -107,7 +107,7 @@ export function CartaOrderBar() {
             scale: 1,
           }}
           viewport={{
-            once: false,
+            once: true,
             amount: 0.3,
           }}
           transition={{

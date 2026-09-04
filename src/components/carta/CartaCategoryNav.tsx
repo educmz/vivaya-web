@@ -30,20 +30,18 @@ export function CartaCategoryNav({
               category.id === activeCategory;
 
             return (
-              <motion.button
+              <button
                 key={category.id}
                 type="button"
                 onClick={() =>
                   onChange(category.id)
                 }
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.94 }}
                 className="group relative flex items-baseline gap-2 pb-2"
               >
                 <span
                   className={`text-[9px] font-black tracking-[0.18em] transition-colors ${
                     active
-                      ? "text-[#F36B21]"
+                      ? "text-[#FF8A00]"
                       : "text-[#073B3A]/25"
                   }`}
                 >
@@ -66,7 +64,7 @@ export function CartaCategoryNav({
                 {active && (
                   <motion.span
                     layoutId="carta-category-line"
-                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#F36B21]"
+                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#FF8A00]"
                     transition={{
                       type: "spring",
                       stiffness: 380,
@@ -74,7 +72,7 @@ export function CartaCategoryNav({
                     }}
                   />
                 )}
-              </motion.button>
+              </button>
             );
           })}
         </nav>
