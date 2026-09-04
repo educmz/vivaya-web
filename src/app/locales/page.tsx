@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/sections/PageHero";
-import { LocationsPreview } from "@/components/home/LocationsPreview";
+import { LocationsHero } from "@/components/locations/LocationsHero";
+import { LocationsList } from "@/components/locations/LocationsList";
 
 export const metadata: Metadata = { title: "Locales" };
-export default function LocationsPage() { return <><PageHero title="Locales" description="Ubicaciones ficticias para maquetación. No utilizar como información comercial." /><LocationsPreview /></>; }
+export default function LocationsPage() { return <><LocationsHero /><LocationsList /></>; }
