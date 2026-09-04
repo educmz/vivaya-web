@@ -10,27 +10,27 @@ import { getGsap } from "@/lib/gsap";
 const scenes = [
   {
     number: "01",
-    left: "Fruta",
-    right: "real.",
-    copy: "Todo comienza en aquello que reconocemos.",
+    left: "Todo",
+    right: "empieza aquí.",
+    copy: "Una idea sencilla comienza en lo más natural.",
   },
   {
     number: "02",
-    left: "Fres",
-    right: "cura.",
-    copy: "Color, sabor y una sensación que se siente viva.",
+    left: "De la",
+    right: "fruta.",
+    copy: "Color, sabor y una esencia que reconocemos desde el origen.",
   },
   {
     number: "03",
-    left: "Nutri",
-    right: "ción.",
-    copy: "Una propuesta pensada para acompañar una rutina activa.",
+    left: "A tu",
+    right: "ritmo.",
+    copy: "Una propuesta creada para acompañar el movimiento de cada día.",
   },
   {
     number: "04",
-    left: "Bienestar",
-    right: "para llevar.",
-    copy: "Lo natural también puede seguir el ritmo de tu día.",
+    left: "Esto es",
+    right: "Vivaya.",
+    copy: "Una forma práctica y fresca de llevar bienestar contigo.",
   },
 ];
 

@@ -3,179 +3,197 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 
-import { Parallax } from "@/components/animations/Parallax";
 import { Container } from "@/components/ui/Container";
 import { aboutGallery } from "@/data/about";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-const stickers = [
-  {
-    text: "100% fresco",
-    className:
-      "left-[3%] top-[42%] -rotate-6 bg-[#FF8A00] text-white",
-  },
-  {
-    text: "Activa",
-    className:
-      "right-[5%] top-[15%] rotate-6 bg-[#073B3A] text-white",
-  },
-  {
-    text: "Fruta real",
-    className:
-      "bottom-[8%] left-[37%] rotate-3 bg-[#E9F5EE] text-[#073B3A]",
-  },
-];
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function AboutGallery() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-white py-28 sm:py-36 lg:py-44">
+    <section className="overflow-hidden bg-[#FFF7E8] py-20 sm:py-24 lg:py-28">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FF8A00]">
+        <div className="relative lg:min-h-[58rem]">
+          {/* Texto superior izquierdo */}
+          <motion.div
+            initial={
+              reducedMotion
+                ? false
+                : {
+                    opacity: 0,
+                    y: 40,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease }}
+            className="max-w-2xl lg:absolute lg:left-0 lg:top-0 lg:w-[36rem]"
+          >
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FF8A00]">
               Somos Vivaya
             </p>
 
-            <h2 className="mt-5 text-[clamp(3.6rem,7vw,7rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] text-[#073B3A]">
+            <h2 className="mt-4 text-[clamp(3.2rem,7vw,6.5rem)] font-black uppercase leading-[0.82] tracking-[-0.08em] text-[#073B3A]">
               Más que
               <br />
               una bebida.
             </h2>
-          </div>
 
-          <p className="max-w-xl text-lg leading-8 text-[#073B3A]/62 lg:justify-self-end">
-            Producto, tecnología, personas y momentos cotidianos construyen una
-            misma experiencia alrededor del bienestar.
-          </p>
-        </div>
-
-        <div className="relative mt-20 min-h-[52rem] lg:min-h-[66rem]">
-          <figure className="absolute left-0 top-0 w-[58%] lg:w-[44%]">
-            <Parallax
-              distance={28}
-              className="relative aspect-[4/5] overflow-hidden rounded-[2rem]"
-            >
-              <Image
-                src={aboutGallery[0].src}
-                alt={aboutGallery[0].alt}
-                fill
-                sizes="45vw"
-                className="object-cover"
-              />
-            </Parallax>
-
-            <figcaption className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-[#073B3A]/45">
-              {aboutGallery[0].label}
-            </figcaption>
-          </figure>
-
-          <figure className="absolute right-0 top-[8%] w-[36%] lg:w-[28%]">
-            <Parallax
-              distance={46}
-              className="relative aspect-[3/4] overflow-hidden rounded-[2rem]"
-            >
-              <Image
-                src={aboutGallery[1].src}
-                alt={aboutGallery[1].alt}
-                fill
-                sizes="30vw"
-                className="object-cover"
-              />
-            </Parallax>
-
-            <figcaption className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-[#073B3A]/45">
-              {aboutGallery[1].label}
-            </figcaption>
-          </figure>
-
-          <figure className="absolute bottom-[5%] left-[7%] w-[34%] lg:left-[14%] lg:w-[27%]">
-            <Parallax
-              distance={35}
-              className="relative aspect-square overflow-hidden rounded-[2rem]"
-            >
-              <Image
-                src={aboutGallery[2].src}
-                alt={aboutGallery[2].alt}
-                fill
-                sizes="30vw"
-                className="object-cover"
-              />
-            </Parallax>
-
-            <figcaption className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-[#073B3A]/45">
-              {aboutGallery[2].label}
-            </figcaption>
-          </figure>
-
-          <figure className="absolute bottom-[2%] right-0 w-[53%] lg:w-[48%]">
-            <Parallax
-              distance={18}
-              className="relative aspect-[16/10] overflow-hidden rounded-[2rem]"
-            >
-              <Image
-                src={aboutGallery[3].src}
-                alt={aboutGallery[3].alt}
-                fill
-                sizes="50vw"
-                className="object-cover"
-              />
-            </Parallax>
-
-            <figcaption className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-[#073B3A]/45">
-              {aboutGallery[3].label}
-            </figcaption>
-          </figure>
-
-          <motion.div
-            animate={
-              reducedMotion
-                ? undefined
-                : {
-                    rotate: [-7, -3, -7],
-                    y: [0, -7, 0],
-                  }
-            }
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="pointer-events-none absolute left-[46%] top-[35%] h-28 w-28 lg:h-40 lg:w-40"
-          >
-            <Image
-              src="/images/ingredients/orange-slice.png"
-              alt=""
-              fill
-              sizes="160px"
-              className="object-contain"
-            />
+            <p className="mt-6 max-w-xl text-lg leading-8 text-[#073B3A]/62">
+              Vivaya conecta producto, frescura e innovación en una experiencia
+              que acompaña el ritmo cotidiano.
+            </p>
           </motion.div>
 
-          <div className="hidden lg:block">
-            {stickers.map((sticker) => (
-              <motion.button
-                key={sticker.text}
-                type="button"
-                drag
-                dragElastic={0.18}
-                whileDrag={{
-                  scale: 1.08,
-                  cursor: "grabbing",
-                }}
-                whileHover={{
-                  scale: 1.05,
-                }}
-                className={`absolute z-30 cursor-grab rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.17em] shadow-lg shadow-black/5 ${sticker.className}`}
-                aria-label={`Mover sticker ${sticker.text}`}
-              >
-                {sticker.text}
-              </motion.button>
-            ))}
-          </div>
+          {/* Texto inferior derecho */}
+          <motion.div
+            initial={
+              reducedMotion
+                ? false
+                : {
+                    opacity: 0,
+                    y: 40,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.12, ease }}
+            className="mt-14 max-w-2xl lg:absolute lg:bottom-6 lg:right-0 lg:mt-0 lg:w-[34rem]"
+          >
+            <p className="text-[clamp(1.7rem,3vw,3rem)] font-medium leading-[1.12] tracking-[-0.04em] text-[#073B3A]">
+              Personas, producto y una idea que sigue{" "}
+              <span className="font-black text-[#0F6B6D]">avanzando</span>.
+            </p>
+          </motion.div>
+
+          {/* Fotos estilo Paput */}
+          <PolaroidCard
+            src={aboutGallery[0].src}
+            alt={aboutGallery[0].alt}
+            className="mx-auto mt-12 w-[19rem] sm:w-[23rem] lg:absolute lg:left-[27%] lg:top-[2rem] lg:mt-0 lg:w-[26rem]"
+            angle={-4}
+            floatY={12}
+            delay={0.02}
+          />
+
+          <PolaroidCard
+            src={aboutGallery[1].src}
+            alt={aboutGallery[1].alt}
+            className="ml-auto mt-8 w-[14rem] sm:w-[18rem] lg:absolute lg:right-[2%] lg:top-[0.5rem] lg:mt-0 lg:w-[17rem]"
+            angle={6}
+            floatY={10}
+            delay={0.1}
+          />
+
+          <PolaroidCard
+            src={aboutGallery[2].src}
+            alt={aboutGallery[2].alt}
+            className="mt-8 w-[15rem] sm:w-[18rem] lg:absolute lg:bottom-[1rem] lg:left-[4%] lg:mt-0 lg:w-[18rem]"
+            angle={-7}
+            floatY={14}
+            delay={0.16}
+          />
+
+          <PolaroidCard
+            src={aboutGallery[3].src}
+            alt={aboutGallery[3].alt}
+            className="ml-auto mt-8 w-[19rem] sm:w-[24rem] lg:absolute lg:bottom-0 lg:right-[18%] lg:mt-0 lg:w-[27rem]"
+            angle={4}
+            floatY={12}
+            delay={0.22}
+          />
         </div>
       </Container>
     </section>
+  );
+}
+
+function PolaroidCard({
+  src,
+  alt,
+  className,
+  angle,
+  floatY,
+  delay,
+}: {
+  src: string;
+  alt: string;
+  className: string;
+  angle: number;
+  floatY: number;
+  delay: number;
+}) {
+  const reducedMotion = useReducedMotion();
+
+  return (
+    <motion.figure
+      initial={
+        reducedMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 80,
+              rotate: angle * 0.65,
+              scale: 0.94,
+            }
+      }
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        rotate: angle,
+        scale: 1,
+      }}
+      viewport={{ once: true, amount: 0.18 }}
+      transition={{
+        duration: 0.95,
+        delay,
+        ease,
+      }}
+      animate={
+        reducedMotion
+          ? undefined
+          : {
+              y: [0, -floatY, 0],
+              rotate: [angle, angle + 1.2, angle],
+            }
+      }
+      className={className}
+      style={{
+        transition:
+          "box-shadow 300ms ease, transform 300ms ease, rotate 300ms ease",
+      }}
+    >
+      <motion.div
+        whileHover={
+          reducedMotion
+            ? undefined
+            : {
+                y: -8,
+                rotate: 0,
+                scale: 1.02,
+              }
+        }
+        transition={{ duration: 0.4, ease }}
+        className="border-[3px] border-[#0F6B6D] bg-white p-4 shadow-[0_18px_40px_rgba(7,59,58,0.12)]"
+      >
+        <div className="relative aspect-[4/5] overflow-hidden bg-[#E9F5EE]">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="(max-width: 768px) 80vw, 30vw"
+            className="object-cover"
+          />
+        </div>
+      </motion.div>
+    </motion.figure>
   );
 }

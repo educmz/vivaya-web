@@ -1,37 +1,37 @@
 export const aboutTimeline = [
   {
     number: "01",
-    label: "El origen",
-    title: "Una idea simple",
+    label: "El comienzo",
+    title: "Una idea toma forma",
     description:
-      "Vivaya nace con una idea clara: hacer que elegir algo fresco y natural también pueda ser práctico.",
+      "Vivaya nace con la intención de acercar opciones frescas y naturales a una rutina cada vez más dinámica.",
     image: "/images/about/about-product.webp",
     imageAlt: "Producto Vivaya",
   },
   {
     number: "02",
     label: "Primeros pasos",
-    title: "Bienestar para llevar",
+    title: "Empezamos a crecer",
     description:
-      "Creamos una propuesta pensada para acompañar el ritmo diario con opciones frescas y accesibles.",
+      "La propuesta comienza a conectar producto, bienestar y una experiencia pensada para el día a día.",
     image: "/images/about/about-lifestyle.webp",
     imageAlt: "Experiencia Vivaya",
   },
   {
     number: "03",
-    label: "Evolución",
-    title: "Más cerca de ti",
+    label: "Más cerca",
+    title: "Nuevas formas de llegar",
     description:
-      "La propuesta evoluciona hacia formatos que acercan Vivaya a nuevos momentos y lugares.",
+      "Vivaya incorpora nuevos formatos y puntos de contacto para acercarse cada vez más a las personas.",
     image: "/images/about/about-machine.webp",
     imageAlt: "Punto de venta Vivaya",
   },
   {
     number: "04",
     label: "Hoy",
-    title: "Activamos lo natural",
+    title: "Seguimos avanzando",
     description:
-      "Seguimos construyendo una marca que une frescura, nutrición, energía y conveniencia.",
+      "Continuamos construyendo una marca alrededor de bienestar, frescura y una experiencia cada vez más accesible.",
     image: "/images/about/about-team.webp",
     imageAlt: "Equipo Vivaya",
   },
