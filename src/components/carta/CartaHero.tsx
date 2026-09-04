@@ -52,9 +52,9 @@ export function CartaHero() {
               delay: 0.35,
               ease,
             }}
-            className="mt-7 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
+            className="mt-7 flex flex-col gap-5"
           >
-            <p className="font-heading max-w-sm text-base leading-7 tracking-normal text-[#FFF7E8]/65 sm:text-lg">
+            <p className="max-w-sm text-base font-normal leading-7 text-[#FFF7E8]/65 sm:text-lg">
               Explora nuestra selección y encuentra tu próximo favorito.
             </p>
 

@@ -1,19 +1,35 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { AtSign, Briefcase, Globe } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { AtSign, Briefcase, ChevronUp, Globe } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { WaveDivider } from "@/components/sections/WaveDivider";
 import { siteConfig } from "@/config/site";
 
-const navLinks = [
-  { label: "Inicio", href: "/" },
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Carta", href: "/carta" },
-  { label: "Locales", href: "/locales" },
-];
-
-const helpLinks = [
-  { label: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
-  { label: "Contacto", href: "/contacto" },
+const columns = [
+  {
+    title: "Explora",
+    links: [
+      { label: "Inicio", href: "/" },
+      { label: "Carta", href: "/carta" },
+      { label: "Promociones", href: "/promociones" },
+      { label: "Club", href: "/club" },
+    ],
+  },
+  {
+    title: "Marca",
+    links: [
+      { label: "Nosotros", href: "/nosotros" },
+      { label: "Locales", href: "/locales" },
+      { label: "Contacto", href: "/contacto" },
+    ],
+  },
+  {
+    title: "Ayuda",
+    links: [{ label: "Preguntas frecuentes", href: "/preguntas-frecuentes" }],
+  },
 ];
 
 const socialLinks = [
@@ -24,65 +40,84 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-auto bg-[#132A3A] text-[#F4EFE3]">
-      <WaveDivider fill="#132A3A" variant="drift" className="pointer-events-none absolute inset-x-0 top-0 z-10 h-10 -translate-y-[85%] sm:h-14" />
-
-      <div className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -left-24 bottom-0 -z-0 h-72 w-72 rounded-full bg-[#9FB49A]/10 blur-[110px]" aria-hidden="true" />
-        <div className="pointer-events-none absolute -right-16 top-10 -z-0 h-72 w-72 rounded-full bg-[#C9A64A]/12 blur-[110px]" aria-hidden="true" />
-
-        <Container className="relative pb-14 pt-14">
-        <div className="grid gap-12 sm:grid-cols-3">
+    <footer className="relative bg-[#073B3A] text-[#FFF7E8]">
+      <Container className="py-16">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
-            <p className="font-accent text-4xl text-[#C9A64A]">{siteConfig.name}</p>
-            <p className="mt-5 max-w-xs text-sm leading-7 text-[#F4EFE3]/70">Jugos y bebidas naturales pensadas para acompañar tu día, en cada local Vivaya.</p>
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/images/brand/vivaya-icon.png" alt="" width={40} height={40} className="size-10 rounded-full object-contain" />
+              <span className="font-accent text-3xl text-[#F36B21]">{siteConfig.name}</span>
+            </Link>
+            <p className="mt-5 max-w-xs text-sm leading-7 text-[#E7EFE2]/80">Jugos y bebidas naturales pensadas para acompañar tu día, en cada local Vivaya.</p>
           </div>
 
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#F4EFE3]">Navegación</p>
-            <ul className="mt-5 space-y-3 text-sm">
-              {navLinks.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="inline-flex items-center gap-2.5 text-[#F4EFE3]/75 transition hover:text-[#C9A64A] focus-visible:outline">
-                    <span className="size-1 rounded-full bg-[#C9A64A]/70" aria-hidden="true" />
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#F4EFE3]">Ayuda</p>
-            <ul className="mt-5 space-y-3 text-sm">
-              {helpLinks.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="inline-flex items-center gap-2.5 text-[#F4EFE3]/75 transition hover:text-[#C9A64A] focus-visible:outline">
-                    <span className="size-1 rounded-full bg-[#C9A64A]/70" aria-hidden="true" />
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-6 flex items-center gap-3">
-              {socialLinks.map((social) => (
-                <span key={social.label} className="grid size-9 place-items-center rounded-full border border-[#F4EFE3]/20 text-[#F4EFE3]/70 transition hover:border-[#C9A64A] hover:text-[#C9A64A]" aria-label={social.label} role="img">
-                  <social.icon className="size-4" aria-hidden="true" />
-                </span>
-              ))}
+          {columns.map((column) => (
+            <div key={column.title}>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#E7EFE2]">{column.title}</p>
+              <ul className="mt-5 space-y-3 text-sm">
+                {column.links.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="text-[#FFF7E8]/75 transition hover:text-[#F36B21] focus-visible:outline">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex items-center gap-3">
+          {socialLinks.map((social) => (
+            <span key={social.label} className="grid size-10 place-items-center rounded-full border border-[#E7EFE2]/25 text-[#E7EFE2] transition hover:border-[#F36B21] hover:text-[#F36B21]" aria-label={social.label} role="img">
+              <social.icon className="size-4" aria-hidden="true" />
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-10 h-px w-full bg-[#E7EFE2]/15" aria-hidden="true" />
+
+        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-sm font-bold text-[#FFF7E8]">Natural. Fresco. Vivaya.</p>
+            <p className="mt-1 text-xs text-[#E7EFE2]/70">Activa lo natural en tu día a día.</p>
           </div>
+          <p className="text-xs text-[#E7EFE2]/60">© {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.</p>
         </div>
+      </Container>
 
-        <div className="mt-12 h-px w-full bg-[#C9A64A]/40" aria-hidden="true" />
-
-        <div className="mt-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <span className="grid size-9 place-items-center rounded-full border border-[#C9A64A]/50 font-accent text-sm text-[#C9A64A]" aria-hidden="true">V</span>
-          <p className="text-xs text-[#F4EFE3]/50 sm:text-right">© {new Date().getFullYear()} {siteConfig.name}. Activa lo natural.</p>
-        </div>
-        </Container>
-      </div>
+      <BackToTop />
     </footer>
+  );
+}
+
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 480);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 12 }}
+          transition={{ duration: 0.25 }}
+          whileHover={{ y: -3 }}
+          aria-label="Volver arriba"
+          className="fixed bottom-6 right-6 z-40 grid size-11 place-items-center rounded-full bg-[#F36B21] text-[#FFF7E8] shadow-lg transition hover:bg-[#e2601a] focus-visible:outline"
+        >
+          <ChevronUp className="size-5" aria-hidden="true" />
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 }
