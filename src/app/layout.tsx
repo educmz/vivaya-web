@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Anton, Caveat } from "next/font/google";
 
 import { CursorOrange } from "@/components/animations/CursorOrange";
+import { Preloader } from "@/components/animations/Preloader";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { siteConfig } from "@/config/site";
@@ -37,6 +38,7 @@ export default function RootLayout({
       className={`h-full antialiased ${headingFont.variable} ${accentFont.variable}`}
     >
       <body className="flex min-h-full flex-col">
+        <Preloader />
         <Header />
 
         <main className="flex-1">
