@@ -1,215 +1,106 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, MapPin } from "lucide-react";
 import { motion } from "motion/react";
+import { useRef } from "react";
 
 export function OrangeHeroExperience() {
+  const orangeRef = useRef<HTMLDivElement>(null);
+
   return (
     <section
-      className="relative isolate min-h-[108svh] overflow-hidden bg-[#f7cd8e] sm:min-h-[112svh]"
+      className="
+        relative
+        min-h-[100svh]
+        overflow-hidden
+        bg-[#f4c783]
+      "
     >
-      {/* Fondo */}
+      {/* ========================================
+          FONDO
+      ======================================== */}
+
+      <Image
+        src="/images/hero/orchard-background.png"
+        alt=""
+        fill
+        priority
+        className="object-cover object-center"
+      />
+
+      {/* Velo para que el texto tenga legibilidad */}
       <div
-        className="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_70%_30%,rgba(255,177,61,0.45),transparent_38%),radial-gradient(circle_at_25%_70%,rgba(255,247,232,0.95),transparent_40%)]"
+        className="
+          absolute inset-0
+          bg-gradient-to-r
+          from-[#f5bd75]/90
+          via-[#f5c884]/40
+          to-transparent
+        "
         aria-hidden="true"
       />
 
+      {/* Pequeño tratamiento cálido general */}
       <div
-        className="absolute inset-x-0 bottom-0 -z-20 h-[35%] bg-gradient-to-t from-[#fff4df]/85 to-transparent"
+        className="
+          absolute inset-0
+          bg-[#ff9b34]/5
+        "
         aria-hidden="true"
       />
 
-      {/* Naranja izquierda */}
+      {/* ========================================
+          ÁRBOL DERECHO
+      ======================================== */}
+
       <motion.div
         initial={{
           opacity: 0,
-          x: -100,
-          rotate: -18,
+          x: 130,
         }}
         animate={{
           opacity: 1,
           x: 0,
-          rotate: -8,
         }}
         transition={{
-          duration: 1.1,
-          delay: 0.45,
+          duration: 1.2,
+          delay: 0.15,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="
-          absolute
-          -left-[4vw]
-          bottom-[9%]
-          z-10
-          hidden
-          w-[20vw]
-          md:block
-        "
-      >
-        <Image
-          src="/images/hero/orange-left.png"
-          alt=""
-          width={600}
-          height={600}
-          className="h-auto w-full object-contain"
-        />
-      </motion.div>
-
-      {/* Naranja derecha */}
-      <motion.div
-        initial={{
-          opacity: 0,
-          x: 100,
-          rotate: 15,
-        }}
-        animate={{
-          opacity: 1,
-          x: 0,
-          rotate: 7,
-        }}
-        transition={{
-          duration: 1.15,
-          delay: 0.6,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className="
-          absolute
-          -right-[3vw]
-          top-[27%]
-          z-10
-          hidden
-          w-[18vw]
-          md:block
-        "
-      >
-        <Image
-          src="/images/hero/orange-right.png"
-          alt=""
-          width={600}
-          height={600}
-          className="h-auto w-full object-contain"
-        />
-      </motion.div>
-
-      {/* Hoja izquierda */}
-      <motion.div
-        initial={{
-          opacity: 0,
-          rotate: -35,
-          y: 25,
-        }}
-        animate={{
-          opacity: 1,
-          rotate: -14,
-          y: 0,
-        }}
-        transition={{
-          duration: 1,
-          delay: 0.75,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className="
-          absolute
-          left-[9%]
-          top-[26%]
-          z-10
-          hidden
-          w-[9vw]
-          md:block
-        "
-      >
-        <Image
-          src="/images/hero/leaf-left.png"
-          alt=""
-          width={300}
-          height={300}
-          className="h-auto w-full object-contain"
-        />
-      </motion.div>
-
-      {/* Hoja derecha */}
-      <motion.div
-        initial={{
-          opacity: 0,
-          rotate: 35,
-          y: 25,
-        }}
-        animate={{
-          opacity: 1,
-          rotate: 10,
-          y: 0,
-        }}
-        transition={{
-          duration: 1,
-          delay: 0.85,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className="
-          absolute
-          bottom-[17%]
-          right-[8%]
-          z-10
-          hidden
-          w-[9vw]
-          md:block
-        "
-      >
-        <Image
-          src="/images/hero/leaf-right.png"
-          alt=""
-          width={300}
-          height={300}
-          className="h-auto w-full object-contain"
-        />
-      </motion.div>
-
-      {/* Titular principal */}
-      <motion.div
         className="
           pointer-events-none
           absolute
-          inset-x-0
-          top-[18%]
-          z-[5]
-          px-5
-          text-center
+          -right-[4vw]
+          -top-[8vh]
+          z-10
+          hidden
+          h-[108vh]
+          w-[58vw]
+          lg:block
         "
       >
-        <motion.h1
-          initial={{
-            opacity: 0,
-            y: 40,
-            scale: 0.97,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          }}
-          transition={{
-            duration: 0.9,
-            delay: 0.2,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="mx-auto w-[82vw] sm:w-[62vw] md:w-[36vw]"
-        >
-          <Image
-            src="/images/hero/bienestar-title.png"
-            alt="Bienestar"
-            width={2078}
-            height={757}
-            priority
-            className="h-auto w-full object-contain"
-          />
-        </motion.h1>
+        <Image
+          src="/images/hero/orange-tree.png"
+          alt=""
+          fill
+          priority
+          className="object-contain object-right-top"
+        />
       </motion.div>
 
-      {/* Producto principal */}
+      {/* ========================================
+          NARANJA PROTAGONISTA
+          IMPORTANTE: separada del árbol
+      ======================================== */}
+
       <motion.div
+        ref={orangeRef}
         initial={{
           opacity: 0,
-          scale: 0.84,
-          y: 90,
+          scale: 0.72,
+          y: -30,
         }}
         animate={{
           opacity: 1,
@@ -217,90 +108,344 @@ export function OrangeHeroExperience() {
           y: 0,
         }}
         transition={{
-          duration: 1.15,
-          delay: 0.12,
+          duration: 0.85,
+          delay: 0.65,
           ease: [0.22, 1, 0.36, 1],
         }}
         className="
           absolute
-          left-1/2
-          top-[47%]
-          z-10
-          -translate-x-1/2
-          -translate-y-1/2
+          right-[32%]
+          top-[32%]
+          z-20
+          hidden
+          w-[150px]
+          xl:w-[180px]
+          2xl:w-[205px]
+          lg:block
         "
       >
         <Image
-          src="/images/hero/product-main.png"
-          alt="Bebida Vivaya"
-          width={900}
-          height={1100}
+          src="/images/hero/falling-orange.png"
+          alt="Naranja Vivaya"
+          width={420}
+          height={420}
           priority
           className="
             h-auto
-            w-[76vw]
-            sm:w-[58vw]
-            md:w-[45vw]
-            max-w-none
+            w-full
             object-contain
-            drop-shadow-[0_40px_35px_rgba(67,43,8,0.20)]
+            drop-shadow-[0_18px_22px_rgba(111,58,4,0.22)]
           "
         />
       </motion.div>
 
-      {/* Texto delantero */}
+      {/* ========================================
+          HOJAS DECORATIVAS
+      ======================================== */}
+
       <motion.div
+        initial={{
+          opacity: 0,
+          x: -35,
+          rotate: -20,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+          rotate: -8,
+        }}
+        transition={{
+          duration: 0.9,
+          delay: 0.75,
+        }}
         className="
           pointer-events-none
           absolute
-          inset-x-0
-          bottom-[14%]
+          left-[10%]
+          top-[16%]
           z-20
-          px-4
-          text-center
+          hidden
+          w-[75px]
+          lg:block
         "
       >
-        <motion.h2
-          initial={{
-            opacity: 0,
-            y: 60,
-            scale: 0.97,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          }}
-          transition={{
-            duration: 0.9,
-            delay: 0.35,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="mx-auto w-[86vw] sm:w-[64vw] md:w-[38vw]"
-        >
-          <Image
-            src="/images/hero/para-llevar-title.png"
-            alt="Para llevar"
-            width={2172}
-            height={724}
-            className="h-auto w-full object-contain"
-          />
-        </motion.h2>
+        <Image
+          src="/images/hero/leaf-left.png"
+          alt=""
+          width={200}
+          height={200}
+          className="h-auto w-full"
+        />
       </motion.div>
 
-      {/* Transición orgánica hacia la siguiente sección */}
-      <svg
-        className="pointer-events-none absolute -bottom-px left-0 z-30 h-[88px] w-full sm:h-[120px] lg:h-[145px]"
-        viewBox="0 0 1440 160"
-        preserveAspectRatio="none"
-        aria-hidden="true"
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: -20,
+          rotate: 20,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          rotate: 8,
+        }}
+        transition={{
+          duration: 0.9,
+          delay: 0.9,
+        }}
+        className="
+          pointer-events-none
+          absolute
+          bottom-[30%]
+          left-[44%]
+          z-20
+          hidden
+          w-[55px]
+          lg:block
+        "
       >
-        <path
-          d="M0 76C150 126 284 20 472 55C651 89 770 151 958 91C1143 32 1268 25 1440 78V160H0Z"
-          fill="#fffdf8"
+        <Image
+          src="/images/hero/leaf-center.png"
+          alt=""
+          width={150}
+          height={150}
+          className="h-auto w-full"
         />
-      </svg>
+      </motion.div>
 
+      {/* ========================================
+          CONTENIDO
+      ======================================== */}
+
+      <div
+        className="
+          relative
+          z-30
+          flex
+          min-h-[100svh]
+          items-center
+          px-8
+          pb-20
+          pt-32
+          lg:px-14
+          xl:px-20
+          2xl:px-24
+        "
+      >
+        <div className="w-full max-w-[680px]">
+          {/* Título gráfico */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 35,
+              scale: 0.96,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            transition={{
+              duration: 0.9,
+              delay: 0.25,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <Image
+              src="/images/hero/bienestar-title.png"
+              alt="Bienestar"
+              width={1100}
+              height={450}
+              priority
+              className="
+                h-auto
+                w-full
+                max-w-[630px]
+                object-contain
+                object-left
+              "
+            />
+
+            <Image
+              src="/images/hero/para-llevar-title.png"
+              alt="Para llevar"
+              width={1000}
+              height={360}
+              priority
+              className="
+                -mt-7
+                ml-16
+                h-auto
+                w-[72%]
+                max-w-[450px]
+                object-contain
+                object-left
+              "
+            />
+          </motion.div>
+
+          {/* Copy */}
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.65,
+            }}
+            className="
+              mt-2
+              max-w-[440px]
+              text-[clamp(1.2rem,1.6vw,1.7rem)]
+              font-medium
+              leading-[1.25]
+              text-[#5f371b]
+            "
+          >
+            El sabor natural que
+            <br />
+            te acompaña cada día.
+          </motion.p>
+
+          {/* CTA */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.8,
+            }}
+            className="mt-7"
+          >
+            <Link
+              href="/carta"
+              className="
+                group
+                inline-flex
+                min-h-14
+                items-center
+                gap-5
+                rounded-full
+                bg-[#ff5b21]
+                px-8
+                text-sm
+                font-bold
+                text-white
+                shadow-[0_14px_30px_rgba(197,77,15,0.20)]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:bg-[#ef4812]
+              "
+            >
+              Conoce nuestra carta
+
+              <ArrowRight
+                size={19}
+                className="
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                "
+              />
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ========================================
+          MENSAJE DERECHO
+      ======================================== */}
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          rotate: -6,
+        }}
+        animate={{
+          opacity: 1,
+          rotate: -4,
+        }}
+        transition={{
+          duration: 0.8,
+          delay: 1,
+        }}
+        className="
+          absolute
+          bottom-[22%]
+          right-[8%]
+          z-30
+          hidden
+          text-center
+          text-2xl
+          font-black
+          italic
+          leading-tight
+          text-[#ff6a20]
+          xl:block
+        "
+      >
+        Naturalmente
+        <br />
+        contigo
+
+        <div className="mx-auto mt-2 h-[3px] w-20 rotate-[-6deg] rounded-full bg-[#ff6a20]" />
+      </motion.div>
+
+      {/* ========================================
+          SCROLL
+      ======================================== */}
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.6,
+          delay: 1.25,
+        }}
+        className="
+          absolute
+          bottom-6
+          left-1/2
+          z-30
+          hidden
+          -translate-x-1/2
+          flex-col
+          items-center
+          gap-2
+          lg:flex
+        "
+      >
+        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/80 p-1">
+          <motion.span
+            animate={{
+              y: [0, 14, 0],
+              opacity: [1, 0.2, 1],
+            }}
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="size-1.5 rounded-full bg-white"
+          />
+        </div>
+
+        <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white">
+          Descubre más
+        </span>
+      </motion.div>
     </section>
   );
 }

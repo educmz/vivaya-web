@@ -14,9 +14,10 @@ export function Navbar({ className }: { className?: string }) {
     <nav
       className={cn(
         "hidden items-center rounded-full",
-        "border border-white/20",
-        "bg-black/20 p-1.5",
-        "backdrop-blur-md",
+        "border border-white/25",
+        "bg-[#8a6846]/55 p-1.5",
+        "backdrop-blur-2xl backdrop-saturate-150",
+        "shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_10px_30px_rgba(83,48,20,0.14)]",
         "lg:flex",
         className,
       )}
@@ -47,7 +48,7 @@ export function Navbar({ className }: { className?: string }) {
             {isActive && (
               <motion.span
                 layoutId="vivaya-active-nav"
-                className="absolute inset-0 rounded-full bg-[#ff6422] shadow-[0_5px_14px_rgba(255,100,34,0.28)]"
+                className="absolute inset-0 rounded-full bg-[#ff6422] shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_5px_14px_rgba(255,100,34,0.24)]"
                 transition={{
                   type: "spring",
                   stiffness: 420,

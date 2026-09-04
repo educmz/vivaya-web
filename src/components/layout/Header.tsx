@@ -52,7 +52,7 @@ export function Header() {
     >
       <div
         className="
-          flex w-full items-center justify-between
+          relative flex w-full items-center justify-between
           px-4 py-3
           sm:px-6 sm:py-4
           lg:px-8 lg:py-4
@@ -88,7 +88,7 @@ export function Header() {
           />
         </Link>
 
-        <Navbar />
+        <Navbar className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 
         <MobileMenu />
       </div>
