@@ -1,272 +1,142 @@
 "use client";
 
 import Image from "next/image";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
-const scenes = [
-  {
-    title: "Fruta real",
-    copy: "Sabor vivo, color natural y una experiencia que empieza en la fruta.",
-    className: "left-[5%] top-[24%]",
-  },
-  {
-    title: "Frescura al instante",
-    copy: "Preparado para acompañarte sin detener el ritmo de tu día.",
-    className: "right-[5%] top-[23%]",
-  },
-  {
-    title: "Sabores que viajan",
-    copy: "Naranja, frescura y energía natural en cada recorrido.",
-    className: "left-[7%] bottom-[18%]",
-  },
-  {
-    title: "Bienestar para llevar",
-    copy: "Una experiencia fresca pensada para disfrutar donde quieras.",
-    className: "left-[5%] top-[38%]",
-  },
-];
+import { WaveDivider } from "@/components/sections/WaveDivider";
+
+type Viewport = "mobile" | "tablet" | "desktop";
 
 export function ProductScrollSequence() {
   const rootRef = useRef<HTMLElement>(null);
-
   const reducedPreference = useReducedMotion();
-
   const [mounted, setMounted] = useState(false);
+  const [viewport, setViewport] = useState<Viewport>("desktop");
 
   useEffect(() => {
+    const updateViewport = () => {
+      setViewport(
+        window.innerWidth < 640
+          ? "mobile"
+          : window.innerWidth < 1024
+            ? "tablet"
+            : "desktop",
+      );
+    };
+
     const frame = requestAnimationFrame(() => {
+      updateViewport();
       setMounted(true);
     });
-
-    return () => cancelAnimationFrame(frame);
+    window.addEventListener("resize", updateViewport);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", updateViewport);
+    };
   }, []);
 
   const reduced = mounted && Boolean(reducedPreference);
-
-  /*
-   * IMPORTANTE:
-   *
-   * La animación ahora comienza cuando la sección llega
-   * al inicio del viewport y termina cuando termina la sección.
-   *
-   * Esto funciona mucho mejor para una sección sticky.
-   */
   const { scrollYProgress } = useScroll({
     target: rootRef,
     offset: ["start start", "end end"],
   });
 
-  /*
-   * -------------------------------------------------------
-   * MOVIMIENTO DEL VASO
-   * -------------------------------------------------------
-   *
-   * No gira sobre un mismo punto.
-   *
-   * Trayectoria:
-   *
-   * arriba derecha
-   *      ↓
-   * centro
-   *      ↓
-   * centro izquierda
-   *      ↓
-   * diagonal derecha
-   *      ↓
-   * posición final inferior
-   */
+  const cupXKeyframes = reduced
+    ? ["0vw", "0vw", "0vw", "0vw", "0vw", "0vw"]
+    : viewport === "mobile"
+      ? ["6vw", "3vw", "0vw", "-3vw", "3vw", "5vw"]
+      : viewport === "tablet"
+        ? ["13.5vw", "7.5vw", "1.5vw", "-6vw", "5.25vw", "11.25vw"]
+        : ["18vw", "10vw", "2vw", "-8vw", "7vw", "15vw"];
+  const cupYKeyframes = reduced
+    ? ["-8vh", "-4vh", "0vh", "4vh", "8vh", "10vh"]
+    : viewport === "mobile"
+      ? ["-28vh", "-15vh", "-2vh", "13vh", "25vh", "33vh"]
+      : ["-34vh", "-18vh", "-2vh", "14vh", "27vh", "36vh"];
 
-  const cupX = useTransform(
-    scrollYProgress,
-    [0, 0.22, 0.48, 0.72, 1],
-    reduced
-      ? ["0vw", "0vw", "0vw", "0vw", "0vw"]
-      : ["8vw", "3vw", "-5vw", "18vw", "12vw"],
-  );
-
-  const cupY = useTransform(
-    scrollYProgress,
-    [0, 0.22, 0.48, 0.72, 1],
-    reduced
-      ? ["0vh", "0vh", "0vh", "0vh", "0vh"]
-      : ["-22vh", "-8vh", "8vh", "22vh", "30vh"],
-  );
-
+  const cupProgress = [0, 0.2, 0.4, 0.6, 0.8, 1];
+  const cupX = useTransform(scrollYProgress, cupProgress, cupXKeyframes);
+  const cupY = useTransform(scrollYProgress, cupProgress, cupYKeyframes);
   const cupScale = useTransform(
     scrollYProgress,
-    [0, 0.22, 0.48, 0.72, 1],
+    cupProgress,
     reduced
-      ? [0.9, 0.9, 0.9, 0.9, 0.9]
-      : [0.78, 1, 0.86, 1.05, 0.82],
+      ? [0.9, 0.9, 0.92, 0.92, 0.94, 0.94]
+      : [0.76, 0.9, 1.04, 0.88, 1.08, 0.94],
   );
-
   const cupRotateZ = useTransform(
     scrollYProgress,
-    [0, 0.22, 0.48, 0.72, 1],
-    reduced ? [0, 0, 0, 0, 0] : [-6, 0, -8, 55, 10],
+    cupProgress,
+    reduced ? [0, 0, 0, 0, 0, 0] : [-6, -2, 3, -8, 10, 4],
   );
-
   const cupRotateY = useTransform(
     scrollYProgress,
-    [0, 0.22, 0.48, 0.72, 1],
-    reduced ? [0, 0, 0, 0, 0] : [-10, 0, 8, 18, 4],
+    [0, 0.4, 0.8, 1],
+    reduced ? [0, 0, 0, 0] : [-6, 4, -5, 3],
   );
-
   const cupRotateX = useTransform(
     scrollYProgress,
-    [0, 0.22, 0.48, 0.72, 1],
-    reduced ? [0, 0, 0, 0, 0] : [2, 0, -4, -8, 0],
-  );
-
-  /*
-   * Pequeña modificación de profundidad.
-   * Hace que el vaso no se vea como una imagen plana
-   * que simplemente se traslada.
-   */
-  const cupPerspective = useTransform(
-    scrollYProgress,
     [0, 0.5, 1],
-    reduced ? [0, 0, 0] : [0, -18, 8],
+    reduced ? [0, 0, 0] : [2, -3, 1],
   );
 
-  /*
-   * -------------------------------------------------------
-   * PARALLAX DE LA LÍNEA
-   * -------------------------------------------------------
-   */
-
-  const pathX = useTransform(
+  const pathX = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [100, -160]);
+  const pathY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [-30, 50]);
+  const backgroundColor = useTransform(
     scrollYProgress,
-    [0, 1],
-    reduced ? [0, 0] : [80, -120],
+    [0, 0.25, 0.5, 0.75, 1],
+    ["#EEF4E9", "#EEF4E9", "#E9F5EE", "#0F6B6D", "#073B3A"],
   );
-
-  /*
-   * -------------------------------------------------------
-   * ESCENA 1
-   * -------------------------------------------------------
-   */
 
   const scene1Opacity = useTransform(
     scrollYProgress,
-    [0, 0.16, 0.29],
-    [1, 1, 0],
+    [0, 0.16, 0.24, 0.3],
+    [1, 1, 0, 0],
   );
+  const scene2Opacity = useTransform(
+    scrollYProgress,
+    [0.22, 0.3, 0.42, 0.5],
+    [0, 1, 1, 0],
+  );
+  const scene3Opacity = useTransform(
+    scrollYProgress,
+    [0.44, 0.52, 0.66, 0.74],
+    [0, 1, 1, 0],
+  );
+  const scene4Opacity = useTransform(scrollYProgress, [0.68, 0.78, 1], [0, 1, 1]);
 
   const scene1Y = useTransform(
     scrollYProgress,
-    [0, 0.29],
-    reduced ? [0, 0] : [0, -25],
+    [0, 0.3],
+    reduced ? ["0vh", "0vh"] : ["0vh", "-30vh"],
   );
-
-  /*
-   * -------------------------------------------------------
-   * ESCENA 2
-   * -------------------------------------------------------
-   */
-
-  const scene2Opacity = useTransform(
-    scrollYProgress,
-    [0.2, 0.3, 0.46, 0.57],
-    [0, 1, 1, 0],
-  );
-
   const scene2Y = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.57],
-    reduced ? [0, 0, 0] : [25, 0, -25],
+    [0.22, 0.3, 0.5],
+    reduced ? ["0vh", "0vh", "0vh"] : ["30vh", "0vh", "-30vh"],
   );
-
-  /*
-   * -------------------------------------------------------
-   * ESCENA 3
-   * -------------------------------------------------------
-   */
-
-  const scene3Opacity = useTransform(
-    scrollYProgress,
-    [0.48, 0.58, 0.72, 0.82],
-    [0, 1, 1, 0],
-  );
-
   const scene3Y = useTransform(
     scrollYProgress,
-    [0.48, 0.58, 0.82],
-    reduced ? [0, 0, 0] : [25, 0, -25],
+    [0.44, 0.52, 0.74],
+    reduced ? ["0vh", "0vh", "0vh"] : ["30vh", "0vh", "-30vh"],
   );
-
-  /*
-   * -------------------------------------------------------
-   * ESCENA 4
-   * -------------------------------------------------------
-   */
-
-  const scene4Opacity = useTransform(
-    scrollYProgress,
-    [0.74, 0.84, 1],
-    [0, 1, 1],
-  );
-
   const scene4Y = useTransform(
     scrollYProgress,
-    [0.74, 0.84, 1],
-    reduced ? [0, 0, 0] : [30, 0, 0],
+    [0.68, 0.78, 1],
+    reduced ? ["0vh", "0vh", "0vh"] : ["30vh", "0vh", "0vh"],
   );
 
-  const sceneAnimations = [
-    {
-      opacity: scene1Opacity,
-      y: scene1Y,
-    },
-    {
-      opacity: scene2Opacity,
-      y: scene2Y,
-    },
-    {
-      opacity: scene3Opacity,
-      y: scene3Y,
-    },
-    {
-      opacity: scene4Opacity,
-      y: scene4Y,
-    },
-  ];
-
   return (
-    <section
-      ref={rootRef}
-      className="relative h-[420svh] bg-[#EEF4E9]"
-    >
-      {/* =================================================
-          VIEWPORT STICKY
-      ================================================= */}
-
-      <div className="sticky top-0 h-[100svh] overflow-hidden">
-        {/* =================================================
-            PATRÓN DEL FONDO
-        ================================================= */}
-
+    <section ref={rootRef} className="relative h-[300svh]">
+      <motion.div
+        style={{ backgroundColor }}
+        className="sticky top-0 h-[100svh] overflow-hidden"
+      >
         <div
           aria-hidden="true"
-          className="
-            pointer-events-none
-            absolute
-            inset-0
-            opacity-30
-            [background-image:radial-gradient(rgba(51,92,48,0.18)_0.7px,transparent_0.7px)]
-            [background-size:9px_9px]
-          "
+          className="pointer-events-none absolute inset-0 opacity-30 [background-image:radial-gradient(rgba(51,92,48,0.18)_0.7px,transparent_0.7px)] [background-size:9px_9px]"
         />
-
-        {/* =================================================
-            LÍNEA BLANCA CURVA
-        ================================================= */}
 
         <svg
           aria-hidden="true"
@@ -275,15 +145,8 @@ export function ProductScrollSequence() {
           preserveAspectRatio="none"
         >
           <motion.path
-            style={{
-              x: pathX,
-            }}
-            d="
-              M-180 670
-              C120 470 350 790 620 645
-              C850 515 850 220 1090 290
-              C1280 345 1380 585 1610 420
-            "
+            style={{ x: pathX, y: pathY }}
+            d="M-180 670 C120 470 350 790 620 645 C850 515 850 220 1090 290 C1280 345 1380 585 1610 420"
             fill="none"
             stroke="white"
             strokeWidth="28"
@@ -291,210 +154,91 @@ export function ProductScrollSequence() {
           />
         </svg>
 
-        {/* =================================================
-            TÍTULO PRINCIPAL
-        ================================================= */}
-
-        <motion.div
-          style={{
-            opacity: scene1Opacity,
-            y: scene1Y,
-          }}
-          className="
-            absolute
-            inset-x-5
-            top-16
-            z-20
-            sm:inset-x-10
-            sm:top-20
-            lg:inset-x-16
-            lg:top-20
-          "
+        <motion.article
+          style={{ opacity: scene1Opacity, y: scene1Y }}
+          className="absolute inset-x-5 top-[7svh] z-20 sm:inset-x-auto sm:left-[6%] sm:top-[10svh] sm:w-[48vw] lg:w-[44vw]"
         >
-          <p
-            className="
-              font-accent
-              text-2xl
-              font-bold
-              text-[#6E9D58]
-              sm:text-3xl
-              lg:text-4xl
-            "
-          >
+          <p className="font-accent text-xl font-bold text-[#6E9D58] sm:text-2xl lg:text-3xl">
             Mira lo que hay dentro
           </p>
-
-          <h2
-            className="
-              font-heading
-              mt-2
-              max-w-[52rem]
-              text-[clamp(3.4rem,7vw,7.6rem)]
-              uppercase
-              leading-[0.82]
-              tracking-[-0.04em]
-              text-[#335C30]
-            "
-          >
+          <h2 className="font-heading mt-2 text-[clamp(2.8rem,6vw,6.8rem)] uppercase leading-[0.84] tracking-[-0.04em] text-[#335C30]">
             Más fruta.
             <br />
             Más frescura.
           </h2>
-        </motion.div>
+          <div className="mt-5 w-fit max-w-64 rounded-2xl bg-[#B9D2AD]/90 px-5 py-4 text-[#335C30] shadow-[0_18px_45px_rgba(51,92,48,0.08)] backdrop-blur-sm">
+            <h3 className="font-heading text-xl uppercase leading-none sm:text-2xl">Fruta real</h3>
+            <p className="mt-2 text-sm leading-5 text-[#335C30]/70">Sabor vivo desde el origen.</p>
+          </div>
+        </motion.article>
 
-        {/* =================================================
-            TARJETAS DE LAS ESCENAS
-        ================================================= */}
+        <motion.article
+          style={{ opacity: scene2Opacity, y: scene2Y }}
+          className="absolute right-5 top-[25svh] z-20 w-[min(72vw,25rem)] text-right sm:right-[7%] sm:top-[35svh]"
+        >
+          <h2 className="font-heading text-[clamp(2.8rem,5.8vw,6.4rem)] uppercase leading-[0.86] tracking-[-0.04em] text-[#335C30]">
+            Frescura
+            <br />
+            al instante
+          </h2>
+          <p className="mt-4 text-base font-medium text-[#335C30]/70 sm:text-lg">Preparado al momento.</p>
+        </motion.article>
 
-        {scenes.map((scene, index) => (
-          <motion.article
-            key={scene.title}
-            style={sceneAnimations[index]}
-            className={`
-              absolute
-              z-20
-              w-[min(78vw,27rem)]
-              rounded-[2rem]
-              bg-[#B9D2AD]
-              p-6
-              text-[#335C30]
-              sm:p-8
-              ${scene.className}
-            `}
-          >
-            <span
-              className="
-                font-heading
-                text-xs
-                uppercase
-                tracking-[0.15em]
-                text-[#335C30]/50
-              "
-            >
-              0{index + 1}
-            </span>
+        <motion.article
+          style={{ opacity: scene3Opacity, y: scene3Y }}
+          className="absolute bottom-[18svh] left-5 z-20 w-[min(72vw,29rem)] sm:bottom-[16svh] sm:left-[7%]"
+        >
+          <h2 className="font-heading text-[clamp(2.8rem,5.8vw,6.4rem)] uppercase leading-[0.86] tracking-[-0.04em] text-[#FFF7E8]">
+            Sabor
+            <br />
+            a tu ritmo
+          </h2>
+          <p className="mt-4 text-base font-medium text-[#FFF7E8]/75 sm:text-lg">Vivaya, donde quieras.</p>
+        </motion.article>
 
-            <h3
-              className="
-                font-heading
-                mt-3
-                text-3xl
-                uppercase
-                leading-[0.95]
-                tracking-[-0.02em]
-                sm:text-4xl
-              "
-            >
-              {scene.title}
-            </h3>
-
-            <p
-              className="
-                mt-4
-                max-w-sm
-                text-sm
-                leading-6
-                text-[#335C30]/70
-                sm:text-base
-                sm:leading-7
-              "
-            >
-              {scene.copy}
-            </p>
-          </motion.article>
-        ))}
-
-        {/* =================================================
-            PRODUCTO PRINCIPAL
-
-            Este contenedor permanece centrado.
-
-            El motion.div INTERIOR es el que viaja físicamente
-            por toda la pantalla mediante x + y + scale +
-            rotateX + rotateY + rotateZ.
-        ================================================= */}
+        <motion.article
+          style={{ opacity: scene4Opacity, y: scene4Y }}
+          className="absolute left-5 top-[17svh] z-20 w-[min(72vw,31rem)] sm:left-[7%] sm:top-[21svh]"
+        >
+          <h2 className="font-heading text-[clamp(3.2rem,6.6vw,7.2rem)] uppercase leading-[0.84] tracking-[-0.04em] text-[#FFF7E8]">
+            Esto es
+            <br />
+            Vivaya.
+          </h2>
+        </motion.article>
 
         <div
-          className="
-            pointer-events-none
-            absolute
-            left-1/2
-            top-1/2
-            z-30
-            aspect-[3/4]
-            w-[min(52vw,30rem)]
-            -translate-x-1/2
-            -translate-y-1/2
-
-            sm:w-[min(48vw,31rem)]
-
-            lg:w-[min(34vw,32rem)]
-          "
-          style={{
-            perspective: "1200px",
-          }}
+          className="pointer-events-none absolute left-1/2 top-1/2 z-30 aspect-square w-[min(58vw,22rem)] -translate-x-1/2 -translate-y-1/2 sm:w-[min(42vw,24rem)] lg:w-[min(30vw,26rem)]"
+          style={{ perspective: "1200px" }}
         >
           <motion.div
             style={{
               x: cupX,
               y: cupY,
               scale: cupScale,
-              rotateZ: cupRotateZ,
-              rotateY: cupRotateY,
               rotateX: cupRotateX,
-              z: cupPerspective,
+              rotateY: cupRotateY,
+              rotateZ: cupRotateZ,
             }}
-            className="
-              relative
-              h-full
-              w-full
-              transform-gpu
-              will-change-transform
-              [transform-style:preserve-3d]
-            "
+            className="relative h-full w-full transform-gpu will-change-transform [transform-style:preserve-3d]"
           >
             <Image
               src="/images/hero/hero-product.png"
-              alt="Producto Vivaya"
+              alt="Vaso de jugo Vivaya"
               fill
-              priority
-              sizes="
-                (max-width: 640px) 52vw,
-                (max-width: 1024px) 48vw,
-                32rem
-              "
-              className="
-                object-contain
-                drop-shadow-[0_30px_35px_rgba(51,92,48,0.18)]
-              "
+              sizes="(max-width: 640px) 58vw, (max-width: 1024px) 42vw, 26rem"
+              className="object-contain drop-shadow-[0_30px_35px_rgba(51,92,48,0.18)]"
             />
           </motion.div>
         </div>
 
-        {/* =================================================
-            INDICADOR DE SCROLL
-        ================================================= */}
+      </motion.div>
 
-        <p
-          className="
-            absolute
-            bottom-7
-            right-7
-            z-20
-            hidden
-            max-w-48
-            text-right
-            text-xs
-            font-black
-            uppercase
-            tracking-[0.16em]
-            text-[#335C30]/45
-            sm:block
-          "
-        >
-          Desliza para descubrir Vivaya
-        </p>
-      </div>
+      <WaveDivider
+        fill="#F6D98B"
+        variant="swell"
+        className="pointer-events-none absolute inset-x-0 -bottom-px z-40 h-24 sm:h-32 lg:h-40"
+      />
     </section>
   );
 }
