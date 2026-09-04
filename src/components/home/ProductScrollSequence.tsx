@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
 import { WaveDivider } from "@/components/sections/WaveDivider";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const messages = [
   { title: "Fruta real", copy: "Sabor vivo, color natural y una experiencia que empieza en la fruta." },
