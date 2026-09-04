@@ -9,16 +9,20 @@ export function Preloader() {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    document.documentElement.dataset.vivayaPreloader = "active";
 
     // Fallback para evitar dejar bloqueada la página si una animación se interrumpe.
     const fallbackTimer = window.setTimeout(() => {
       setIsVisible(false);
       document.body.style.overflow = "";
+      delete document.documentElement.dataset.vivayaPreloader;
+      window.dispatchEvent(new Event("vivaya:preloader-complete"));
     }, 6000);
 
     return () => {
       window.clearTimeout(fallbackTimer);
       document.body.style.overflow = "";
+      delete document.documentElement.dataset.vivayaPreloader;
     };
   }, []);
 
@@ -26,6 +30,8 @@ export function Preloader() {
     window.setTimeout(() => {
       setIsVisible(false);
       document.body.style.overflow = "";
+      delete document.documentElement.dataset.vivayaPreloader;
+      window.dispatchEvent(new Event("vivaya:preloader-complete"));
     }, 250);
   };
 

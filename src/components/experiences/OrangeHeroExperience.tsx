@@ -13,7 +13,8 @@ export function OrangeHeroExperience() {
   const productFloatRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
+    const runIntro = () => {
+      const ctx = gsap.context(() => {
       gsap.set([copyRef.current, productWrapRef.current], {
         autoAlpha: 1,
       });
@@ -53,9 +54,25 @@ export function OrangeHeroExperience() {
         repeat: -1,
         yoyo: true,
       });
-    }, sectionRef);
+      }, sectionRef);
+      return ctx;
+    };
 
-    return () => ctx.revert();
+    if (document.documentElement.dataset.vivayaPreloader === "active") {
+      let context: gsap.Context | undefined;
+      const handleComplete = () => {
+        context = runIntro();
+      };
+      window.addEventListener("vivaya:preloader-complete", handleComplete, { once: true });
+      return () => {
+        window.removeEventListener("vivaya:preloader-complete", handleComplete);
+        context?.revert();
+      };
+    }
+
+    const context = runIntro();
+
+    return () => context.revert();
   }, []);
 
   return (
