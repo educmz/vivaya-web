@@ -1,26 +1,32 @@
 @import "tailwindcss";
+@import "../styles/animations.css";
+@import "../styles/utilities.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffdf8;
+  --foreground: #191816;
+  --primary: #c75b31;
+  --secondary: #eadca8;
+  --accent: #f1b86b;
+  --surface: #f4f0e8;
+  --surface-strong: #e7dfd2;
+  --hero: #f3cc8f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { min-width: 320px; overflow-x: clip; margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; text-rendering: optimizeLegibility; }
+button, input, select, textarea { font: inherit; }
+::selection { background: var(--accent); color: var(--foreground); }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
 }
