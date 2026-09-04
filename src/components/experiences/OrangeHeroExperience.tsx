@@ -1,30 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { motion } from "motion/react";
 
 export function OrangeHeroExperience() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  const productY = useTransform(scrollYProgress, [0, 1], [0, 105]);
-  const productScale = useTransform(scrollYProgress, [0, 1], [1, 0.93]);
-
-  const backTitleY = useTransform(scrollYProgress, [0, 1], [0, 65]);
-  const frontTitleY = useTransform(scrollYProgress, [0, 1], [0, 110]);
-
-  const orangeLeftY = useTransform(scrollYProgress, [0, 1], [0, 170]);
-  const orangeRightY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-
   return (
     <section
-      ref={sectionRef}
-      className="relative isolate min-h-[100svh] overflow-hidden bg-[#f7cd8e]"
+      className="relative isolate min-h-[108svh] overflow-hidden bg-[#f7cd8e] sm:min-h-[112svh]"
     >
       {/* Fondo */}
       <div
@@ -39,7 +21,6 @@ export function OrangeHeroExperience() {
 
       {/* Naranja izquierda */}
       <motion.div
-        style={{ y: orangeLeftY }}
         initial={{
           opacity: 0,
           x: -100,
@@ -57,13 +38,12 @@ export function OrangeHeroExperience() {
         }}
         className="
           absolute
-          -left-20
+          -left-[4vw]
           bottom-[9%]
           z-10
           hidden
-          w-[300px]
+          w-[20vw]
           md:block
-          xl:w-[390px]
         "
       >
         <Image
@@ -77,7 +57,6 @@ export function OrangeHeroExperience() {
 
       {/* Naranja derecha */}
       <motion.div
-        style={{ y: orangeRightY }}
         initial={{
           opacity: 0,
           x: 100,
@@ -95,15 +74,12 @@ export function OrangeHeroExperience() {
         }}
         className="
           absolute
-          -right-16
+          -right-[3vw]
           top-[27%]
           z-10
           hidden
-          w-[280px]
+          w-[18vw]
           md:block
-          lg:w-[310px]
-          xl:-right-20
-          xl:w-[360px]
         "
       >
         <Image
@@ -138,9 +114,8 @@ export function OrangeHeroExperience() {
           top-[26%]
           z-10
           hidden
-          w-32
+          w-[9vw]
           md:block
-          xl:w-44
         "
       >
         <Image
@@ -175,9 +150,8 @@ export function OrangeHeroExperience() {
           right-[8%]
           z-10
           hidden
-          w-32
+          w-[9vw]
           md:block
-          xl:w-44
         "
       >
         <Image
@@ -191,7 +165,6 @@ export function OrangeHeroExperience() {
 
       {/* Titular principal */}
       <motion.div
-        style={{ y: backTitleY }}
         className="
           pointer-events-none
           absolute
@@ -218,33 +191,21 @@ export function OrangeHeroExperience() {
             delay: 0.2,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="
-            mx-auto
-            whitespace-nowrap
-            text-[clamp(3.5rem,9vw,8.5rem)]
-            font-black
-            uppercase
-            leading-[0.9]
-            tracking-[-0.025em]
-            text-[#ff4d00]
-          "
-          style={{
-            fontFamily: '"Arial Black", Arial, sans-serif',
-            WebkitTextStroke: "clamp(3px, 0.32vw, 6px) white",
-            paintOrder: "stroke fill",
-            textShadow: "0 8px 22px rgba(129, 52, 0, 0.13)",
-          }}
+          className="mx-auto w-[82vw] sm:w-[62vw] md:w-[36vw]"
         >
-          Bienestar
+          <Image
+            src="/images/hero/bienestar-title.png"
+            alt="Bienestar"
+            width={2078}
+            height={757}
+            priority
+            className="h-auto w-full object-contain"
+          />
         </motion.h1>
       </motion.div>
 
       {/* Producto principal */}
       <motion.div
-        style={{
-          y: productY,
-          scale: productScale,
-        }}
         initial={{
           opacity: 0,
           scale: 0.84,
@@ -277,7 +238,9 @@ export function OrangeHeroExperience() {
           priority
           className="
             h-auto
-            w-[clamp(340px,45vw,760px)]
+            w-[76vw]
+            sm:w-[58vw]
+            md:w-[45vw]
             max-w-none
             object-contain
             drop-shadow-[0_40px_35px_rgba(67,43,8,0.20)]
@@ -287,12 +250,11 @@ export function OrangeHeroExperience() {
 
       {/* Texto delantero */}
       <motion.div
-        style={{ y: frontTitleY }}
         className="
           pointer-events-none
           absolute
           inset-x-0
-          bottom-[9%]
+          bottom-[14%]
           z-20
           px-4
           text-center
@@ -314,26 +276,30 @@ export function OrangeHeroExperience() {
             delay: 0.35,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="
-            mx-auto
-            whitespace-nowrap
-            text-[clamp(3rem,7.5vw,7rem)]
-            font-black
-            uppercase
-            leading-[0.9]
-            tracking-[-0.02em]
-            text-[#ff9f00]
-          "
-          style={{
-            fontFamily: '"Arial Black", Arial, sans-serif',
-            WebkitTextStroke: "clamp(3px, 0.3vw, 6px) white",
-            paintOrder: "stroke fill",
-            textShadow: "0 8px 22px rgba(129, 52, 0, 0.12)",
-          }}
+          className="mx-auto w-[86vw] sm:w-[64vw] md:w-[38vw]"
         >
-          Para llevar
+          <Image
+            src="/images/hero/para-llevar-title.png"
+            alt="Para llevar"
+            width={2172}
+            height={724}
+            className="h-auto w-full object-contain"
+          />
         </motion.h2>
       </motion.div>
+
+      {/* Transición orgánica hacia la siguiente sección */}
+      <svg
+        className="pointer-events-none absolute -bottom-px left-0 z-30 h-[88px] w-full sm:h-[120px] lg:h-[145px]"
+        viewBox="0 0 1440 160"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M0 76C150 126 284 20 472 55C651 89 770 151 958 91C1143 32 1268 25 1440 78V160H0Z"
+          fill="#fffdf8"
+        />
+      </svg>
 
     </section>
   );
