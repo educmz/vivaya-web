@@ -397,7 +397,7 @@ export function OrangeJourney() {
             Sigue explorando
           </p>
         </Container>
-        <WaveDivider fill="#F6D98B" variant="soft" className="absolute -bottom-px inset-x-0 z-40" />
+        <WaveDivider fill="var(--foreground)" variant="soft" className="absolute -bottom-px inset-x-0 z-40" />
       </section>
 
       <MobileJourney />
@@ -443,7 +443,7 @@ function MobileJourney() {
           ))}
         </div>
       </Container>
-      <WaveDivider fill="#F6D98B" variant="soft" className="absolute -bottom-px inset-x-0" />
+      <WaveDivider fill="var(--foreground)" variant="soft" className="absolute -bottom-px inset-x-0" />
     </section>
   );
 }

@@ -41,7 +41,7 @@ export function BenefitsSection() {
         </ScrollReveal>
       </Container>
 
-      <WaveDivider fill="#F4C783" variant="drift" className="absolute -bottom-px inset-x-0" />
+      <WaveDivider fill="#F2A76F" variant="drift" className="absolute -bottom-px inset-x-0" />
     </section>
   );
 }

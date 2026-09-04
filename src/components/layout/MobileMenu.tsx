@@ -8,7 +8,6 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 import { navigationItems } from "@/data/navigation";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -24,10 +23,6 @@ export function MobileMenu() {
     document.addEventListener("keydown", close);
     return () => document.removeEventListener("keydown", close);
   }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -62,7 +57,7 @@ export function MobileMenu() {
           >
             <div className="flex items-center justify-between">
               <Image
-                src="/images/brand/vivaya-logo.png"
+                src="/images/brand/vivaya-icon.png"
                 alt="Vivaya"
                 width={110}
                 height={110}

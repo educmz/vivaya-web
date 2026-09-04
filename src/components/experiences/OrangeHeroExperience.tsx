@@ -2,664 +2,419 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
-import { useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const featureBubbles = [
+  {
+    title: "Fruta real",
+    description: "Sabor cítrico que se siente",
+    className: "left-[4%] top-[53%] xl:left-[6%]",
+  },
+  {
+    title: "Frescura",
+    description: "Preparado al momento",
+    className: "left-[10%] top-[36%] xl:left-[12%]",
+  },
+  {
+    title: "Para llevar",
+    description: "Ideal para tu ritmo",
+    className: "left-[3%] top-[72%] xl:left-[5%]",
+  },
+];
 
 export function OrangeHeroExperience() {
-  const heroRef = useRef<HTMLElement>(null);
-  const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const brandRef = useRef<HTMLDivElement | null>(null);
+  const ctaRef = useRef<HTMLDivElement | null>(null);
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const archRef = useRef<HTMLDivElement | null>(null);
+  const productWrapRef = useRef<HTMLDivElement | null>(null);
+  const productFloatRef = useRef<HTMLDivElement | null>(null);
+  const copyRef = useRef<HTMLDivElement | null>(null);
+  const bottomShapeRef = useRef<HTMLDivElement | null>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end end"],
-  });
+  useLayoutEffect(() => {
+    if (!sectionRef.current) return;
 
-  /*
-   * ÚNICAMENTE la naranja protagonista responde al scroll.
-   * El resto del Hero mantiene siempre su composición.
-   */
+    const ctx = gsap.context(() => {
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const bubbles = gsap.utils.toArray<HTMLElement>("[data-hero-bubble]");
 
-  const orangeX = useTransform(
-    scrollYProgress,
-    [0, 0.15, 0.45, 0.75, 1],
-    reduceMotion
-      ? ["0vw", "0vw", "0vw", "0vw", "0vw"]
-      : ["0vw", "-2vw", "-10vw", "-24vw", "-35vw"],
-  );
+      gsap.set(
+        [
+          brandRef.current,
+          ctaRef.current,
+          stageRef.current,
+          copyRef.current,
+          bottomShapeRef.current,
+          ...bubbles,
+        ],
+        { autoAlpha: 1 },
+      );
 
-  const orangeY = useTransform(
-    scrollYProgress,
-    [0, 0.12, 0.35, 0.65, 0.9, 1],
-    reduceMotion
-      ? ["0vh", "0vh", "0vh", "0vh", "0vh", "0vh"]
-      : ["0vh", "0vh", "10vh", "31vh", "58vh", "76vh"],
-  );
+      if (prefersReducedMotion) return;
 
-  const orangeRotate = useTransform(
-    scrollYProgress,
-    [0, 0.18, 0.55, 1],
-    reduceMotion
-      ? [0, 0, 0, 0]
-      : [-3, 18, 210, 540],
-  );
+      const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-  const orangeScale = useTransform(
-    scrollYProgress,
-    [0, 0.18, 0.65, 1],
-    reduceMotion
-      ? [1, 1, 1, 1]
-      : [1, 1.03, 0.9, 0.72],
-  );
+      intro
+        .from(brandRef.current, {
+          y: 60,
+          opacity: 0,
+          duration: 0.9,
+        })
+        .from(
+          ctaRef.current,
+          {
+            y: 24,
+            opacity: 0,
+            duration: 0.6,
+          },
+          "-=0.45",
+        )
+        .from(
+          archRef.current,
+          {
+            scale: 0.8,
+            rotate: -8,
+            opacity: 0,
+            duration: 1,
+          },
+          "-=0.15",
+        )
+        .from(
+          productWrapRef.current,
+          {
+            y: 120,
+            x: -20,
+            rotate: 16,
+            scale: 0.88,
+            opacity: 0,
+            duration: 1,
+          },
+          "-=0.7",
+        )
+        .from(
+          bubbles,
+          {
+            y: 26,
+            opacity: 0,
+            scale: 0.9,
+            stagger: 0.12,
+            duration: 0.55,
+          },
+          "-=0.45",
+        )
+        .from(
+          copyRef.current,
+          {
+            x: 60,
+            opacity: 0,
+            duration: 0.9,
+          },
+          "-=0.5",
+        )
+        .from(
+          bottomShapeRef.current,
+          {
+            y: 80,
+            opacity: 0,
+            duration: 0.7,
+          },
+          "-=0.35",
+        );
 
-  /*
-   * La hoja de la naranja desaparece visualmente cuando
-   * empieza la caída para reforzar que se desprendió.
-   */
-  const orangeOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.92, 1],
-    [1, 1, 0],
-  );
+      gsap.to(productFloatRef.current, {
+        y: -12,
+        rotation: -2,
+        duration: 2.8,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
 
-  /*
-   * Pequeñas reacciones ambientales.
-   * No son parallax: solo desaparecen suavemente al
-   * terminar la escena.
-   */
-  const contentOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.72, 0.95],
-    [1, 1, 0.88],
-  );
+      const heroTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=110%",
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
+
+      heroTl
+        .to(
+          brandRef.current,
+          {
+            y: -30,
+            opacity: 0.18,
+          },
+          0,
+        )
+        .to(
+          ctaRef.current,
+          {
+            y: -12,
+            opacity: 0.55,
+          },
+          0,
+        )
+        .to(
+          productWrapRef.current,
+          {
+            y: -30,
+            x: 18,
+            rotate: -10,
+            scale: 1.06,
+          },
+          0,
+        )
+        .to(
+          archRef.current,
+          {
+            rotate: 10,
+            scale: 1.03,
+            opacity: 0.9,
+          },
+          0,
+        )
+        .to(
+          bubbles,
+          {
+            y: -18,
+            stagger: 0.03,
+          },
+          0,
+        )
+        .to(
+          copyRef.current,
+          {
+            y: -18,
+            x: 16,
+          },
+          0,
+        )
+        .to(
+          bottomShapeRef.current,
+          {
+            scaleX: 1.08,
+            y: -10,
+          },
+          0,
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
-      ref={heroRef}
-      className="relative h-[190svh] bg-[#f5c47e]"
+      ref={sectionRef}
+      className="relative isolate min-h-[100svh] overflow-hidden bg-[#C7DBB7] text-[#1D4B2F]"
     >
-      {/* =====================================================
-          ESCENA STICKY
-      ====================================================== */}
+      {/* Fondo */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-30 bg-[radial-gradient(circle_at_center,rgba(255,247,232,0.55),transparent_58%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 opacity-20 [background-image:radial-gradient(rgba(29,75,47,0.22)_0.7px,transparent_0.7px)] [background-size:8px_8px]"
+        aria-hidden="true"
+      />
 
-      <div className="sticky top-0 h-[100svh] overflow-hidden">
-        {/* ===================================================
-            FONDO DEL HUERTO
-        ==================================================== */}
-
-        <Image
-          src="/images/hero/orchard-background.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-
-        {/* Velo para legibilidad del lado izquierdo */}
+      <div className="mx-auto flex min-h-[100svh] w-full max-w-[1600px] flex-col px-5 pb-10 pt-32 sm:px-8 lg:px-12 lg:pt-36 xl:px-16">
+        {/* Marca superior */}
         <div
-          className="
-            absolute inset-0 z-[1]
-            bg-gradient-to-r
-            from-[#ffd28c]/75
-            via-[#ffc96f]/20
-            to-transparent
-          "
-          aria-hidden="true"
-        />
+          ref={brandRef}
+          className="invisible relative z-20 text-center"
+        >
+          <div className="font-heading text-[clamp(5.2rem,16vw,13rem)] uppercase leading-[0.82] tracking-[-0.055em] text-[#1D4B2F]">
+            Vivaya
+          </div>
+        </div>
 
-        {/* Glow cálido central */}
+        {/* CTA superior */}
         <div
-          className="
-            absolute inset-0 z-[1]
-            bg-[radial-gradient(circle_at_55%_45%,rgba(255,215,142,0.16),transparent_45%)]
-          "
-          aria-hidden="true"
-        />
-
-        {/* ===================================================
-            ÁRBOL
-        ==================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            x: 130,
-          }}
-          animate={{
-            opacity: 1,
-            x: 0,
-          }}
-          transition={{
-            duration: 1.25,
-            delay: 0.1,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            pointer-events-none
-            absolute
-            -right-[5%]
-            -top-[10%]
-            z-10
-            hidden
-            h-[78%]
-            w-[55%]
-            lg:block
-            xl:w-[50%]
-          "
+          ref={ctaRef}
+          className="invisible relative z-20 -mt-1 flex justify-center sm:-mt-2"
         >
-          <Image
-            src="/images/hero/orange-tree.png"
-            alt=""
-            fill
-            priority
-            sizes="55vw"
-            className="object-contain object-right-top"
-          />
-        </motion.div>
-
-        {/* ===================================================
-            NARANJA QUE CAE
-        ==================================================== */}
-
-        <motion.div
-          style={{
-            x: orangeX,
-            y: orangeY,
-            rotate: orangeRotate,
-            scale: orangeScale,
-            opacity: orangeOpacity,
-          }}
-          className="
-            pointer-events-none
-            absolute
-            right-[8%]
-            top-[21%]
-            z-30
-            hidden
-            w-[105px]
-            lg:block
-            xl:w-[125px]
-            2xl:w-[145px]
-          "
-        >
-          {/* Movimiento suave antes de desprenderse */}
-          <motion.div
-            animate={
-              reduceMotion
-                ? undefined
-                : {
-                    y: [0, -4, 0],
-                    rotate: [-2, 2, -2],
-                  }
-            }
-            transition={{
-              duration: 2.6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+          <Link
+            href="/carta"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#1D4B2F] px-4 py-2 text-sm font-bold text-[#FFF7E8] shadow-[0_14px_28px_rgba(29,75,47,0.18)] transition-transform duration-300 hover:-translate-y-1"
           >
-            <Image
-              src="/images/hero/falling-orange.png"
-              alt=""
-              width={420}
-              height={420}
-              priority
-              className="
-                h-auto
-                w-full
-                object-contain
-                drop-shadow-[0_18px_20px_rgba(97,49,0,0.24)]
-              "
-            />
-          </motion.div>
-        </motion.div>
+            <span className="grid size-7 place-items-center rounded-full bg-[#FFF7E8] text-[#1D4B2F]">
+              <ArrowUpRight className="size-4" />
+            </span>
+            <span>Conoce la carta</span>
+          </Link>
+        </div>
 
-        {/* ===================================================
-            CONTENIDO GENERAL
-        ==================================================== */}
-
-        <motion.div
-          style={{ opacity: contentOpacity }}
-          className="absolute inset-0 z-20"
-        >
-          {/* =================================================
-              COPY IZQUIERDO
-          ================================================== */}
-
-          <div
-            className="
-              absolute
-              left-[5%]
-              top-1/2
-              w-[44%]
-              max-w-[700px]
-              -translate-y-[44%]
-            "
-          >
-            {/* Título VIVAYA */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 40,
-                scale: 0.95,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              transition={{
-                duration: 0.9,
-                delay: 0.25,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              <Image
-                src="/images/hero/hero-vivaya-title.png"
-                alt="Vivaya"
-                width={1300}
-                height={500}
-                priority
-                className="
-                  h-auto
-                  w-full
-                  max-w-[650px]
-                  object-contain
-                  object-left
-                "
-              />
-            </motion.div>
-
-            {/* Claim gráfico */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 25,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.8,
-                delay: 0.5,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="-mt-4 ml-[3%]"
-            >
-              <Image
-                src="/images/hero/hero-claim.png"
-                alt="Bienestar para llevar"
-                width={1200}
-                height={380}
-                priority
-                className="
-                  h-auto
-                  w-[88%]
-                  max-w-[570px]
-                  object-contain
-                  object-left
-                "
-              />
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: 0.75,
-              }}
-              className="ml-[8%] mt-4"
-            >
-              <Link
-                href="/carta"
-                className="
-                  group
-                  inline-flex
-                  min-h-14
-                  items-center
-                  gap-5
-                  rounded-full
-                  border-2
-                  border-white
-                  bg-[#f14a17]
-                  px-7
-                  text-sm
-                  font-bold
-                  text-white
-                  shadow-[0_14px_28px_rgba(145,61,8,0.20)]
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:scale-[1.02]
-                  hover:bg-[#ff5b21]
-                "
+        {/* Escena principal */}
+        <div className="relative flex-1">
+          {/* Desktop composition */}
+          <div className="hidden h-full lg:block">
+            {/* bubbles */}
+            {featureBubbles.map((bubble) => (
+              <div
+                key={bubble.title}
+                data-hero-bubble
+                className={`invisible absolute z-20 ${bubble.className}`}
               >
-                Conoce nuestra carta
+                <div className="flex h-36 w-36 items-center justify-center rounded-full bg-[#FFF7E8] p-5 text-center shadow-[0_18px_38px_rgba(29,75,47,0.15)] xl:h-40 xl:w-40">
+                  <div>
+                    <p className="font-heading text-[1.45rem] uppercase leading-[0.9] text-[#1D4B2F] xl:text-[1.65rem]">
+                      {bubble.title}
+                    </p>
+                    <p className="mt-2 text-[12px] leading-5 text-[#1D4B2F]/72 xl:text-[13px]">
+                      {bubble.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
 
-                <ArrowRight
-                  size={19}
-                  className="
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1.5
-                  "
+            {/* producto + arco */}
+            <div
+              ref={stageRef}
+              className="invisible absolute bottom-[3%] left-[10%] z-10 h-[64vh] w-[50vw] max-w-[820px] xl:left-[12%]"
+            >
+              {/* arco detrás */}
+              <div
+                ref={archRef}
+                className="absolute inset-0"
+              >
+                <svg
+                  viewBox="0 0 900 900"
+                  className="h-full w-full"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M150 760C150 470 270 220 470 165C620 124 720 194 790 310"
+                    fill="none"
+                    stroke="#FFF7E8"
+                    strokeWidth="20"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+
+              {/* producto */}
+              <div
+                ref={productWrapRef}
+                className="absolute bottom-[-2%] left-[18%] z-20 h-[88%] w-[52%] origin-bottom-left rotate-[10deg]"
+              >
+                <div
+                  ref={productFloatRef}
+                  className="relative h-full w-full"
+                >
+                  <Image
+                    src="/images/hero/hero-product.png"
+                    alt="Vaso de jugo de naranja Vivaya"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 0px, 34vw"
+                    className="object-contain drop-shadow-[0_38px_38px_rgba(29,75,47,0.18)]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* copy derecha */}
+            <div
+              ref={copyRef}
+              className="invisible absolute right-[4%] top-[25%] z-20 max-w-[460px] xl:right-[6%] xl:max-w-[500px]"
+            >
+              <p className="font-accent text-3xl font-bold text-[#FF6A22] xl:text-4xl">
+                Vivaya
+              </p>
+
+              <h1 className="font-heading mt-2 text-[clamp(4.8rem,8.4vw,7.8rem)] uppercase leading-[0.82] tracking-[-0.05em] text-[#1D4B2F]">
+                Sabor
+                <br />
+                <span className="text-[#FFF7E8]">que se</span>
+                <br />
+                vive
+              </h1>
+
+              <p className="mt-5 max-w-[360px] text-lg leading-8 text-[#1D4B2F]/78">
+                Frescura, energía y una experiencia natural lista para acompañarte en cada momento del día.
+              </p>
+
+              <div className="mt-6 h-2 w-32 rounded-full bg-[#FFF7E8]" aria-hidden="true" />
+            </div>
+          </div>
+
+          {/* Mobile / tablet */}
+          <div className="relative mx-auto flex w-full max-w-[36rem] flex-col items-center pb-24 pt-10 text-center lg:hidden">
+            <div className="font-heading text-[clamp(3.2rem,15vw,5.6rem)] uppercase leading-[0.82] tracking-[-0.05em] text-[#1D4B2F]">
+              Jugo
+              <br />
+              <span className="text-[#FFF7E8]">de</span>
+              <br />
+              naranja
+            </div>
+
+            <p className="mt-4 max-w-sm text-base leading-7 text-[#1D4B2F]/78">
+              Una bebida lista para acompañarte con sabor, frescura y energía visualmente
+              vibrante.
+            </p>
+
+            <div className="relative mt-10 h-[27rem] w-full max-w-[19rem]">
+              <div className="absolute inset-0">
+                <svg viewBox="0 0 420 520" className="h-full w-full" aria-hidden="true">
+                  <path
+                    d="M80 470C80 260 155 92 292 56C354 40 393 64 405 118"
+                    fill="none"
+                    stroke="#FFF7E8"
+                    strokeWidth="14"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div className="absolute bottom-0 left-1/2 h-[92%] w-[82%] -translate-x-1/2 rotate-[8deg]">
+                <Image
+                  src="/images/hero/hero-product.png"
+                  alt="Vaso de jugo de naranja Vivaya"
+                  fill
+                  priority
+                  sizes="90vw"
+                  className="object-contain drop-shadow-[0_28px_28px_rgba(29,75,47,0.18)]"
                 />
-              </Link>
-            </motion.div>
+              </div>
+            </div>
+
+            <div className="mt-8 grid w-full max-w-md grid-cols-3 gap-3">
+              {featureBubbles.map((bubble) => (
+                <div
+                  key={bubble.title}
+                  className="rounded-3xl bg-[#FFF7E8] px-3 py-4 shadow-[0_14px_24px_rgba(29,75,47,0.12)]"
+                >
+                  <p className="font-heading text-lg uppercase leading-none text-[#1D4B2F]">
+                    {bubble.title}
+                  </p>
+                  <p className="mt-1 text-[11px] leading-4 text-[#1D4B2F]/70">
+                    {bubble.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-
-          {/* =================================================
-              COMPOSICIÓN DEL PRODUCTO
-          ================================================== */}
-
-          <div
-            className="
-              absolute
-              bottom-[1%]
-              right-[4%]
-              h-[68%]
-              w-[55%]
-            "
-          >
-            {/* Tronco */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 80,
-                scale: 0.94,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              transition={{
-                duration: 1.05,
-                delay: 0.3,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                absolute
-                bottom-[-3%]
-                left-1/2
-                z-10
-                w-[92%]
-                -translate-x-1/2
-              "
-            >
-              <Image
-                src="/images/hero/hero-stump.png"
-                alt=""
-                width={1500}
-                height={700}
-                className="h-auto w-full object-contain"
-              />
-            </motion.div>
-
-            {/* Vaso */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 80,
-                scale: 0.88,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              transition={{
-                duration: 1,
-                delay: 0.4,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                absolute
-                bottom-[12%]
-                left-[47%]
-                z-20
-                w-[31%]
-                -translate-x-1/2
-              "
-            >
-              <Image
-                src="/images/hero/hero-product.png"
-                alt="Jugo de naranja Vivaya"
-                width={800}
-                height={1300}
-                priority
-                className="
-                  h-auto
-                  w-full
-                  object-contain
-                  drop-shadow-[0_25px_28px_rgba(82,42,3,0.22)]
-                "
-              />
-            </motion.div>
-
-            {/* Media naranja */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0.7,
-                rotate: -20,
-                x: 40,
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                rotate: 4,
-                x: 0,
-              }}
-              transition={{
-                duration: 0.9,
-                delay: 0.65,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                absolute
-                bottom-[11%]
-                right-[8%]
-                z-30
-                w-[27%]
-              "
-            >
-              <Image
-                src="/images/hero/hero-orange-half.png"
-                alt=""
-                width={700}
-                height={700}
-                className="h-auto w-full object-contain"
-              />
-            </motion.div>
-
-            {/* Gajo */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0.7,
-                rotate: 25,
-                y: 30,
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                rotate: -8,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.85,
-                delay: 0.78,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                absolute
-                bottom-[8%]
-                right-[26%]
-                z-40
-                w-[20%]
-              "
-            >
-              <Image
-                src="/images/hero/hero-orange-wedge.png"
-                alt=""
-                width={600}
-                height={500}
-                className="h-auto w-full object-contain"
-              />
-            </motion.div>
-
-            {/* Hoja 1 */}
-            <motion.div
-              animate={
-                reduceMotion
-                  ? undefined
-                  : {
-                      y: [0, -7, 0],
-                      rotate: [-8, 2, -8],
-                    }
-              }
-              transition={{
-                duration: 4.8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                pointer-events-none
-                absolute
-                bottom-[8%]
-                left-[24%]
-                z-30
-                w-[13%]
-              "
-            >
-              <Image
-                src="/images/hero/hero-leaf-01.png"
-                alt=""
-                width={500}
-                height={350}
-                className="h-auto w-full object-contain"
-              />
-            </motion.div>
-
-            {/* Hoja 2 */}
-            <motion.div
-              animate={
-                reduceMotion
-                  ? undefined
-                  : {
-                      y: [0, 6, 0],
-                      rotate: [7, -4, 7],
-                    }
-              }
-              transition={{
-                duration: 5.4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                pointer-events-none
-                absolute
-                bottom-[16%]
-                right-[2%]
-                z-20
-                w-[11%]
-              "
-            >
-              <Image
-                src="/images/hero/hero-leaf-02.png"
-                alt=""
-                width={450}
-                height={450}
-                className="h-auto w-full object-contain"
-              />
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* ===================================================
-            INDICADOR DE SCROLL
-        ==================================================== */}
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.7,
-            delay: 1.2,
-          }}
-          className="
-            absolute
-            bottom-6
-            left-1/2
-            z-50
-            hidden
-            -translate-x-1/2
-            flex-col
-            items-center
-            gap-2
-            lg:flex
-          "
-        >
-          <div
-            className="
-              flex
-              h-10
-              w-6
-              items-start
-              justify-center
-              rounded-full
-              border
-              border-white/80
-              p-1
-            "
-          >
-            <motion.span
-              animate={
-                reduceMotion
-                  ? undefined
-                  : {
-                      y: [0, 14, 0],
-                      opacity: [1, 0.15, 1],
-                    }
-              }
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="size-1.5 rounded-full bg-white"
-            />
-          </div>
-
-          <span
-            className="
-              text-[9px]
-              font-black
-              uppercase
-              tracking-[0.28em]
-              text-white
-            "
-          >
-            Descubre más
-          </span>
-        </motion.div>
+        </div>
       </div>
+
+      {/* forma inferior */}
+      <div
+        ref={bottomShapeRef}
+        className="invisible pointer-events-none absolute bottom-[-16%] left-1/2 z-0 h-[26rem] w-[96rem] max-w-none -translate-x-1/2 rounded-[50%] bg-[#2B5D38]"
+        aria-hidden="true"
+      />
     </section>
   );
 }

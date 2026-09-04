@@ -66,7 +66,7 @@ export function FeaturedProducts() {
         <Button href="/carta" className="min-h-14 bg-[#073B3A] px-8 text-white hover:bg-[#0F6B6D]">Conoce toda la carta</Button>
       </div>
 
-      <WaveDivider fill="#FFF4C4" variant="swell" className="absolute -bottom-px inset-x-0" />
+      <WaveDivider fill="#E7EFE2" variant="valley" className="absolute -bottom-px inset-x-0" />
     </section>
   );
 }

@@ -27,7 +27,7 @@ export function HomeFinalCta() {
         </div>
       </Container>
 
-      <WaveDivider fill="var(--foreground)" variant="drift" className="absolute -bottom-px inset-x-0" />
+      <WaveDivider fill="#FFF7E8" variant="drift" className="absolute -bottom-px inset-x-0" />
     </section>
   );
 }
