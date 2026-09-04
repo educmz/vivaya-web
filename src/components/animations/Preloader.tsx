@@ -10,23 +10,24 @@ export function Preloader() {
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    const timer = window.setTimeout(
-      () => {
-        setIsVisible(false);
-        document.body.style.overflow = "";
-      },
-      prefersReducedMotion ? 600 : 2400,
-    );
+    // Fallback para evitar dejar bloqueada la página si una animación se interrumpe.
+    const fallbackTimer = window.setTimeout(() => {
+      setIsVisible(false);
+      document.body.style.overflow = "";
+    }, 6000);
 
     return () => {
-      window.clearTimeout(timer);
+      window.clearTimeout(fallbackTimer);
       document.body.style.overflow = "";
     };
   }, []);
+
+  const handleRevealComplete = () => {
+    window.setTimeout(() => {
+      setIsVisible(false);
+      document.body.style.overflow = "";
+    }, 250);
+  };
 
   return (
     <AnimatePresence>
@@ -88,6 +89,7 @@ export function Preloader() {
                   delay: 0.45,
                   ease: [0.65, 0, 0.35, 1],
                 }}
+                onAnimationComplete={handleRevealComplete}
               >
                 <Image
                   src="/images/vivaya-wordmark.svg"
