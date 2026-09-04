@@ -1,13 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 
 const scenes = [
   {
@@ -35,19 +30,7 @@ const scenes = [
 export function ProductScrollSequence() {
   const rootRef = useRef<HTMLElement>(null);
 
-  const reducedPreference = useReducedMotion();
-
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const frame = requestAnimationFrame(() => {
-      setMounted(true);
-    });
-
-    return () => cancelAnimationFrame(frame);
-  }, []);
-
-  const reduced = mounted && Boolean(reducedPreference);
+  const reduced = false;
 
   /*
    * IMPORTANTE:
@@ -458,11 +441,7 @@ export function ProductScrollSequence() {
               alt="Producto Vivaya"
               fill
               priority
-              sizes="
-                (max-width: 640px) 52vw,
-                (max-width: 1024px) 48vw,
-                32rem
-              "
+              sizes="(max-width: 640px) 52vw, (max-width: 1024px) 48vw, 32rem"
               className="
                 object-contain
                 drop-shadow-[0_30px_35px_rgba(51,92,48,0.18)]

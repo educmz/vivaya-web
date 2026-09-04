@@ -6,6 +6,7 @@ import type {
   CartaCategory,
   CartaCategoryId,
 } from "@/data/carta";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface CartaCategoryNavProps {
   categories: CartaCategory[];
@@ -18,8 +19,15 @@ export function CartaCategoryNav({
   activeCategory,
   onChange,
 }: CartaCategoryNavProps) {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <div className="relative z-20 border-b border-[#073B3A]/12 bg-[#FFF7E8]">
+    <motion.div
+      initial={reducedMotion ? false : { opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="relative z-20 border-b border-[#073B3A]/12 bg-[#FFF7E8]"
+    >
       <div className="mx-auto max-w-7xl overflow-x-auto px-5 sm:px-8 lg:px-10">
         <nav
           aria-label="Categorías de la carta"
@@ -77,6 +85,6 @@ export function CartaCategoryNav({
           })}
         </nav>
       </div>
-    </div>
+    </motion.div>
   );
 }
