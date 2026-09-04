@@ -5,7 +5,10 @@ export interface ProductCategory {
 }
 
 export const categories: ProductCategory[] = [
-  { id: "temporada", name: "Temporada", description: "Categoría temporal de desarrollo." },
-  { id: "clasicos", name: "Clásicos", description: "Categoría temporal de desarrollo." },
-  { id: "ligeros", name: "Ligeros", description: "Categoría temporal de desarrollo." },
+  { id: "vasos", name: "Vasos", description: "Categoría temporal de desarrollo." },
+  { id: "botellas", name: "Botellas", description: "Categoría temporal de desarrollo." },
+  { id: "latas", name: "Latas", description: "Categoría temporal de desarrollo." },
+  { id: "briks", name: "Briks", description: "Categoría temporal de desarrollo." },
+  { id: "pouches", name: "Pouches", description: "Categoría temporal de desarrollo." },
+  { id: "multipack", name: "Multipack", description: "Categoría temporal de desarrollo." },
 ];
