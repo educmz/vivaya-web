@@ -15,7 +15,10 @@ export function AboutGallery() {
   return (
     <section className="overflow-hidden bg-[#FFF7E8] py-20 sm:py-24 lg:py-28">
       <Container>
-        <div className="relative lg:min-h-[58rem]">
+        {/* =========================================
+            COLLAGE
+        ========================================== */}
+        <div className="relative lg:min-h-[60rem]">
           {/* Texto superior izquierdo */}
           <motion.div
             initial={
@@ -30,9 +33,15 @@ export function AboutGallery() {
               opacity: 1,
               y: 0,
             }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease }}
-            className="max-w-2xl lg:absolute lg:left-0 lg:top-0 lg:w-[36rem]"
+            viewport={{
+              once: true,
+              amount: 0.3,
+            }}
+            transition={{
+              duration: 0.8,
+              ease,
+            }}
+            className="max-w-2xl lg:absolute lg:left-0 lg:top-0 lg:w-[29rem]"
           >
             <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FF8A00]">
               Somos Vivaya
@@ -50,67 +59,116 @@ export function AboutGallery() {
             </p>
           </motion.div>
 
-          {/* Texto inferior derecho */}
-          <motion.div
-            initial={
-              reducedMotion
-                ? false
-                : {
-                    opacity: 0,
-                    y: 40,
-                  }
-            }
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.12, ease }}
-            className="mt-14 max-w-2xl lg:absolute lg:bottom-6 lg:right-0 lg:mt-0 lg:w-[34rem]"
-          >
-            <p className="text-[clamp(1.7rem,3vw,3rem)] font-medium leading-[1.12] tracking-[-0.04em] text-[#073B3A]">
-              Personas, producto y una idea que sigue{" "}
-              <span className="font-black text-[#0F6B6D]">avanzando</span>.
-            </p>
-          </motion.div>
-
-          {/* Fotos estilo Paput */}
+          {/* Producto */}
           <PolaroidCard
             src={aboutGallery[0].src}
             alt={aboutGallery[0].alt}
-            className="mx-auto mt-12 w-[19rem] sm:w-[23rem] lg:absolute lg:left-[27%] lg:top-[2rem] lg:mt-0 lg:w-[26rem]"
+            className="
+              mx-auto mt-12 w-[19rem]
+              sm:w-[23rem]
+              lg:absolute lg:left-[39%] lg:top-[2rem]
+              lg:mt-0 lg:w-[24rem]
+            "
             angle={-4}
             floatY={12}
             delay={0.02}
           />
 
+          {/* Máquina */}
           <PolaroidCard
             src={aboutGallery[1].src}
             alt={aboutGallery[1].alt}
-            className="ml-auto mt-8 w-[14rem] sm:w-[18rem] lg:absolute lg:right-[2%] lg:top-[0.5rem] lg:mt-0 lg:w-[17rem]"
+            className="
+              ml-auto mt-8 w-[14rem]
+              sm:w-[18rem]
+              lg:absolute lg:right-[2%] lg:top-[0.5rem]
+              lg:mt-0 lg:w-[17rem]
+            "
             angle={6}
             floatY={10}
             delay={0.1}
           />
 
+          {/* Lifestyle */}
           <PolaroidCard
             src={aboutGallery[2].src}
             alt={aboutGallery[2].alt}
-            className="mt-8 w-[15rem] sm:w-[18rem] lg:absolute lg:bottom-[1rem] lg:left-[4%] lg:mt-0 lg:w-[18rem]"
+            className="
+              mt-8 w-[15rem]
+              sm:w-[18rem]
+              lg:absolute lg:bottom-[1rem] lg:left-[4%]
+              lg:mt-0 lg:w-[18rem]
+            "
             angle={-7}
             floatY={14}
             delay={0.16}
           />
 
+          {/* Equipo */}
           <PolaroidCard
             src={aboutGallery[3].src}
             alt={aboutGallery[3].alt}
-            className="ml-auto mt-8 w-[19rem] sm:w-[24rem] lg:absolute lg:bottom-0 lg:right-[18%] lg:mt-0 lg:w-[27rem]"
+            className="
+              ml-auto mt-8 w-[19rem]
+              sm:w-[24rem]
+              lg:absolute lg:bottom-0 lg:right-[3%]
+              lg:mt-0 lg:w-[25rem]
+            "
             angle={4}
             floatY={12}
             delay={0.22}
           />
         </div>
+
+        {/* =========================================
+            FRASE — FUERA DEL COLLAGE
+        ========================================== */}
+        <motion.div
+          initial={
+            reducedMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 35,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.45,
+          }}
+          transition={{
+            duration: 0.85,
+            ease,
+          }}
+          className="
+            mt-16
+            border-t border-[#073B3A]/15
+            pt-9
+            lg:mt-20
+          "
+        >
+          <p
+            className="
+              ml-auto
+              max-w-4xl
+              text-right
+              text-[clamp(2rem,3.6vw,4rem)]
+              font-medium
+              leading-[1.04]
+              tracking-[-0.05em]
+              text-[#073B3A]
+            "
+          >
+            Personas, producto y una idea que sigue{" "}
+            <span className="font-black text-[#FF8A00]">
+              avanzando.
+            </span>
+          </p>
+        </motion.div>
       </Container>
     </section>
   );
@@ -151,7 +209,10 @@ function PolaroidCard({
         rotate: angle,
         scale: 1,
       }}
-      viewport={{ once: true, amount: 0.18 }}
+      viewport={{
+        once: true,
+        amount: 0.18,
+      }}
       transition={{
         duration: 0.95,
         delay,
@@ -166,10 +227,6 @@ function PolaroidCard({
             }
       }
       className={className}
-      style={{
-        transition:
-          "box-shadow 300ms ease, transform 300ms ease, rotate 300ms ease",
-      }}
     >
       <motion.div
         whileHover={
@@ -181,8 +238,16 @@ function PolaroidCard({
                 scale: 1.02,
               }
         }
-        transition={{ duration: 0.4, ease }}
-        className="border-[3px] border-[#0F6B6D] bg-white p-4 shadow-[0_18px_40px_rgba(7,59,58,0.12)]"
+        transition={{
+          duration: 0.4,
+          ease,
+        }}
+        className="
+          border-[3px] border-[#0F6B6D]
+          bg-white
+          p-4
+          shadow-[0_18px_40px_rgba(7,59,58,0.12)]
+        "
       >
         <div className="relative aspect-[4/5] overflow-hidden bg-[#E9F5EE]">
           <Image

@@ -177,15 +177,15 @@ export function AboutValues() {
           );
 
         gsap.set(track, {
-          yPercent: 72,
-        });
+  yPercent: 105,
+});
 
         const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: root,
             start: "top top",
             end: () =>
-              `+=${getDistance() + window.innerHeight * 1.25}`,
+  `+=${getDistance() + window.innerHeight * 2.4}`,
             scrub: 1,
             pin: true,
             anticipatePin: 1,
@@ -194,46 +194,69 @@ export function AboutValues() {
         });
 
         /* Las cards suben desde abajo */
-        timeline.to(
-          track,
-          {
-            yPercent: 0,
-            duration: 0.75,
-            ease: "power3.out",
-          },
-          0,
-        );
+        // 1. Primero desaparece completamente la portada
+// FASE 1 — dejamos respirar la portada.
+// Este tween no cambia visualmente nada:
+// solo reserva recorrido de scroll.
+timeline.to(
+  {},
+  {
+    duration: 1.15,
+  },
+);
 
-        /* Intro se retira */
-        timeline.to(
-          intro,
-          {
-            yPercent: -18,
-            autoAlpha: 0,
-            duration: 0.65,
-            ease: "power2.inOut",
-          },
-          0.18,
-        );
+// Durante ese tiempo la naranja tiene un movimiento mínimo.
+timeline.to(
+  "[data-vivaya-mark]",
+  {
+    rotate: 3,
+    scale: 1.035,
+    duration: 1.15,
+    ease: "none",
+  },
+  0,
+);
 
-        /* Ilustración continúa moviéndose */
-        timeline.to(
-          "[data-vivaya-mark]",
-          {
-            rotate: 5,
-            scale: 1.08,
-            duration: 0.7,
-            ease: "none",
-          },
-          0,
-        );
+// FASE 2 — ahora sí retiramos la portada.
+timeline.to(
+  intro,
+  {
+    yPercent: -10,
+    autoAlpha: 0,
+    duration: 0.55,
+    ease: "power2.inOut",
+  },
+);
 
-        /* Empieza movimiento horizontal */
-        timeline.to(track, {
-          x: () => -getDistance(),
-          duration: 3,
-          ease: "none",
-        });
+// FASE 3 — recién cuando la portada ya salió,
+// hacemos entrar las cards.
+timeline.to(
+  track,
+  {
+    yPercent: 0,
+    duration: 0.8,
+    ease: "power3.out",
+  },
+  ">-0.04",
+);
+
+// Breve momento para ver las cards ya colocadas.
+timeline.to(
+  {},
+  {
+    duration: 0.3,
+  },
+);
+
+// FASE 4 — comienza el horizontal.
+timeline.to(
+  track,
+  {
+    x: () => -getDistance(),
+    duration: 3,
+    ease: "none",
+  },
+);
       });
     }, root);
 
@@ -280,9 +303,9 @@ export function AboutValues() {
               </h2>
 
               <p
-                data-values-copy
-                className="mt-7 max-w-md text-base leading-7 text-[#073B3A]/62"
-              >
+  data-values-copy
+  className="mt-6 max-w-sm text-base leading-7 text-[#073B3A]/62"
+>
                 Seis ideas que definen la manera en que Vivaya entiende
                 bienestar, movimiento y conveniencia.
               </p>
