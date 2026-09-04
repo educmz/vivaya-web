@@ -3,6 +3,7 @@ export interface StoreLocation {
   name: string;
   address: string;
   schedule: string;
+  image: string;
   mapsUrl: string;
   rappiUrl: string;
   active: boolean;
