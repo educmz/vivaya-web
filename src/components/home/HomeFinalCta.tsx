@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { WaveDivider } from "@/components/sections/WaveDivider";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
@@ -26,8 +25,6 @@ export function HomeFinalCta() {
           <Image src="/images/about/vivaya-cup.png" alt="Vaso Vivaya" fill sizes="(max-width: 1024px) 78vw, 30rem" className="relative object-contain p-8 drop-shadow-[0_30px_30px_rgba(7,59,58,0.18)]" />
         </div>
       </Container>
-
-      <WaveDivider fill="#FFF7E8" variant="drift" className="absolute -bottom-px inset-x-0" />
     </section>
   );
 }

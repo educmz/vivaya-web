@@ -13,11 +13,11 @@ export function LocationsHero() {
 
   return (
     <section className="relative overflow-hidden text-[#FFF7E8]">
-      <Image src="/images/about/about-lifestyle.webp" alt="" fill priority sizes="100vw" className="object-cover" />
+      <Image src="/images/products/Portada/Portada1.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#3E2A1B]/85 via-[#3E2A1B]/60 to-[#3E2A1B]/90" aria-hidden="true" />
       <div className="pointer-events-none absolute left-1/2 top-1/2 -z-0 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#3F7D4F]/25 blur-[110px]" aria-hidden="true" />
 
-      <Container className="relative flex min-h-[68svh] flex-col items-center justify-center py-20 text-center">
+      <Container className="relative flex min-h-[42svh] flex-col items-center justify-center py-16 text-center sm:min-h-[48svh]">
         <motion.div initial={reducedMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease }} className="flex items-center gap-4">
           <span className="h-px w-10 bg-[#FFF7E8]/30" />
           <span className="text-xs font-black uppercase tracking-[0.25em] text-[#C88B4A]">Locales Vivaya</span>
