@@ -15,7 +15,7 @@ export function Navbar({ className }: { className?: string }) {
       className={cn(
         "hidden items-center rounded-full",
         "border border-white/20",
-        "bg-black/20 p-2",
+        "bg-black/20 p-1.5",
         "backdrop-blur-md",
         "lg:flex",
         className,
@@ -34,9 +34,9 @@ export function Navbar({ className }: { className?: string }) {
             key={item.href}
             href={item.href}
             className={cn(
-              "relative flex min-h-12 items-center justify-center",
-              "rounded-full px-6",
-              "text-xs font-extrabold uppercase tracking-[0.1em]",
+              "relative flex min-h-10 items-center justify-center",
+              "rounded-full px-4 xl:px-5",
+              "text-[11px] font-extrabold uppercase tracking-[0.08em]",
               "transition-colors duration-300",
               isActive
                 ? "text-white"

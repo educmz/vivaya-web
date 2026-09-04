@@ -53,11 +53,10 @@ export function Header() {
       <div
         className="
           flex w-full items-center justify-between
-          px-5 py-5
-          sm:px-7 sm:py-6
-          lg:px-10 lg:py-7
-          xl:px-12
-          2xl:px-14
+          px-4 py-3
+          sm:px-6 sm:py-4
+          lg:px-8 lg:py-4
+          xl:px-10
         "
       >
         <Link
@@ -77,10 +76,10 @@ export function Header() {
             height={150}
             priority
             className="
-              h-[88px] w-auto object-contain
-              sm:h-[96px]
-              lg:h-[108px]
-              xl:h-[115px]
+              h-16 w-auto object-contain
+              sm:h-[68px]
+              lg:h-[76px]
+              xl:h-20
             "
             style={{
               filter:
