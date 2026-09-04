@@ -108,13 +108,28 @@ export function CartaMenuCard({
                 ease,
               }}
             >
-              <Image
-                src={item.image}
-                alt={item.name}
-                fill
-                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 24vw"
-                className="object-cover"
-              />
+              <motion.div
+                animate={
+                  reducedMotion
+                    ? undefined
+                    : { y: [0, -4, 0] }
+                }
+                transition={{
+                  duration: 3.4,
+                  delay: (index % 4) * 0.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative h-full w-full"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 24vw"
+                  className="object-cover"
+                />
+              </motion.div>
             </motion.div>
           ) : (
             <>
@@ -134,52 +149,34 @@ export function CartaMenuCard({
                   ease,
                 }}
               >
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 20vw"
-                  className="object-contain drop-shadow-[0_18px_22px_rgba(7,59,58,0.18)]"
-                />
+                <motion.div
+                  animate={
+                    reducedMotion
+                      ? undefined
+                      : {
+                          y: [0, -6, 0],
+                          rotate: left ? [-1, 1, -1] : [1, -1, 1],
+                        }
+                  }
+                  transition={{
+                    duration: 3.8,
+                    delay: (index % 4) * 0.2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="relative h-full w-full"
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 20vw"
+                    className="object-contain drop-shadow-[0_18px_22px_rgba(7,59,58,0.18)]"
+                  />
+                </motion.div>
               </motion.div>
-
-              <motion.div
-                aria-hidden="true"
-                className="absolute bottom-[8%] left-[7%] h-12 w-12 rounded-full bg-[#FF8A00]"
-                whileHover={
-                  reducedMotion
-                    ? undefined
-                    : {
-                        x: -5,
-                        y: -5,
-                      }
-                }
-              />
-
-              <motion.div
-                aria-hidden="true"
-                className="absolute right-[9%] top-[10%] h-6 w-10 rotate-[24deg] rounded-[100%_0_100%_0] bg-[#0F6B6D]"
-                whileHover={
-                  reducedMotion
-                    ? undefined
-                    : {
-                        x: 6,
-                        y: -5,
-                        rotate: 32,
-                      }
-                }
-              />
             </>
           )}
-
-          <span
-            className="absolute bottom-3 right-3 text-[7px] font-black uppercase tracking-[0.25em] opacity-40"
-            style={{
-              color: item.foreground,
-            }}
-          >
-            Vivaya
-          </span>
         </div>
 
         {/* INFORMACIÓN */}

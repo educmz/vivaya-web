@@ -16,23 +16,6 @@ export function CartaHero() {
       <Container className="relative grid min-h-[68svh] items-center gap-8 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
         {/* TEXTO */}
         <div className="relative z-20">
-          <motion.div
-            initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease }}
-            className="flex items-center gap-4"
-          >
-            <span className="text-xs font-black uppercase tracking-[0.25em] text-[#FFB347]">
-              Carta Vivaya
-            </span>
-
-            <span className="h-px w-12 bg-[#FFF7E8]/30" />
-
-            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#FFF7E8]/45">
-              Temporada
-            </span>
-          </motion.div>
-
           <div className="mt-6 overflow-hidden pb-4">
             <motion.h1
               initial={reducedMotion ? false : { y: "110%" }}
@@ -57,29 +40,25 @@ export function CartaHero() {
             <p className="max-w-sm text-base font-normal leading-7 text-[#FFF7E8]/65 sm:text-lg">
               Explora nuestra selección y encuentra tu próximo favorito.
             </p>
-
-            <div className="flex gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#FFF7E8]/55">
-              <span>Jugos</span>
-              <span className="text-[#FF8A00]">●</span>
-              <span>Cremoladas</span>
-              <span className="text-[#FF8A00]">●</span>
-              <span>Healthy</span>
-            </div>
           </motion.div>
         </div>
 
-        {/* PRODUCTOS FLOTANTES */}
-        <div className="relative min-h-[28rem] lg:min-h-[34rem]">
-          {/* gran círculo */}
+        {/* PRODUCTO */}
+        <div className="relative flex min-h-[28rem] items-center justify-center lg:min-h-[34rem]">
           <motion.div
-            initial={reducedMotion ? false : { scale: 0.6, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{
-              duration: 1,
-              delay: 0.25,
-              ease,
-            }}
-            className="absolute left-1/2 top-1/2 h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FF8A00] sm:h-[29rem] sm:w-[29rem]"
+            initial={reducedMotion ? false : { opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.15, ease }}
+            className="absolute left-1/2 top-1/2 aspect-square w-[82%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FF8A00]"
+            aria-hidden="true"
+          />
+
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.25, ease }}
+            className="absolute left-1/2 top-1/2 aspect-square w-[97%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#FFF7E8]/10"
+            aria-hidden="true"
           />
 
           {/* vaso central */}
@@ -105,98 +84,110 @@ export function CartaHero() {
               delay: 0.35,
               ease,
             }}
-            whileHover={
-              reducedMotion
-                ? undefined
-                : {
-                    y: -14,
-                    rotate: -1,
-                    scale: 1.04,
-                  }
-            }
-            className="absolute bottom-[-6%] left-[17%] z-20 h-[28rem] w-[17rem] lg:h-[34rem] lg:w-[20rem]"
+            className="relative z-10 h-[28rem] w-[17rem] lg:h-[34rem] lg:w-[20rem]"
           >
             <Image
               src="/images/about/vivaya-cup.png"
               alt="Vivaya"
               fill
               priority
+              sizes="(max-width: 1024px) 17rem, 20rem"
               className="object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.25)]"
             />
           </motion.div>
 
-          {/* producto secundario */}
+          {/* rodaja arriba a la izquierda */}
           <motion.div
             initial={
               reducedMotion
                 ? false
-                : {
-                    opacity: 0,
-                    y: 70,
-                    x: 45,
-                    rotate: 10,
-                    scale: 0.8,
-                  }
+                : { opacity: 0, scale: 0.5, rotate: -25 }
             }
-            animate={{
-              opacity: 1,
-              y: 0,
-              x: 0,
-              rotate: 7,
-              scale: 1,
-            }}
-            transition={{
-              duration: 0.95,
-              delay: 0.48,
-              ease,
-            }}
-            whileHover={
-              reducedMotion
-                ? undefined
-                : {
-                    y: -10,
-                    rotate: 3,
-                  }
-            }
-            className="absolute bottom-[4%] right-[2%] z-30 h-[15rem] w-[12rem] lg:h-[20rem] lg:w-[15rem]"
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, delay: 0.55, ease }}
+            className="absolute left-[3%] top-[13%] z-20 h-28 w-28 sm:h-36 sm:w-36"
           >
-            <Image
-              src="/images/products/Jugos/3.png"
-              alt=""
-              fill
-              className="object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.18)]"
-            />
+            <motion.div
+              animate={
+                reducedMotion
+                  ? undefined
+                  : { y: [0, -12, 0], rotate: [-7, -3, -7] }
+              }
+              transition={{
+                repeat: Infinity,
+                duration: 5.5,
+                ease: "easeInOut",
+              }}
+              className="relative h-full w-full"
+            >
+              <Image
+                src="/images/ingredients/orange-slice.png"
+                alt=""
+                fill
+                sizes="144px"
+                className="object-contain"
+              />
+            </motion.div>
           </motion.div>
 
-          {/* rodaja */}
+          {/* naranja entera abajo a la derecha */}
           <motion.div
             initial={
               reducedMotion
                 ? false
-                : {
-                    opacity: 0,
-                    scale: 0.6,
-                    rotate: -25,
-                  }
+                : { opacity: 0, scale: 0.5, rotate: 25 }
             }
-            animate={{
-              opacity: 1,
-              scale: 1,
-              rotate: -10,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.65,
-              ease,
-            }}
-            className="absolute right-[8%] top-[4%] z-10 h-28 w-28 lg:h-36 lg:w-36"
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, delay: 0.68, ease }}
+            className="absolute bottom-[8%] right-[1%] z-20 h-32 w-32 sm:h-40 sm:w-40"
           >
-            <Image
-              src="/images/ingredients/orange-slice.png"
-              alt=""
-              fill
-              className="object-contain"
-            />
+            <motion.div
+              animate={
+                reducedMotion
+                  ? undefined
+                  : { y: [0, 10, 0], rotate: [8, 13, 8] }
+              }
+              transition={{
+                repeat: Infinity,
+                duration: 6.5,
+                ease: "easeInOut",
+              }}
+              className="relative h-full w-full"
+            >
+              <Image
+                src="/images/ingredients/orange-whole.png"
+                alt=""
+                fill
+                sizes="160px"
+                className="object-contain"
+              />
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={
+              reducedMotion
+                ? false
+                : { opacity: 0, y: -16, scale: 0.85 }
+            }
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.85, ease }}
+            className="absolute right-[0%] top-[12%] z-30 hidden rotate-6 rounded-full bg-[#FFF7E8] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#073B3A] xl:block"
+          >
+            Fruta real
+          </motion.div>
+
+          <motion.div
+            initial={
+              reducedMotion
+                ? false
+                : { opacity: 0, y: 16, scale: 0.85 }
+            }
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.95, ease }}
+            className="absolute bottom-[15%] left-[-3%] z-30 hidden -rotate-5 rounded-full bg-[#FF8A00] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#073B3A] shadow-lg shadow-black/10 xl:block"
+          >
+            Bienestar para llevar
           </motion.div>
         </div>
       </Container>

@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 
 import { CartaCategoryNav } from "@/components/carta/CartaCategoryNav";
 import { CartaMenuCard } from "@/components/carta/CartaMenuCard";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 import {
   cartaCategories,
@@ -36,6 +38,8 @@ const categoryVisuals: Record<
 };
 
 export function CartaCatalog() {
+  const reducedMotion = useReducedMotion();
+
   const [activeCategory, setActiveCategory] =
     useState<CartaCategoryId>("jugos");
 
@@ -119,18 +123,63 @@ export function CartaCatalog() {
               key={category.id}
               id={`carta-${category.id}`}
               data-category={category.id}
-              className="scroll-mt-[9rem] border-b border-[#073B3A]/10"
+              className="relative overflow-hidden scroll-mt-[9rem] border-b border-[#073B3A]/10"
               style={{
                 backgroundColor: visual.background,
               }}
             >
-              <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+              <motion.div
+                aria-hidden="true"
+                animate={
+                  reducedMotion
+                    ? undefined
+                    : { y: [0, -14, 0], rotate: [8, 14, 8] }
+                }
+                transition={{
+                  repeat: Infinity,
+                  duration: 7 + categoryIndex,
+                  ease: "easeInOut",
+                }}
+                className="pointer-events-none absolute -right-6 top-8 -z-0 h-20 w-20 opacity-20 sm:h-28 sm:w-28"
+              >
+                <Image
+                  src="/images/ingredients/orange-slice.png"
+                  alt=""
+                  fill
+                  sizes="112px"
+                  className="object-contain"
+                />
+              </motion.div>
+
+              <motion.div
+                aria-hidden="true"
+                animate={
+                  reducedMotion
+                    ? undefined
+                    : { y: [0, 12, 0], rotate: [-6, -12, -6] }
+                }
+                transition={{
+                  repeat: Infinity,
+                  duration: 8 + categoryIndex,
+                  ease: "easeInOut",
+                }}
+                className="pointer-events-none absolute -left-8 bottom-10 -z-0 h-24 w-24 opacity-15 sm:h-32 sm:w-32"
+              >
+                <Image
+                  src="/images/products/Hojas/Hoja1.png"
+                  alt=""
+                  fill
+                  sizes="128px"
+                  className="object-contain"
+                />
+              </motion.div>
+
+              <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
                 <CategoryHeading
                   number={String(
                     categoryIndex + 1,
                   ).padStart(2, "0")}
                   title={category.name}
-                  count={items.length}
                   accent={visual.accent}
                 />
 
@@ -167,12 +216,10 @@ export function CartaCatalog() {
 function CategoryHeading({
   number,
   title,
-  count,
   accent,
 }: {
   number: string;
   title: string;
-  count: number;
   accent: string;
 }) {
   return (
@@ -197,23 +244,6 @@ function CategoryHeading({
     >
       <div className="flex items-end justify-between gap-8">
         <div>
-          <div className="mb-3 flex items-center gap-4">
-            <span
-              className="text-[10px] font-black uppercase tracking-[0.22em]"
-              style={{
-                color: accent,
-              }}
-            >
-              Categoría {number}
-            </span>
-
-            <span className="h-px w-8 bg-[#073B3A]/20" />
-
-            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[#073B3A]/40">
-              {String(count).padStart(2, "0")} opciones
-            </span>
-          </div>
-
           <h2 className="font-accent text-[clamp(3.5rem,7vw,6.5rem)] leading-[0.9] text-[#F36B21]">
             {title}
           </h2>
