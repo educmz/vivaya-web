@@ -1,4 +1,4 @@
-import { OrangeJourney } from "@/components/home/OrangeJourney";
+import { OrangeHeroExperience } from "@/components/experiences/OrangeHeroExperience";
 import { OrangeStory } from "@/components/experiences/OrangeStory";
 import { ProductShowcase } from "@/components/experiences/ProductShowcase";
 import { BenefitsSection } from "@/components/home/BenefitsSection";
