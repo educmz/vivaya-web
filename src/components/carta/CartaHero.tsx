@@ -38,7 +38,7 @@ export function CartaHero() {
               initial={reducedMotion ? false : { y: "110%" }}
               animate={{ y: "0%" }}
               transition={{ duration: 1, ease }}
-              className="text-[clamp(6rem,14vw,13rem)] font-black uppercase leading-[0.7] tracking-[-0.095em]"
+              className="font-accent text-[clamp(6rem,14vw,13rem)] leading-[0.85] text-[#FFF7E8]"
             >
               Carta
             </motion.h1>
@@ -54,7 +54,7 @@ export function CartaHero() {
             }}
             className="mt-7 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
           >
-            <p className="max-w-sm text-base leading-7 text-[#FFF7E8]/65 sm:text-lg">
+            <p className="font-heading max-w-sm text-base leading-7 tracking-normal text-[#FFF7E8]/65 sm:text-lg">
               Explora nuestra selección y encuentra tu próximo favorito.
             </p>
 

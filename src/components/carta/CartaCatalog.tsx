@@ -214,7 +214,7 @@ function CategoryHeading({
             </span>
           </div>
 
-          <h2 className="text-[clamp(3.5rem,7vw,6.5rem)] font-black uppercase leading-[0.76] tracking-[-0.08em]">
+          <h2 className="font-accent text-[clamp(3.5rem,7vw,6.5rem)] leading-[0.9] text-[#F36B21]">
             {title}
           </h2>
         </div>

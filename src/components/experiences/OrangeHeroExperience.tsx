@@ -12,8 +12,10 @@ export function OrangeHeroExperience() {
   const productWrapRef = useRef<HTMLDivElement | null>(null);
   const productFloatRef = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
-    if (!sectionRef.current) return;
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end end"],
+  });
 
     const ctx = gsap.context(() => {
       const prefersReducedMotion = window.matchMedia(
@@ -24,7 +26,13 @@ export function OrangeHeroExperience() {
         autoAlpha: 1,
       });
 
-      if (prefersReducedMotion) return;
+  const orangeY = useTransform(
+    scrollYProgress,
+    [0, 0.12, 0.35, 0.65, 0.9, 1],
+    reduceMotion
+      ? ["0vh", "0vh", "0vh", "0vh", "0vh", "0vh"]
+      : ["0vh", "0vh", "10vh", "31vh", "58vh", "76vh"],
+  );
 
       const intro = gsap.timeline({
         defaults: {
@@ -239,8 +247,6 @@ export function OrangeHeroExperience() {
               "
             />
           </div>
-        </div>
-      </div>
 
       {/* Mobile */}
       <div
