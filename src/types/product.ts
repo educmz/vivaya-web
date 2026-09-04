@@ -8,7 +8,6 @@ export interface Product {
   image: string;
   images: string[];
   category: string;
-  featured: boolean;
   active: boolean;
   rappiUrl: string;
 }

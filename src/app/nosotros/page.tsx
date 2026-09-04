@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { AboutClosing } from "@/components/about/AboutClosing";
 import { AboutGallery } from "@/components/about/AboutGallery";
 import { AboutHero } from "@/components/about/AboutHero";
-import { AboutMarquee } from "@/components/about/AboutMarquee";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { AboutValues } from "@/components/about/AboutValues";
 import { OrangeJourney } from "@/components/experiences/OrangeJourney";
@@ -28,17 +27,10 @@ export default function AboutPage() {
       "
     >
       <AboutHero />
-
       <OrangeJourney />
-
-      <AboutMarquee />
-
       <AboutTimeline />
-
       <AboutGallery />
-
       <AboutValues />
-
       <AboutClosing />
     </div>
   );
