@@ -12,12 +12,8 @@ import {
   type CartaCategoryId,
 } from "@/data/carta";
 
-const categories = cartaCategories.filter(
-  (category) => category.id !== "todos",
-);
-
 const categoryVisuals: Record<
-  string,
+  CartaCategoryId,
   {
     background: string;
     accent: string;
@@ -45,7 +41,7 @@ export function CartaCatalog() {
 
   const sections = useMemo(
     () =>
-      categories.map((category) => ({
+      cartaCategories.map((category) => ({
         category,
         items: cartaItems.filter(
           (item) => item.category === category.id,
@@ -55,7 +51,7 @@ export function CartaCatalog() {
   );
 
   useEffect(() => {
-    const elements = categories
+    const elements = cartaCategories
       .map((category) =>
         document.getElementById(`carta-${category.id}`),
       )
@@ -63,36 +59,34 @@ export function CartaCatalog() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const current = entries
+        const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort(
             (a, b) =>
               b.intersectionRatio - a.intersectionRatio,
           )[0];
 
-        if (!current) return;
+        if (!visible) return;
 
-        const target = current.target as HTMLElement;
+        const target = visible.target as HTMLElement;
 
-const id = target.dataset.category as
-  | CartaCategoryId
-  | undefined;
-
-if (id) {
-  setActiveCategory(id);
-}
+        const id = target.dataset.category as
+          | CartaCategoryId
+          | undefined;
 
         if (id) {
           setActiveCategory(id);
         }
       },
       {
-        rootMargin: "-22% 0px -60% 0px",
-        threshold: [0.08, 0.2, 0.4],
+        rootMargin: "-25% 0px -58% 0px",
+        threshold: [0.05, 0.15, 0.3],
       },
     );
 
-    elements.forEach((element) => observer.observe(element));
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
 
     return () => observer.disconnect();
   }, []);
@@ -111,55 +105,58 @@ if (id) {
   return (
     <section className="relative bg-[#FFF7E8] text-[#073B3A]">
       <CartaCategoryNav
-        categories={categories}
+        categories={cartaCategories}
         activeCategory={activeCategory}
         onChange={goToCategory}
       />
 
       {sections.map(
         ({ category, items }, categoryIndex) => {
-          const visual =
-            categoryVisuals[category.id] ??
-            categoryVisuals.jugos;
+          const visual = categoryVisuals[category.id];
 
           return (
-            <div key={category.id}>
-              {categoryIndex > 0 && (
-                <CategoryMarquee
-                  label={category.name}
-                  background={visual.accent}
+            <section
+              key={category.id}
+              id={`carta-${category.id}`}
+              data-category={category.id}
+              className="scroll-mt-[9rem] border-b border-[#073B3A]/10"
+              style={{
+                backgroundColor: visual.background,
+              }}
+            >
+              <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+                <CategoryHeading
+                  number={String(
+                    categoryIndex + 1,
+                  ).padStart(2, "0")}
+                  title={category.name}
+                  count={items.length}
+                  accent={visual.accent}
                 />
-              )}
 
-              <section
-                id={`carta-${category.id}`}
-                data-category={category.id}
-                className="scroll-mt-28"
-                style={{
-                  backgroundColor: visual.background,
-                }}
-              >
-                <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
-                  <CategoryHeading
-                    number={String(
-                      categoryIndex + 1,
-                    ).padStart(2, "0")}
-                    title={category.name}
-                    accent={visual.accent}
-                  />
-
-                  <div className="mt-14 grid gap-x-10 gap-y-20 md:grid-cols-2 lg:mt-20">
-                    {items.map((item, index) => (
-                      <CartaMenuCard
-                        key={item.id}
-                        item={item}
-                        index={index}
-                      />
-                    ))}
-                  </div>
+                <div
+                  className="
+                    mt-10
+                    grid
+                    grid-cols-1
+                    gap-x-5
+                    gap-y-10
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    xl:grid-cols-4
+                    lg:mt-12
+                  "
+                >
+                  {items.map((item, index) => (
+                    <CartaMenuCard
+                      key={item.id}
+                      item={item}
+                      index={index}
+                    />
+                  ))}
                 </div>
-              </section>
-            </div>
+              </div>
+            </section>
           );
         },
       )}
@@ -170,17 +167,19 @@ if (id) {
 function CategoryHeading({
   number,
   title,
+  count,
   accent,
 }: {
   number: string;
   title: string;
+  count: number;
   accent: string;
 }) {
   return (
     <motion.div
       initial={{
         opacity: 0,
-        y: 35,
+        y: 25,
       }}
       whileInView={{
         opacity: 1,
@@ -188,81 +187,47 @@ function CategoryHeading({
       }}
       viewport={{
         once: true,
-        amount: 0.45,
+        amount: 0.4,
       }}
       transition={{
-        duration: 0.75,
+        duration: 0.7,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="flex items-end justify-between gap-8 border-b-2 border-[#073B3A] pb-6"
+      className="border-b border-[#073B3A] pb-5"
     >
-      <div>
-        <p
-          className="mb-4 text-xs font-black uppercase tracking-[0.24em]"
+      <div className="flex items-end justify-between gap-8">
+        <div>
+          <div className="mb-3 flex items-center gap-4">
+            <span
+              className="text-[10px] font-black uppercase tracking-[0.22em]"
+              style={{
+                color: accent,
+              }}
+            >
+              Categoría {number}
+            </span>
+
+            <span className="h-px w-8 bg-[#073B3A]/20" />
+
+            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[#073B3A]/40">
+              {String(count).padStart(2, "0")} opciones
+            </span>
+          </div>
+
+          <h2 className="text-[clamp(3.5rem,7vw,6.5rem)] font-black uppercase leading-[0.76] tracking-[-0.08em]">
+            {title}
+          </h2>
+        </div>
+
+        <span
+          className="hidden pb-1 text-4xl font-black sm:block lg:text-5xl"
           style={{
             color: accent,
           }}
         >
-          Categoría {number}
-        </p>
-
-        <h2 className="text-[clamp(5rem,11vw,10rem)] font-black uppercase leading-[0.72] tracking-[-0.09em]">
-          {title}
-        </h2>
+          {number}
+        </span>
       </div>
-
-      <span
-        className="hidden pb-2 text-5xl font-black sm:block lg:text-7xl"
-        style={{
-          color: accent,
-        }}
-      >
-        {number}
-      </span>
     </motion.div>
-  );
-}
-
-function CategoryMarquee({
-  label,
-  background,
-}: {
-  label: string;
-  background: string;
-}) {
-  const repeated = Array.from({ length: 8 });
-
-  return (
-    <div
-      className="overflow-hidden border-y-2 border-[#073B3A] py-4 text-[#073B3A]"
-      style={{
-        backgroundColor: background,
-      }}
-    >
-      <motion.div
-        animate={{
-          x: ["0%", "-50%"],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="flex w-max whitespace-nowrap"
-      >
-        {[...repeated, ...repeated].map((_, index) => (
-          <div
-            key={index}
-            className="flex items-center gap-8 pr-8"
-          >
-            <span className="text-2xl font-black uppercase tracking-[-0.04em] sm:text-3xl">
-              {label}
-            </span>
-
-            <span className="text-sm">●</span>
-          </div>
-        ))}
-      </motion.div>
-    </div>
   );
 }

@@ -19,37 +19,43 @@ export function CartaCategoryNav({
   onChange,
 }: CartaCategoryNavProps) {
   return (
-    <div className="sticky top-[5rem] z-40 border-b border-[#073B3A]/15 bg-[#FFF7E8]/95 backdrop-blur-xl">
+    <div className="relative z-20 border-b border-[#073B3A]/12 bg-[#FFF7E8]">
       <div className="mx-auto max-w-7xl overflow-x-auto px-5 sm:px-8 lg:px-10">
         <nav
           aria-label="Categorías de la carta"
-          className="flex min-w-max items-center gap-10 py-5"
+          className="flex min-w-max items-center gap-8 py-4"
         >
           {categories.map((category, index) => {
-            const active = activeCategory === category.id;
+            const active =
+              category.id === activeCategory;
 
             return (
               <button
                 key={category.id}
                 type="button"
-                onClick={() => onChange(category.id)}
+                onClick={() =>
+                  onChange(category.id)
+                }
                 className="group relative flex items-baseline gap-2 pb-2"
               >
                 <span
-                  className={`text-[10px] font-black tracking-[0.18em] transition-colors ${
+                  className={`text-[9px] font-black tracking-[0.18em] transition-colors ${
                     active
                       ? "text-[#FF8A00]"
-                      : "text-[#073B3A]/30"
+                      : "text-[#073B3A]/25"
                   }`}
                 >
-                  {String(index + 1).padStart(2, "0")}
+                  {String(index + 1).padStart(
+                    2,
+                    "0",
+                  )}
                 </span>
 
                 <span
-                  className={`text-xs font-black uppercase tracking-[0.18em] transition-colors ${
+                  className={`text-[11px] font-black uppercase tracking-[0.17em] transition-colors ${
                     active
                       ? "text-[#073B3A]"
-                      : "text-[#073B3A]/45 group-hover:text-[#073B3A]"
+                      : "text-[#073B3A]/40 group-hover:text-[#073B3A]"
                   }`}
                 >
                   {category.name}
@@ -58,7 +64,7 @@ export function CartaCategoryNav({
                 {active && (
                   <motion.span
                     layoutId="carta-category-line"
-                    className="absolute bottom-0 left-0 h-[3px] w-full bg-[#FF8A00]"
+                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#FF8A00]"
                     transition={{
                       type: "spring",
                       stiffness: 380,
