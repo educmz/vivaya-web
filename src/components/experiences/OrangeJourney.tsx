@@ -7,182 +7,288 @@ import { Container } from "@/components/ui/Container";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { getGsap } from "@/lib/gsap";
 
-const steps = [
+const scenes = [
   {
-    eyebrow: "01",
-    title: "Fruta real",
-    description:
-      "Todo comienza con aquello que reconocemos: fruta, color y sabor.",
+    number: "01",
+    left: "Fruta",
+    right: "real.",
+    copy: "Todo comienza en aquello que reconocemos.",
   },
   {
-    eyebrow: "02",
-    title: "Frescura",
-    description:
-      "Una experiencia ligera, vibrante y pensada para sentirse natural.",
+    number: "02",
+    left: "Fres",
+    right: "cura.",
+    copy: "Color, sabor y una sensación que se siente viva.",
   },
   {
-    eyebrow: "03",
-    title: "Nutrición",
-    description:
-      "Ingredientes y propuestas que buscan acompañar una rutina activa.",
+    number: "03",
+    left: "Nutri",
+    right: "ción.",
+    copy: "Una propuesta pensada para acompañar una rutina activa.",
   },
   {
-    eyebrow: "04",
-    title: "Bienestar para llevar",
-    description:
-      "Lo natural se transforma en una opción práctica para cualquier momento.",
+    number: "04",
+    left: "Bienestar",
+    right: "para llevar.",
+    copy: "Lo natural también puede seguir el ritmo de tu día.",
   },
 ];
 
 export function OrangeJourney() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
 
   useLayoutEffect(() => {
-    if (reducedMotion || !sectionRef.current) return;
+    if (reducedMotion || !rootRef.current) return;
 
-    const { gsap } = getGsap();
+    const { gsap, ScrollTrigger } = getGsap();
 
-    const root = sectionRef.current;
-    const stepElements =
-      root.querySelectorAll<HTMLElement>("[data-journey-step]");
-
-    const orange = root.querySelector<HTMLElement>("[data-orange]");
-    const slice = root.querySelector<HTMLElement>("[data-slice]");
-    const product = root.querySelector<HTMLElement>("[data-product]");
+    const root = rootRef.current;
 
     const mm = gsap.matchMedia();
 
     const ctx = gsap.context(() => {
       mm.add("(min-width: 768px)", () => {
-        gsap.set(stepElements, {
+        const scenesEls =
+          root.querySelectorAll<HTMLElement>("[data-scene]");
+
+        gsap.set(scenesEls, {
           autoAlpha: 0,
-          y: 45,
         });
 
-        gsap.set(slice, {
-          autoAlpha: 0,
-          scale: 0.65,
-          rotate: -25,
+        gsap.set(scenesEls[0], {
+          autoAlpha: 1,
         });
 
-        gsap.set(product, {
+        gsap.set("[data-orange-whole]", {
+          autoAlpha: 1,
+          scale: 1,
+        });
+
+        gsap.set("[data-orange-slice]", {
           autoAlpha: 0,
+          scale: 2.6,
+        });
+
+        gsap.set("[data-journey-product]", {
+          autoAlpha: 0,
+          yPercent: 35,
           scale: 0.72,
-          y: 100,
         });
 
         const timeline = gsap.timeline({
+          defaults: {
+            ease: "none",
+          },
           scrollTrigger: {
             trigger: root,
             start: "top top",
-            end: "+=3000",
-            scrub: 1,
+            end: "+=5200",
+            scrub: 1.1,
             pin: true,
             anticipatePin: 1,
           },
         });
 
-        stepElements.forEach((element, index) => {
-          const position = index * 1.15;
-
-          timeline.to(
-            element,
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.28,
-            },
-            position,
-          );
-
-          if (index < stepElements.length - 1) {
-            timeline.to(
-              element,
-              {
-                autoAlpha: 0,
-                y: -35,
-                duration: 0.2,
-              },
-              position + 0.78,
-            );
-          }
+        timeline.to("[data-orange-whole]", {
+          rotate: 100,
+          scale: 2.7,
+          duration: 1,
         });
 
         timeline.to(
-          orange,
-          {
-            rotate: 14,
-            scale: 1.08,
-            duration: 0.75,
-          },
-          0,
-        );
-
-        timeline.to(
-          orange,
+          scenesEls[0],
           {
             autoAlpha: 0,
-            scale: 0.68,
-            duration: 0.4,
+            yPercent: -10,
+            duration: 0.25,
           },
-          1.15,
+          0.78,
         );
 
         timeline.to(
-          slice,
+          "[data-orange-whole]",
+          {
+            autoAlpha: 0,
+            duration: 0.12,
+          },
+          0.92,
+        );
+
+        timeline.to(
+          "[data-orange-slice]",
           {
             autoAlpha: 1,
+            duration: 0.12,
+          },
+          0.92,
+        );
+
+        timeline.to(
+          "[data-orange-slice]",
+          {
             scale: 1,
-            rotate: 0,
-            duration: 0.55,
+            rotate: 75,
+            duration: 1,
+          },
+          0.95,
+        );
+
+        timeline.to(
+          root,
+          {
+            backgroundColor: "#E9F5EE",
+            duration: 0.7,
+          },
+          0.95,
+        );
+
+        timeline.to(
+          scenesEls[1],
+          {
+            autoAlpha: 1,
+            duration: 0.25,
           },
           1.15,
         );
 
         timeline.to(
-          slice,
+          scenesEls[1],
           {
-            rotate: 18,
-            y: -30,
-            duration: 0.65,
+            autoAlpha: 0,
+            yPercent: -10,
+            duration: 0.25,
+          },
+          1.85,
+        );
+
+        timeline.to(
+          "[data-orange-slice]",
+          {
+            rotate: 160,
+            scale: 0.74,
+            yPercent: -18,
+            duration: 0.85,
           },
           1.7,
         );
 
         timeline.to(
-          slice,
+          root,
           {
-            autoAlpha: 0,
-            scale: 0.72,
-            y: -90,
-            duration: 0.4,
-          },
-          2.3,
-        );
-
-        timeline.to(
-          product,
-          {
-            autoAlpha: 1,
-            scale: 1,
-            y: 0,
+            backgroundColor: "#0F6B6D",
             duration: 0.75,
           },
-          2.3,
+          1.75,
         );
 
         timeline.to(
-          product,
+          scenesEls[2],
           {
-            rotate: -3,
-            scale: 1.05,
-            duration: 0.7,
+            autoAlpha: 1,
+            duration: 0.25,
           },
-          3.3,
+          2.05,
         );
+
+        timeline.to(
+          "[data-scene-text]",
+          {
+            color: "#FFF7E8",
+            duration: 0.45,
+          },
+          1.8,
+        );
+
+        timeline.to(
+          "[data-scene-copy]",
+          {
+            color: "rgba(255,247,232,0.66)",
+            duration: 0.45,
+          },
+          1.8,
+        );
+
+        timeline.to(
+          scenesEls[2],
+          {
+            autoAlpha: 0,
+            yPercent: -10,
+            duration: 0.25,
+          },
+          2.75,
+        );
+
+        timeline.to(
+          "[data-orange-slice]",
+          {
+            autoAlpha: 0,
+            scale: 0.4,
+            yPercent: -90,
+            duration: 0.45,
+          },
+          2.55,
+        );
+
+        timeline.to(
+          root,
+          {
+            backgroundColor: "#073B3A",
+            duration: 0.85,
+          },
+          2.65,
+        );
+
+        timeline.to(
+          "[data-journey-product]",
+          {
+            autoAlpha: 1,
+            yPercent: 0,
+            scale: 1,
+            duration: 0.9,
+            ease: "power3.out",
+          },
+          2.7,
+        );
+
+        timeline.to(
+          scenesEls[3],
+          {
+            autoAlpha: 1,
+            duration: 0.35,
+          },
+          2.95,
+        );
+
+        timeline.to(
+          "[data-journey-product]",
+          {
+            rotate: -4,
+            scale: 1.05,
+            duration: 0.9,
+          },
+          3.45,
+        );
+
+        timeline.fromTo(
+          "[data-final-glow]",
+          {
+            scale: 0.6,
+            autoAlpha: 0,
+          },
+          {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 0.8,
+          },
+          3.15,
+        );
+
+        return () => {
+          ScrollTrigger.refresh();
+        };
       });
-    }, sectionRef);
+    }, root);
 
     return () => {
       mm.revert();
@@ -192,27 +298,24 @@ export function OrangeJourney() {
 
   return (
     <>
-      {/* Desktop / Tablet */}
       <section
-        ref={sectionRef}
-        className="relative hidden h-screen overflow-hidden bg-[#E9F5EE] md:block"
+        ref={rootRef}
+        className="relative hidden h-screen overflow-hidden bg-[#FFF7E8] md:block"
       >
+        <div
+          data-final-glow
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FF8A00]/18 blur-[80px]"
+          aria-hidden="true"
+        />
+
         <Container className="relative h-full">
-          <div className="absolute left-1/2 top-1/2 h-[min(54vw,34rem)] w-[min(54vw,34rem)] -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute left-1/2 top-1/2 aspect-square w-[min(40vw,34rem)] -translate-x-1/2 -translate-y-1/2">
             <div
               className="absolute inset-0 rounded-full border border-[#073B3A]/10"
               aria-hidden="true"
             />
 
-            <div
-              className="absolute inset-[8%] rounded-full bg-[#FFF7E8]"
-              aria-hidden="true"
-            />
-
-            <div
-              data-orange
-              className="absolute inset-[13%]"
-            >
+            <div data-orange-whole className="absolute inset-[5%]">
               <Image
                 src="/images/ingredients/orange-whole.png"
                 alt=""
@@ -222,10 +325,7 @@ export function OrangeJourney() {
               />
             </div>
 
-            <div
-              data-slice
-              className="absolute inset-[12%]"
-            >
+            <div data-orange-slice className="absolute inset-[5%]">
               <Image
                 src="/images/ingredients/orange-slice.png"
                 alt=""
@@ -235,89 +335,109 @@ export function OrangeJourney() {
               />
             </div>
 
-            <div
-              data-product
-              className="absolute inset-[3%]"
-            >
+            <div data-journey-product className="absolute -inset-[5%]">
               <Image
                 src="/images/about/vivaya-cup.png"
                 alt=""
                 fill
                 sizes="34rem"
-                className="object-contain drop-shadow-[0_30px_30px_rgba(7,59,58,0.16)]"
+                className="object-contain drop-shadow-[0_35px_40px_rgba(0,0,0,0.20)]"
               />
             </div>
           </div>
 
-          {steps.map((step, index) => (
+          {scenes.map((scene, index) => (
             <article
-              key={step.title}
-              data-journey-step
-              className={`absolute top-1/2 max-w-sm -translate-y-1/2 ${
-                index % 2 === 0
-                  ? "left-10 lg:left-16"
-                  : "right-10 text-right lg:right-16"
-              }`}
+              key={scene.number}
+              data-scene
+              className="pointer-events-none absolute inset-0"
             >
-              <span className="text-xs font-black tracking-[0.25em] text-[#FF8A00]">
-                {step.eyebrow}
-              </span>
-
-              <h2 className="mt-3 text-5xl font-black uppercase leading-[0.9] tracking-[-0.055em] text-[#073B3A] lg:text-7xl">
-                {step.title}
-              </h2>
-
-              <p
-                className={`mt-5 max-w-xs leading-7 text-[#073B3A]/65 ${
-                  index % 2 !== 0 ? "ml-auto" : ""
+              <span
+                className={`absolute top-10 text-[10px] font-black tracking-[0.3em] ${
+                  index < 2 ? "text-[#073B3A]/35" : "text-white/35"
                 }`}
               >
-                {step.description}
+                {scene.number} / 04
+              </span>
+
+              <div className="absolute left-0 right-0 top-1/2 flex -translate-y-1/2 items-center justify-between">
+                <h2
+                  data-scene-text
+                  className="max-w-[42%] text-[clamp(4rem,8vw,9rem)] font-black uppercase leading-[0.76] tracking-[-0.08em] text-[#073B3A]"
+                >
+                  {scene.left}
+                </h2>
+
+                <h2
+                  data-scene-text
+                  className="max-w-[42%] text-right text-[clamp(4rem,8vw,9rem)] font-black uppercase leading-[0.76] tracking-[-0.08em] text-[#073B3A]"
+                >
+                  {scene.right}
+                </h2>
+              </div>
+
+              <p
+                data-scene-copy
+                className={`absolute bottom-14 max-w-xs text-sm leading-6 ${
+                  index < 2 ? "text-[#073B3A]/60" : "text-white/60"
+                } ${
+                  index % 2 === 0 ? "left-0" : "right-0 text-right"
+                }`}
+              >
+                {scene.copy}
               </p>
             </article>
           ))}
 
-          <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-black uppercase tracking-[0.3em] text-[#073B3A]/40">
-            Sigue bajando
+          <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[9px] font-black uppercase tracking-[0.32em] text-current opacity-30">
+            Sigue explorando
           </p>
         </Container>
       </section>
 
-      {/* Mobile / Reduced complexity */}
-      <section className="bg-[#E9F5EE] py-24 md:hidden">
-        <Container>
-          <div className="relative mx-auto mb-16 aspect-square max-w-xs rounded-full bg-[#FFF7E8]">
-            <Image
-              src="/images/about/vivaya-cup.png"
-              alt="Producto Vivaya"
-              fill
-              sizes="320px"
-              className="object-contain p-8"
-            />
-          </div>
-
-          <div className="space-y-14">
-            {steps.map((step) => (
-              <article
-                key={step.title}
-                className="border-t border-[#073B3A]/15 pt-6"
-              >
-                <span className="text-xs font-black tracking-[0.2em] text-[#FF8A00]">
-                  {step.eyebrow}
-                </span>
-
-                <h2 className="mt-2 text-4xl font-black uppercase tracking-[-0.05em] text-[#073B3A]">
-                  {step.title}
-                </h2>
-
-                <p className="mt-4 max-w-md leading-7 text-[#073B3A]/65">
-                  {step.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <MobileJourney />
     </>
+  );
+}
+
+function MobileJourney() {
+  return (
+    <section className="overflow-hidden bg-[#E9F5EE] py-24 md:hidden">
+      <Container>
+        <div className="relative mx-auto mb-20 aspect-square max-w-xs">
+          <div className="absolute inset-[4%] rounded-full bg-[#FFF7E8]" />
+
+          <Image
+            src="/images/about/vivaya-cup.png"
+            alt="Producto Vivaya"
+            fill
+            sizes="320px"
+            className="relative z-10 object-contain p-8"
+          />
+        </div>
+
+        <div className="space-y-16">
+          {scenes.map((scene) => (
+            <article
+              key={scene.number}
+              className="border-t border-[#073B3A]/15 pt-6"
+            >
+              <span className="text-[10px] font-black tracking-[0.25em] text-[#FF8A00]">
+                {scene.number}
+              </span>
+
+              <div className="mt-3 flex flex-wrap gap-x-2 text-5xl font-black uppercase leading-[0.9] tracking-[-0.06em] text-[#073B3A]">
+                <span>{scene.left}</span>
+                <span>{scene.right}</span>
+              </div>
+
+              <p className="mt-5 max-w-sm leading-7 text-[#073B3A]/65">
+                {scene.copy}
+              </p>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
   );
 }
