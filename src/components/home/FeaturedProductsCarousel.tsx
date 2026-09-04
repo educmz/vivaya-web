@@ -7,7 +7,7 @@ import type { Product } from "@/types/product";
 import { FeaturedProductCard } from "@/components/home/FeaturedProductCard";
 
 export function FeaturedProductsCarousel({ products }: { products: Product[] }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", dragFree: true, containScroll: "trimSnaps" });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", dragFree: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const onSelect = useCallback(() => {
@@ -24,9 +24,9 @@ export function FeaturedProductsCarousel({ products }: { products: Product[] }) 
   return (
     <div>
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-6">
+        <div className="flex gap-10 sm:gap-14">
           {products.map((product, index) => (
-            <div className="min-w-0 flex-[0_0_78%] sm:flex-[0_0_46%] lg:flex-[0_0_31%]" key={product.id}>
+            <div className="min-w-0 flex-[0_0_62%] sm:flex-[0_0_38%] lg:flex-[0_0_25%]" key={product.id}>
               <FeaturedProductCard product={product} index={index} isActive={index === selectedIndex} />
             </div>
           ))}
