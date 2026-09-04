@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export function Preloader() {
   const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.body.style.overflow = "hidden";
     document.documentElement.dataset.vivayaPreloader = "active";
 
