@@ -21,17 +21,17 @@ const categoryVisuals: Record<
 > = {
   jugos: {
     background: "#FFF7E8",
-    accent: "#FF8A00",
+    accent: "#F36B21",
   },
 
   cremoladas: {
-    background: "#E9F5EE",
-    accent: "#0F6B6D",
+    background: "#E7EFE2",
+    accent: "#F36B21",
   },
 
   healthy: {
     background: "#FFF7E8",
-    accent: "#FFB347",
+    accent: "#F36B21",
   },
 };
 
@@ -186,7 +186,7 @@ function CategoryHeading({
         y: 0,
       }}
       viewport={{
-        once: true,
+        once: false,
         amount: 0.4,
       }}
       transition={{

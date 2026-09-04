@@ -41,7 +41,7 @@ export function CartaMenuCard({
         scale: 1,
       }}
       viewport={{
-        once: true,
+        once: false,
         amount: 0.15,
       }}
       transition={{
@@ -145,7 +145,7 @@ export function CartaMenuCard({
 
               <motion.div
                 aria-hidden="true"
-                className="absolute bottom-[8%] left-[7%] h-12 w-12 rounded-full bg-[#FF8A00]"
+                className="absolute bottom-[8%] left-[7%] h-12 w-12 rounded-full bg-[#F36B21]"
                 whileHover={
                   reducedMotion
                     ? undefined
@@ -158,7 +158,7 @@ export function CartaMenuCard({
 
               <motion.div
                 aria-hidden="true"
-                className="absolute right-[9%] top-[10%] h-6 w-10 rotate-[24deg] rounded-[100%_0_100%_0] bg-[#0F6B6D]"
+                className="absolute right-[9%] top-[10%] h-6 w-10 rotate-[24deg] rounded-[100%_0_100%_0] bg-[#073B3A]"
                 whileHover={
                   reducedMotion
                     ? undefined
@@ -186,7 +186,7 @@ export function CartaMenuCard({
         <div className="px-1.5 pb-2 pt-4">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-[8px] font-black uppercase tracking-[0.2em] text-[#FF8A00]">
+              <p className="text-[8px] font-black uppercase tracking-[0.2em] text-[#F36B21]">
                 {item.categoryLabel}
               </p>
 

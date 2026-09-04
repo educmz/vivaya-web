@@ -22,7 +22,7 @@ export function CartaHero() {
             transition={{ duration: 0.65, ease }}
             className="flex items-center gap-4"
           >
-            <span className="text-xs font-black uppercase tracking-[0.25em] text-[#FFB347]">
+            <span className="text-xs font-black uppercase tracking-[0.25em] text-[#F36B21]">
               Carta Vivaya
             </span>
 
@@ -52,17 +52,17 @@ export function CartaHero() {
               delay: 0.35,
               ease,
             }}
-            className="mt-7 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
+            className="mt-7 flex flex-col gap-5"
           >
-            <p className="font-heading max-w-sm text-base leading-7 tracking-normal text-[#FFF7E8]/65 sm:text-lg">
+            <p className="max-w-sm text-base font-normal leading-7 text-[#FFF7E8]/65 sm:text-lg">
               Explora nuestra selección y encuentra tu próximo favorito.
             </p>
 
             <div className="flex gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#FFF7E8]/55">
               <span>Jugos</span>
-              <span className="text-[#FF8A00]">●</span>
+              <span className="text-[#F36B21]">●</span>
               <span>Cremoladas</span>
-              <span className="text-[#FF8A00]">●</span>
+              <span className="text-[#F36B21]">●</span>
               <span>Healthy</span>
             </div>
           </motion.div>
@@ -79,7 +79,7 @@ export function CartaHero() {
               delay: 0.25,
               ease,
             }}
-            className="absolute left-1/2 top-1/2 h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FF8A00] sm:h-[29rem] sm:w-[29rem]"
+            className="absolute left-1/2 top-1/2 h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F36B21] sm:h-[29rem] sm:w-[29rem]"
           />
 
           {/* vaso central */}
@@ -219,7 +219,7 @@ function CartaTicker() {
   ];
 
   return (
-    <div className="overflow-hidden border-y border-[#FFF7E8]/15 bg-[#FF8A00] py-4 text-[#073B3A]">
+    <div className="overflow-hidden border-y border-[#FFF7E8]/15 bg-[#F36B21] py-4 text-[#FFF7E8]">
       <motion.div
         animate={{
           x: ["0%", "-50%"],
@@ -237,7 +237,7 @@ function CartaTicker() {
             className="flex items-center gap-7 pr-7 text-sm font-black uppercase tracking-[0.2em]"
           >
             <span>{label}</span>
-            <span className="text-[#073B3A]/40">●</span>
+            <span className="text-[#FFF7E8]/50">●</span>
           </div>
         ))}
       </motion.div>
