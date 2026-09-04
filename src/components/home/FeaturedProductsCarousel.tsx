@@ -17,8 +17,11 @@ export function FeaturedProductsCarousel({ products }: { products: Product[] }) 
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
     emblaApi.on("select", onSelect).on("reInit", onSelect);
+
+    return () => {
+      emblaApi.off("select", onSelect).off("reInit", onSelect);
+    };
   }, [emblaApi, onSelect]);
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import type { MotionValue } from "motion/react";
 import { useRef } from "react";
 
@@ -26,9 +26,8 @@ function RibbonGraphic({ className, curveId, preserveAspectRatio, textOffset }: 
 
 export function VivayaCurveMarquee() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
-  const textOffset = useTransform(scrollYProgress, [0, 1], shouldReduceMotion ? ["0%", "0%"] : ["8%", "-42%"]);
+  const textOffset = useTransform(scrollYProgress, [0, 1], ["8%", "-42%"]);
 
   return (
     <div ref={sectionRef} className="relative z-20 -mb-20 overflow-hidden bg-[#F7CFB2]" aria-label="Fruta real, frescura y energía natural">

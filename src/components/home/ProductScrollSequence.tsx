@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
 import { WaveDivider } from "@/components/sections/WaveDivider";
@@ -14,11 +14,10 @@ const messages = [
 
 export function ProductScrollSequence() {
   const rootRef = useRef<HTMLElement>(null);
-  const reducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: rootRef, offset: ["start start", "end end"] });
 
-  const rotate = useTransform(scrollYProgress, [0, 1], reducedMotion ? [0, 0] : [-12, 520]);
-  const productY = useTransform(scrollYProgress, [0, 0.5, 1], reducedMotion ? [0, 0, 0] : [80, -20, 70]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [-12, 520]);
+  const productY = useTransform(scrollYProgress, [0, 0.5, 1], [80, -20, 70]);
   const productScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.05, 0.88]);
   const firstOpacity = useTransform(scrollYProgress, [0, 0.25, 0.36], [1, 1, 0]);
   const secondOpacity = useTransform(scrollYProgress, [0.25, 0.42, 0.62, 0.72], [0, 1, 1, 0]);
