@@ -5,16 +5,17 @@ import { motion } from "motion/react";
 import { FeaturedProductsCarousel } from "@/components/home/FeaturedProductsCarousel";
 import { WaveDivider } from "@/components/sections/WaveDivider";
 import { SectionTitle } from "@/components/sections/SectionTitle";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { products } from "@/data/products";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function FeaturedProducts() {
-  const activeProducts = products.filter((product) => product.active);
+  const activeProducts = products.filter((product) => product.active).slice(0, 4);
   const reduced = useReducedMotion();
 
   return (
-    <section className="relative isolate overflow-hidden bg-[var(--hero)] py-28 sm:py-36">
+    <section className="relative isolate overflow-hidden bg-[#F4C783] pb-44 pt-28 sm:pb-52 sm:pt-36">
       <div className="pointer-events-none absolute -left-32 top-10 -z-20 h-[28rem] w-[28rem] rounded-full bg-[var(--primary)]/20 blur-[100px]" aria-hidden="true" />
       <div className="pointer-events-none absolute -right-24 bottom-0 -z-20 h-[32rem] w-[32rem] rounded-full bg-[var(--accent)]/35 blur-[110px]" aria-hidden="true" />
 
@@ -61,7 +62,11 @@ export function FeaturedProducts() {
         <FeaturedProductsCarousel products={activeProducts} />
       </div>
 
-      <WaveDivider fill="var(--background)" className="absolute inset-x-0 bottom-0 -z-0" />
+      <div className="relative z-10 mt-10 flex justify-center">
+        <Button href="/carta" className="min-h-14 bg-[#073B3A] px-8 text-white hover:bg-[#0F6B6D]">Conoce toda la carta</Button>
+      </div>
+
+      <WaveDivider fill="#FFF4C4" variant="swell" className="absolute -bottom-px inset-x-0" />
     </section>
   );
 }

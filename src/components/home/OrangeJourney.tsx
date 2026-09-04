@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 
+import { WaveDivider } from "@/components/sections/WaveDivider";
 import { Container } from "@/components/ui/Container";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { getGsap } from "@/lib/gsap";
@@ -10,9 +11,9 @@ import { getGsap } from "@/lib/gsap";
 const scenes = [
   {
     number: "01",
-    left: "Todo",
-    right: "empieza aquí.",
-    copy: "Una idea sencilla comienza en lo más natural.",
+    left: "De la fruta",
+    right: "al vaso.",
+    copy: "Una historia de sabor que comienza en lo más natural.",
   },
   {
     number: "02",
@@ -297,7 +298,10 @@ export function OrangeJourney() {
   }, [reducedMotion]);
 
   return (
-    <>
+    <div className="relative isolate">
+      <WaveDivider fill="#FFF7E8" flip variant="valley" className="pointer-events-none absolute inset-x-0 top-0 z-40 hidden -translate-y-[98%] md:block" />
+      <WaveDivider fill="#E9F5EE" flip variant="valley" className="pointer-events-none absolute inset-x-0 top-0 z-40 -translate-y-[98%] md:hidden" />
+
       <section
         ref={rootRef}
         className="relative hidden h-screen overflow-hidden bg-[#FFF7E8] md:block"
@@ -393,16 +397,17 @@ export function OrangeJourney() {
             Sigue explorando
           </p>
         </Container>
+        <WaveDivider fill="#F6D98B" variant="soft" className="absolute -bottom-px inset-x-0 z-40" />
       </section>
 
       <MobileJourney />
-    </>
+    </div>
   );
 }
 
 function MobileJourney() {
   return (
-    <section className="overflow-hidden bg-[#E9F5EE] py-24 md:hidden">
+    <section className="relative overflow-hidden bg-[#E9F5EE] pb-40 pt-24 md:hidden">
       <Container>
         <div className="relative mx-auto mb-20 aspect-square max-w-xs">
           <div className="absolute inset-[4%] rounded-full bg-[#FFF7E8]" />
@@ -438,6 +443,7 @@ function MobileJourney() {
           ))}
         </div>
       </Container>
+      <WaveDivider fill="#F6D98B" variant="soft" className="absolute -bottom-px inset-x-0" />
     </section>
   );
 }
