@@ -115,8 +115,7 @@ export function Header() {
               xl:h-20
             "
             style={{
-              filter:
-                "drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white) drop-shadow(0 5px 10px rgba(0,0,0,0.10))",
+              filter: "drop-shadow(0 5px 10px rgba(0,0,0,0.10))",
             }}
           />
         </Link>
