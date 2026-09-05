@@ -320,15 +320,15 @@ export function AboutClosing() {
             Vivaya
           </p>
 
-          <h2 className="mt-5 text-[clamp(3.4rem,7vw,7.5rem)] font-black uppercase leading-[0.8] tracking-[-0.08em] text-[#FFF7E8]">
-            <span className="block overflow-hidden pb-[0.05em]">
-              <span data-closing-line className="block">
+          <h2 className="mt-5 font-accent text-[clamp(3.4rem,7vw,7.5rem)] leading-[0.95] text-[#FFF7E8]">
+            <span className="block overflow-hidden pb-[0.1em]">
+              <span data-closing-line className="block leading-[0.95]">
                 Encuentra
               </span>
             </span>
 
-            <span className="block overflow-hidden pb-[0.05em]">
-              <span data-closing-line className="block">
+            <span className="block overflow-hidden pb-[0.1em]">
+              <span data-closing-line className="block leading-[0.95]">
                 tu Vivaya.
               </span>
             </span>

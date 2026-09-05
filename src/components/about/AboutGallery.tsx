@@ -47,7 +47,7 @@ export function AboutGallery() {
               Somos Vivaya
             </p>
 
-            <h2 className="mt-4 text-[clamp(3.2rem,7vw,6.5rem)] font-black uppercase leading-[0.82] tracking-[-0.08em] text-[#073B3A]">
+            <h2 className="mt-4 font-accent text-[clamp(3.2rem,7vw,6.5rem)] leading-[0.95] text-[#073B3A]">
               Más que
               <br />
               una bebida.

@@ -102,12 +102,16 @@ export function AboutHero() {
       onPointerLeave={resetPointer}
       className="relative isolate min-h-[calc(100svh-6rem)] overflow-hidden bg-[#FFF7E8]"
     >
-      <div
+      <motion.div
+        animate={reducedMotion ? undefined : { scale: [1, 1.15, 1] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-[#FFB347]/20 blur-[90px]"
         aria-hidden="true"
       />
 
-      <div
+      <motion.div
+        animate={reducedMotion ? undefined : { scale: [1, 1.12, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute -right-36 bottom-0 h-[32rem] w-[32rem] rounded-full bg-[#0F6B6D]/10 blur-[100px]"
         aria-hidden="true"
       />
@@ -118,19 +122,37 @@ export function AboutHero() {
             data-hero-copy
             className="mb-6 text-xs font-black uppercase tracking-[0.26em] text-[#FF8A00]"
           >
-            Nosotros · Vivaya
+            <motion.span
+              className="inline-block"
+              animate={reducedMotion ? undefined : { y: [0, -4, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              Nosotros · Vivaya
+            </motion.span>
           </p>
 
-          <h1 className="max-w-[15ch] text-[clamp(4rem,9vw,9.5rem)] font-black uppercase leading-[0.77] tracking-[-0.08em] text-[#073B3A]">
-            <span className="block overflow-hidden pb-[0.08em]">
-              <span data-hero-line className="block">
-                Activamos
+          <h1 className="max-w-[15ch] font-accent text-[clamp(4rem,9vw,9.5rem)] leading-[0.95] text-[#073B3A]">
+            <span className="block overflow-hidden pb-[0.1em]">
+              <span data-hero-line className="block leading-[0.95]">
+                <motion.span
+                  className="inline-block"
+                  animate={reducedMotion ? undefined : { x: [0, -5, 0, 5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  Activamos
+                </motion.span>
               </span>
             </span>
 
-            <span className="block overflow-hidden pb-[0.08em]">
-              <span data-hero-line className="block text-[#FF8A00]">
-                lo natural.
+            <span className="block overflow-hidden pb-[0.1em]">
+              <span data-hero-line className="block leading-[0.95] text-[#FF8A00]">
+                <motion.span
+                  className="inline-block"
+                  animate={reducedMotion ? undefined : { x: [0, 5, 0, -5, 0] }}
+                  transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  lo natural.
+                </motion.span>
               </span>
             </span>
           </h1>
@@ -140,15 +162,25 @@ export function AboutHero() {
             className="mt-8 grid max-w-xl gap-8 sm:grid-cols-[1fr_auto] sm:items-end"
           >
             <p className="max-w-md text-base leading-7 text-[#073B3A]/68 sm:text-lg">
-              Frescura, energía y bienestar pensados para acompañar el movimiento
-              de todos los días.
+              <motion.span
+                className="block"
+                animate={reducedMotion ? undefined : { y: [0, 5, 0] }}
+                transition={{ duration: 5, delay: 0.3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                Frescura, energía y bienestar pensados para acompañar el movimiento
+                de todos los días.
+              </motion.span>
             </p>
 
             <div className="hidden items-center gap-3 sm:flex">
               <span className="h-px w-10 bg-[#FF8A00]" />
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#073B3A]/50">
+              <motion.span
+                className="text-[10px] font-black uppercase tracking-[0.25em] text-[#073B3A]/50"
+                animate={reducedMotion ? undefined : { y: [0, -4, 0] }}
+                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+              >
                 Explora
-              </span>
+              </motion.span>
             </div>
           </div>
         </div>
@@ -156,15 +188,27 @@ export function AboutHero() {
         <div className="relative flex min-h-[31rem] items-center justify-center lg:min-h-[44rem]">
           <div
             data-hero-orbit
-            className="absolute left-1/2 top-1/2 aspect-square w-[82%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FF8A00]"
+            className="absolute left-1/2 top-1/2 aspect-square w-[82%] -translate-x-1/2 -translate-y-1/2"
             aria-hidden="true"
-          />
+          >
+            <motion.div
+              animate={reducedMotion ? undefined : { scale: [1, 1.05, 1] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="h-full w-full rounded-full bg-[#FF8A00]"
+            />
+          </div>
 
           <div
             data-hero-orbit
-            className="absolute left-1/2 top-1/2 aspect-square w-[97%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#073B3A]/10"
+            className="absolute left-1/2 top-1/2 aspect-square w-[97%] -translate-x-1/2 -translate-y-1/2"
             aria-hidden="true"
-          />
+          >
+            <motion.div
+              animate={reducedMotion ? undefined : { scale: [1, 1.035, 1], rotate: [0, 4, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="h-full w-full rounded-full border border-[#073B3A]/10"
+            />
+          </div>
 
           <motion.div
             data-hero-product
@@ -236,12 +280,30 @@ export function AboutHero() {
             />
           </motion.div>
 
-          <div className="absolute right-[0%] top-[12%] z-30 hidden rotate-6 rounded-full bg-[#073B3A] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-white xl:block">
-            Fruta real
+          <div
+            data-hero-orbit
+            className="absolute right-[0%] top-[12%] z-30 hidden rotate-6 rounded-full bg-[#073B3A] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-white xl:block"
+          >
+            <motion.span
+              className="inline-block"
+              animate={reducedMotion ? undefined : { y: [0, -6, 0] }}
+              transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              Fruta real
+            </motion.span>
           </div>
 
-          <div className="absolute bottom-[15%] left-[-3%] z-30 hidden -rotate-5 rounded-full bg-white px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#073B3A] shadow-lg shadow-[#073B3A]/5 xl:block">
-            Bienestar para llevar
+          <div
+            data-hero-orbit
+            className="absolute bottom-[15%] left-[-3%] z-30 hidden -rotate-5 rounded-full bg-white px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#073B3A] shadow-lg shadow-[#073B3A]/5 xl:block"
+          >
+            <motion.span
+              className="inline-block"
+              animate={reducedMotion ? undefined : { y: [0, 6, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              Bienestar para llevar
+            </motion.span>
           </div>
         </div>
       </Container>

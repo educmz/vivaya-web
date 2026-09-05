@@ -288,15 +288,15 @@ timeline.to(
                 Nuestra esencia
               </p>
 
-              <h2 className="mt-5 text-[clamp(4rem,7vw,8rem)] font-black uppercase leading-[0.77] tracking-[-0.085em] text-[#073B3A]">
-                <span className="block overflow-hidden pb-[0.06em]">
-                  <span data-values-line className="block">
+              <h2 className="mt-5 font-accent text-[clamp(4rem,7vw,8rem)] leading-[0.95] text-[#073B3A]">
+                <span className="block overflow-hidden pb-[0.1em]">
+                  <span data-values-line className="block leading-[0.95]">
                     Lo natural
                   </span>
                 </span>
 
-                <span className="block overflow-hidden pb-[0.06em]">
-                  <span data-values-line className="block">
+                <span className="block overflow-hidden pb-[0.1em]">
+                  <span data-values-line className="block leading-[0.95]">
                     se siente.
                   </span>
                 </span>
@@ -450,7 +450,7 @@ timeline.to(
             Nuestra esencia
           </p>
 
-          <h2 className="mt-4 text-5xl font-black uppercase leading-[0.82] tracking-[-0.065em] text-[#073B3A]">
+          <h2 className="mt-4 font-accent text-5xl leading-[0.95] text-[#073B3A]">
             Lo natural
             <br />
             se siente.

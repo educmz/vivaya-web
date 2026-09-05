@@ -204,15 +204,15 @@ export function AboutTimeline() {
               Nuestra historia
             </p>
 
-            <h2 className="mt-5 text-[clamp(4rem,8vw,8.8rem)] font-black uppercase leading-[0.76] tracking-[-0.085em] text-[#073B3A]">
-              <span className="block overflow-hidden pb-[0.05em]">
-                <span data-history-line className="block">
+            <h2 className="mt-5 font-accent text-[clamp(4rem,8vw,8.8rem)] leading-[0.95] text-[#073B3A]">
+              <span className="block overflow-hidden pb-[0.1em]">
+                <span data-history-line className="block leading-[0.95]">
                   Todo tiene
                 </span>
               </span>
 
-              <span className="block overflow-hidden pb-[0.05em]">
-                <span data-history-line className="block">
+              <span className="block overflow-hidden pb-[0.1em]">
+                <span data-history-line className="block leading-[0.95]">
                   un comienzo.
                 </span>
               </span>
@@ -266,7 +266,7 @@ export function AboutTimeline() {
               {firstStory.label}
             </span>
 
-            <h3 className="mt-4 text-[clamp(2.8rem,5vw,5.4rem)] font-black uppercase leading-[0.84] tracking-[-0.065em] text-[#073B3A]">
+            <h3 className="mt-4 font-accent text-[clamp(2.8rem,5vw,5.4rem)] leading-[0.95] text-[#073B3A]">
               {firstStory.title}
             </h3>
 
@@ -341,7 +341,7 @@ export function AboutTimeline() {
                       {item.label}
                     </span>
 
-                    <h3 className="mt-5 max-w-xl text-[clamp(3rem,5vw,5.6rem)] font-black uppercase leading-[0.84] tracking-[-0.065em] text-[#073B3A]">
+                    <h3 className="mt-5 max-w-xl font-accent text-[clamp(3rem,5vw,5.6rem)] leading-[0.95] text-[#073B3A]">
                       {item.title}
                     </h3>
 
