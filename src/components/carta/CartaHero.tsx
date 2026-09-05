@@ -50,7 +50,7 @@ export function CartaHero() {
             }}
             className="mt-7 flex flex-col gap-5"
           >
-            <p className="ml-15 max-w-sm text-base font-normal leading-7 text-[#FFF7E8]/65 sm:text-lg">
+            <p className="max-w-sm text-base font-normal leading-7 text-[#FFF7E8]/65 sm:text-lg">
               Explora nuestra selección y encuentra tu próximo favorito.
             </p>
           </motion.div>
@@ -299,7 +299,7 @@ function CartaTicker() {
           x: ["0%", "-50%"],
         }}
         transition={{
-          duration: 24,
+          duration: labels.length * 3,
           ease: "linear",
           repeat: Infinity,
         }}

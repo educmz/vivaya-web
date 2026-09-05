@@ -13,64 +13,36 @@ export function ContactHero() {
 
   return (
     <section className="relative overflow-hidden bg-[#FFF7E8] text-[#3E2A1B]">
-      <motion.div
-        animate={reducedMotion ? undefined : { scale: [1, 1.15, 1] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute left-[6%] top-1/3 -z-0 h-[34rem] w-[34rem] -translate-y-1/2 rounded-full bg-[#E8792E]/20 blur-[110px]"
-        aria-hidden="true"
-      />
-
       <Container className="relative grid min-h-[68svh] items-center gap-8 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
         {/* Texto */}
         <div className="relative z-20">
           <motion.div
-            initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease }}
-            className="flex items-center gap-4"
+            animate={reducedMotion ? undefined : { y: [0, -8, 0] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <motion.span
-              animate={reducedMotion ? undefined : { y: [0, -4, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="inline-flex items-center gap-4"
-            >
-              <span className="h-px w-10 bg-[#3E2A1B]/25" />
-              <span className="text-xs font-black uppercase tracking-[0.25em] text-[#3F7D4F]">Contacto Vivaya</span>
-            </motion.span>
-          </motion.div>
-
-          <div className="mt-6 overflow-hidden pb-4">
-            <motion.h1
-              initial={reducedMotion ? false : { y: "110%" }}
-              animate={{ y: "0%" }}
-              transition={{ duration: 1, ease }}
-              className="font-accent text-[clamp(6rem,14vw,13rem)] leading-[0.95] text-[#E8792E]"
-            >
-              <motion.span
-                className="inline-block"
-                animate={reducedMotion ? undefined : { y: [0, -8, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+            <div className="mt-6 overflow-hidden pb-4">
+              <motion.h1
+                initial={reducedMotion ? false : { y: "110%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 1, ease }}
+                className="font-accent text-[clamp(5rem,12vw,10.5rem)] leading-[0.95] text-[#E8792E]"
               >
                 Contacto
-              </motion.span>
-            </motion.h1>
-          </div>
+              </motion.h1>
+            </div>
+          </motion.div>
 
-          <motion.p
+          <motion.div
             initial={reducedMotion ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease }}
-            className="mt-7 max-w-sm text-base font-normal leading-7 text-[#3E2A1B]/70 sm:text-lg"
+            className="mt-7 flex flex-col gap-5"
           >
-            <motion.span
-              className="block"
-              animate={reducedMotion ? undefined : { y: [0, 5, 0] }}
-              transition={{ duration: 5, delay: 0.3, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <p className="max-w-sm text-base font-normal leading-7 text-[#3E2A1B]/70 sm:text-lg">
               ¿Tienes una pregunta o quieres saber más? Escríbenos, nos encanta
               conversar.
-            </motion.span>
-          </motion.p>
+            </p>
+          </motion.div>
         </div>
 
         {/* Producto */}
@@ -135,30 +107,30 @@ export function ContactHero() {
             initial={reducedMotion ? false : { opacity: 0, scale: 0.5, rotate: -25 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, delay: 0.55, ease }}
-            className="absolute left-[3%] top-[13%] z-20 h-24 w-24 sm:h-28 sm:w-28"
+            className="absolute left-[3%] top-[13%] z-20 h-28 w-28 sm:h-36 sm:w-36"
           >
             <motion.div
               animate={reducedMotion ? undefined : { y: [0, -12, 0], rotate: [-7, -3, -7] }}
               transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
               className="relative h-full w-full"
             >
-              <Image src="/images/ingredients/orange-slice.png" alt="" fill sizes="112px" className="object-contain drop-shadow-[0_16px_18px_rgba(62,42,27,0.18)]" />
+              <Image src="/images/ingredients/orange-slice.png" alt="" fill sizes="144px" className="object-contain" />
             </motion.div>
           </motion.div>
 
-          {/* Hoja */}
+          {/* Naranja entera */}
           <motion.div
             initial={reducedMotion ? false : { opacity: 0, scale: 0.5, rotate: 25 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, delay: 0.68, ease }}
-            className="absolute bottom-[8%] right-[1%] z-20 h-20 w-20 sm:h-24 sm:w-24"
+            className="absolute bottom-[8%] right-[1%] z-20 h-32 w-32 sm:h-40 sm:w-40"
           >
             <motion.div
               animate={reducedMotion ? undefined : { y: [0, 10, 0], rotate: [8, 13, 8] }}
               transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
               className="relative h-full w-full"
             >
-              <Image src="/images/products/Hojas/Hoja1.png" alt="" fill sizes="96px" className="object-contain" />
+              <Image src="/images/ingredients/orange-whole.png" alt="" fill sizes="160px" className="object-contain" />
             </motion.div>
           </motion.div>
 
@@ -167,7 +139,7 @@ export function ContactHero() {
             initial={reducedMotion ? false : { opacity: 0, y: -16, scale: 0.85 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.85, ease }}
-            className="absolute right-[0%] top-[10%] z-30 hidden rotate-6 rounded-full bg-[#3E2A1B] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#FFF7E8] xl:block"
+            className="absolute right-[0%] top-[12%] z-30 hidden rotate-6 rounded-full bg-[#3E2A1B] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#FFF7E8] xl:block"
           >
             <motion.span
               className="inline-block"
@@ -182,7 +154,7 @@ export function ContactHero() {
             initial={reducedMotion ? false : { opacity: 0, y: 16, scale: 0.85 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.95, ease }}
-            className="absolute bottom-[13%] left-[-3%] z-30 hidden -rotate-5 rounded-full bg-[#E8792E] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#3E2A1B] shadow-lg shadow-[#3E2A1B]/10 xl:block"
+            className="absolute bottom-[15%] left-[-3%] z-30 hidden -rotate-5 rounded-full bg-[#E8792E] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#3E2A1B] shadow-lg shadow-[#3E2A1B]/10 xl:block"
           >
             <motion.span
               className="inline-block"
@@ -205,7 +177,7 @@ function ContactTicker() {
 
   return (
     <div className="relative overflow-hidden border-y border-[#3E2A1B]/15 bg-[#3F7D4F] py-4 text-[#FFF7E8]">
-      <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 20, ease: "linear", repeat: Infinity }} className="flex w-max whitespace-nowrap">
+      <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: repeated.length * 3, ease: "linear", repeat: Infinity }} className="flex w-max whitespace-nowrap">
         {[...repeated, ...repeated].map((label, index) => (
           <div key={`${label}-${index}`} className="flex items-center gap-7 pr-7 text-sm font-black uppercase tracking-[0.2em]">
             <span>{label}</span>
