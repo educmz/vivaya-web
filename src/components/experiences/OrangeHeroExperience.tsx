@@ -421,17 +421,19 @@ export function OrangeHeroExperience() {
           </div>
 
           {/* Splash, sale desde detrás del vaso y se queda */}
+          {/* El centrado vive fuera de la capa que transforma GSAP. */}
           <div
-            data-hero-orbit
             className="pointer-events-none absolute left-1/2 top-[50%] z-0 h-[92%] w-[120%] -translate-x-1/2 -translate-y-1/2"
           >
-            <Image
-              src="/images/hero/splash.png"
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 60vw, 30vw"
-              className="object-contain"
-            />
+            <div data-hero-orbit className="relative h-full w-full">
+              <Image
+                src="/images/hero/splash.png"
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 60vw, 30vw"
+                className="object-contain"
+              />
+            </div>
           </div>
 
           {/* Hielo, se queda flotando como los ingredientes */}
