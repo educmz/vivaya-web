@@ -50,7 +50,7 @@ export function VivayaManifesto() {
         ))}
       </div>
 
-      <WaveDivider fill="#E7EFE2" variant="soft" className="absolute -bottom-px inset-x-0 z-30" />
+      <WaveDivider fill="#EEF4E9" variant="soft" className="absolute -bottom-px inset-x-0 z-30" />
     </section>
   );
 }

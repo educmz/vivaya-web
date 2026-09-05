@@ -504,41 +504,6 @@ export function OrangeJourney() {
   return (
     <div className="relative isolate bg-[#073B3A]">
       {/* =========================================================
-          DIVISOR SUPERIOR
-      ========================================================== */}
-
-      <WaveDivider
-        fill="#FFF7E8"
-        flip
-        variant="valley"
-        className="
-          pointer-events-none
-          absolute
-          inset-x-0
-          top-0
-          z-40
-          hidden
-          -translate-y-[98%]
-          md:block
-        "
-      />
-
-      <WaveDivider
-        fill="#E9F5EE"
-        flip
-        variant="valley"
-        className="
-          pointer-events-none
-          absolute
-          inset-x-0
-          top-0
-          z-40
-          -translate-y-[98%]
-          md:hidden
-        "
-      />
-
-      {/* =========================================================
           DESKTOP
       ========================================================== */}
 
@@ -814,7 +779,9 @@ function MobileJourney() {
               justify-center
               overflow-hidden
               px-5
-              py-20
+              pb-36
+              pt-20
+              sm:pb-44
             "
             style={{
               backgroundColor: scene.background,
@@ -917,6 +884,13 @@ function MobileJourney() {
                 `}
               />
             </div>
+            {index < mobileScenes.length - 1 && (
+              <WaveDivider
+                fill={mobileScenes[index + 1].background}
+                variant="drift"
+                className="absolute inset-x-0 -bottom-px z-30"
+              />
+            )}
           </article>
         );
       })}

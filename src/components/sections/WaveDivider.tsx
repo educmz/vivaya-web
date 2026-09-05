@@ -11,7 +11,7 @@ type WaveVariant = keyof typeof wavePaths;
 
 export function WaveDivider({ fill, flip = false, variant = "soft", className }: { fill: string; flip?: boolean; variant?: WaveVariant; className?: string }) {
   return (
-    <svg viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true" className={cn("block h-20 w-full sm:h-28 lg:h-36", flip && "rotate-180", className)}>
+    <svg viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true" focusable="false" className={cn("pointer-events-none block h-20 w-full sm:h-28 lg:h-36", flip && "rotate-180", className)}>
       <path d={wavePaths[variant]} fill={fill} />
     </svg>
   );
