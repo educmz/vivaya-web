@@ -89,36 +89,6 @@ export function CartaCatalog() {
 
   return (
     <section className="bg-[#FFF9F3] text-[#302E2A]">
-      <div className="mx-auto max-w-7xl px-5 pb-10 pt-10 sm:px-8 sm:pb-12 sm:pt-14 lg:px-10 lg:pt-16">
-        <motion.header
-          initial={{
-            opacity: 0,
-            y: 16,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <span className="text-sm font-medium tracking-wide text-[#F4A06D]">
-            VIVAYA
-          </span>
-
-          <h1 className="mt-3 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl lg:text-6xl">
-            Nuestra carta
-          </h1>
-
-          <p className="mx-auto mt-4 max-w-lg text-sm leading-6 text-[#77736D] sm:text-base">
-            Encuentra algo rico para cada momento.
-          </p>
-        </motion.header>
-      </div>
-
       <CartaCategoryNav
         categories={menuCategories}
         activeCategory={activeCategory}
