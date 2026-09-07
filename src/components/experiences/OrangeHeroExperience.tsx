@@ -24,7 +24,7 @@ export function OrangeHeroExperience() {
   const driftY = useSpring(mouseY, { stiffness: 70, damping: 18 });
 
   function handlePointerMove(event: React.PointerEvent<HTMLElement>) {
-    if (reducedMotion) return;
+    if (reducedMotion || event.pointerType !== "mouse") return;
 
     const rect = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - 0.5;
@@ -41,10 +41,13 @@ export function OrangeHeroExperience() {
 
   useLayoutEffect(() => {
     const runIntro = () => {
-      const ctx = gsap.context(() => {
+      const ctx = gsap.matchMedia();
+      ctx.add({ desktop: "(min-width: 1024px)", reduced: "(prefers-reduced-motion: reduce)" }, (context) => {
+      if (!context.conditions?.desktop) return;
       gsap.set([copyRef.current, productWrapRef.current], {
         autoAlpha: 1,
       });
+      if (context.conditions?.reduced) return;
 
       const intro = gsap.timeline({
         defaults: {
@@ -147,7 +150,7 @@ export function OrangeHeroExperience() {
     };
 
     if (document.documentElement.dataset.vivayaPreloader === "active") {
-      let context: gsap.Context | undefined;
+      let context: ReturnType<typeof gsap.matchMedia> | undefined;
       const handleComplete = () => {
         context = runIntro();
       };

@@ -5,10 +5,46 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { useEffect, useRef, useState } from "react";
 
 import { WaveDivider } from "@/components/sections/WaveDivider";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 type Viewport = "mobile" | "tablet" | "desktop";
 
 export function ProductScrollSequence() {
+  const desktop = useMediaQuery("(min-width: 1024px)");
+  const reduced = useReducedMotion();
+
+  return desktop && !reduced ? <DesktopProductSequence /> : <MobileProductSequence />;
+}
+
+function MobileProductSequence() {
+  const reduced = useReducedMotion();
+  const scenes = [
+    { title: "Más fruta. Más frescura.", copy: "Fruta real. Sabor vivo desde el origen.", background: "#EEF4E9", color: "#335C30" },
+    { title: "Frescura al instante", copy: "Preparado al momento.", background: "#E9F5EE", color: "#335C30" },
+    { title: "Sabor a tu ritmo", copy: "Vivaya, donde quieras.", background: "#0F6B6D", color: "#FFF7E8" },
+    { title: "Esto es Vivaya.", copy: "", background: "#073B3A", color: "#FFF7E8" },
+  ];
+
+  return (
+    <section aria-label="Frescura Vivaya">
+      {scenes.map((scene, index) => (
+        <article key={scene.title} className="relative isolate overflow-hidden px-5 pb-28 pt-16 text-center sm:pb-36" style={{ backgroundColor: scene.background, color: scene.color }}>
+          <motion.div initial={reduced ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.45 }} className="mx-auto max-w-lg">
+            <h2 className="font-heading text-[clamp(2.5rem,10vw,4rem)] uppercase leading-[0.95]">{scene.title}</h2>
+            {scene.copy && <p className="mt-4 text-base">{scene.copy}</p>}
+            <div className="relative mx-auto mt-8 aspect-square w-full max-w-72">
+              <div aria-hidden="true" className="absolute inset-5 rounded-full border border-current opacity-20" />
+              <Image src="/images/hero/hero-product.png" alt="Vaso de jugo Vivaya" fill sizes="(max-width: 360px) 85vw, 288px" className="object-contain p-3 drop-shadow-xl" />
+            </div>
+          </motion.div>
+          <WaveDivider fill={scenes[index + 1]?.background ?? "#F6D98B"} variant="drift" className="absolute inset-x-0 -bottom-px" />
+        </article>
+      ))}
+    </section>
+  );
+}
+
+function DesktopProductSequence() {
   const rootRef = useRef<HTMLElement>(null);
   const reducedPreference = useReducedMotion();
   const [mounted, setMounted] = useState(false);

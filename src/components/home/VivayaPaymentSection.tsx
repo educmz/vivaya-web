@@ -26,17 +26,17 @@ export function VivayaPaymentSection() {
 
       <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
         <motion.p initial={reduced ? false : { opacity: 0, rotate: -8 }} whileInView={{ opacity: 1, rotate: -5 }} viewport={{ once: true }} className="font-accent mr-auto w-fit text-3xl font-bold text-[#335C30] sm:text-4xl">Listo en pocos minutos</motion.p>
-        <h2 className="font-heading mx-auto mt-3 max-w-5xl text-[clamp(4.2rem,9vw,9rem)] uppercase leading-[0.8] text-[#335C30]">No solo lo antojes.<br /><span className="text-[#86B96A]">Pruébalo.</span></h2>
+        <h2 className="font-heading mx-auto mt-3 max-w-5xl text-[clamp(2.8rem,9vw,9rem)] uppercase leading-[0.9] text-[#335C30]">No solo lo antojes.<br /><span className="text-[#86B96A]">Pruébalo.</span></h2>
 
-        <div className="mt-16 flex w-full items-center justify-center gap-4 sm:mt-20 sm:gap-6 lg:gap-8">
+        <div className="mx-auto mt-12 grid w-full max-w-md grid-cols-3 items-center justify-items-center gap-3 sm:mt-20 sm:gap-6 lg:max-w-none lg:grid-cols-6 lg:gap-8">
           {methods.map((method, index) => (
             <motion.div
               key={method.name}
-              initial={reduced ? false : { opacity: 0, y: index % 2 === 0 ? 70 : -50, scale: 0.7 }}
-              whileInView={{ opacity: 1, y: index % 2 === 0 ? 20 : -20, scale: 1 }}
+              initial={reduced ? false : { opacity: 0, y: 18, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.8, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className={`grid aspect-square w-[22vw] max-w-48 min-w-24 shrink-0 place-items-center rounded-full bg-white p-4 text-center text-sm shadow-[0_18px_45px_rgba(51,92,48,0.08)] sm:text-lg ${index === 0 || index === methods.length - 1 ? "hidden lg:grid" : ""}`}
+              className="grid aspect-square w-full min-w-0 max-w-48 place-items-center rounded-full bg-white p-2 text-center text-[clamp(0.65rem,2.8vw,1rem)] shadow-[0_18px_45px_rgba(51,92,48,0.08)] sm:p-4"
             >
               <span className={method.className}>{method.name}</span>
             </motion.div>

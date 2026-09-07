@@ -257,7 +257,7 @@ export function AboutClosing() {
   }, [reducedMotion]);
 
   function handlePointerMove(event: React.PointerEvent<HTMLElement>) {
-    if (!rootRef.current || reducedMotion) return;
+    if (!rootRef.current || reducedMotion || event.pointerType !== "mouse") return;
 
     const rect = rootRef.current.getBoundingClientRect();
     const normalizedX = (event.clientX - rect.left) / rect.width - 0.5;
@@ -358,7 +358,7 @@ export function AboutClosing() {
             <div
               data-closing-circle
               data-parallax="far"
-              className="absolute bottom-[-4%] right-[-10%] h-[24rem] w-[24rem] rounded-full bg-[#FF8A00] shadow-[0_40px_120px_rgba(255,138,0,0.22)] sm:h-[28rem] sm:w-[28rem] lg:h-[36rem] lg:w-[36rem]"
+              className="absolute bottom-[-4%] right-0 aspect-square w-full rounded-full bg-[#FF8A00] shadow-[0_40px_120px_rgba(255,138,0,0.22)] sm:right-[-10%] sm:h-[28rem] sm:w-[28rem] lg:h-[36rem] lg:w-[36rem]"
             />
 
             {/* Glow */}
@@ -372,7 +372,7 @@ export function AboutClosing() {
             <div
               data-closing-orbit
               data-parallax="mid"
-              className="absolute bottom-[8%] right-[2%] h-[26rem] w-[26rem] rounded-full border border-[#FFF7E8]/18 sm:h-[30rem] sm:w-[30rem] lg:h-[39rem] lg:w-[39rem]"
+              className="absolute bottom-[8%] right-[2%] aspect-square w-[96%] rounded-full border border-[#FFF7E8]/18 sm:h-[30rem] sm:w-[30rem] lg:h-[39rem] lg:w-[39rem]"
             />
 
             {/* Hoja flotante */}

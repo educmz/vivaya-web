@@ -820,14 +820,16 @@ function MobileJourney() {
                 flex
                 w-full
                 items-center
-                justify-between
-                gap-4
+                flex-col
+                justify-center
+                gap-2
+                text-center
               "
             >
               <h2
                 className="
-                  max-w-[43%]
-                  text-[clamp(2.9rem,13vw,4.8rem)]
+                  max-w-full
+                  text-[clamp(2rem,8vw,3.5rem)]
                   font-black
                   uppercase
                   leading-[0.8]
@@ -839,9 +841,8 @@ function MobileJourney() {
 
               <h2
                 className="
-                  max-w-[43%]
-                  text-right
-                  text-[clamp(2.9rem,13vw,4.8rem)]
+                  max-w-full
+                  text-[clamp(2rem,8vw,3.5rem)]
                   font-black
                   uppercase
                   leading-[0.8]
@@ -858,7 +859,7 @@ function MobileJourney() {
               className="
                 relative
                 z-20
-                -mt-10
+                mt-6
                 aspect-square
                 w-[82vw]
                 max-w-[23rem]
