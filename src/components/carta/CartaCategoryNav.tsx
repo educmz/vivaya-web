@@ -2,16 +2,14 @@
 
 import { motion } from "motion/react";
 
-import type {
-  CartaCategory,
-  CartaCategoryId,
-} from "@/data/carta";
+import type { MenuCategory } from "@/data/menu/categories";
+import type { MenuCategoryId } from "@/types/catalog";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface CartaCategoryNavProps {
-  categories: CartaCategory[];
-  activeCategory: CartaCategoryId;
-  onChange: (category: CartaCategoryId) => void;
+  categories: MenuCategory[];
+  activeCategory: MenuCategoryId;
+  onChange: (category: MenuCategoryId) => void;
 }
 
 export function CartaCategoryNav({
@@ -23,17 +21,55 @@ export function CartaCategoryNav({
 
   return (
     <motion.div
-      initial={reducedMotion ? false : { opacity: 0, y: -16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="relative z-20 border-b border-[#073B3A]/12 bg-[#FFF7E8]"
+      initial={
+        reducedMotion
+          ? false
+          : {
+              opacity: 0,
+              y: -8,
+            }
+      }
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.45,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="
+        relative
+        z-20
+        border-y
+        border-[#302E2A]/8
+        bg-[#FFF9F3]/95
+        backdrop-blur-md
+      "
     >
-      <div className="mx-auto max-w-7xl overflow-x-auto px-5 sm:px-8 lg:px-10">
+      <div
+        className="
+          mx-auto
+          max-w-7xl
+          overflow-x-auto
+          px-5
+          sm:px-8
+          lg:px-10
+          [scrollbar-width:none]
+          [&::-webkit-scrollbar]:hidden
+        "
+      >
         <nav
           aria-label="Categorías de la carta"
-          className="flex min-w-max items-center gap-8 py-4"
+          className="
+            flex
+            min-w-max
+            items-center
+            gap-2
+            py-4
+            sm:gap-3
+          "
         >
-          {categories.map((category, index) => {
+          {categories.map((category) => {
             const active =
               category.id === activeCategory;
 
@@ -44,42 +80,65 @@ export function CartaCategoryNav({
                 onClick={() =>
                   onChange(category.id)
                 }
-                className="group relative flex items-baseline gap-2 pb-2"
+                aria-current={
+                  active ? "true" : undefined
+                }
+                className="
+                  group
+                  relative
+                  isolate
+                  overflow-hidden
+                  rounded-full
+                  border
+                  px-4
+                  py-2.5
+                  text-sm
+                  font-medium
+                  whitespace-nowrap
+                  transition-colors
+                  duration-200
+                  sm:px-5
+                "
+                style={{
+                  borderColor: active
+                    ? "#F4A06D"
+                    : "rgba(48, 46, 42, 0.10)",
+                }}
               >
-                <span
-                  className={`text-[9px] font-black tracking-[0.18em] transition-colors ${
-                    active
-                      ? "text-[#FF8A00]"
-                      : "text-[#073B3A]/25"
-                  }`}
-                >
-                  {String(index + 1).padStart(
-                    2,
-                    "0",
-                  )}
-                </span>
+                {active && (
+                  <motion.span
+                    layoutId="carta-active-category"
+                    aria-hidden="true"
+                    className="
+                      absolute
+                      inset-0
+                      -z-10
+                      rounded-full
+                      bg-[#FDE8D8]
+                    "
+                    transition={
+                      reducedMotion
+                        ? {
+                            duration: 0,
+                          }
+                        : {
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 35,
+                          }
+                    }
+                  />
+                )}
 
                 <span
-                  className={`text-[11px] font-black uppercase tracking-[0.17em] transition-colors ${
+                  className={
                     active
-                      ? "text-[#073B3A]"
-                      : "text-[#073B3A]/40 group-hover:text-[#073B3A]"
-                  }`}
+                      ? "text-[#C96532]"
+                      : "text-[#77736D] group-hover:text-[#302E2A]"
+                  }
                 >
                   {category.name}
                 </span>
-
-                {active && (
-                  <motion.span
-                    layoutId="carta-category-line"
-                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#FF8A00]"
-                    transition={{
-                      type: "spring",
-                      stiffness: 380,
-                      damping: 34,
-                    }}
-                  />
-                )}
               </button>
             );
           })}

@@ -3,22 +3,23 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 
-import type { CartaItem } from "@/data/carta";
+import type { MenuProduct } from "@/types/catalog";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+interface CartaMenuCardProps {
+  item: MenuProduct;
+  index: number;
+  onOrder?: (product: MenuProduct) => void;
+}
+
 export function CartaMenuCard({
   item,
   index,
-}: {
-  item: CartaItem;
-  index: number;
-}) {
+  onOrder,
+}: CartaMenuCardProps) {
   const reducedMotion = useReducedMotion();
-
-  const left = index % 2 === 0;
-  const restingRotation = left ? -0.6 : 0.6;
 
   return (
     <motion.article
@@ -27,186 +28,202 @@ export function CartaMenuCard({
           ? false
           : {
               opacity: 0,
-              y: 38,
-              x: left ? -18 : 18,
-              rotate: left ? -2.5 : 2.5,
-              scale: 0.97,
+              y: 18,
             }
       }
       whileInView={{
         opacity: 1,
         y: 0,
-        x: 0,
-        rotate: restingRotation,
-        scale: 1,
       }}
       viewport={{
         once: true,
         amount: 0.15,
       }}
       transition={{
-        duration: 0.7,
-        delay: (index % 4) * 0.05,
+        duration: 0.45,
+        delay: (index % 4) * 0.04,
         ease,
       }}
-      className="group relative"
+      className="group"
     >
-      {/* Hoja de color detrás */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 translate-x-[5px] translate-y-[6px] rounded-[1.35rem] border border-[#073B3A]"
-        style={{
-          backgroundColor: item.accent,
-        }}
-      />
-
       <motion.div
         whileHover={
           reducedMotion
             ? undefined
             : {
-                y: -6,
-                rotate: 0,
-                scale: 1.012,
+                y: -4,
               }
         }
         transition={{
-          duration: 0.4,
+          duration: 0.25,
           ease,
         }}
-        className="relative overflow-hidden rounded-[1.35rem] border border-[#073B3A] bg-[#FFF7E8] p-2.5"
+        className="
+          flex
+          h-full
+          flex-col
+          overflow-hidden
+          rounded-[1.5rem]
+          border
+          border-[#302E2A]/8
+          bg-white
+          shadow-[0_8px_30px_rgba(60,45,30,0.04)]
+          transition-shadow
+          duration-300
+          group-hover:shadow-[0_14px_36px_rgba(60,45,30,0.08)]
+        "
       >
-        {/* VISUAL */}
+        {/* IMAGEN */}
         <div
-          className="relative aspect-[4/3] overflow-hidden rounded-[1rem]"
-          style={{
-            backgroundColor: item.surface,
-            color: item.foreground,
-          }}
+          className="
+            relative
+            aspect-[4/3]
+            overflow-hidden
+            bg-[#F8EBDD]
+          "
         >
-          <span
-            className="absolute left-3 top-3 z-30 flex h-8 min-w-8 items-center justify-center rounded-full border border-current px-2 text-[9px] font-black"
-            style={{
-              color: item.foreground,
+          <motion.div
+            className="absolute inset-0"
+            whileHover={
+              reducedMotion
+                ? undefined
+                : {
+                    scale: 1.025,
+                  }
+            }
+            transition={{
+              duration: 0.45,
+              ease,
             }}
           >
-            {item.number}
-          </span>
+            <Image
+              src={item.image}
+              alt={item.name}
+              fill
+              sizes="
+                (max-width: 640px) 90vw,
+                (max-width: 1024px) 45vw,
+                (max-width: 1280px) 33vw,
+                25vw
+              "
+              className="object-cover"
+            />
+          </motion.div>
 
-          {item.imageMode === "photo" ? (
-            <motion.div
-              className="absolute inset-[5%] overflow-hidden rounded-[0.8rem]"
-              whileHover={
-                reducedMotion
-                  ? undefined
-                  : {
-                      scale: 1.025,
-                    }
-              }
-              transition={{
-                duration: 0.45,
-                ease,
-              }}
+          {item.featured && (
+            <span
+              className="
+                absolute
+                left-4
+                top-4
+                rounded-full
+                bg-white/90
+                px-3
+                py-1.5
+                text-[11px]
+                font-medium
+                text-[#C96532]
+                shadow-sm
+                backdrop-blur-sm
+              "
             >
-              <motion.div
-                animate={
-                  reducedMotion
-                    ? undefined
-                    : { y: [0, -4, 0] }
-                }
-                transition={{
-                  duration: 3.4,
-                  delay: (index % 4) * 0.2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="relative h-full w-full"
-              >
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 24vw"
-                  className="object-cover"
-                />
-              </motion.div>
-            </motion.div>
-          ) : (
-            <>
-              <motion.div
-                className="absolute inset-x-[14%] bottom-[2%] top-[8%] z-20"
-                whileHover={
-                  reducedMotion
-                    ? undefined
-                    : {
-                        y: -10,
-                        scale: 1.05,
-                        rotate: left ? -1.5 : 1.5,
-                      }
-                }
-                transition={{
-                  duration: 0.4,
-                  ease,
-                }}
-              >
-                <motion.div
-                  animate={
-                    reducedMotion
-                      ? undefined
-                      : {
-                          y: [0, -6, 0],
-                          rotate: left ? [-1, 1, -1] : [1, -1, 1],
-                        }
-                  }
-                  transition={{
-                    duration: 3.8,
-                    delay: (index % 4) * 0.2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="relative h-full w-full"
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 20vw"
-                    className="object-contain drop-shadow-[0_18px_22px_rgba(7,59,58,0.18)]"
-                  />
-                </motion.div>
-              </motion.div>
-            </>
+              Favorito
+            </span>
           )}
+
+          {item.customizations &&
+            item.customizations.length > 0 && (
+              <span
+                className="
+                  absolute
+                  right-4
+                  top-4
+                  rounded-full
+                  bg-[#EAF3E7]/95
+                  px-3
+                  py-1.5
+                  text-[11px]
+                  font-medium
+                  text-[#52734C]
+                  shadow-sm
+                  backdrop-blur-sm
+                "
+              >
+                Personalizable
+              </span>
+            )}
         </div>
 
         {/* INFORMACIÓN */}
-        <div className="px-1.5 pb-2 pt-4">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <p className="text-[8px] font-black uppercase tracking-[0.2em] text-[#FF8A00]">
-                {item.categoryLabel}
-              </p>
-
-              <h3 className="mt-1.5 text-[clamp(1.35rem,2vw,2rem)] font-black uppercase leading-[0.9] tracking-[-0.055em] text-[#073B3A]">
-                {item.name}
-              </h3>
-            </div>
-
-            <motion.span
-              aria-hidden="true"
-              whileHover={{
-                x: 3,
-                y: -3,
-              }}
-              className="mt-1 shrink-0 text-xl text-[#073B3A]"
+        <div className="flex flex-1 flex-col p-5 sm:p-6">
+          <div className="flex items-start justify-between gap-5">
+            <h3
+              className="
+                text-xl
+                font-semibold
+                leading-tight
+                tracking-[-0.02em]
+                text-[#302E2A]
+                sm:text-[1.35rem]
+              "
             >
-              ↗
-            </motion.span>
+              {item.name}
+            </h3>
+
+            <span
+              className="
+                shrink-0
+                text-lg
+                font-semibold
+                tracking-[-0.02em]
+                text-[#C96532]
+              "
+            >
+              S/ {item.price.toFixed(2)}
+            </span>
           </div>
 
-          <p className="mt-3 line-clamp-2 min-h-[2.6rem] border-t border-[#073B3A]/12 pt-3 text-xs leading-5 text-[#073B3A]/58">
+          <p
+            className="
+              mt-3
+              line-clamp-3
+              text-sm
+              leading-6
+              text-[#77736D]
+            "
+          >
             {item.description}
           </p>
+
+          <div className="mt-auto pt-5">
+            <button
+              type="button"
+              onClick={() => onOrder?.(item)}
+              className="
+                inline-flex
+                min-h-11
+                w-full
+                items-center
+                justify-center
+                rounded-full
+                bg-[#F4A06D]
+                px-5
+                py-2.5
+                text-sm
+                font-semibold
+                text-[#4B2D1E]
+                transition
+                duration-200
+                hover:bg-[#EE925C]
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#F4A06D]
+                focus-visible:ring-offset-2
+              "
+            >
+              Pedir
+            </button>
+          </div>
         </div>
       </motion.div>
     </motion.article>

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "motion/react";
 
 import { Button } from "@/components/ui/Button";
@@ -13,116 +12,119 @@ export function CartaOrderBar() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#073B3A] text-[#FFF7E8]">
-      <Container className="relative flex min-h-[22rem] flex-col justify-center py-14 pr-5 sm:min-h-[25rem] lg:pr-[24rem]">
+    <section className="bg-[#FFF9F3] px-5 pb-20 sm:px-8 sm:pb-24 lg:px-10">
+      <Container>
         <motion.div
           initial={
             reducedMotion
               ? false
               : {
                   opacity: 0,
-                  x: -35,
-                }
-          }
-          whileInView={{
-            opacity: 1,
-            x: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.45,
-          }}
-          transition={{
-            duration: 0.75,
-            ease,
-          }}
-          className="relative z-20"
-        >
-          <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFB347]">
-            ¿Ya elegiste?
-          </p>
-
-          <h2 className="mt-4 text-[clamp(3rem,6vw,6rem)] font-black uppercase leading-[0.82] tracking-[-0.07em]">
-            Pide tu
-            <br />
-            Vivaya.
-          </h2>
-
-          <div className="mt-8">
-            <Button
-              href="/productos"
-              className="min-h-14 bg-[#FF8A00] px-8 text-[#073B3A] hover:bg-[#FFF7E8]"
-            >
-              Ver productos
-            </Button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={
-            reducedMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 70,
-                  rotate: 6,
+                  y: 18,
                 }
           }
           whileInView={{
             opacity: 1,
             y: 0,
-            rotate: -4,
           }}
           viewport={{
             once: true,
-            amount: 0.25,
+            amount: 0.35,
           }}
           transition={{
-            duration: 0.9,
+            duration: 0.5,
             ease,
           }}
-          className="absolute bottom-[-6rem] right-[4%] hidden h-[27rem] w-[17rem] lg:block"
+          className="
+            relative
+            overflow-hidden
+            rounded-[2rem]
+            bg-[#FDE8D8]
+            px-6
+            py-12
+            text-center
+            sm:px-10
+            sm:py-14
+            lg:px-16
+            lg:py-16
+          "
         >
-          <Image
-            src="/images/about/vivaya-cup.png"
-            alt=""
-            fill
-            className="object-contain"
+          {/* Decoración pastel muy sutil */}
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              -left-20
+              -top-24
+              h-52
+              w-52
+              rounded-full
+              bg-[#F4DFA2]/55
+            "
           />
-        </motion.div>
 
-        <motion.div
-          initial={
-            reducedMotion
-              ? false
-              : {
-                  opacity: 0,
-                  rotate: -30,
-                  scale: 0.6,
-                }
-          }
-          whileInView={{
-            opacity: 1,
-            rotate: 10,
-            scale: 1,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: 0.8,
-            delay: 0.15,
-            ease,
-          }}
-          className="absolute right-[18%] top-[8%] hidden h-28 w-28 lg:block"
-        >
-          <Image
-            src="/images/ingredients/orange-slice.png"
-            alt=""
-            fill
-            className="object-contain"
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              -bottom-24
+              -right-20
+              h-56
+              w-56
+              rounded-full
+              bg-[#A8CFA3]/45
+            "
           />
+
+          <div className="relative z-10 mx-auto max-w-xl">
+            <p className="text-sm font-medium text-[#C96532]">
+              ¿Ya elegiste?
+            </p>
+
+            <h2
+              className="
+                mt-3
+                text-3xl
+                font-semibold
+                leading-tight
+                tracking-[-0.035em]
+                text-[#302E2A]
+                sm:text-4xl
+              "
+            >
+              Encuentra tu próximo favorito.
+            </h2>
+
+            <p
+              className="
+                mx-auto
+                mt-4
+                max-w-md
+                text-sm
+                leading-6
+                text-[#77736D]
+                sm:text-base
+              "
+            >
+              Revisa nuestra carta y pide el que más se te antoje.
+            </p>
+
+            <div className="mt-7 flex justify-center">
+              <Button
+                href="#carta-smoothies"
+                className="
+                  min-h-12
+                  rounded-full
+                  bg-[#F4A06D]
+                  px-7
+                  text-[#4B2D1E]
+                  hover:bg-[#EE925C]
+                "
+              >
+                Volver a la carta
+              </Button>
+            </div>
+          </div>
         </motion.div>
       </Container>
     </section>

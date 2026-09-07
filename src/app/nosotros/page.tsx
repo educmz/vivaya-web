@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { AboutClosing } from "@/components/about/AboutClosing";
 import { AboutGallery } from "@/components/about/AboutGallery";
-import { AboutHero } from "@/components/about/AboutHero";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { AboutValues } from "@/components/about/AboutValues";
 
@@ -17,6 +16,7 @@ export default function AboutPage() {
     <div
       className="
         bg-[#FFF7E8]
+        pt-24 sm:pt-[100px] lg:pt-[108px]
         text-[#073B3A]
         [--background:#FFF7E8]
         [--foreground:#073B3A]
@@ -25,7 +25,6 @@ export default function AboutPage() {
         [--accent:#FFB347]
       "
     >
-      <AboutHero />
       <AboutTimeline />
       <AboutGallery />
       <AboutValues />

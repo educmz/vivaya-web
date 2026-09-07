@@ -1,101 +1,82 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import { motion } from "motion/react";
 
 import { CartaCategoryNav } from "@/components/carta/CartaCategoryNav";
 import { CartaMenuCard } from "@/components/carta/CartaMenuCard";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-import {
-  cartaCategories,
-  cartaItems,
-  type CartaCategoryId,
-} from "@/data/carta";
+import { menuCategories } from "@/data/menu/categories";
+import { menuProducts } from "@/data/menu/products";
 
-const categoryVisuals: Record<
-  CartaCategoryId,
-  {
-    background: string;
-    accent: string;
-  }
-> = {
-  jugos: {
-    background: "#FFF7E8",
-    accent: "#FF8A00",
-  },
-
-  cremoladas: {
-    background: "#E9F5EE",
-    accent: "#0F6B6D",
-  },
-
-  healthy: {
-    background: "#FFF7E8",
-    accent: "#FFB347",
-  },
-};
+import type { MenuCategoryId } from "@/types/catalog";
 
 export function CartaCatalog() {
-  const reducedMotion = useReducedMotion();
-
   const [activeCategory, setActiveCategory] =
-    useState<CartaCategoryId>("jugos");
+    useState<MenuCategoryId>(menuCategories[0].id);
 
   const sections = useMemo(
     () =>
-      cartaCategories.map((category) => ({
-        category,
-        items: cartaItems.filter(
-          (item) => item.category === category.id,
-        ),
-      })),
+      menuCategories
+        .sort((a, b) => a.order - b.order)
+        .map((category) => ({
+          category,
+          items: menuProducts.filter(
+            (product) =>
+              product.category === category.id &&
+              product.available,
+          ),
+        }))
+        .filter((section) => section.items.length > 0),
     [],
   );
 
   useEffect(() => {
-    const elements = cartaCategories
-      .map((category) =>
-        document.getElementById(`carta-${category.id}`),
+    const elements = sections
+      .map(({ category }) =>
+        document.getElementById(
+          `carta-${category.id}`,
+        ),
       )
       .filter(Boolean) as HTMLElement[];
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
+        const visibleSection = entries
           .filter((entry) => entry.isIntersecting)
           .sort(
             (a, b) =>
-              b.intersectionRatio - a.intersectionRatio,
+              b.intersectionRatio -
+              a.intersectionRatio,
           )[0];
 
-        if (!visible) return;
+        if (!visibleSection) return;
 
-        const target = visible.target as HTMLElement;
+        const category =
+          visibleSection.target.getAttribute(
+            "data-category",
+          ) as MenuCategoryId | null;
 
-        const id = target.dataset.category as
-          | CartaCategoryId
-          | undefined;
-
-        if (id) {
-          setActiveCategory(id);
+        if (category) {
+          setActiveCategory(category);
         }
       },
       {
-        rootMargin: "-25% 0px -58% 0px",
+        rootMargin: "-22% 0px -62% 0px",
         threshold: [0.05, 0.15, 0.3],
       },
     );
 
-    elements.forEach((element) => {
-      observer.observe(element);
-    });
+    elements.forEach((element) =>
+      observer.observe(element),
+    );
 
     return () => observer.disconnect();
-  }, []);
+  }, [sections]);
 
-  function goToCategory(category: CartaCategoryId) {
+  function goToCategory(
+    category: MenuCategoryId,
+  ) {
     setActiveCategory(category);
 
     document
@@ -107,126 +88,105 @@ export function CartaCatalog() {
   }
 
   return (
-    <section className="relative bg-[#FFF7E8] text-[#073B3A]">
+    <section className="bg-[#FFF9F3] text-[#302E2A]">
+      <div className="mx-auto max-w-7xl px-5 pb-10 pt-10 sm:px-8 sm:pb-12 sm:pt-14 lg:px-10 lg:pt-16">
+        <motion.header
+          initial={{
+            opacity: 0,
+            y: 16,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="mx-auto max-w-2xl text-center"
+        >
+          <span className="text-sm font-medium tracking-wide text-[#F4A06D]">
+            VIVAYA
+          </span>
+
+          <h1 className="mt-3 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl lg:text-6xl">
+            Nuestra carta
+          </h1>
+
+          <p className="mx-auto mt-4 max-w-lg text-sm leading-6 text-[#77736D] sm:text-base">
+            Encuentra algo rico para cada momento.
+          </p>
+        </motion.header>
+      </div>
+
       <CartaCategoryNav
-        categories={cartaCategories}
+        categories={menuCategories}
         activeCategory={activeCategory}
         onChange={goToCategory}
       />
 
-      {sections.map(
-        ({ category, items }, categoryIndex) => {
-          const visual = categoryVisuals[category.id];
-
-          return (
+      <div className="mx-auto max-w-7xl px-5 pb-24 sm:px-8 lg:px-10">
+        {sections.map(
+          ({ category, items }, index) => (
             <section
               key={category.id}
               id={`carta-${category.id}`}
               data-category={category.id}
-              className="relative overflow-hidden scroll-mt-[9rem] border-b border-[#073B3A]/10"
-              style={{
-                backgroundColor: visual.background,
-              }}
+              className={`
+                scroll-mt-[10rem]
+                py-14
+                sm:py-16
+                lg:py-20
+                ${
+                  index !== sections.length - 1
+                    ? "border-b border-[#302E2A]/8"
+                    : ""
+                }
+              `}
             >
-              <motion.div
-                aria-hidden="true"
-                animate={
-                  reducedMotion
-                    ? undefined
-                    : { y: [0, -14, 0], rotate: [8, 14, 8] }
-                }
-                transition={{
-                  repeat: Infinity,
-                  duration: 7 + categoryIndex,
-                  ease: "easeInOut",
-                }}
-                className="pointer-events-none absolute -right-6 top-8 -z-0 h-20 w-20 opacity-20 sm:h-28 sm:w-28"
+              <CategoryHeading
+                title={category.name}
+              />
+
+              <div
+                className="
+                  mt-8
+                  grid
+                  grid-cols-1
+                  gap-x-5
+                  gap-y-10
+                  sm:grid-cols-2
+                  lg:mt-10
+                  lg:grid-cols-3
+                  xl:grid-cols-4
+                "
               >
-                <Image
-                  src="/images/ingredients/orange-slice.png"
-                  alt=""
-                  fill
-                  sizes="112px"
-                  className="object-contain"
-                />
-              </motion.div>
-
-              <motion.div
-                aria-hidden="true"
-                animate={
-                  reducedMotion
-                    ? undefined
-                    : { y: [0, 12, 0], rotate: [-6, -12, -6] }
-                }
-                transition={{
-                  repeat: Infinity,
-                  duration: 8 + categoryIndex,
-                  ease: "easeInOut",
-                }}
-                className="pointer-events-none absolute -left-8 bottom-10 -z-0 h-24 w-24 opacity-15 sm:h-32 sm:w-32"
-              >
-                <Image
-                  src="/images/products/Hojas/Hoja1.png"
-                  alt=""
-                  fill
-                  sizes="128px"
-                  className="object-contain"
-                />
-              </motion.div>
-
-              <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-                <CategoryHeading
-                  number={String(
-                    categoryIndex + 1,
-                  ).padStart(2, "0")}
-                  title={category.name}
-                  accent={visual.accent}
-                />
-
-                <div
-                  className="
-                    mt-10
-                    grid
-                    grid-cols-1
-                    gap-x-5
-                    gap-y-10
-                    sm:grid-cols-2
-                    lg:grid-cols-3
-                    xl:grid-cols-4
-                    lg:mt-12
-                  "
-                >
-                  {items.map((item, index) => (
-                    <CartaMenuCard
-                      key={item.id}
-                      item={item}
-                      index={index}
-                    />
-                  ))}
-                </div>
+                {items.map((item, itemIndex) => (
+                  <CartaMenuCard
+                    key={item.id}
+                    item={item}
+                    index={itemIndex}
+                  />
+                ))}
               </div>
             </section>
-          );
-        },
-      )}
+          ),
+        )}
+      </div>
     </section>
   );
 }
 
 function CategoryHeading({
-  number,
   title,
-  accent,
 }: {
-  number: string;
   title: string;
-  accent: string;
 }) {
   return (
     <motion.div
       initial={{
         opacity: 0,
-        y: 25,
+        y: 14,
       }}
       whileInView={{
         opacity: 1,
@@ -237,27 +197,16 @@ function CategoryHeading({
         amount: 0.4,
       }}
       transition={{
-        duration: 0.7,
+        duration: 0.45,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="border-b border-[#073B3A] pb-5"
+      className="flex items-center gap-4"
     >
-      <div className="flex items-end justify-between gap-8">
-        <div>
-          <h2 className="font-accent text-[clamp(3.5rem,7vw,6.5rem)] leading-[0.9] text-[#F36B21]">
-            {title}
-          </h2>
-        </div>
+      <h2 className="shrink-0 text-2xl font-semibold tracking-[-0.02em] text-[#302E2A] sm:text-3xl">
+        {title}
+      </h2>
 
-        <span
-          className="hidden pb-1 text-4xl font-black sm:block lg:text-5xl"
-          style={{
-            color: accent,
-          }}
-        >
-          {number}
-        </span>
-      </div>
+      <div className="h-px flex-1 bg-[#302E2A]/10" />
     </motion.div>
   );
 }

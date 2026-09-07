@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { CartaHero } from "@/components/carta/CartaHero";
 import { CartaCatalog } from "@/components/carta/CartaCatalog";
 
 export const metadata: Metadata = {
@@ -9,9 +8,8 @@ export const metadata: Metadata = {
 
 export default function CartaPage() {
   return (
-    <>
-      <CartaHero />
+    <main className="bg-[#FFF7E8] pt-24 sm:pt-[100px] lg:pt-[108px]">
       <CartaCatalog />
-    </>
+    </main>
   );
 }
