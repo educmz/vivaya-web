@@ -1,19 +1,52 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 import { menuCategories } from "@/data/menu/categories";
 import type { MenuCategoryId } from "@/types/catalog";
 import { HomeHeading } from "./HomeHeading";
 
-const visuals: Record<MenuCategoryId, { background: string; image: string }> = {
-  smoothies: { background: "#DCEEF2", image: "/images/products/Carta/naranja-fresa.webp" },
-  "tes-helados": { background: "#F6E9B8", image: "/images/products/Carta/jamaica.webp" },
-  "bebidas-calientes": { background: "#F5D6C2", image: "/images/products/Carta/chocolate-caliente.webp" },
-  frappes: { background: "#E6E1F0", image: "/images/products/Carta/capuccino.webp" },
-  waffles: { background: "#F6E9B8", image: "/images/products/Carta/waffle.webp" },
-  sandwiches: { background: "#DFEACF", image: "/images/products/Carta/acevichado.webp" },
-  tostones: { background: "#F5D6C2", image: "/images/products/Carta/toston-benedictino.webp" },
-  pizzas: { background: "#DCEEF2", image: "/images/products/Carta/pizza-ninfit.webp" },
+const visuals: Record<MenuCategoryId, { background: string; image: string; alt: string }> = {
+  smoothies: {
+    background: "#DCEEF2",
+    image: "/images/products/Carta/naranja-fresa.webp",
+    alt: "Naranja Fresa de Vivaya",
+  },
+  "tes-helados": {
+    background: "#F6E9B8",
+    image: "/images/products/Carta/jamaica.webp",
+    alt: "Té helado Jamaica de Vivaya",
+  },
+  "bebidas-calientes": {
+    background: "#F5D6C2",
+    image: "/images/products/Carta/chocolate-caliente.webp",
+    alt: "Chocolate Caliente de Vivaya",
+  },
+  frappes: {
+    background: "#E6E1F0",
+    image: "/images/products/Carta/mocaccino.webp",
+    alt: "Frappé Mocaccino de Vivaya",
+  },
+  waffles: {
+    background: "#F6E9B8",
+    image: "/images/products/Carta/waffle.webp",
+    alt: "Waffle de Vivaya",
+  },
+  sandwiches: {
+    background: "#DFEACF",
+    image: "/images/products/Carta/mixto.png",
+    alt: "Sándwich Mixto Ninfit de Vivaya",
+  },
+  tostones: {
+    background: "#F5D6C2",
+    image: "/images/products/Carta/toston-benedictino.webp",
+    alt: "Tostón Benedictino de Vivaya",
+  },
+  pizzas: {
+    background: "#DCEEF2",
+    image: "/images/products/Carta/pizza-hawaiana.webp",
+    alt: "Pizza Hawaiana de Vivaya",
+  },
 };
 
 export function CravingsSection() {
@@ -40,7 +73,15 @@ export function CravingsSection() {
                     {category.name}
                   </h3>
                   <div className="relative mt-3 flex min-h-0 w-full flex-1 items-center justify-center">
-                    <Image src={visual.image} alt="" fill sizes="(min-width: 1280px) 230px, (min-width: 1024px) 32vw, 45vw" className="object-contain" />
+                    <div className="relative h-[72%] w-[72%]">
+                      <Image
+                        src={visual.image}
+                        alt={visual.alt}
+                        fill
+                        sizes="(min-width: 1280px) 180px, (min-width: 1024px) 26vw, 34vw"
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
                 </Link>
               );
