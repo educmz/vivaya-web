@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { motion } from "motion/react";
 
 import { CartaCategoryNav } from "@/components/menu/MenuCategoryNav";
@@ -12,6 +12,29 @@ import { menuProducts } from "@/data/menu/products";
 import type { MenuCategoryId } from "@/types/catalog";
 
 export function CartaCatalog() {
+  const navigating = useRef(false);
+  useEffect(() => {
+    // Keep the clicked category selected until the user resumes manual scrolling.
+    const resumeTracking = () => {
+      navigating.current = false;
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.target instanceof HTMLElement &&
+          event.target.closest("input, textarea, select, [contenteditable=true]")) return;
+      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) {
+        resumeTracking();
+      }
+    };
+    window.addEventListener("wheel", resumeTracking, { passive: true });
+    window.addEventListener("touchmove", resumeTracking, { passive: true });
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("wheel", resumeTracking);
+      window.removeEventListener("touchmove", resumeTracking);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const sections = useMemo(
     () =>
       [...menuCategories]
@@ -40,6 +63,7 @@ export function CartaCatalog() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        if (navigating.current) return;
         const visibleSection = entries
           .filter((entry) => entry.isIntersecting)
           .sort(
@@ -68,9 +92,12 @@ export function CartaCatalog() {
   }, [sections]);
 
   function goToCategory(category: MenuCategoryId) {
+    const target = document.getElementById(`carta-${category}`);
+    if (!target) return;
+    navigating.current = true;
     setActiveCategory(category);
 
-    document.getElementById(`carta-${category}`)?.scrollIntoView({
+    target.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });

@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
-import { AtSign, Briefcase, ChevronUp, Globe } from "lucide-react";
+import {
+  AtSign,
+  Briefcase,
+  ChevronUp,
+  Globe,
+} from "lucide-react";
+
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 
@@ -22,6 +28,24 @@ const columns = [
     links: [
       { label: "Nosotros", href: "/nosotros" },
       { label: "Locales", href: "/locales" },
+      { label: "Contacto", href: "/contacto" },
+    ],
+  },
+  {
+    title: "Ayuda",
+    links: [
+      {
+        label: "Preguntas frecuentes",
+        href: "/preguntas-frecuentes",
+      },
+      {
+        label: "Política de privacidad",
+        href: "/politica-de-privacidad",
+      },
+      {
+        label: "Libro de reclamaciones",
+        href: "/libro-de-reclamaciones",
+      },
     ],
   },
 ];
@@ -41,16 +65,26 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3">
               <Image src="/images/brand/logo_negro.png" alt="Vivaya, inicio" width={2172} height={724} className="h-auto w-40 rounded-lg bg-[#FFF9F3] p-3 object-contain" />
             </Link>
-            <p className="mt-5 max-w-xs text-sm leading-7 text-[#E7EFE2]/80">Jugos y bebidas naturales pensadas para acompañar tu día, en cada local Vivaya.</p>
+
+            <p className="mt-5 max-w-xs text-sm leading-7 text-[#E7EFE2]/80">
+              Jugos y bebidas naturales pensadas para acompañar tu día, en cada
+              local Vivanya.
+            </p>
           </div>
 
           {columns.map((column) => (
             <div key={column.title}>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#E7EFE2]">{column.title}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#E7EFE2]">
+                {column.title}
+              </p>
+
               <ul className="mt-5 space-y-3 text-sm">
                 {column.links.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="text-[#FFF7E8]/75 transition hover:text-[#F36B21] focus-visible:outline">
+                    <Link
+                      href={item.href}
+                      className="text-[#FFF7E8]/75 transition hover:text-[#F36B21] focus-visible:outline"
+                    >
                       {item.label}
                     </Link>
                   </li>
@@ -62,20 +96,37 @@ export function Footer() {
 
         <div className="mt-10 flex items-center gap-3">
           {socialLinks.map((social) => (
-            <span key={social.label} className="grid size-10 place-items-center rounded-full border border-[#E7EFE2]/25 text-[#E7EFE2] transition hover:border-[#F36B21] hover:text-[#F36B21]" aria-label={social.label} role="img">
+            <span
+              key={social.label}
+              className="grid size-10 place-items-center rounded-full border border-[#E7EFE2]/25 text-[#E7EFE2] transition hover:border-[#F36B21] hover:text-[#F36B21]"
+              aria-label={social.label}
+              role="img"
+            >
               <social.icon className="size-4" aria-hidden="true" />
             </span>
           ))}
         </div>
 
-        <div className="mt-10 h-px w-full bg-[#E7EFE2]/15" aria-hidden="true" />
+        <div
+          className="mt-10 h-px w-full bg-[#E7EFE2]/15"
+          aria-hidden="true"
+        />
 
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm font-bold text-[#FFF7E8]">Natural. Fresco. Vivaya.</p>
-            <p className="mt-1 text-xs text-[#E7EFE2]/70">Activa lo natural en tu día a día.</p>
+            <p className="text-sm font-bold text-[#FFF7E8]">
+              Natural. Fresco. Vivanya.
+            </p>
+
+            <p className="mt-1 text-xs text-[#E7EFE2]/70">
+              Activa lo natural en tu día a día.
+            </p>
           </div>
-          <p className="text-xs text-[#E7EFE2]/60">© {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.</p>
+
+          <p className="text-xs text-[#E7EFE2]/60">
+            © {new Date().getFullYear()} {siteConfig.name}. Todos los derechos
+            reservados.
+          </p>
         </div>
       </Container>
 
@@ -89,8 +140,13 @@ function BackToTop() {
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 480);
+
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -99,7 +155,12 @@ function BackToTop() {
       {visible && (
         <motion.button
           type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          }
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 12 }}
