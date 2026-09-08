@@ -7,12 +7,12 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 // Fotografías disponibles hasta incorporar los banners definitivos de Inicio.
 const slides = [
-  { id: "slide-1", image: "/images/about/about-product.webp", alt: "Productos de Vivaya" },
-  { id: "slide-2", image: "/images/about/about-lifestyle.webp", alt: "Experiencia Vivaya" },
-  { id: "slide-3", image: "/images/about/about-machine.webp", alt: "Preparación en Vivaya" },
-  { id: "slide-4", image: "/images/about/about-team.webp", alt: "Equipo de Vivaya" },
-  { id: "slide-5", image: "/images/products/Locales/Miraflores.jpg", alt: "Local Vivaya en Miraflores" },
-  { id: "slide-6", image: "/images/products/Locales/Surco.jpeg", alt: "Local Vivaya en Surco" },
+  { id: "slide-1", image: "/images/home/hero/inicio-1.webp", alt: "Productos de Vivaya" },
+  { id: "slide-2", image: "/images/home/hero/inicio-2.webp", alt: "Experiencia Vivaya" },
+  { id: "slide-3", image: "/images/home/hero/inicio-3.webp", alt: "Preparación en Vivaya" },
+  { id: "slide-4", image: "/images/home/hero/inicio-4.webp", alt: "Equipo de Vivaya" },
+  { id: "slide-5", image: "/images/home/hero/inicio-5.webp", alt: "Local Vivaya en Miraflores" },
+  { id: "slide-6", image: "/images/home/hero/inicio-6.webp", alt: "Local Vivaya en Surco" },
 ] as const;
 
 export function HeroSection() {

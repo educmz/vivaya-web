@@ -4,19 +4,19 @@ const moments = [
   {
     id: "pause",
     title: "Para una pausa.",
-    image: "/images/home/moments/pause.webp",
+    image: "/images/home/moments/pausa.webp",
     background: "#DCEEF2",
   },
   {
     id: "share",
     title: "Para compartir.",
-    image: "/images/home/moments/share.webp",
+    image: "/images/home/moments/compartir.webp",
     background: "#F9E9B8",
   },
   {
     id: "celebrate",
     title: "Para celebrar.",
-    image: "/images/home/moments/celebrate.webp",
+    image: "/images/home/moments/celebrar.webp",
     background: "#E2ECD4",
   },
 ] as const;

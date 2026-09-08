@@ -31,7 +31,7 @@ export function AboutPreviewSection() {
           "
         >
           <Image
-            src="/images/home/about/about-vivaya.webp"
+            src="/images/home/about/conocenos.webp"
             alt="Conoce Vivaya"
             fill
             sizes="

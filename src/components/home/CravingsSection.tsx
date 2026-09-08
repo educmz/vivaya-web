@@ -54,7 +54,7 @@ export function CravingsSection() {
 
           <Link href="/eventos" className="group flex min-h-[360px] flex-col overflow-hidden rounded-lg bg-[#E5EBD8] text-[#302E2A] sm:min-h-[420px] lg:min-h-0">
             <div className="relative min-h-[260px] flex-1 overflow-hidden">
-              <Image src="/images/about/about-team.webp" alt="Equipo de Vivaya" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover object-center" />
+              <Image src="/images/home/events/eventos.webp" alt="Equipo de Vivaya" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover object-center" />
             </div>
             <div className="flex items-center justify-between gap-3 px-6 py-8 lg:flex-col lg:py-10">
               <h3 className="font-heading text-4xl uppercase leading-none sm:text-5xl">Eventos</h3>
