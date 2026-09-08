@@ -1,14 +1,12 @@
 "use client";
 
-import { motion } from "motion/react";
-
 import type { EventCategory } from "@/data/events/categories";
-import type { EventFilter } from "@/components/events/EventsCatalog";
+import type { EventCategoryId } from "@/types/events";
 
 interface EventCategoryNavProps {
   categories: EventCategory[];
-  activeCategory: EventFilter;
-  onChange: (category: EventFilter) => void;
+  activeCategory: EventCategoryId;
+  onChange: (category: EventCategoryId) => void;
 }
 
 export function EventCategoryNav({
@@ -16,93 +14,70 @@ export function EventCategoryNav({
   activeCategory,
   onChange,
 }: EventCategoryNavProps) {
-  const options = [
-    {
-      id: "all" as const,
-      name: "Todos",
-    },
-    ...categories,
-  ];
 
   return (
-    <div className="border-y border-[#302E2A]/8 bg-[#FFF9F3]/95 backdrop-blur-md">
-      <div
+    <div className="sticky top-0 z-40 bg-[color:var(--carta-ribbon,#FF8A00)]">
+      <nav
+        aria-label="Categorías de eventos"
         className="
-          mx-auto
-          max-w-7xl
+          flex
+          items-center
+          gap-7
           overflow-x-auto
           px-5
+          py-4
+          sm:gap-10
           sm:px-8
-          lg:px-10
+          lg:justify-between
+          lg:gap-4
+          lg:px-12
           [scrollbar-width:none]
           [&::-webkit-scrollbar]:hidden
         "
       >
-        <nav
-          aria-label="Categorías de eventos"
-          className="flex min-w-max items-center gap-2 py-4 sm:gap-3"
-        >
-          {options.map((category) => {
-            const active =
-              category.id === activeCategory;
+        {categories.map((category) => {
+          const active = category.id === activeCategory;
 
-            return (
-              <button
-                key={category.id}
-                type="button"
-                onClick={() =>
-                  onChange(category.id)
-                }
-                aria-pressed={active}
-                className="
-                  group
-                  relative
-                  isolate
-                  overflow-hidden
-                  whitespace-nowrap
-                  rounded-full
-                  border
-                  px-4
-                  py-2.5
-                  text-sm
-                  font-medium
-                  transition-colors
+          return (
+            <button
+              key={category.id}
+              type="button"
+              onClick={() => onChange(category.id)}
+              aria-current={active ? "true" : undefined}
+              className={`
+                relative
+                shrink-0
+                whitespace-nowrap
+                py-1
+                text-[13px]
+                font-bold
+                uppercase
+                tracking-[0.06em]
+                transition-colors duration-200 motion-reduce:transition-none
+                
+                sm:text-sm
+                ${active ? "text-white" : "text-[#141414]/55 hover:text-[#141414]"}
+              `}
+            >
+              {category.name}
+
+              <span
+                aria-hidden="true"
+                className={`
+                  absolute
+                  -bottom-1
+                  left-0
+                  h-[2px]
+                  bg-white
+                  transition-[width] motion-reduce:transition-none
                   duration-200
-                  sm:px-5
-                "
-                style={{
-                  borderColor: active
-                    ? "#A8CFA3"
-                    : "rgba(48, 46, 42, 0.10)",
-                }}
-              >
-                {active && (
-                  <motion.span
-                    layoutId="event-active-category"
-                    aria-hidden="true"
-                    className="absolute inset-0 -z-10 rounded-full bg-[#EAF3E7]"
-                    transition={{
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 35,
-                    }}
-                  />
-                )}
-
-                <span
-                  className={
-                    active
-                      ? "text-[#52734C]"
-                      : "text-[#77736D] transition-colors group-hover:text-[#302E2A]"
-                  }
-                >
-                  {category.name}
-                </span>
-              </button>
-            );
-          })}
-        </nav>
-      </div>
+                  ${active ? "w-full" : "w-0"}
+                `}
+              />
+            </button>
+          );
+        })}
+      </nav>
     </div>
   );
 }

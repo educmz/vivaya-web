@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { Navbar } from "@/components/layout/Navbar";
@@ -42,40 +40,8 @@ const socialLinks = [
 ];
 
 export function Header() {
-  const pathname = usePathname();
-  const [overHero, setOverHero] = useState(true);
-  const headerRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (pathname !== "/") return;
-
-    const updateBackground = () => {
-      const hero = document.querySelector("[data-home-hero]");
-      const headerHeight = headerRef.current?.offsetHeight ?? 0;
-      setOverHero(Boolean(hero && hero.getBoundingClientRect().bottom > headerHeight));
-    };
-
-    const frame = requestAnimationFrame(updateBackground);
-    const observer = new ResizeObserver(updateBackground);
-    const hero = document.querySelector("[data-home-hero]");
-    if (hero) observer.observe(hero);
-    if (headerRef.current) observer.observe(headerRef.current);
-    window.addEventListener("scroll", updateBackground, { passive: true });
-    window.addEventListener("resize", updateBackground);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      observer.disconnect();
-      window.removeEventListener("scroll", updateBackground);
-      window.removeEventListener("resize", updateBackground);
-    };
-  }, [pathname]);
-
   return (
-    <header
-      ref={headerRef}
-      className={`fixed inset-x-0 top-0 z-50 w-full transition-colors duration-200 motion-reduce:transition-none ${pathname === "/" && overHero ? "bg-transparent" : "bg-white"}`}
-    >
+    <header className="absolute inset-x-0 top-0 z-50 w-full bg-white">
       <div
         className="
           relative flex h-16 w-full items-center justify-between lg:h-[72px]
