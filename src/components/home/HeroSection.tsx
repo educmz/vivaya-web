@@ -35,7 +35,7 @@ export function HeroSection() {
     <section
       aria-label="Fotografías de Vivaya"
       aria-roledescription="carrusel"
-      className="w-full bg-[#FFF9F3] px-4 pb-6 pt-20 sm:px-6 sm:pb-8 sm:pt-24 lg:px-10 lg:pt-28"
+      className="w-full bg-[#FFF9F3] pt-20 sm:pt-24 lg:pt-28"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -49,7 +49,7 @@ export function HeroSection() {
         }
       }}
     >
-      <div data-home-hero className="group relative mx-auto h-[52svh] w-full max-w-[1440px] overflow-hidden sm:h-[60svh] lg:h-[68svh]">
+      <div data-home-hero className="group relative h-[52svh] w-full overflow-hidden sm:h-[60svh] lg:h-[68svh]">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -57,14 +57,14 @@ export function HeroSection() {
             aria-roledescription="diapositiva"
             aria-label={`${index + 1} de ${slides.length}`}
             aria-hidden={index !== activeSlide}
-            className={`absolute inset-0 ${index === activeSlide ? "visible" : "invisible"}`}
+            className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${index === activeSlide ? "opacity-100" : "pointer-events-none opacity-0"}`}
           >
             <Image
               src={slide.image}
               alt={slide.alt}
               fill
               priority={index === 0}
-              sizes="(min-width: 1520px) 1440px, (min-width: 1024px) calc(100vw - 80px), (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+              sizes="100vw"
               className="object-cover object-center"
             />
           </div>
@@ -73,7 +73,7 @@ export function HeroSection() {
           type="button"
           onClick={() => changeSlide(-1)}
           aria-label="Diapositiva anterior"
-          className="absolute left-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-[#302E2A] transition-opacity hover:bg-white focus-visible:opacity-100 lg:left-5 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100"
+          className="absolute left-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/85 text-[#302E2A] transition-opacity hover:bg-white focus-visible:opacity-100 lg:left-5 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100"
         >
           <ArrowLeft size={17} aria-hidden="true" />
         </button>
@@ -81,13 +81,13 @@ export function HeroSection() {
           type="button"
           onClick={() => changeSlide(1)}
           aria-label="Siguiente diapositiva"
-          className="absolute right-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-[#302E2A] transition-opacity hover:bg-white focus-visible:opacity-100 lg:right-5 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100"
+          className="absolute right-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/85 text-[#302E2A] transition-opacity hover:bg-white focus-visible:opacity-100 lg:right-5 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100"
         >
           <ArrowRight size={17} aria-hidden="true" />
         </button>
       </div>
 
-      <div className="flex flex-col items-center px-4 pb-8 pt-4 sm:pb-10">
+      <div className="flex flex-col items-center px-4 pb-8 pt-4 sm:pb-10 lg:pb-12">
         <div className="flex items-center" aria-label="Elegir diapositiva">
           {slides.map((slide, index) => (
             <button
@@ -104,7 +104,7 @@ export function HeroSection() {
         </div>
         <Link
           href="/menu"
-          className="mt-5 inline-flex min-h-12 items-center justify-center whitespace-nowrap rounded-full bg-[#F4A06D] px-7 text-sm font-semibold text-[#4B2D1E] transition-colors duration-200 hover:bg-[#EE925C]"
+          className="group mt-5 inline-flex min-h-12 items-center justify-center gap-5 whitespace-nowrap rounded-full bg-[#F4A06D] py-2 pl-7 pr-2 text-sm font-semibold text-[#4B2D1E] transition-colors duration-200 hover:bg-[#EE925C] focus-visible:outline-2 focus-visible:outline-offset-4"
         >
           Ver carta
         </Link>

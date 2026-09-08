@@ -4,6 +4,7 @@ import { AboutClosing } from "@/components/about/AboutClosing";
 import { AboutGallery } from "@/components/about/AboutGallery";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { AboutValues } from "@/components/about/AboutValues";
+import { PanoramicBanner } from "@/components/sections/PanoramicBanner";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -25,6 +26,7 @@ export default function AboutPage() {
         [--accent:#FFB347]
       "
     >
+      <PanoramicBanner />
       <AboutTimeline />
       <AboutGallery />
       <AboutValues />

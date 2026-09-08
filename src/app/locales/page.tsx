@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { LocationsList } from "@/components/locations/LocationsList";
+import { LocationsCatalog } from "@/components/locations/LocationsCatalog";
 
-export const metadata: Metadata = { title: "Locales" };
+export const metadata: Metadata = {
+  title: "Locales | VIVAYA",
+  description:
+    "Encuentra nuestros locales VIVAYA, horarios de atención y cómo llegar.",
+};
+
 export default function LocationsPage() {
   return (
-    <div className="bg-[#FFF7E8] pt-16 lg:pt-[72px]">
-      <LocationsList />
+    <div className="pt-16 lg:pt-[72px]">
+      <LocationsCatalog />
     </div>
   );
 }
