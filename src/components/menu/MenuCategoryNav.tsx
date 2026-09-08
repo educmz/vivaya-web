@@ -52,11 +52,10 @@ export function CartaCategoryNav({
                 font-bold
                 uppercase
                 tracking-[0.06em]
-                text-[#141414]
-                transition-opacity
-                hover:opacity-100
+                transition-colors duration-200 motion-reduce:transition-none
+                
                 sm:text-sm
-                ${active ? "opacity-100" : "opacity-55"}
+                ${active ? "text-white" : "text-[#141414]/55 hover:text-[#141414]"}
               `}
             >
               {category.name}
@@ -68,8 +67,8 @@ export function CartaCategoryNav({
                   -bottom-1
                   left-0
                   h-[2px]
-                  bg-[#141414]
-                  transition-all
+                  bg-white
+                  transition-[width] motion-reduce:transition-none
                   duration-200
                   ${active ? "w-full" : "w-0"}
                 `}
