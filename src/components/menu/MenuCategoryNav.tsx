@@ -51,7 +51,7 @@ export function CartaCategoryNav({
     sync();
     window.addEventListener("resize", sync);
     return () => window.removeEventListener("resize", sync);
-  }, [sync, activeCategory, categories]);
+  }, [sync, activeCategory, categories.length]);
 
   return (
     <div
@@ -67,12 +67,12 @@ export function CartaCategoryNav({
         className="
           relative
           flex
-          items-center
+          items-start
           gap-5
           overflow-x-auto
           overscroll-x-contain
           px-4
-          py-2
+          py-2.5
           sm:gap-9
           sm:px-8
           lg:justify-between
@@ -92,7 +92,7 @@ export function CartaCategoryNav({
               onClick={() => onChange(category.id)}
               aria-current={active ? "true" : undefined}
               data-active={active ? "true" : undefined}
-              className="relative shrink-0 whitespace-nowrap px-2.5 pb-4 pt-1.5 text-xs font-extrabold uppercase tracking-[0.05em] sm:text-[13px]"
+              className="flex shrink-0 flex-col items-center gap-1.5 whitespace-nowrap px-1.5 text-xs font-extrabold uppercase tracking-[0.05em] sm:text-[13px]"
             >
               <span
                 className={`
@@ -100,13 +100,15 @@ export function CartaCategoryNav({
                   duration-300 ease-out motion-reduce:transition-none
                   ${
                     active
-                      ? "scale-[1.08] text-[#FFF7E8] opacity-100"
+                      ? "scale-[1.06] text-[#FFF7E8] opacity-100"
                       : "text-[#302E2A] opacity-50 hover:opacity-80"
                   }
                 `}
               >
                 {category.name}
               </span>
+              {/* espacio reservado para el punto (sin salto de layout) */}
+              <span aria-hidden="true" className="block h-1.5 w-1.5" />
             </button>
           );
         })}
@@ -114,7 +116,7 @@ export function CartaCategoryNav({
         {dotX !== null && (
           <motion.span
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-1 left-0 -ml-[3px] h-1.5 w-1.5 rounded-full bg-[#FFF7E8]"
+            className="pointer-events-none absolute bottom-2.5 left-0 -ml-[3px] h-1.5 w-1.5 rounded-full bg-[#FFF7E8]"
             initial={false}
             animate={{ x: dotX }}
             transition={
