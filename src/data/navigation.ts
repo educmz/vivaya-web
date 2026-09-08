@@ -5,8 +5,8 @@ export interface NavigationItem {
 
 export const navigationItems: NavigationItem[] = [
   { label: "Inicio", href: "/" },
-  { label: "Carta", href: "/carta" },
+  { label: "Carta", href: "/menu" },
+  { label: "Eventos", href: "/eventos" },
   { label: "Nosotros", href: "/nosotros" },
   { label: "Locales", href: "/locales" },
-  { label: "Contacto", href: "/contacto" },
 ];

@@ -63,7 +63,7 @@ export function FeaturedProducts() {
       </div>
 
       <div className="relative z-10 mt-10 flex justify-center">
-        <Button href="/carta" className="min-h-14 bg-[#073B3A] px-8 text-white hover:bg-[#0F6B6D]">Conoce toda la carta</Button>
+        <Button href="/menu" className="min-h-14 bg-[#073B3A] px-8 text-white hover:bg-[#0F6B6D]">Conoce toda la carta</Button>
       </div>
 
       <WaveDivider fill="#E7EFE2" variant="swell" className="absolute -bottom-px inset-x-0" />

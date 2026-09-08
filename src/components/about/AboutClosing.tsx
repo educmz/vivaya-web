@@ -344,7 +344,7 @@ export function AboutClosing() {
 
           <div data-closing-button className="mt-9">
             <Button
-              href="/productos"
+              href="/menu"
               className="min-h-14 border-2 border-[#FFF7E8] bg-transparent px-8 text-[#FFF7E8] hover:bg-[#FFF7E8] hover:text-[#073B3A]"
             >
               Conoce nuestros productos

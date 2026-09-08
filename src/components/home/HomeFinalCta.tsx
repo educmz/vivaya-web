@@ -15,7 +15,7 @@ export function HomeFinalCta() {
           <h2 className="font-heading mt-3 max-w-4xl text-[clamp(4.2rem,9vw,9rem)] uppercase leading-[0.8] text-[#073B3A]">Pruébalo. Llévalo. Disfrútalo.</h2>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[#073B3A]/70">Descubre una forma fresca, práctica y llena de sabor para acompañar tu día.</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Button href="/carta" className="min-h-14 bg-[#FF6A22] px-8 text-white hover:bg-[#E95718]">Ver la carta</Button>
+            <Button href="/menu" className="min-h-14 bg-[#FF6A22] px-8 text-white hover:bg-[#E95718]">Ver la carta</Button>
             <Button href="/contacto" variant="ghost" className="min-h-14 border-[#073B3A] px-8 text-[#073B3A]">Quiero probar Vivaya</Button>
           </div>
         </div>

@@ -1,10 +1,6 @@
 import { menuProducts } from "@/data/menu/products";
-import { eventPackages } from "@/data/events/packages";
 
-import type {
-  EventCategoryId,
-  MenuCategoryId,
-} from "@/types/catalog";
+import type { MenuCategoryId } from "@/types/catalog";
 
 export function getAllMenuProducts() {
   return menuProducts.filter(
@@ -37,31 +33,5 @@ export function getMenuProductBySlug(
     (product) =>
       product.available &&
       product.slug === slug,
-  );
-}
-
-export function getAllEventPackages() {
-  return eventPackages.filter(
-    (eventPackage) => eventPackage.available,
-  );
-}
-
-export function getEventPackagesByCategory(
-  category: EventCategoryId,
-) {
-  return eventPackages.filter(
-    (eventPackage) =>
-      eventPackage.available &&
-      eventPackage.categories.includes(category),
-  );
-}
-
-export function getEventPackageBySlug(
-  slug: string,
-) {
-  return eventPackages.find(
-    (eventPackage) =>
-      eventPackage.available &&
-      eventPackage.slug === slug,
   );
 }

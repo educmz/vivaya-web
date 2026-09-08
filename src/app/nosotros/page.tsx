@@ -16,7 +16,7 @@ export default function AboutPage() {
     <div
       className="
         bg-[#FFF7E8]
-        pt-24 sm:pt-[100px] lg:pt-[108px]
+        pt-16 lg:pt-[72px]
         text-[#073B3A]
         [--background:#FFF7E8]
         [--foreground:#073B3A]

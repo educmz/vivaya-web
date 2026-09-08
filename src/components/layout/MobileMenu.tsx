@@ -78,7 +78,7 @@ export function MobileMenu() {
           >
             <div aria-hidden="true" className="pointer-events-none absolute -right-24 top-24 -z-10 size-72 rounded-full bg-[#F6D98B]/50 blur-3xl" />
             <div className="flex items-center justify-between px-5 pb-3 pt-[max(1rem,env(safe-area-inset-top))] sm:px-10">
-              <Image src="/images/brand/vivaya-logo.png" alt="Vivaya" width={110} height={110} className="h-16 w-auto object-contain" />
+              <Image src="/images/brand/logo_negro.png" alt="Vivaya" width={2172} height={724} className="h-auto w-36 object-contain" />
               <button type="button" onClick={closeMenu} className="grid size-12 place-items-center rounded-full border border-[#174C2C]/15 bg-white/70 transition-colors hover:bg-[#F6D98B]" aria-label="Cerrar menú">
                 <X size={24} aria-hidden="true" />
               </button>
