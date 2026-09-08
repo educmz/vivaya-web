@@ -28,7 +28,10 @@ const columns = [
   },
   {
     title: "Ayuda",
-    links: [{ label: "Preguntas frecuentes", href: "/preguntas-frecuentes" }],
+    links: [
+      { label: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
+      { label: "Libro de reclamaciones", href: "/libro-de-reclamaciones" },
+    ],
   },
 ];
 
