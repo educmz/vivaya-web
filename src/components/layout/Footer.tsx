@@ -32,22 +32,26 @@ const columns = [
     ],
   },
   {
-    title: "Ayuda",
-    links: [
-      {
-        label: "Preguntas frecuentes",
-        href: "/preguntas-frecuentes",
-      },
-      {
-        label: "Política de privacidad",
-        href: "/politica-de-privacidad",
-      },
-      {
-        label: "Libro de reclamaciones",
-        href: "/libro-de-reclamaciones",
-      },
-    ],
-  },
+  title: "Ayuda",
+  links: [
+    {
+      label: "Preguntas frecuentes",
+      href: "/preguntas-frecuentes",
+    },
+    {
+      label: "Política de privacidad",
+      href: "/politica-de-privacidad",
+    },
+    {
+      label: "Política de cookies",
+      href: "/politica-de-cookies",
+    },
+    {
+      label: "Libro de reclamaciones",
+      href: "/libro-de-reclamaciones",
+    },
+  ],
+},
 ];
 
 const socialLinks = [
