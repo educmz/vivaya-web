@@ -8,14 +8,6 @@ export type MenuCategoryId =
   | "tostones"
   | "pizzas";
 
-export type EventCategoryId =
-  | "carritos"
-  | "dulces"
-  | "salados"
-  | "bebidas"
-  | "combos"
-  | "helados";
-
 export interface DeliveryLinks {
   rappi?: string;
   pedidosYa?: string;
@@ -55,44 +47,6 @@ export interface MenuProduct {
   customizations?: CustomizationGroup[];
 
   delivery?: DeliveryLinks;
-
-  sourcePage?: number;
-}
-
-export interface EventPriceOption {
-  id: string;
-  label: string;
-  price: number;
-  note?: string;
-}
-
-export interface EventPackage {
-  id: string;
-  slug: string;
-
-  name: string;
-  description?: string;
-
-  categories: EventCategoryId[];
-
-  image: string;
-
-  priceFrom: number;
-
-  pricing?: EventPriceOption[];
-
-  includes: string[];
-
-  durationHours?: number;
-
-  staffCount?: number;
-  cartsCount?: number;
-
-  mobilityIncluded?: boolean;
-
-  notes?: string[];
-
-  available: boolean;
 
   sourcePage?: number;
 }

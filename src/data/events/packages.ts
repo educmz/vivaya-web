@@ -1,4 +1,4 @@
-import type { EventPackage } from "@/types/catalog";
+import type { EventPackage } from "@/types/events";
 
 export const eventPackages: EventPackage[] = [
   // =========================================================

@@ -1,4 +1,4 @@
-import type { EventCategoryId } from "@/types/catalog";
+import type { EventCategoryId } from "@/types/events";
 
 export interface EventCategory {
   id: EventCategoryId;

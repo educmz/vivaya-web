@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Caveat, Manrope } from "next/font/google";
+import { Anton, Caveat, Jost, Manrope } from "next/font/google";
 
 import { Preloader } from "@/components/animations/Preloader";
 import { Footer } from "@/components/layout/Footer";
@@ -26,6 +26,15 @@ const accentFont = Caveat({
   variable: "--font-accent",
 });
 
+// Sustituto libre de "Novecento" (fuente de pago que usa Pickadeli).
+// Jost es una grotesca geométrica estilo Art Déco, muy cercana a Novecento
+// en mayúsculas. Se usa en la Carta.
+const cartaFont = Jost({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-carta",
+});
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -40,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`h-full antialiased ${interfaceFont.variable} ${headingFont.variable} ${accentFont.variable}`}
+      className={`h-full antialiased ${interfaceFont.variable} ${headingFont.variable} ${accentFont.variable} ${cartaFont.variable}`}
     >
       <body className="flex min-h-full flex-col">
         <Preloader />

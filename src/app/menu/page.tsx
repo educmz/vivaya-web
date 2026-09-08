@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function CartaPage() {
   return (
-    <div className="bg-[#FFF9F3] pt-16 lg:pt-[72px]">
+    <div className="bg-[#FBF4EF] pt-16 lg:pt-[72px]">
       <CartaCatalog />
     </div>
   );
