@@ -14,23 +14,29 @@ export function VivayaSection() {
         <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           {/* TEXTO */}
           <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#F07D42] sm:text-sm">
-              VIVAYA es...
+            <p
+              className="flex items-center gap-2 leading-none text-[#FF8A00]"
+              style={{
+                fontFamily:
+                  "var(--font-script), 'Pacifico', cursive",
+              }}
+            >
+              <Image
+                src="/images/brand/logo_naranja.png"
+                alt="Vivaya"
+                width={1774}
+                height={887}
+                className="inline-block h-9 w-auto translate-y-[3px] sm:h-11 sm:translate-y-[5px]"
+                priority
+              />
+              <span className="text-2xl sm:text-3xl">es...</span>
             </p>
 
             <div className="mt-5">
               {concepts.map((concept) => (
                 <p
                   key={concept}
-                  className="
-                    text-4xl
-                    font-semibold
-                    leading-[0.95]
-                    tracking-[-0.055em]
-                    text-[#302E2A]
-                    sm:text-5xl
-                    lg:text-6xl
-                  "
+                  className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-[#302E2A] sm:text-5xl lg:text-6xl"
                 >
                   {concept}
                 </p>

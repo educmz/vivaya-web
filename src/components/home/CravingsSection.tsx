@@ -58,7 +58,7 @@ export function CravingsSection() {
             </div>
             <div className="flex items-center justify-between gap-3 px-6 py-8 lg:flex-col lg:py-10">
               <h3 className="font-heading text-4xl uppercase leading-none sm:text-5xl">Eventos</h3>
-              <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-full border border-[#302E2A]/25 transition-colors group-hover:bg-[#F4A06D]">
+              <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-full border border-[#302E2A]/25 transition-colors group-hover:bg-[#FF8A00]">
                 <ArrowUpRight size={22} />
               </span>
             </div>

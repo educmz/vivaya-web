@@ -34,7 +34,7 @@ export function LocationCard({ location }: LocationCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Ver VIVAYA ${location.name} en Google Maps (abre otra pestaña)`}
-              className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-[#F4A06D] px-6 py-3 text-sm font-semibold text-[#302E2A] transition-colors duration-200 hover:bg-[#EE925C] focus-visible:outline-2 focus-visible:outline-offset-4 sm:w-auto"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-[#FF8A00] px-6 py-3 text-sm font-semibold text-[#302E2A] transition-colors duration-200 hover:bg-[#E67C00] focus-visible:outline-2 focus-visible:outline-offset-4 sm:w-auto"
             >
               <MapPin size={18} aria-hidden="true" />
               Ver en Google Maps

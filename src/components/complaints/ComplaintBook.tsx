@@ -51,7 +51,7 @@ type FormErrors = Partial<Record<FieldName, string>>;
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const inputClass =
-  "min-h-12 w-full rounded-xl border-2 border-[#3E2A1B]/20 bg-[#FFFDF8] px-4 text-base font-normal text-[#3E2A1B] outline-none transition placeholder:text-[#3E2A1B]/35 focus:border-[#E8792E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8792E]";
+  "min-h-12 w-full rounded-xl border-2 border-[#302E2A]/20 bg-[#FFFDF8] px-4 text-base font-normal text-[#302E2A] outline-none transition placeholder:text-[#302E2A]/35 focus:border-[#FF8A00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF8A00]";
 const textareaClass = `${inputClass} min-h-32 resize-y py-3 leading-6`;
 
 const initialData: ComplaintFormData = {
@@ -234,11 +234,11 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-bold text-[#3E2A1B]">
-        {label} {required && <span aria-hidden="true" className="text-[#C94F28]">*</span>}
+      <label htmlFor={id} className="mb-2 block text-sm font-bold text-[#302E2A]">
+        {label} {required && <span aria-hidden="true" className="text-[#FF8A00]">*</span>}
       </label>
       {children}
-      {hint && <p id={`${id}-hint`} className="mt-2 text-sm text-[#3E2A1B]/60">{hint}</p>}
+      {hint && <p id={`${id}-hint`} className="mt-2 text-sm text-[#302E2A]/60">{hint}</p>}
       <ErrorMessage id={id} message={error} />
     </div>
   );
@@ -261,10 +261,10 @@ function FormSection({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
       transition={{ duration: 0.55, ease }}
-      className="complaint-print-section rounded-[1.75rem] border-2 border-[#3E2A1B]/15 bg-white p-5 shadow-[0_18px_55px_rgba(62,42,27,0.06)] sm:p-8"
+      className="complaint-print-section rounded-[1.75rem] border-2 border-[#302E2A]/15 bg-white p-5 shadow-[0_18px_55px_rgba(62,42,27,0.06)] sm:p-8"
     >
-      <div className="mb-7 flex items-baseline gap-3 border-b border-[#3E2A1B]/12 pb-5">
-        <span className="font-accent text-3xl font-bold text-[#E8792E]">{number}</span>
+      <div className="mb-7 flex items-baseline gap-3 border-b border-[#302E2A]/12 pb-5">
+        <span className="font-accent text-3xl font-bold text-[#FF8A00]">{number}</span>
         <h2 className="text-2xl font-black tracking-[-0.035em] text-[#073B3A]">{title}</h2>
       </div>
       {children}
@@ -288,7 +288,7 @@ function ChoiceCard<T extends string>({
   onChange: (value: T) => void;
 }) {
   return (
-    <label className={`relative flex cursor-pointer gap-3 rounded-2xl border-2 p-4 transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#E8792E] ${checked ? "border-[#3F7D4F] bg-[#EAF2E7]" : "border-[#3E2A1B]/15 bg-[#FFFDF8]"}`}>
+    <label className={`relative flex cursor-pointer gap-3 rounded-2xl border-2 p-4 transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#FF8A00] ${checked ? "border-[#3F7D4F] bg-[#EAF2E7]" : "border-[#302E2A]/15 bg-[#FFFDF8]"}`}>
       <input
         type="radio"
         name={name}
@@ -302,7 +302,7 @@ function ChoiceCard<T extends string>({
           {title}
           {checked && <Check className="size-4" aria-hidden="true" />}
         </span>
-        {description && <span className="mt-1 block text-sm leading-5 text-[#3E2A1B]/65">{description}</span>}
+        {description && <span className="mt-1 block text-sm leading-5 text-[#302E2A]/65">{description}</span>}
       </span>
     </label>
   );
@@ -311,7 +311,7 @@ function ChoiceCard<T extends string>({
 function ReviewItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="min-w-0">
-      <dt className="text-xs font-black uppercase tracking-[0.12em] text-[#3E2A1B]/50">{label}</dt>
+      <dt className="text-xs font-black uppercase tracking-[0.12em] text-[#302E2A]/50">{label}</dt>
       <dd className="mt-1 whitespace-pre-wrap break-words text-sm leading-6 text-[#241B15]">{value || "—"}</dd>
     </div>
   );
@@ -422,9 +422,9 @@ export function ComplaintBook() {
   }
 
   return (
-    <section className="complaint-page relative overflow-hidden bg-[#FFF7E8] pb-24 text-[#3E2A1B] sm:pb-32">
+    <section className="complaint-page relative overflow-hidden bg-[#FFF7E8] pb-24 text-[#302E2A] sm:pb-32">
       <div className="pointer-events-none absolute -right-40 top-0 size-[30rem] rounded-full bg-[#3F7D4F]/10 blur-[110px] print:hidden" aria-hidden="true" />
-      <div className="pointer-events-none absolute -left-48 top-[34rem] size-[28rem] rounded-full bg-[#E8792E]/10 blur-[110px] print:hidden" aria-hidden="true" />
+      <div className="pointer-events-none absolute -left-48 top-[34rem] size-[28rem] rounded-full bg-[#FF8A00]/10 blur-[110px] print:hidden" aria-hidden="true" />
 
       <Container className="relative">
         <header className="mx-auto max-w-3xl pb-12 pt-16 sm:pb-16 sm:pt-20">
@@ -440,11 +440,11 @@ export function ComplaintBook() {
             initial={reducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.05, ease }}
-            className="font-accent mt-4 text-[clamp(3.4rem,9vw,6rem)] leading-[0.88] text-[#E8792E]"
+            className="font-accent mt-4 text-[clamp(3.4rem,9vw,6rem)] leading-[0.88] text-[#FF8A00]"
           >
             Queremos escucharte.
           </motion.h1>
-          <p className="mt-6 max-w-xl text-base leading-7 text-[#3E2A1B]/70 sm:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-7 text-[#302E2A]/70 sm:text-lg">
             Si algo no salió como esperabas, cuéntanos qué ocurrió.
           </p>
 
@@ -453,7 +453,7 @@ export function ComplaintBook() {
             <p>{legalConfig.legalName}</p>
             <p>RUC {legalConfig.ruc}</p>
             <p>{legalConfig.establishmentAddress}</p>
-            <p className="text-[#3E2A1B]/65">Código de establecimiento: {legalConfig.establishmentCode}</p>
+            <p className="text-[#302E2A]/65">Código de establecimiento: {legalConfig.establishmentCode}</p>
           </div>
 
           <dl className="mt-7 grid gap-3 text-sm sm:grid-cols-2">
@@ -512,7 +512,7 @@ export function ComplaintBook() {
 
                   <AnimatePresence initial={false}>
                     {data.consumer.isMinor && (
-                      <motion.div initial={reducedMotion ? false : { opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={reducedMotion ? undefined : { opacity: 0, height: 0 }} transition={{ duration: 0.3, ease }} className="grid gap-5 overflow-hidden border-t border-[#3E2A1B]/12 pt-5">
+                      <motion.div initial={reducedMotion ? false : { opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={reducedMotion ? undefined : { opacity: 0, height: 0 }} transition={{ duration: 0.3, ease }} className="grid gap-5 overflow-hidden border-t border-[#302E2A]/12 pt-5">
                         <h3 className="text-xs font-black uppercase tracking-[0.16em] text-[#3F7D4F]">Padre, madre o representante</h3>
                         <Field id="representativeFullName" label="Nombre completo" required error={errors.representativeFullName}>
                           <input id="representativeFullName" name="representativeFullName" autoComplete="name" value={data.consumer.parentOrGuardian.fullName} onChange={(event) => updateRepresentative("fullName", event.target.value)} aria-invalid={Boolean(errors.representativeFullName)} aria-describedby={describedBy("representativeFullName", errors.representativeFullName)} className={inputClass} />
@@ -548,7 +548,7 @@ export function ComplaintBook() {
               <FormSection number="02" title="Sobre tu compra" reducedMotion={reducedMotion}>
                 <div className="grid gap-6">
                   <fieldset>
-                    <legend className="mb-3 text-sm font-bold">Tipo de bien contratado <span aria-hidden="true" className="text-[#C94F28]">*</span></legend>
+                    <legend className="mb-3 text-sm font-bold">Tipo de bien contratado <span aria-hidden="true" className="text-[#FF8A00]">*</span></legend>
                     <div className="grid gap-3 sm:grid-cols-2">
                       <ChoiceCard<ContractedItemType> name="contractedItemType" value="product" checked={data.contractedItem.type === "product"} title="Producto" onChange={(value) => updateItem("type", value)} />
                       <ChoiceCard<ContractedItemType> name="contractedItemType" value="service" checked={data.contractedItem.type === "service"} title="Servicio" onChange={(value) => updateItem("type", value)} />
@@ -556,8 +556,8 @@ export function ComplaintBook() {
                   </fieldset>
 
                   <Field id="amount" label="Monto reclamado" error={errors.amount} hint="Puedes dejarlo vacío si no corresponde.">
-                    <div className="flex rounded-xl border-2 border-[#3E2A1B]/20 bg-[#FFFDF8] focus-within:border-[#E8792E] focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#E8792E]">
-                      <span className="grid min-h-12 place-items-center border-r border-[#3E2A1B]/15 px-4 font-bold text-[#073B3A]" aria-hidden="true">S/</span>
+                    <div className="flex rounded-xl border-2 border-[#302E2A]/20 bg-[#FFFDF8] focus-within:border-[#FF8A00] focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#FF8A00]">
+                      <span className="grid min-h-12 place-items-center border-r border-[#302E2A]/15 px-4 font-bold text-[#073B3A]" aria-hidden="true">S/</span>
                       <input id="amount" name="amount" type="number" inputMode="decimal" min="0" step="0.01" value={data.contractedItem.amount} onChange={(event) => updateItem("amount", event.target.value)} aria-invalid={Boolean(errors.amount)} aria-describedby={describedBy("amount", errors.amount, true)} className="min-h-12 min-w-0 flex-1 bg-transparent px-4 outline-none" />
                     </div>
                   </Field>
@@ -591,7 +591,7 @@ export function ComplaintBook() {
               <FormSection number="03" title="Cuéntanos qué ocurrió" reducedMotion={reducedMotion}>
                 <div className="grid gap-6">
                   <fieldset>
-                    <legend className="mb-3 text-sm font-bold">Tipo de reclamación <span aria-hidden="true" className="text-[#C94F28]">*</span></legend>
+                    <legend className="mb-3 text-sm font-bold">Tipo de reclamación <span aria-hidden="true" className="text-[#FF8A00]">*</span></legend>
                     <div className="grid gap-3 sm:grid-cols-2">
                       <ChoiceCard<ComplaintType> name="complaintType" value="claim" checked={data.complaint.type === "claim"} title="Reclamo" description="Disconformidad relacionada con un producto o servicio." onChange={(value) => updateComplaint("type", value)} />
                       <ChoiceCard<ComplaintType> name="complaintType" value="complaint" checked={data.complaint.type === "complaint"} title="Queja" description="Malestar relacionado con la atención al público." onChange={(value) => updateComplaint("type", value)} />
@@ -607,7 +607,7 @@ export function ComplaintBook() {
                   </Field>
 
                   <fieldset aria-describedby={describedBy("responseMethod", errors.responseMethod)}>
-                    <legend className="mb-3 text-sm font-bold">¿Cómo deseas recibir nuestra respuesta? <span aria-hidden="true" className="text-[#C94F28]">*</span></legend>
+                    <legend className="mb-3 text-sm font-bold">¿Cómo deseas recibir nuestra respuesta? <span aria-hidden="true" className="text-[#FF8A00]">*</span></legend>
                     <div className="grid gap-3 sm:grid-cols-2">
                       <ChoiceCard<ResponseMethod> name="responseMethod" value="email" checked={data.complaint.responseMethod === "email"} title="Correo electrónico" description="Recibirás la respuesta en el correo indicado." onChange={(value) => updateComplaint("responseMethod", value)} />
                       <ChoiceCard<ResponseMethod> name="responseMethod" value="letter" checked={data.complaint.responseMethod === "letter"} title="Carta a mi domicilio" description="La respuesta será enviada al domicilio indicado." onChange={(value) => updateComplaint("responseMethod", value)} />
@@ -623,9 +623,9 @@ export function ComplaintBook() {
               </aside>
 
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="max-w-md text-sm leading-6 text-[#3E2A1B]/65">Versión de preparación: los datos ingresados no se envían ni se almacenan.</p>
+                <p className="max-w-md text-sm leading-6 text-[#302E2A]/65">Versión de preparación: los datos ingresados no se envían ni se almacenan.</p>
                 {/* Espacio reservado para el enlace a /politica-de-privacidad. */}
-                <Button type="submit" className="w-full bg-[#E8792E] px-7 text-[#3E2A1B] sm:w-auto">
+                <Button type="submit" className="w-full bg-[#FF8A00] px-7 text-[#302E2A] sm:w-auto">
                   Revisar reclamación
                 </Button>
               </div>
@@ -641,8 +641,8 @@ export function ComplaintBook() {
               </div>
 
               <div className="grid gap-6">
-                <section className="complaint-print-section rounded-2xl border border-[#3E2A1B]/20 bg-white p-5 sm:p-7">
-                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#E8792E]">01</span>Tus datos</h3>
+                <section className="complaint-print-section rounded-2xl border border-[#302E2A]/20 bg-white p-5 sm:p-7">
+                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#FF8A00]">01</span>Tus datos</h3>
                   <dl className="grid gap-5 sm:grid-cols-2">
                     <ReviewItem label="Nombre completo" value={data.consumer.fullName.trim()} />
                     <ReviewItem label="Documento" value={`${data.consumer.documentType}: ${data.consumer.documentNumber.trim()}`} />
@@ -652,7 +652,7 @@ export function ComplaintBook() {
                     <ReviewItem label="Menor de edad" value={data.consumer.isMinor ? "Sí" : "No"} />
                   </dl>
                   {data.consumer.isMinor && (
-                    <div className="mt-6 border-t border-[#3E2A1B]/12 pt-5">
+                    <div className="mt-6 border-t border-[#302E2A]/12 pt-5">
                       <h4 className="mb-5 text-xs font-black uppercase tracking-[0.14em] text-[#3F7D4F]">Padre, madre o representante</h4>
                       <dl className="grid gap-5 sm:grid-cols-2">
                         <ReviewItem label="Nombre completo" value={data.consumer.parentOrGuardian.fullName.trim()} />
@@ -665,8 +665,8 @@ export function ComplaintBook() {
                   )}
                 </section>
 
-                <section className="complaint-print-section rounded-2xl border border-[#3E2A1B]/20 bg-white p-5 sm:p-7">
-                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#E8792E]">02</span>Sobre tu compra</h3>
+                <section className="complaint-print-section rounded-2xl border border-[#302E2A]/20 bg-white p-5 sm:p-7">
+                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#FF8A00]">02</span>Sobre tu compra</h3>
                   <dl className="grid gap-5 sm:grid-cols-2">
                     <ReviewItem label="Bien contratado" value={data.contractedItem.type === "product" ? "Producto" : "Servicio"} />
                     <ReviewItem label="Monto reclamado" value={data.contractedItem.amount ? `S/ ${Number(data.contractedItem.amount).toFixed(2)}` : "No indicado"} />
@@ -676,8 +676,8 @@ export function ComplaintBook() {
                   </dl>
                 </section>
 
-                <section className="complaint-print-section rounded-2xl border border-[#3E2A1B]/20 bg-white p-5 sm:p-7">
-                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#E8792E]">03</span>Reclamación</h3>
+                <section className="complaint-print-section rounded-2xl border border-[#302E2A]/20 bg-white p-5 sm:p-7">
+                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#FF8A00]">03</span>Reclamación</h3>
                   <dl className="grid gap-5">
                     <ReviewItem label="Tipo" value={data.complaint.type === "claim" ? "Reclamo" : "Queja"} />
                     <ReviewItem label="Detalle" value={data.complaint.detail.trim()} />
@@ -686,8 +686,8 @@ export function ComplaintBook() {
                   </dl>
                 </section>
 
-                <section className="complaint-print-section rounded-2xl border border-dashed border-[#3E2A1B]/30 bg-white/65 p-5 sm:p-7">
-                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#E8792E]">04</span>Uso del proveedor</h3>
+                <section className="complaint-print-section rounded-2xl border border-dashed border-[#302E2A]/30 bg-white/65 p-5 sm:p-7">
+                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#FF8A00]">04</span>Uso del proveedor</h3>
                   <dl className="grid gap-5">
                     <ReviewItem label="Fecha de comunicación de la respuesta" value="Pendiente" />
                     <ReviewItem label="Observaciones / acciones adoptadas" value="Pendiente" />
@@ -697,7 +697,7 @@ export function ComplaintBook() {
 
               <div className="mt-7 flex flex-col gap-3 print:hidden sm:flex-row sm:justify-end">
                 <Button type="button" variant="ghost" onClick={() => setView("form")} className="border-[#073B3A] text-[#073B3A]">Volver a editar</Button>
-                <Button type="button" onClick={() => window.print()} className="gap-2 bg-[#E8792E] text-[#3E2A1B]"><Printer className="size-4" aria-hidden="true" />Imprimir borrador</Button>
+                <Button type="button" onClick={() => window.print()} className="gap-2 bg-[#FF8A00] text-[#302E2A]"><Printer className="size-4" aria-hidden="true" />Imprimir borrador</Button>
               </div>
             </motion.div>
           )}

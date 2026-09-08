@@ -77,7 +77,7 @@ export function CartaOrderBar() {
           />
 
           <div className="relative z-10 mx-auto max-w-xl">
-            <p className="text-sm font-medium text-[#C96532]">
+            <p className="text-sm font-medium text-[#FF8A00]">
               ¿Ya elegiste?
             </p>
 
@@ -115,10 +115,10 @@ export function CartaOrderBar() {
                 className="
                   min-h-12
                   rounded-full
-                  bg-[#F4A06D]
+                  bg-[#FF8A00]
                   px-7
-                  text-[#4B2D1E]
-                  hover:bg-[#EE925C]
+                  text-[#302E2A]
+                  hover:bg-[#E67C00]
                 "
               >
                 Volver a la carta

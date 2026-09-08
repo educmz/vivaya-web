@@ -44,7 +44,7 @@ export function AboutPreviewSection() {
 
         {/* TEXTO */}
         <div className="max-w-lg">
-          <p className="text-sm font-semibold text-[#F07D42]">
+          <p className="text-sm font-semibold text-[#FF8A00]">
             Conoce VIVAYA
           </p>
 
@@ -87,7 +87,7 @@ export function AboutPreviewSection() {
               font-semibold
               text-[#302E2A]
               transition-colors
-              hover:text-[#F07D42]
+              hover:text-[#FF8A00]
             "
           >
             Conócenos

@@ -26,7 +26,7 @@ export function MomentsSection() {
     <section className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10">
         <div className="mb-8 sm:mb-10">
-          <p className="text-sm font-semibold text-[#F07D42]">
+          <p className="text-sm font-semibold text-[#FF8A00]">
             Momentos VIVAYA
           </p>
 

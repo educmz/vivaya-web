@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Caveat, Manrope, Montserrat } from "next/font/google";
+import { Anton, Caveat, Manrope, Montserrat, Pacifico } from "next/font/google";
 
 import { Preloader } from "@/components/animations/Preloader";
 import { Footer } from "@/components/layout/Footer";
@@ -34,6 +34,13 @@ const cartaFont = Montserrat({
   variable: "--font-carta",
 });
 
+// Script redondeado, parecido al logo de Vivaya. Acentos en Nosotros.
+const scriptFont = Pacifico({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-script",
+});
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -48,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`h-full antialiased ${interfaceFont.variable} ${headingFont.variable} ${accentFont.variable} ${cartaFont.variable}`}
+      className={`h-full antialiased ${interfaceFont.variable} ${headingFont.variable} ${accentFont.variable} ${cartaFont.variable} ${scriptFont.variable}`}
     >
       <body className="flex min-h-full flex-col">
         <Preloader />

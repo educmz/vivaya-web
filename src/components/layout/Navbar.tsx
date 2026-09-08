@@ -44,7 +44,7 @@ export function Navbar({ className }: { className?: string }) {
               <motion.span
                 layoutId="vivaya-active-nav"
                 aria-hidden="true"
-                className="absolute -inset-x-3 inset-y-0 -z-10 rounded-full bg-[#FF6422]"
+                className="absolute -inset-x-3 inset-y-0 -z-10 rounded-full bg-[#FF8A00]"
                 transition={reducedMotion
                   ? { duration: 0 }
                   : { type: "spring", stiffness: 420, damping: 32 }}

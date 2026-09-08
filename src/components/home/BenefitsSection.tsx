@@ -19,7 +19,7 @@ export function BenefitsSection() {
 
       <Container>
         <div className="max-w-3xl">
-          <p className="font-accent text-3xl font-bold text-[#C75B31] sm:text-4xl">Lo bueno se siente</p>
+          <p className="font-accent text-3xl font-bold text-[#FF8A00] sm:text-4xl">Lo bueno se siente</p>
           <h2 className="font-heading mt-3 text-[clamp(3.6rem,8vw,7.5rem)] uppercase leading-[0.86] text-[#073B3A]">Bienestar que sigue tu ritmo</h2>
         </div>
 
@@ -31,7 +31,7 @@ export function BenefitsSection() {
               <article className={`relative flex min-h-72 flex-col justify-between p-8 ${benefit.shape} ${benefit.color} ${index % 2 === 1 ? "lg:translate-y-10" : ""}`} key={benefit.title}>
                 <div className="grid size-14 place-items-center rounded-full bg-[#073B3A] text-white"><Icon className="size-6" strokeWidth={2.2} /></div>
                 <div>
-                  <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#FF6A22]">0{index + 1}</p>
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#FF8A00]">0{index + 1}</p>
                   <h3 className="font-heading text-3xl uppercase leading-none text-[#073B3A]">{benefit.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-[#073B3A]/65">{benefit.description}</p>
                 </div>

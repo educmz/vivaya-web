@@ -14,7 +14,13 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#FFF9F3] pt-16 lg:pt-[72px]">
+    <div
+      className="bg-[#FFF9F3] pt-16 lg:pt-[72px]"
+      style={{
+        fontFamily:
+          "var(--font-carta), 'Montserrat', system-ui, sans-serif",
+      }}
+    >
       <h1 className="sr-only">Nosotros VIVAYA</h1>
       <PanoramicBanner />
       <VivayaSection />

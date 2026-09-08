@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const timelineItems = [
   {
     year: "2022",
@@ -23,17 +25,22 @@ export function TimelineSection() {
       <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10">
         {/* CABECERA */}
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#F07D42] sm:text-sm">
+          <p
+            className="text-2xl text-[#FF8A00] sm:text-3xl"
+            style={{
+              fontFamily: "var(--font-script), 'Pacifico', cursive",
+            }}
+          >
             Nuestro camino
           </p>
 
           <h2
             className="
-              mt-3
+              mt-4
               text-4xl
-              font-semibold
-              leading-[1]
-              tracking-[-0.045em]
+              font-bold
+              leading-[1.08]
+              tracking-[-0.02em]
               text-[#302E2A]
               sm:text-5xl
               lg:text-6xl
@@ -69,7 +76,7 @@ export function TimelineSection() {
                     rounded-full
                     border-[5px]
                     border-[#FFF9F3]
-                    bg-[#F07D42]
+                    bg-[#FF8A00]
                     ${
                       index === timelineItems.length - 1
                         ? "right-0"
@@ -85,7 +92,13 @@ export function TimelineSection() {
                       : "max-w-[220px]"
                   }
                 >
-                  <span className="text-sm font-semibold text-[#F07D42]">
+                  <span
+                    className="text-xl text-[#FF8A00]"
+                    style={{
+                      fontFamily:
+                        "var(--font-script), 'Pacifico', cursive",
+                    }}
+                  >
                     {item.year}
                   </span>
 
@@ -93,14 +106,24 @@ export function TimelineSection() {
                     className="
                       mt-2
                       text-2xl
-                      font-semibold
-                      leading-[1.05]
-                      tracking-[-0.035em]
+                      font-bold
+                      leading-[1.1]
+                      tracking-[-0.02em]
                       text-[#302E2A]
                       lg:text-3xl
                     "
                   >
-                    {item.title}
+                    {item.title === "VIVAYA" ? (
+                      <Image
+                        src="/images/brand/logo_negro.png"
+                        alt="VIVAYA"
+                        width={1774}
+                        height={887}
+                        className={`h-10 w-auto lg:h-12 ${index === timelineItems.length - 1 ? "ml-auto" : ""}`}
+                      />
+                    ) : (
+                      item.title
+                    )}
                   </h3>
                 </div>
               </article>
@@ -127,11 +150,17 @@ export function TimelineSection() {
                     rounded-full
                     border-4
                     border-[#FFF9F3]
-                    bg-[#F07D42]
+                    bg-[#FF8A00]
                   "
                 />
 
-                <span className="text-xs font-semibold text-[#F07D42]">
+                <span
+                  className="text-lg text-[#FF8A00]"
+                  style={{
+                    fontFamily:
+                      "var(--font-script), 'Pacifico', cursive",
+                  }}
+                >
                   {item.year}
                 </span>
 
@@ -139,12 +168,22 @@ export function TimelineSection() {
                   className="
                     mt-1
                     text-2xl
-                    font-semibold
-                    tracking-[-0.035em]
+                    font-bold
+                    tracking-[-0.02em]
                     text-[#302E2A]
                   "
                 >
-                  {item.title}
+                  {item.title === "VIVAYA" ? (
+                    <Image
+                      src="/images/brand/logo_negro.png"
+                      alt="VIVAYA"
+                      width={1774}
+                      height={887}
+                      className="h-9 w-auto"
+                    />
+                  ) : (
+                    item.title
+                  )}
                 </h3>
               </article>
             ))}

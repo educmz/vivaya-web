@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { motion } from "motion/react";
 
 import { CartaCategoryNav } from "@/components/menu/MenuCategoryNav";
 import { CartaMenuCard } from "@/components/menu/MenuCard";
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
 
 import { menuCategories } from "@/data/menu/categories";
 import { menuProducts } from "@/data/menu/products";
@@ -12,26 +12,30 @@ import { menuProducts } from "@/data/menu/products";
 import type { MenuCategoryId } from "@/types/catalog";
 
 export function CartaCatalog() {
+  // Mientras dura un salto por click, el scroll-spy se pausa para que la
+  // categoría elegida no "parpadee" con las que pasan de largo.
   const navigating = useRef(false);
+  const navStartedAt = useRef(0);
+  const navTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
   useEffect(() => {
-    // Keep the clicked category selected until the user resumes manual scrolling.
-    const resumeTracking = () => {
-      navigating.current = false;
-    };
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.target instanceof HTMLElement &&
-          event.target.closest("input, textarea, select, [contenteditable=true]")) return;
-      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) {
-        resumeTracking();
+    // Un gesto real de scroll del usuario (>200ms tras el click) reanuda el spy.
+    const maybeResume = () => {
+      if (Date.now() - navStartedAt.current > 200) {
+        navigating.current = false;
       }
     };
-    window.addEventListener("wheel", resumeTracking, { passive: true });
-    window.addEventListener("touchmove", resumeTracking, { passive: true });
-    window.addEventListener("keydown", handleKeyDown);
+    const onScrollEnd = () => {
+      navigating.current = false;
+    };
+    window.addEventListener("wheel", maybeResume, { passive: true });
+    window.addEventListener("touchmove", maybeResume, { passive: true });
+    window.addEventListener("scrollend", onScrollEnd);
     return () => {
-      window.removeEventListener("wheel", resumeTracking);
-      window.removeEventListener("touchmove", resumeTracking);
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("wheel", maybeResume);
+      window.removeEventListener("touchmove", maybeResume);
+      window.removeEventListener("scrollend", onScrollEnd);
+      clearTimeout(navTimeout.current);
     };
   }, []);
 
@@ -94,13 +98,21 @@ export function CartaCatalog() {
   function goToCategory(category: MenuCategoryId) {
     const target = document.getElementById(`carta-${category}`);
     if (!target) return;
+
     navigating.current = true;
+    navStartedAt.current = Date.now();
     setActiveCategory(category);
 
     target.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
+
+    // Respaldo por si el navegador no dispara "scrollend".
+    clearTimeout(navTimeout.current);
+    navTimeout.current = setTimeout(() => {
+      navigating.current = false;
+    }, 1000);
   }
 
   return (
@@ -110,7 +122,7 @@ export function CartaCatalog() {
         fontFamily:
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",
         background: "#FBF4EF",
-        "--carta-ink": "#141414",
+        "--carta-ink": "#302E2A",
         // Cinta de categorías: naranja vibrante (las letras negras se leen bien)
         "--carta-ribbon": "#FF8A00",
       } as CSSProperties}
@@ -131,15 +143,10 @@ export function CartaCatalog() {
             data-category={category.id}
             className="scroll-mt-16 pt-16 sm:pt-24"
           >
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            <AnimatedTitle
+              text={category.name}
               className="text-center text-4xl font-extrabold uppercase tracking-[0.01em] text-[color:var(--carta-ink)] sm:text-5xl lg:text-6xl"
-            >
-              {category.name}
-            </motion.h2>
+            />
 
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
               {items.map((item, itemIndex) => (

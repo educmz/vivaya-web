@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 import { socialConfig } from "@/config/socials";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const accents = ["#E8792E", "#3F7D4F", "#7A4B2A"];
+const accents = ["#FF8A00", "#3F7D4F", "#7A4B2A"];
 
 const channels = [
   { icon: Phone, label: "Teléfono", value: siteConfig.phone, href: siteConfig.phone ? `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}` : undefined },
@@ -24,12 +24,12 @@ function ChannelCard({ channel, index }: { channel: (typeof channels)[number]; i
 
   const content = (
     <>
-      <span className="grid size-14 shrink-0 place-items-center rounded-full border-2 border-[#3E2A1B]" style={{ backgroundColor: accent }}>
+      <span className="grid size-14 shrink-0 place-items-center rounded-full border-2 border-[#302E2A]" style={{ backgroundColor: accent }}>
         <Icon className="size-6 text-[#FFF7E8]" aria-hidden="true" />
       </span>
       <div>
-        <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#3E2A1B]/50">{channel.label}</p>
-        <p className="mt-1 font-accent text-2xl leading-none text-[#3E2A1B]">{channel.value || "Próximamente"}</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#302E2A]/50">{channel.label}</p>
+        <p className="mt-1 font-accent text-2xl leading-none text-[#302E2A]">{channel.value || "Próximamente"}</p>
       </div>
     </>
   );
@@ -42,8 +42,8 @@ function ChannelCard({ channel, index }: { channel: (typeof channels)[number]; i
       transition={{ duration: 0.8, delay: index * 0.1, ease }}
       className="group relative"
     >
-      <div aria-hidden="true" className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-[1.6rem] border-2 border-[#3E2A1B]" style={{ backgroundColor: accent }} />
-      <motion.div whileHover={reducedMotion ? undefined : { y: -6, rotate: 0 }} transition={{ duration: 0.4, ease }} className="relative flex items-center gap-4 rounded-[1.6rem] border-2 border-[#3E2A1B] bg-[#FFF7E8] p-6">
+      <div aria-hidden="true" className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-[1.6rem] border-2 border-[#302E2A]" style={{ backgroundColor: accent }} />
+      <motion.div whileHover={reducedMotion ? undefined : { y: -6, rotate: 0 }} transition={{ duration: 0.4, ease }} className="relative flex items-center gap-4 rounded-[1.6rem] border-2 border-[#302E2A] bg-[#FFF7E8] p-6">
         {channel.href ? (
           <a href={channel.href} target={channel.href.startsWith("http") ? "_blank" : undefined} rel={channel.href.startsWith("http") ? "noopener noreferrer" : undefined} className="flex items-center gap-4">
             {content}
@@ -60,17 +60,17 @@ export function ContactInfo() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-[#FFF7E8] py-20 text-[#3E2A1B] sm:py-28">
+    <section className="bg-[#FFF7E8] py-20 text-[#302E2A] sm:py-28">
       <Container>
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.45 }}
           transition={{ duration: 0.75, ease }}
-          className="border-b-2 border-[#3E2A1B] pb-6"
+          className="border-b-2 border-[#302E2A] pb-6"
         >
           <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#3F7D4F]">Estamos disponibles</p>
-          <h2 className="font-accent text-[clamp(3rem,7vw,5.5rem)] leading-[0.9] text-[#E8792E]">Hablemos.</h2>
+          <h2 className="font-accent text-[clamp(3rem,7vw,5.5rem)] leading-[0.9] text-[#FF8A00]">Hablemos.</h2>
         </motion.div>
 
         <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-3">

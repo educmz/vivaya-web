@@ -87,7 +87,7 @@ export function Footer() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-[#FFF7E8]/75 transition hover:text-[#F36B21] focus-visible:outline"
+                      className="text-[#FFF7E8]/75 transition hover:text-[#FF8A00] focus-visible:outline"
                     >
                       {item.label}
                     </Link>
@@ -102,7 +102,7 @@ export function Footer() {
           {socialLinks.map((social) => (
             <span
               key={social.label}
-              className="grid size-10 place-items-center rounded-full border border-[#E7EFE2]/25 text-[#E7EFE2] transition hover:border-[#F36B21] hover:text-[#F36B21]"
+              className="grid size-10 place-items-center rounded-full border border-[#E7EFE2]/25 text-[#E7EFE2] transition hover:border-[#FF8A00] hover:text-[#FF8A00]"
               aria-label={social.label}
               role="img"
             >
@@ -171,7 +171,7 @@ function BackToTop() {
           transition={{ duration: 0.25 }}
           whileHover={{ y: -3 }}
           aria-label="Volver arriba"
-          className="fixed bottom-6 right-6 z-40 grid size-11 place-items-center rounded-full bg-[#F36B21] text-[#FFF7E8] shadow-lg transition hover:bg-[#e2601a] focus-visible:outline"
+          className="fixed bottom-6 right-6 z-40 grid size-11 place-items-center rounded-full bg-[#FF8A00] text-[#FFF7E8] shadow-lg transition hover:bg-[#E67C00] focus-visible:outline"
         >
           <ChevronUp className="size-5" aria-hidden="true" />
         </motion.button>

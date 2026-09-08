@@ -1,7 +1,11 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+
 import type { EventCategory } from "@/data/events/categories";
 import type { EventCategoryId } from "@/types/events";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface EventCategoryNavProps {
   categories: EventCategory[];
@@ -14,24 +18,58 @@ export function EventCategoryNav({
   activeCategory,
   onChange,
 }: EventCategoryNavProps) {
+  const reducedMotion = useReducedMotion();
+  const navRef = useRef<HTMLElement>(null);
+  const [dotX, setDotX] = useState<number | null>(null);
+
+  const sync = useCallback(() => {
+    const nav = navRef.current;
+    const activeEl = nav?.querySelector<HTMLElement>('[data-active="true"]');
+    if (!nav || !activeEl) return;
+
+    setDotX(activeEl.offsetLeft + activeEl.offsetWidth / 2);
+
+    const navRect = nav.getBoundingClientRect();
+    const elRect = activeEl.getBoundingClientRect();
+    if (elRect.left < navRect.left || elRect.right > navRect.right) {
+      nav.scrollTo({
+        left:
+          nav.scrollLeft +
+          (elRect.left - navRect.left) -
+          navRect.width / 2 +
+          elRect.width / 2,
+        behavior: reducedMotion ? "auto" : "smooth",
+      });
+    }
+  }, [reducedMotion]);
+
+  useEffect(() => {
+    sync();
+    window.addEventListener("resize", sync);
+    return () => window.removeEventListener("resize", sync);
+  }, [sync, activeCategory, categories]);
+
   return (
     <div
-      className="sticky top-0 z-40 bg-[color:var(--carta-ribbon,#FF8A00)]"
+      className="sticky top-0 z-[55] bg-[color:var(--carta-ribbon,#FF8A00)]"
       style={{
         fontFamily:
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",
       }}
     >
       <nav
+        ref={navRef}
         aria-label="Categorías de eventos"
         className="
+          relative
           flex
           items-center
-          gap-7
+          gap-5
           overflow-x-auto
-          px-5
-          py-4
-          sm:gap-10
+          overscroll-x-contain
+          px-4
+          py-2
+          sm:gap-9
           sm:px-8
           lg:justify-between
           lg:gap-4
@@ -49,24 +87,39 @@ export function EventCategoryNav({
               type="button"
               onClick={() => onChange(category.id)}
               aria-current={active ? "true" : undefined}
-              className={`
-                shrink-0
-                whitespace-nowrap
-                py-1
-                text-[13px]
-                font-extrabold
-                uppercase
-                tracking-[0.06em]
-                text-[#141414]
-                transition-opacity duration-200 motion-reduce:transition-none
-                sm:text-sm
-                ${active ? "opacity-100" : "opacity-65 hover:opacity-100"}
-              `}
+              data-active={active ? "true" : undefined}
+              className="relative shrink-0 whitespace-nowrap px-2.5 pb-4 pt-1.5 text-xs font-extrabold uppercase tracking-[0.05em] sm:text-[13px]"
             >
-              {category.name}
+              <span
+                className={`
+                  block origin-center transition-[color,opacity,transform]
+                  duration-300 ease-out motion-reduce:transition-none
+                  ${
+                    active
+                      ? "scale-[1.08] text-[#FFF7E8] opacity-100"
+                      : "text-[#302E2A] opacity-50 hover:opacity-80"
+                  }
+                `}
+              >
+                {category.name}
+              </span>
             </button>
           );
         })}
+
+        {dotX !== null && (
+          <motion.span
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-1 left-0 -ml-[3px] h-1.5 w-1.5 rounded-full bg-[#FFF7E8]"
+            initial={false}
+            animate={{ x: dotX }}
+            transition={
+              reducedMotion
+                ? { duration: 0 }
+                : { type: "spring", stiffness: 420, damping: 34 }
+            }
+          />
+        )}
       </nav>
     </div>
   );

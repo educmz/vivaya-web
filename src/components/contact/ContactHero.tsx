@@ -12,7 +12,7 @@ export function ContactHero() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#FFF7E8] text-[#3E2A1B]">
+    <section className="relative overflow-hidden bg-[#FFF7E8] text-[#302E2A]">
       <Container className="relative grid min-h-[68svh] items-center gap-8 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
         {/* Texto */}
         <div className="relative z-20">
@@ -25,7 +25,7 @@ export function ContactHero() {
                 initial={reducedMotion ? false : { y: "110%" }}
                 animate={{ y: "0%" }}
                 transition={{ duration: 1, ease }}
-                className="font-accent text-[clamp(5rem,12vw,10.5rem)] leading-[0.95] text-[#E8792E]"
+                className="font-accent text-[clamp(5rem,12vw,10.5rem)] leading-[0.95] text-[#FF8A00]"
               >
                 Contacto
               </motion.h1>
@@ -38,7 +38,7 @@ export function ContactHero() {
             transition={{ duration: 0.7, delay: 0.35, ease }}
             className="mt-7 flex flex-col gap-5"
           >
-            <p className="max-w-sm text-base font-normal leading-7 text-[#3E2A1B]/70 sm:text-lg">
+            <p className="max-w-sm text-base font-normal leading-7 text-[#302E2A]/70 sm:text-lg">
               ¿Tienes una pregunta o quieres saber más? Escríbenos, nos encanta
               conversar.
             </p>
@@ -57,7 +57,7 @@ export function ContactHero() {
             <motion.div
               animate={reducedMotion ? undefined : { scale: [1, 1.05, 1] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="h-full w-full rounded-full bg-[#E8792E]"
+              className="h-full w-full rounded-full bg-[#FF8A00]"
             />
           </motion.div>
 
@@ -71,7 +71,7 @@ export function ContactHero() {
             <motion.div
               animate={reducedMotion ? undefined : { scale: [1, 1.035, 1], rotate: [0, 4, 0] }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="h-full w-full rounded-full border border-[#3E2A1B]/15"
+              className="h-full w-full rounded-full border border-[#302E2A]/15"
             />
           </motion.div>
 
@@ -139,7 +139,7 @@ export function ContactHero() {
             initial={reducedMotion ? false : { opacity: 0, y: -16, scale: 0.85 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.85, ease }}
-            className="absolute right-[0%] top-[12%] z-30 hidden rotate-6 rounded-full bg-[#3E2A1B] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#FFF7E8] xl:block"
+            className="absolute right-[0%] top-[12%] z-30 hidden rotate-6 rounded-full bg-[#302E2A] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#FFF7E8] xl:block"
           >
             <motion.span
               className="inline-block"
@@ -154,7 +154,7 @@ export function ContactHero() {
             initial={reducedMotion ? false : { opacity: 0, y: 16, scale: 0.85 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.95, ease }}
-            className="absolute bottom-[15%] left-[-3%] z-30 hidden -rotate-5 rounded-full bg-[#E8792E] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#3E2A1B] shadow-lg shadow-[#3E2A1B]/10 xl:block"
+            className="absolute bottom-[15%] left-[-3%] z-30 hidden -rotate-5 rounded-full bg-[#FF8A00] px-5 py-3 text-xs font-black uppercase tracking-[0.17em] text-[#302E2A] shadow-lg shadow-[#302E2A]/10 xl:block"
           >
             <motion.span
               className="inline-block"
@@ -176,7 +176,7 @@ function ContactTicker() {
   const repeated = [...channels, ...channels, ...channels, ...channels];
 
   return (
-    <div className="relative overflow-hidden border-y border-[#3E2A1B]/15 bg-[#3F7D4F] py-4 text-[#FFF7E8]">
+    <div className="relative overflow-hidden border-y border-[#302E2A]/15 bg-[#3F7D4F] py-4 text-[#FFF7E8]">
       <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: repeated.length * 3, ease: "linear", repeat: Infinity }} className="flex w-max whitespace-nowrap">
         {[...repeated, ...repeated].map((label, index) => (
           <div key={`${label}-${index}`} className="flex items-center gap-7 pr-7 text-sm font-black uppercase tracking-[0.2em]">

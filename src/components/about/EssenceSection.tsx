@@ -25,11 +25,16 @@ export function EssenceSection() {
       <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10">
         {/* CABECERA */}
         <div className="mb-10 sm:mb-12 lg:mb-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#F07D42] sm:text-sm">
+          <p
+            className="text-2xl text-[#FF8A00] sm:text-3xl"
+            style={{
+              fontFamily: "var(--font-script), 'Pacifico', cursive",
+            }}
+          >
             Nuestra esencia
           </p>
 
-          <h2 className="mt-3 text-4xl font-semibold tracking-[-0.045em] text-[#302E2A] sm:text-5xl lg:text-6xl">
+          <h2 className="mt-4 text-4xl font-bold tracking-[-0.02em] text-[#302E2A] sm:text-5xl lg:text-6xl">
             Lo que nos mueve.
           </h2>
         </div>
@@ -72,12 +77,12 @@ export function EssenceSection() {
                 className="
                   max-w-[320px]
                   text-3xl
-                  font-semibold
-                  leading-[1]
-                  tracking-[-0.045em]
+                  font-bold
+                  leading-[1.05]
+                  tracking-[-0.02em]
                   text-[#302E2A]
                   sm:text-4xl
-                  lg:text-[2.7rem]
+                  lg:text-[2.5rem]
                 "
               >
                 {item.title}

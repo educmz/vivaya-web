@@ -64,23 +64,23 @@ export function EventCard({
       {/* INFORMACIÓN */}
       <div className="flex flex-1 flex-col px-5 pb-6 pt-5">
         <div className="flex items-start justify-between gap-4">
-          <h3 className="text-lg font-extrabold uppercase leading-tight tracking-[0.01em] text-[#141414]">
+          <h3 className="text-lg font-extrabold uppercase leading-tight tracking-[0.01em] text-[#302E2A]">
             {eventPackage.name}
           </h3>
 
           <div className="shrink-0 text-right">
-            <span className="block text-[10px] font-bold uppercase tracking-[0.1em] text-[#141414]/45">
+            <span className="block text-[10px] font-bold uppercase tracking-[0.1em] text-[#302E2A]/45">
               Desde
             </span>
 
-            <span className="mt-1 block text-base font-extrabold text-[#141414]">
+            <span className="mt-1 block text-base font-extrabold text-[#302E2A]">
               S/ {eventPackage.priceFrom.toFixed(2)}
             </span>
           </div>
         </div>
 
         {eventPackage.description && (
-          <p className="mt-3 text-[13px] leading-5 text-[#141414]">
+          <p className="mt-3 text-[13px] leading-5 text-[#302E2A]">
             {eventPackage.description}
           </p>
         )}
@@ -90,7 +90,7 @@ export function EventCard({
           {eventPackage.includes.slice(0, 4).map((includedItem) => (
             <li
               key={includedItem}
-              className="flex gap-2 text-[13px] leading-5 text-[#141414]/75"
+              className="flex gap-2 text-[13px] leading-5 text-[#302E2A]/75"
             >
               <span
                 aria-hidden="true"
@@ -103,7 +103,7 @@ export function EventCard({
         </ul>
 
         {eventPackage.includes.length > 4 && (
-          <p className="mt-3 text-xs font-bold text-[#141414]/55">
+          <p className="mt-3 text-xs font-bold text-[#302E2A]/55">
             + {eventPackage.includes.length - 4} más
           </p>
         )}
@@ -112,7 +112,7 @@ export function EventCard({
         {(eventPackage.durationHours ||
           eventPackage.staffCount ||
           eventPackage.cartsCount) && (
-          <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-[#141414]/10 pt-4 text-xs text-[#141414]/70">
+          <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-[#302E2A]/10 pt-4 text-xs text-[#302E2A]/70">
             {eventPackage.durationHours && (
               <span>{eventPackage.durationHours} h de servicio</span>
             )}
@@ -138,7 +138,7 @@ export function EventCard({
           <button
             type="button"
             onClick={() => onDetails(eventPackage)}
-            className="flex min-h-12 w-full items-center justify-center bg-[#141414] px-5 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[#333] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            className="flex min-h-12 w-full items-center justify-center bg-[#302E2A] px-5 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[#454039] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             Ver detalles
           </button>

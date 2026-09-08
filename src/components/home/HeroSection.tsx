@@ -98,13 +98,13 @@ export function HeroSection() {
               aria-current={index === activeSlide ? "true" : undefined}
               className="grid size-8 place-items-center rounded-full"
             >
-              <span aria-hidden="true" className={`h-2 rounded-full transition-[width,background-color] duration-200 motion-reduce:transition-none ${index === activeSlide ? "w-6 bg-[#F4A06D]" : "w-2 bg-[#302E2A]/20"}`} />
+              <span aria-hidden="true" className={`h-2 rounded-full transition-[width,background-color] duration-200 motion-reduce:transition-none ${index === activeSlide ? "w-6 bg-[#FF8A00]" : "w-2 bg-[#302E2A]/20"}`} />
             </button>
           ))}
         </div>
         <Link
           href="/menu"
-          className="group mt-5 inline-flex min-h-12 items-center justify-center gap-5 whitespace-nowrap rounded-full bg-[#F4A06D] py-2 pl-7 pr-2 text-sm font-semibold text-[#4B2D1E] transition-colors duration-200 hover:bg-[#EE925C] focus-visible:outline-2 focus-visible:outline-offset-4"
+          className="group mt-5 inline-flex min-h-12 items-center justify-center gap-5 whitespace-nowrap rounded-full bg-[#FF8A00] py-2 pl-7 pr-2 text-sm font-semibold text-[#302E2A] transition-colors duration-200 hover:bg-[#E67C00] focus-visible:outline-2 focus-visible:outline-offset-4"
         >
           Ver carta
         </Link>

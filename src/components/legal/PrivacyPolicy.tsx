@@ -23,7 +23,7 @@ const rights = [
 
 export function PrivacyPolicy() {
   return (
-    <div className="relative overflow-hidden bg-[#FFF7E8] pt-24 text-[#3E2A1B] sm:pt-[100px] lg:pt-[108px]">
+    <div className="relative overflow-hidden bg-[#FFF7E8] pt-24 text-[#302E2A] sm:pt-[100px] lg:pt-[108px]">
       {/* Decoración pastel */}
       <div
         className="pointer-events-none absolute -left-32 top-36 size-[26rem] rounded-full bg-[#F7CFAE]/35 blur-[110px]"
@@ -42,18 +42,18 @@ export function PrivacyPolicy() {
               Política de privacidad
             </p>
 
-            <h1 className="font-accent mt-5 max-w-3xl text-[clamp(3.2rem,8vw,6.6rem)] leading-[0.82] text-[#E8792E]">
+            <h1 className="font-accent mt-5 max-w-3xl text-[clamp(3.2rem,8vw,6.6rem)] leading-[0.82] text-[#FF8A00]">
               Tu información,
               <br />
               siempre clara.
             </h1>
 
-            <p className="mt-7 max-w-xl text-base leading-7 text-[#3E2A1B]/70 sm:text-lg">
+            <p className="mt-7 max-w-xl text-base leading-7 text-[#302E2A]/70 sm:text-lg">
               Te contamos de forma sencilla cómo tratamos la información
               relacionada con tu visita a Vivanya.
             </p>
 
-            <p className="mt-7 text-xs font-bold uppercase tracking-[0.16em] text-[#3E2A1B]/45">
+            <p className="mt-7 text-xs font-bold uppercase tracking-[0.16em] text-[#302E2A]/45">
               Última actualización · Septiembre de 2026
             </p>
           </div>
@@ -148,7 +148,7 @@ export function PrivacyPolicy() {
                     className="rounded-[1.35rem] border border-[#073B3A]/10 bg-[#F7FBF3]/75 p-5"
                   >
                     <p className="font-bold text-[#073B3A]">{right.name}</p>
-                    <p className="mt-1 text-sm leading-6 text-[#3E2A1B]/65">
+                    <p className="mt-1 text-sm leading-6 text-[#302E2A]/65">
                       {right.description}
                     </p>
                   </div>
@@ -165,7 +165,7 @@ export function PrivacyPolicy() {
                 href="https://www.gob.pe/9270-que-son-los-derechos-arco"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-flex font-bold text-[#3F7D4F] underline decoration-[#3F7D4F]/30 underline-offset-4 transition hover:text-[#E8792E]"
+                className="mt-5 inline-flex font-bold text-[#3F7D4F] underline decoration-[#3F7D4F]/30 underline-offset-4 transition hover:text-[#FF8A00]"
               >
                 Conoce más sobre tus derechos en la ANPD
               </Link>
@@ -191,7 +191,7 @@ export function PrivacyPolicy() {
                 Privacidad
               </p>
 
-              <p className="font-accent mt-3 text-4xl leading-none text-[#F7B87A] sm:text-5xl">
+              <p className="font-accent mt-3 text-4xl leading-none text-[#FF8A00] sm:text-5xl">
                 Simple y transparente.
               </p>
 
@@ -220,7 +220,7 @@ function PrivacySection({
   return (
     <section className="border-t border-[#073B3A]/12 py-10 sm:grid sm:grid-cols-[7rem_1fr] sm:gap-6 sm:py-12">
       <div className="mb-4 sm:mb-0">
-        <span className="font-accent text-3xl font-bold text-[#E8792E]">
+        <span className="font-accent text-3xl font-bold text-[#FF8A00]">
           {number}
         </span>
       </div>
@@ -230,7 +230,7 @@ function PrivacySection({
           {title}
         </h2>
 
-        <div className="mt-5 max-w-2xl space-y-4 text-[0.95rem] leading-7 text-[#3E2A1B]/72 sm:text-base">
+        <div className="mt-5 max-w-2xl space-y-4 text-[0.95rem] leading-7 text-[#302E2A]/72 sm:text-base">
           {children}
         </div>
       </div>

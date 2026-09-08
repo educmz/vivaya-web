@@ -80,7 +80,7 @@ export function Header() {
 
         <div className="relative z-50 ml-auto hidden items-center gap-2 lg:flex" aria-label="Redes sociales">
           {socialLinks.map((social) => {
-            const styles = "grid size-10 place-items-center rounded-full bg-[#FF6422] text-white transition duration-300 hover:-translate-y-1 hover:bg-[#E95718]";
+            const styles = "grid size-10 place-items-center rounded-full bg-[#FF8A00] text-white transition duration-300 hover:-translate-y-1 hover:bg-[#E67C00]";
 
             return social.href ? (
               <a key={social.label} href={social.href} target="_blank" rel="noreferrer" aria-label={social.label} className={styles}>

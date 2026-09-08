@@ -245,7 +245,7 @@ export function OrangeHeroExperience() {
               text-[2.4rem]
               font-bold
               leading-none
-              text-[#FF6422]
+              text-[#FF8A00]
               xl:text-[3rem]
             "
           >
@@ -610,7 +610,7 @@ export function OrangeHeroExperience() {
           lg:hidden
         "
       >
-        <p className="font-accent text-3xl font-bold text-[#FF6422]">
+        <p className="font-accent text-3xl font-bold text-[#FF8A00]">
           <motion.span
             className="inline-block"
             animate={

@@ -29,7 +29,7 @@ export function CartaMenuCard({
   const rappiEnabled = isSafeExternalUrl(rappiUrl);
 
   const buttonClass =
-    "flex min-h-12 w-full items-center justify-center bg-[#141414] px-5 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[#333] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+    "flex min-h-12 w-full items-center justify-center bg-[#302E2A] px-5 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[#454039] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
   return (
     <motion.article
@@ -87,11 +87,11 @@ export function CartaMenuCard({
 
       {/* INFORMACIÓN */}
       <div className="flex flex-1 flex-col px-5 pb-6 pt-5">
-        <h3 className="text-lg font-extrabold uppercase leading-tight tracking-[0.01em] text-[#141414]">
+        <h3 className="text-lg font-extrabold uppercase leading-tight tracking-[0.01em] text-[#302E2A]">
           {item.name}
         </h3>
 
-        <p className="mt-3 text-[13px] leading-5 text-[#141414]">
+        <p className="mt-3 text-[13px] leading-5 text-[#302E2A]">
           {item.description}
         </p>
 

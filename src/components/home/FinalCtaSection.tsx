@@ -78,13 +78,13 @@ export function FinalCtaSection() {
                 items-center
                 justify-center
                 rounded-full
-                bg-[#F36B2B]
+                bg-[#FF8A00]
                 px-7
                 text-sm
                 font-semibold
                 text-white
                 transition-colors
-                hover:bg-[#E85D20]
+                hover:bg-[#E67C00]
               "
             >
               Ver carta

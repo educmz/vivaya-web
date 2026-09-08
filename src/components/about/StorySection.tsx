@@ -14,8 +14,8 @@ export function StorySection() {
     <section className="bg-[#FFF9F3] py-16 sm:py-20 lg:py-24">
       <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10">
         <div className="mb-10 max-w-3xl sm:mb-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#F07D42] sm:text-sm">Nuestra historia</p>
-          <h2 className="mt-3 text-4xl font-semibold leading-[1] tracking-[-0.045em] text-[#302E2A] sm:text-5xl lg:text-6xl">
+          <p className="text-2xl text-[#FF8A00] sm:text-3xl" style={{ fontFamily: "var(--font-script), 'Pacifico', cursive" }}>Nuestra historia</p>
+          <h2 className="mt-4 text-4xl font-bold leading-[1.08] tracking-[-0.02em] text-[#302E2A] sm:text-5xl lg:text-6xl">
             Todo empieza con<br />una buena idea.
           </h2>
         </div>

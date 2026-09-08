@@ -103,7 +103,7 @@ export function EventDetailsModal({
             flex
             items-end
             justify-center
-            bg-[#141414]/40
+            bg-[#302E2A]/40
             p-0
             backdrop-blur-[2px]
             sm:items-center
@@ -178,7 +178,7 @@ export function EventDetailsModal({
                 justify-center
                 rounded-full
                 bg-white/90
-                text-[#141414]
+                text-[#302E2A]
                 shadow-sm
                 backdrop-blur
                 transition-colors
@@ -203,30 +203,30 @@ export function EventDetailsModal({
             <div className="p-6 sm:p-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#141414]/50">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#302E2A]/50">
                     Eventos VIVAYA
                   </p>
 
                   <h2
                     id="event-modal-title"
-                    className="mt-2 text-3xl font-extrabold uppercase leading-tight tracking-[0.01em] text-[#141414]"
+                    className="mt-2 text-3xl font-extrabold uppercase leading-tight tracking-[0.01em] text-[#302E2A]"
                   >
                     {eventPackage.name}
                   </h2>
 
                   {eventPackage.description && (
-                    <p className="mt-3 max-w-xl text-sm leading-6 text-[#141414]/60">
+                    <p className="mt-3 max-w-xl text-sm leading-6 text-[#302E2A]/60">
                       {eventPackage.description}
                     </p>
                   )}
                 </div>
 
                 <div className="shrink-0 sm:text-right">
-                  <span className="block text-xs text-[#141414]/60">
+                  <span className="block text-xs text-[#302E2A]/60">
                     Desde
                   </span>
 
-                  <span className="mt-1 block text-2xl font-extrabold text-[#141414]">
+                  <span className="mt-1 block text-2xl font-extrabold text-[#302E2A]">
                     S/{" "}
                     {eventPackage.priceFrom.toFixed(
                       2,
@@ -239,11 +239,11 @@ export function EventDetailsModal({
               {eventPackage.pricing &&
                 eventPackage.pricing.length > 0 && (
                   <section className="mt-8">
-                    <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#141414]">
+                    <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#302E2A]">
                       Opciones
                     </h3>
 
-                    <div className="mt-3 divide-y divide-[#141414]/10 overflow-hidden rounded-2xl border border-[#141414]/10 bg-white">
+                    <div className="mt-3 divide-y divide-[#302E2A]/10 overflow-hidden rounded-2xl border border-[#302E2A]/10 bg-white">
                       {eventPackage.pricing.map(
                         (option) => (
                           <div
@@ -251,18 +251,18 @@ export function EventDetailsModal({
                             className="flex items-center justify-between gap-4 px-4 py-3.5"
                           >
                             <div>
-                              <p className="text-sm font-medium text-[#141414]">
+                              <p className="text-sm font-medium text-[#302E2A]">
                                 {option.label}
                               </p>
 
                               {option.note && (
-                                <p className="mt-1 text-xs text-[#141414]/60">
+                                <p className="mt-1 text-xs text-[#302E2A]/60">
                                   {option.note}
                                 </p>
                               )}
                             </div>
 
-                            <span className="shrink-0 text-sm font-extrabold text-[#141414]">
+                            <span className="shrink-0 text-sm font-extrabold text-[#302E2A]">
                               S/{" "}
                               {option.price.toFixed(
                                 2,
@@ -277,7 +277,7 @@ export function EventDetailsModal({
 
               {/* INCLUYE */}
               <section className="mt-8">
-                <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#141414]">
+                <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#302E2A]">
                   Incluye
                 </h3>
 
@@ -286,7 +286,7 @@ export function EventDetailsModal({
                     (includedItem) => (
                       <li
                         key={includedItem}
-                        className="flex gap-3 text-sm leading-5 text-[#141414]/75"
+                        className="flex gap-3 text-sm leading-5 text-[#302E2A]/75"
                       >
                         <span
                           aria-hidden="true"
@@ -309,7 +309,7 @@ export function EventDetailsModal({
                 eventPackage.mobilityIncluded !==
                   undefined) && (
                 <section className="mt-8">
-                  <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#141414]">
+                  <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#302E2A]">
                     Detalles del servicio
                   </h3>
 
@@ -358,7 +358,7 @@ export function EventDetailsModal({
               {eventPackage.notes &&
                 eventPackage.notes.length > 0 && (
                   <section className="mt-8 rounded-2xl bg-[#F5EDDF] p-4">
-                    <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#141414]">
+                    <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#302E2A]">
                       Ten en cuenta
                     </h3>
 
@@ -367,7 +367,7 @@ export function EventDetailsModal({
                         (note) => (
                           <li
                             key={note}
-                            className="text-xs leading-5 text-[#141414]/75"
+                            className="text-xs leading-5 text-[#302E2A]/75"
                           >
                             {note}
                           </li>
@@ -378,7 +378,7 @@ export function EventDetailsModal({
                 )}
 
               {/* CTA */}
-              <div className="mt-8 border-t border-[#141414]/10 pt-6">
+              <div className="mt-8 border-t border-[#302E2A]/10 pt-6">
                 <button
                   type="button"
                   onClick={handleQuote}
@@ -389,7 +389,7 @@ export function EventDetailsModal({
                     w-full
                     items-center
                     justify-center
-                    bg-[#141414]
+                    bg-[#302E2A]
                     px-6
                     text-sm
                     font-bold
@@ -397,7 +397,7 @@ export function EventDetailsModal({
                     tracking-[0.12em]
                     text-white
                     transition-colors
-                    hover:bg-[#333]
+                    hover:bg-[#454039]
                     disabled:cursor-not-allowed
                     disabled:opacity-50
                   "
@@ -406,7 +406,7 @@ export function EventDetailsModal({
                 </button>
 
                 {!whatsappUrl && (
-                  <p className="mt-2 text-center text-xs text-[#141414]/60">
+                  <p className="mt-2 text-center text-xs text-[#302E2A]/60">
                     Configura el número de WhatsApp para habilitar la cotización.
                   </p>
                 )}
@@ -428,11 +428,11 @@ function DetailItem({
 }) {
   return (
     <div className="rounded-2xl bg-white px-4 py-3">
-      <span className="block text-[11px] text-[#141414]/60">
+      <span className="block text-[11px] text-[#302E2A]/60">
         {label}
       </span>
 
-      <span className="mt-1 block text-sm font-semibold text-[#141414]">
+      <span className="mt-1 block text-sm font-semibold text-[#302E2A]">
         {value}
       </span>
     </div>
