@@ -14,9 +14,14 @@ export function EventCategoryNav({
   activeCategory,
   onChange,
 }: EventCategoryNavProps) {
-
   return (
-    <div className="sticky top-0 z-40 bg-[color:var(--carta-ribbon,#FF8A00)]">
+    <div
+      className="sticky top-0 z-40 bg-[color:var(--carta-ribbon,#FF8A00)]"
+      style={{
+        fontFamily:
+          "var(--font-carta), 'Montserrat', system-ui, sans-serif",
+      }}
+    >
       <nav
         aria-label="Categorías de eventos"
         className="
@@ -45,35 +50,20 @@ export function EventCategoryNav({
               onClick={() => onChange(category.id)}
               aria-current={active ? "true" : undefined}
               className={`
-                relative
                 shrink-0
                 whitespace-nowrap
                 py-1
                 text-[13px]
-                font-bold
+                font-extrabold
                 uppercase
                 tracking-[0.06em]
-                transition-colors duration-200 motion-reduce:transition-none
-                
+                text-[#141414]
+                transition-opacity duration-200 motion-reduce:transition-none
                 sm:text-sm
-                ${active ? "text-white" : "text-[#141414]/55 hover:text-[#141414]"}
+                ${active ? "opacity-100" : "opacity-65 hover:opacity-100"}
               `}
             >
               {category.name}
-
-              <span
-                aria-hidden="true"
-                className={`
-                  absolute
-                  -bottom-1
-                  left-0
-                  h-[2px]
-                  bg-white
-                  transition-[width] motion-reduce:transition-none
-                  duration-200
-                  ${active ? "w-full" : "w-0"}
-                `}
-              />
             </button>
           );
         })}

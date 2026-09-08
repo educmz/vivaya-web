@@ -103,7 +103,7 @@ export function EventDetailsModal({
             flex
             items-end
             justify-center
-            bg-[#302E2A]/30
+            bg-[#141414]/40
             p-0
             backdrop-blur-[2px]
             sm:items-center
@@ -145,13 +145,17 @@ export function EventDetailsModal({
               duration: 0.3,
               ease,
             }}
+            style={{
+              fontFamily:
+                "var(--font-carta), 'Montserrat', system-ui, sans-serif",
+            }}
             className="
               relative
               max-h-[92svh]
               w-full
               overflow-y-auto
               rounded-t-[2rem]
-              bg-[#FFF9F3]
+              bg-[#FBF4EF]
               shadow-2xl
               sm:max-w-3xl
               sm:rounded-[2rem]
@@ -174,7 +178,7 @@ export function EventDetailsModal({
                 justify-center
                 rounded-full
                 bg-white/90
-                text-[#302E2A]
+                text-[#141414]
                 shadow-sm
                 backdrop-blur
                 transition-colors
@@ -185,7 +189,7 @@ export function EventDetailsModal({
             </button>
 
             {/* IMAGEN */}
-            <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#F5EEE5]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#F5EDDF]">
               <Image
                 src={eventPackage.image}
                 alt={eventPackage.name}
@@ -199,30 +203,30 @@ export function EventDetailsModal({
             <div className="p-6 sm:p-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
                 <div>
-                  <p className="text-sm font-medium text-[#52734C]">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#141414]/50">
                     Eventos VIVAYA
                   </p>
 
                   <h2
                     id="event-modal-title"
-                    className="mt-2 text-3xl font-semibold leading-tight tracking-[-0.035em] text-[#302E2A]"
+                    className="mt-2 text-3xl font-extrabold uppercase leading-tight tracking-[0.01em] text-[#141414]"
                   >
                     {eventPackage.name}
                   </h2>
 
                   {eventPackage.description && (
-                    <p className="mt-3 max-w-xl text-sm leading-6 text-[#77736D]">
+                    <p className="mt-3 max-w-xl text-sm leading-6 text-[#141414]/60">
                       {eventPackage.description}
                     </p>
                   )}
                 </div>
 
                 <div className="shrink-0 sm:text-right">
-                  <span className="block text-xs text-[#77736D]">
+                  <span className="block text-xs text-[#141414]/60">
                     Desde
                   </span>
 
-                  <span className="mt-1 block text-2xl font-semibold text-[#C96532]">
+                  <span className="mt-1 block text-2xl font-extrabold text-[#141414]">
                     S/{" "}
                     {eventPackage.priceFrom.toFixed(
                       2,
@@ -235,11 +239,11 @@ export function EventDetailsModal({
               {eventPackage.pricing &&
                 eventPackage.pricing.length > 0 && (
                   <section className="mt-8">
-                    <h3 className="text-base font-semibold text-[#302E2A]">
+                    <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#141414]">
                       Opciones
                     </h3>
 
-                    <div className="mt-3 divide-y divide-[#302E2A]/8 overflow-hidden rounded-2xl border border-[#302E2A]/8 bg-white">
+                    <div className="mt-3 divide-y divide-[#141414]/10 overflow-hidden rounded-2xl border border-[#141414]/10 bg-white">
                       {eventPackage.pricing.map(
                         (option) => (
                           <div
@@ -247,18 +251,18 @@ export function EventDetailsModal({
                             className="flex items-center justify-between gap-4 px-4 py-3.5"
                           >
                             <div>
-                              <p className="text-sm font-medium text-[#302E2A]">
+                              <p className="text-sm font-medium text-[#141414]">
                                 {option.label}
                               </p>
 
                               {option.note && (
-                                <p className="mt-1 text-xs text-[#77736D]">
+                                <p className="mt-1 text-xs text-[#141414]/60">
                                   {option.note}
                                 </p>
                               )}
                             </div>
 
-                            <span className="shrink-0 text-sm font-semibold text-[#C96532]">
+                            <span className="shrink-0 text-sm font-extrabold text-[#141414]">
                               S/{" "}
                               {option.price.toFixed(
                                 2,
@@ -273,7 +277,7 @@ export function EventDetailsModal({
 
               {/* INCLUYE */}
               <section className="mt-8">
-                <h3 className="text-base font-semibold text-[#302E2A]">
+                <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#141414]">
                   Incluye
                 </h3>
 
@@ -282,11 +286,11 @@ export function EventDetailsModal({
                     (includedItem) => (
                       <li
                         key={includedItem}
-                        className="flex gap-3 text-sm leading-5 text-[#5F5B55]"
+                        className="flex gap-3 text-sm leading-5 text-[#141414]/75"
                       >
                         <span
                           aria-hidden="true"
-                          className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#A8CFA3]"
+                          className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF8A00]"
                         />
 
                         <span>
@@ -305,7 +309,7 @@ export function EventDetailsModal({
                 eventPackage.mobilityIncluded !==
                   undefined) && (
                 <section className="mt-8">
-                  <h3 className="text-base font-semibold text-[#302E2A]">
+                  <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#141414]">
                     Detalles del servicio
                   </h3>
 
@@ -353,8 +357,8 @@ export function EventDetailsModal({
               {/* NOTAS */}
               {eventPackage.notes &&
                 eventPackage.notes.length > 0 && (
-                  <section className="mt-8 rounded-2xl bg-[#FDE8D8]/65 p-4">
-                    <h3 className="text-sm font-semibold text-[#302E2A]">
+                  <section className="mt-8 rounded-2xl bg-[#F5EDDF] p-4">
+                    <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#141414]">
                       Ten en cuenta
                     </h3>
 
@@ -363,7 +367,7 @@ export function EventDetailsModal({
                         (note) => (
                           <li
                             key={note}
-                            className="text-xs leading-5 text-[#6E6158]"
+                            className="text-xs leading-5 text-[#141414]/75"
                           >
                             {note}
                           </li>
@@ -374,23 +378,26 @@ export function EventDetailsModal({
                 )}
 
               {/* CTA */}
-              <div className="mt-8 border-t border-[#302E2A]/8 pt-6">
+              <div className="mt-8 border-t border-[#141414]/10 pt-6">
                 <button
                   type="button"
                   onClick={handleQuote}
                   disabled={!whatsappUrl}
                   className="
+                    flex
                     min-h-12
                     w-full
-                    rounded-full
-                    bg-[#A8CFA3]
+                    items-center
+                    justify-center
+                    bg-[#141414]
                     px-6
-                    py-3
                     text-sm
-                    font-semibold
-                    text-[#30482C]
+                    font-bold
+                    uppercase
+                    tracking-[0.12em]
+                    text-white
                     transition-colors
-                    hover:bg-[#98BE92]
+                    hover:bg-[#333]
                     disabled:cursor-not-allowed
                     disabled:opacity-50
                   "
@@ -399,7 +406,7 @@ export function EventDetailsModal({
                 </button>
 
                 {!whatsappUrl && (
-                  <p className="mt-2 text-center text-xs text-[#77736D]">
+                  <p className="mt-2 text-center text-xs text-[#141414]/60">
                     Configura el número de WhatsApp para habilitar la cotización.
                   </p>
                 )}
@@ -421,11 +428,11 @@ function DetailItem({
 }) {
   return (
     <div className="rounded-2xl bg-white px-4 py-3">
-      <span className="block text-[11px] text-[#77736D]">
+      <span className="block text-[11px] text-[#141414]/60">
         {label}
       </span>
 
-      <span className="mt-1 block text-sm font-semibold text-[#302E2A]">
+      <span className="mt-1 block text-sm font-semibold text-[#141414]">
         {value}
       </span>
     </div>

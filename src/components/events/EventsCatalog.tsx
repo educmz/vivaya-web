@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { EventCard } from "@/components/events/EventCard";
 import { EventCategoryNav } from "@/components/events/EventsCategoryNav";
 import { EventDetailsModal } from "@/components/events/EventDetailsModal";
@@ -95,18 +95,27 @@ export function EventCatalog() {
 
 
   return (
-    <section className="min-h-screen bg-[#FFF9F3] text-[#302E2A]">
+    <section
+      className="min-h-screen text-[color:var(--carta-ink)]"
+      style={{
+        fontFamily:
+          "var(--font-carta), 'Montserrat', system-ui, sans-serif",
+        background: "#FBF4EF",
+        "--carta-ink": "#141414",
+        "--carta-ribbon": "#FF8A00",
+      } as CSSProperties}
+    >
       <h1 className="sr-only">Eventos Vivaya</h1>
       <EventCategoryNav
         categories={sections.map(({ category }) => category)}
         activeCategory={activeCategory}
         onChange={goToCategory}
       />
-      <div className="mx-auto max-w-7xl px-5 pb-24 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl px-5 pb-28 sm:px-8 lg:px-10">
         {sections.map(({ category, items }) => (
           <section key={category.id} id={`eventos-${category.id}`} data-category={category.id} aria-labelledby={`eventos-title-${category.id}`} className="scroll-mt-16 pt-16 sm:pt-24">
-            <h2 id={`eventos-title-${category.id}`} className="border-b border-[#302E2A]/10 pb-5 text-3xl font-semibold tracking-[-0.025em] sm:text-4xl">{category.name}</h2>
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <h2 id={`eventos-title-${category.id}`} className="text-center text-4xl font-extrabold uppercase tracking-[0.01em] text-[color:var(--carta-ink)] sm:text-5xl lg:text-6xl">{category.name}</h2>
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
               {items.map((eventPackage, index) => (
                 <EventCard key={eventPackage.id} eventPackage={eventPackage} index={index} onDetails={setSelectedEvent} />
               ))}
