@@ -1,0 +1,32 @@
+﻿import Image from "next/image";
+
+const storyImages = [
+  { src: "/images/about/about-lifestyle.webp", alt: "Experiencia VIVAYA", layout: "col-start-1 row-start-1 row-span-2 lg:row-span-3" },
+  { src: "/images/about/about-product.webp", alt: "Productos VIVAYA", layout: "col-start-2 row-start-1" },
+  { src: "/images/about/about-machine.webp", alt: "Preparación en VIVAYA", layout: "col-start-2 row-start-2 row-span-2" },
+  { src: "/images/about/about-team.webp", alt: "Equipo VIVAYA", layout: "col-start-1 row-start-3 lg:col-start-3 lg:row-start-1" },
+  { src: "/images/about/about-lifestyle.webp", alt: "Momentos para compartir en VIVAYA", layout: "col-start-1 row-start-4 row-span-2 lg:col-start-3 lg:row-start-2" },
+  { src: "/images/about/about-product.webp", alt: "Sabores VIVAYA", layout: "col-start-2 row-start-4 row-span-2 lg:col-start-4 lg:row-start-1 lg:row-span-3" },
+];
+
+export function StorySection() {
+  return (
+    <section className="bg-[#FFF9F3] py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10">
+        <div className="mb-10 max-w-3xl sm:mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#F07D42] sm:text-sm">Nuestra historia</p>
+          <h2 className="mt-3 text-4xl font-semibold leading-[1] tracking-[-0.045em] text-[#302E2A] sm:text-5xl lg:text-6xl">
+            Todo empieza con<br />una buena idea.
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 auto-rows-[clamp(120px,24vw,220px)] gap-0 overflow-hidden lg:grid-cols-4 lg:auto-rows-[clamp(160px,16vw,240px)]">
+          {storyImages.map((image, index) => (
+            <div key={`${image.src}-${index}`} className={`relative min-w-0 overflow-hidden bg-[#E9E5DE] ${image.layout}`}>
+              <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1440px) 340px, (min-width: 1024px) 25vw, 50vw" className="object-cover object-center" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
