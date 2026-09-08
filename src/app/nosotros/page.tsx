@@ -1,36 +1,26 @@
 import type { Metadata } from "next";
 
-import { AboutClosing } from "@/components/about/AboutClosing";
-import { AboutGallery } from "@/components/about/AboutGallery";
-import { AboutTimeline } from "@/components/about/AboutTimeline";
-import { AboutValues } from "@/components/about/AboutValues";
 import { PanoramicBanner } from "@/components/sections/PanoramicBanner";
+import { EssenceSection } from "@/components/about/EssenceSection";
+import { StorySection } from "@/components/about/StorySection";
+import { TimelineSection } from "@/components/about/TimelineSection";
+import { VivayaSection } from "@/components/about/VivayaSection";
 
 export const metadata: Metadata = {
-  title: "Nosotros",
+  title: "Nosotros | VIVAYA",
   description:
-    "Conoce la esencia de Vivaya, nuestra historia y nuestra forma de activar lo natural.",
+    "Conoce la historia, esencia y propuesta que hay detrás de VIVAYA.",
 };
 
 export default function AboutPage() {
   return (
-    <div
-      className="
-        bg-[#FFF7E8]
-        pt-16 lg:pt-[72px]
-        text-[#073B3A]
-        [--background:#FFF7E8]
-        [--foreground:#073B3A]
-        [--primary:#FF8A00]
-        [--secondary:#E9F5EE]
-        [--accent:#FFB347]
-      "
-    >
+    <div className="bg-[#FFF9F3] pt-16 lg:pt-[72px]">
+      <h1 className="sr-only">Nosotros VIVAYA</h1>
       <PanoramicBanner />
-      <AboutTimeline />
-      <AboutGallery />
-      <AboutValues />
-      <AboutClosing />
+      <VivayaSection />
+      <TimelineSection />
+      <EssenceSection />
+      <StorySection />
     </div>
   );
 }
