@@ -1,60 +1,115 @@
-﻿import Image from "next/image";
+"use client";
+
+import Image from "next/image";
+import { motion } from "motion/react";
 import { ArrowUpRight, MapPin } from "lucide-react";
+
 import type { VivayaLocation } from "@/data/locations";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 interface LocationCardProps {
   location: VivayaLocation;
+  index: number;
 }
 
-export function LocationCard({ location }: LocationCardProps) {
-  const hasMapsUrl = Boolean(location.mapsUrl && location.mapsUrl !== "#");
+export function LocationCard({ location, index }: LocationCardProps) {
+  const reducedMotion = useReducedMotion();
+  const hasMapsUrl = Boolean(
+    location.mapsUrl && location.mapsUrl !== "#",
+  );
 
   return (
-    <article className="grid overflow-hidden rounded-lg bg-white p-4 text-[#302E2A] shadow-[0_3px_22px_rgba(60,45,30,0.09)] sm:p-5 md:grid-cols-2 md:gap-5">
-      <div className="flex flex-col justify-center px-2 py-5 sm:px-4 sm:py-6 lg:px-7">
-        <h2 className="font-heading text-2xl uppercase leading-[1.12] sm:text-3xl">
-          <span className="block">VIVAYA</span>
+    <motion.article
+      initial={reducedMotion ? false : { opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.55,
+        delay: index * 0.08,
+        ease,
+      }}
+      className="group grid overflow-hidden bg-white text-[#302E2A] shadow-[0_2px_14px_rgba(48,46,42,0.06)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(48,46,42,0.14)] md:grid-cols-2"
+    >
+      {/* IMAGEN */}
+      <div className="relative aspect-[16/11] overflow-hidden bg-[#F5EDDF] md:aspect-auto md:min-h-[380px]">
+        <Image
+          src={location.image}
+          alt={`Local VIVAYA ${location.name}`}
+          fill
+          sizes="(min-width: 1160px) 560px, (min-width: 768px) 45vw, 92vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        />
+      </div>
+
+      {/* INFO */}
+      <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A00]">
+          Local
+        </p>
+
+        <h2 className="mt-3 text-3xl font-extrabold uppercase leading-[1.05] tracking-[0.01em] sm:text-4xl">
+          <span className="block text-[#302E2A]/35">VIVAYA</span>
           {location.name}
         </h2>
 
-        <address className="mt-5 text-sm not-italic leading-6 text-[#55514C]">
+        <address className="mt-6 flex gap-2.5 text-sm not-italic leading-6 text-[#302E2A]/70">
+          <MapPin
+            size={17}
+            aria-hidden="true"
+            className="mt-0.5 shrink-0 text-[#FF8A00]"
+          />
           {location.address}
         </address>
-        <div className="mt-3 text-sm leading-6 text-[#55514C]">
-          <p className="font-medium text-[#302E2A]">Horario de atención</p>
-          {location.schedule.map((schedule) => <p key={schedule}>{schedule}</p>)}
+
+        <div className="mt-5 text-sm leading-6 text-[#302E2A]/70">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#302E2A]">
+            Horario de atención
+          </p>
+          {location.schedule.map((schedule) => (
+            <p key={schedule} className="mt-1">
+              {schedule}
+            </p>
+          ))}
         </div>
 
-        {location.note && <p className="mt-4 text-sm font-medium text-[#52734C]">{location.note}</p>}
+        {location.note && (
+          <p className="mt-5 text-xs leading-5 text-[#302E2A]/45">
+            {location.note}
+          </p>
+        )}
 
-        <div className="mt-5">
+        <div className="mt-8">
           {hasMapsUrl ? (
             <a
               href={location.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Ver VIVAYA ${location.name} en Google Maps (abre otra pestaña)`}
-              className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-[#FF8A00] px-6 py-3 text-sm font-semibold text-[#302E2A] transition-colors duration-200 hover:bg-[#E67C00] focus-visible:outline-2 focus-visible:outline-offset-4 sm:w-auto"
+              className="group/btn relative inline-flex min-h-14 w-full items-center justify-center overflow-hidden bg-[#302E2A] px-6 text-sm font-bold uppercase tracking-[0.12em] text-white transition-[background-color,translate,scale] duration-200 hover:-translate-y-0.5 hover:bg-[#454039] active:translate-y-0 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:w-auto"
             >
-              <MapPin size={18} aria-hidden="true" />
-              Ver en Google Maps
-              <ArrowUpRight size={18} aria-hidden="true" />
+              <span className="relative z-10 flex items-center gap-2.5">
+                <MapPin size={16} aria-hidden="true" />
+                Ver en Google Maps
+                <ArrowUpRight
+                  size={16}
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 motion-reduce:transition-none"
+                />
+              </span>
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-[650ms] ease-out group-hover/btn:translate-x-full motion-reduce:hidden"
+              />
             </a>
           ) : (
-            <p className="text-sm text-[#77736D]">Ubicación en Google Maps próximamente.</p>
+            <p className="text-sm text-[#302E2A]/45">
+              Ubicación en Google Maps próximamente.
+            </p>
           )}
         </div>
       </div>
-
-      <div className="relative aspect-[16/10] overflow-hidden rounded-sm md:aspect-auto md:min-h-[300px]">
-        <Image
-          src={location.image}
-          alt={`Local VIVAYA ${location.name}`}
-          fill
-          sizes="(min-width: 1120px) 500px, (min-width: 768px) 45vw, 90vw"
-          className="object-cover"
-        />
-      </div>
-    </article>
+    </motion.article>
   );
 }

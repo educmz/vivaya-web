@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function LocationsPage() {
   return (
-    <div className="pt-16 lg:pt-[72px]">
+    <div className="bg-[#FBF4EF] pt-16 lg:pt-[72px]">
       <LocationsCatalog />
     </div>
   );
