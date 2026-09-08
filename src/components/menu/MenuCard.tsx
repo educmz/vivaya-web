@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 
 import type { MenuProduct } from "@/types/catalog";
 import { deliveryConfig } from "@/config/delivery";
@@ -29,7 +30,23 @@ export function CartaMenuCard({
   const rappiEnabled = isSafeExternalUrl(rappiUrl);
 
   const buttonClass =
-    "flex min-h-12 w-full items-center justify-center bg-[#302E2A] px-5 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[#454039] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+    "group/btn relative flex min-h-12 w-full items-center justify-center overflow-hidden bg-[#302E2A] px-5 text-sm font-bold uppercase tracking-[0.12em] text-white transition-[background-color,translate,scale] duration-200 hover:-translate-y-0.5 hover:bg-[#454039] active:translate-y-0 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+
+  const buttonInner = (
+    <>
+      <span className="relative z-10 flex items-center gap-2">
+        Comprar
+        <ArrowRight
+          size={15}
+          className="transition-transform duration-300 group-hover/btn:translate-x-1 motion-reduce:transition-none"
+        />
+      </span>
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-[650ms] ease-out group-hover/btn:translate-x-full motion-reduce:hidden"
+      />
+    </>
+  );
 
   return (
     <motion.article
@@ -103,7 +120,7 @@ export function CartaMenuCard({
               rel="noopener noreferrer"
               className={buttonClass}
             >
-              Comprar
+              {buttonInner}
             </a>
           ) : (
             <button
@@ -111,7 +128,7 @@ export function CartaMenuCard({
               onClick={() => onOrder?.(item)}
               className={buttonClass}
             >
-              Comprar
+              {buttonInner}
             </button>
           )}
         </div>

@@ -29,7 +29,7 @@ export function VivayaSection() {
                 className="inline-block h-9 w-auto translate-y-[3px] sm:h-11 sm:translate-y-[5px]"
                 priority
               />
-              <span className="text-2xl sm:text-3xl">es...</span>
+              <span className="text-2xl sm:text-3xl">es</span>
             </p>
 
             <div className="mt-5">
