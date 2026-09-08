@@ -40,6 +40,8 @@ export interface MenuProduct {
   category: MenuCategoryId;
 
   image: string;
+  // Escala la foto dentro de la card (1 = llena el cuadro, <1 la achica).
+  imageScale?: number;
 
   available: boolean;
   featured?: boolean;

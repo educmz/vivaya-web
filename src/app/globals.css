@@ -24,7 +24,9 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { min-width: 320px; overflow-x: clip; margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-manrope), Arial, Helvetica, sans-serif; text-rendering: optimizeLegibility; }
-button, input, select, textarea { font: inherit; }
+/* Heredar familia/tamaño pero NO el peso, para que las utilidades
+   font-* de Tailwind funcionen en botones e inputs. */
+button, input, select, textarea { font-family: inherit; font-size: 100%; line-height: inherit; letter-spacing: inherit; }
 ::selection { background: var(--accent); color: var(--foreground); }
 :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 

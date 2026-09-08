@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Caveat, Jost, Manrope } from "next/font/google";
+import { Anton, Caveat, Manrope, Montserrat } from "next/font/google";
 
 import { Preloader } from "@/components/animations/Preloader";
 import { Footer } from "@/components/layout/Footer";
@@ -27,11 +27,10 @@ const accentFont = Caveat({
 });
 
 // Sustituto libre de "Novecento" (fuente de pago que usa Pickadeli).
-// Jost es una grotesca geométrica estilo Art Déco, muy cercana a Novecento
-// en mayúsculas. Se usa en la Carta.
-const cartaFont = Jost({
+// Montserrat: grotesca geométrica con pesos hasta 800 (bold real). Carta.
+const cartaFont = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-carta",
 });
 

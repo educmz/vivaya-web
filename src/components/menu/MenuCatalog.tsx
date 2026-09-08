@@ -108,7 +108,7 @@ export function CartaCatalog() {
       className="text-[color:var(--carta-ink)]"
       style={{
         fontFamily:
-          "var(--font-carta), 'Jost', system-ui, sans-serif",
+          "var(--font-carta), 'Montserrat', system-ui, sans-serif",
         background: "#FBF4EF",
         "--carta-ink": "#141414",
         // Cinta de categorías: naranja vibrante (las letras negras se leen bien)
@@ -136,7 +136,7 @@ export function CartaCatalog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="text-center text-4xl font-bold uppercase tracking-[0.01em] text-[color:var(--carta-ink)] sm:text-5xl lg:text-6xl"
+              className="text-center text-4xl font-extrabold uppercase tracking-[0.01em] text-[color:var(--carta-ink)] sm:text-5xl lg:text-6xl"
             >
               {category.name}
             </motion.h2>

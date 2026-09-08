@@ -57,7 +57,7 @@ export function CartaMenuCard({
       className="group flex h-full flex-col bg-white shadow-[0_2px_10px_rgba(7,59,58,0.06)] transition-shadow duration-300 hover:shadow-[0_10px_28px_rgba(7,59,58,0.12)]"
     >
       {/* IMAGEN */}
-      <div className="relative aspect-square overflow-hidden bg-[#ECECEC]">
+      <div className="relative aspect-square overflow-hidden bg-[#F5EDDF]">
         {!imageFailed && (
           <Image
             src={item.image}
@@ -69,6 +69,11 @@ export function CartaMenuCard({
               25vw
             "
             className="object-cover"
+            style={
+              item.imageScale
+                ? { transform: `scale(${item.imageScale})` }
+                : undefined
+            }
             onError={() => setImageFailed(true)}
           />
         )}
@@ -78,21 +83,15 @@ export function CartaMenuCard({
             {item.name}
           </span>
         )}
-
-        {item.featured && (
-          <span className="absolute left-0 top-3 bg-[#141414] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-white">
-            Favorito
-          </span>
-        )}
       </div>
 
       {/* INFORMACIÓN */}
       <div className="flex flex-1 flex-col px-5 pb-6 pt-5">
-        <h3 className="text-lg font-bold uppercase leading-tight tracking-[0.01em] text-[#141414]">
+        <h3 className="text-lg font-extrabold uppercase leading-tight tracking-[0.01em] text-[#141414]">
           {item.name}
         </h3>
 
-        <p className="mt-3 text-[13px] leading-5 text-[#3D3AA8]">
+        <p className="mt-3 text-[13px] leading-5 text-[#141414]">
           {item.description}
         </p>
 
