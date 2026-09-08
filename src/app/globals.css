@@ -52,3 +52,13 @@ button, input, select, textarea { font-family: inherit; font-size: 100%; line-he
   .complaint-page { padding: 0 !important; background: white !important; }
   .complaint-print-section { break-inside: avoid; box-shadow: none !important; }
 }
+
+.final-cta-grid {
+  transition: grid-template-columns 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 1024px) {
+  .final-cta-grid {
+    grid-template-columns: var(--cta-columns);
+  }
+}

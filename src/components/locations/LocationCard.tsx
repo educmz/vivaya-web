@@ -45,11 +45,11 @@ export function LocationCard({ location, index }: LocationCardProps) {
 
       {/* INFO */}
       <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
-        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A00]">
+        <p className="font-[family-name:var(--font-script)] text-2xl font-normal lowercase leading-relaxed text-[#FF8A00] sm:text-3xl">
           Local
         </p>
 
-        <h2 className="mt-3 text-3xl font-extrabold uppercase leading-[1.05] tracking-[0.01em] sm:text-4xl">
+        <h2 className="mt-3 text-3xl font-normal uppercase leading-[1.05] tracking-[0.01em] sm:text-4xl font-heading font-normal">
           <span className="block text-[#302E2A]/35">VIVAYA</span>
           {location.name}
         </h2>

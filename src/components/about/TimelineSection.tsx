@@ -38,13 +38,13 @@ export function TimelineSection() {
             className="
               mt-4
               text-4xl
-              font-bold
+              
               leading-[1.08]
               tracking-[-0.02em]
               text-[#302E2A]
               sm:text-5xl
               lg:text-6xl
-            "
+             font-heading font-normal"
           >
             Una historia que
             <br />
@@ -106,12 +106,12 @@ export function TimelineSection() {
                     className="
                       mt-2
                       text-2xl
-                      font-bold
+                      
                       leading-[1.1]
                       tracking-[-0.02em]
                       text-[#302E2A]
                       lg:text-3xl
-                    "
+                     font-heading font-normal"
                   >
                     {item.title === "VIVAYA" ? (
                       <Image
@@ -168,10 +168,10 @@ export function TimelineSection() {
                   className="
                     mt-1
                     text-2xl
-                    font-bold
+                    
                     tracking-[-0.02em]
                     text-[#302E2A]
-                  "
+                   font-heading font-normal"
                 >
                   {item.title === "VIVAYA" ? (
                     <Image

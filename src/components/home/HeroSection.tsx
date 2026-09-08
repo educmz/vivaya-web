@@ -1,18 +1,46 @@
 ﻿"use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
-// Fotografías disponibles hasta incorporar los banners definitivos de Inicio.
 const slides = [
-  { id: "slide-1", image: "/images/home/hero/inicio-1.webp", alt: "Productos de Vivaya" },
-  { id: "slide-2", image: "/images/home/hero/inicio-2.webp", alt: "Experiencia Vivaya" },
-  { id: "slide-3", image: "/images/home/hero/inicio-3.webp", alt: "Preparación en Vivaya" },
-  { id: "slide-4", image: "/images/home/hero/inicio-4.webp", alt: "Equipo de Vivaya" },
-  { id: "slide-5", image: "/images/home/hero/inicio-5.webp", alt: "Local Vivaya en Miraflores" },
-  { id: "slide-6", image: "/images/home/hero/inicio-6.webp", alt: "Local Vivaya en Surco" },
+  {
+    id: "slide-1",
+    image: "/images/home/hero/inicio-1.webp",
+    alt: "Productos de Vivaya",
+    position: "center",
+  },
+  {
+    id: "slide-2",
+    image: "/images/home/hero/inicio-2.webp",
+    alt: "Experiencia Vivaya",
+    position: "center",
+  },
+  {
+    id: "slide-3",
+    image: "/images/home/hero/inicio-3.webp",
+    alt: "Preparación en Vivaya",
+    position: "center",
+  },
+  {
+    id: "slide-4",
+    image: "/images/home/hero/inicio-4.webp",
+    alt: "Equipo de Vivaya",
+    position: "center",
+  },
+  {
+    id: "slide-5",
+    image: "/images/home/hero/inicio-5.webp",
+    alt: "Local Vivaya en Miraflores",
+    position: "center",
+  },
+  {
+    id: "slide-6",
+    image: "/images/home/hero/inicio-6.webp",
+    alt: "Local Vivaya en Surco",
+    position: "center",
+  },
 ] as const;
 
 export function HeroSection() {
@@ -21,26 +49,32 @@ export function HeroSection() {
 
   useEffect(() => {
     if (paused) return;
+
     const interval = window.setInterval(() => {
       setActiveSlide((current) => (current + 1) % slides.length);
     }, 6000);
+
     return () => window.clearInterval(interval);
-  }, [paused, activeSlide]);
+  }, [paused]);
 
   function changeSlide(direction: number) {
-    setActiveSlide((current) => (current + direction + slides.length) % slides.length);
+    setActiveSlide(
+      (current) => (current + direction + slides.length) % slides.length
+    );
   }
 
   return (
     <section
       aria-label="Fotografías de Vivaya"
       aria-roledescription="carrusel"
-      className="w-full bg-[#FFF9F3] pt-20 sm:pt-24 lg:pt-28"
+      className="w-full bg-[#FFF9F3] pt-16 lg:pt-[72px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          setPaused(false);
+        }
       }}
       onKeyDown={(event) => {
         if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
@@ -49,7 +83,18 @@ export function HeroSection() {
         }
       }}
     >
-      <div data-home-hero className="group relative h-[52svh] w-full overflow-hidden sm:h-[60svh] lg:h-[68svh]">
+      <div
+        data-home-hero
+        className="
+          group
+          relative
+          h-[calc(100svh-64px)]
+          w-full
+          overflow-hidden
+          lg:h-[calc(100svh-72px)]
+        "
+      >
+        {/* SLIDES */}
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -57,7 +102,20 @@ export function HeroSection() {
             aria-roledescription="diapositiva"
             aria-label={`${index + 1} de ${slides.length}`}
             aria-hidden={index !== activeSlide}
-            className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${index === activeSlide ? "opacity-100" : "pointer-events-none opacity-0"}`}
+            className={`
+              absolute
+              inset-0
+              overflow-hidden
+              transition-opacity
+              duration-700
+              ease-out
+              motion-reduce:transition-none
+              ${
+                index === activeSlide
+                  ? "opacity-100"
+                  : "pointer-events-none opacity-0"
+              }
+            `}
           >
             <Image
               src={slide.image}
@@ -65,49 +123,159 @@ export function HeroSection() {
               fill
               priority={index === 0}
               sizes="100vw"
-              className="object-cover object-center"
+              className="
+                object-cover
+                transition-transform
+                duration-700
+                ease-out
+              "
+              style={{
+                objectPosition: slide.position,
+              }}
             />
           </div>
         ))}
+
+        {/* FLECHA IZQUIERDA */}
         <button
           type="button"
           onClick={() => changeSlide(-1)}
           aria-label="Diapositiva anterior"
-          className="absolute left-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/85 text-[#302E2A] transition-opacity hover:bg-white focus-visible:opacity-100 lg:left-5 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100"
+          className="
+            absolute
+            left-4
+            top-1/2
+            z-20
+            grid
+            size-11
+            -translate-y-1/2
+            place-items-center
+            rounded-full
+            bg-white/85
+            text-[#302E2A]
+            backdrop-blur-sm
+            transition-all
+            duration-200
+            hover:scale-105
+            hover:bg-white
+            focus-visible:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-white
+            lg:left-7
+            lg:size-12
+            lg:opacity-0
+            lg:group-hover:opacity-100
+            lg:group-focus-within:opacity-100
+          "
         >
-          <ArrowLeft size={17} aria-hidden="true" />
+          <ArrowLeft
+            size={18}
+            strokeWidth={1.8}
+            aria-hidden="true"
+          />
         </button>
+
+        {/* FLECHA DERECHA */}
         <button
           type="button"
           onClick={() => changeSlide(1)}
           aria-label="Siguiente diapositiva"
-          className="absolute right-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/85 text-[#302E2A] transition-opacity hover:bg-white focus-visible:opacity-100 lg:right-5 lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100"
+          className="
+            absolute
+            right-4
+            top-1/2
+            z-20
+            grid
+            size-11
+            -translate-y-1/2
+            place-items-center
+            rounded-full
+            bg-white/85
+            text-[#302E2A]
+            backdrop-blur-sm
+            transition-all
+            duration-200
+            hover:scale-105
+            hover:bg-white
+            focus-visible:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-white
+            lg:right-7
+            lg:size-12
+            lg:opacity-0
+            lg:group-hover:opacity-100
+            lg:group-focus-within:opacity-100
+          "
         >
-          <ArrowRight size={17} aria-hidden="true" />
+          <ArrowRight
+            size={18}
+            strokeWidth={1.8}
+            aria-hidden="true"
+          />
         </button>
-      </div>
 
-      <div className="flex flex-col items-center px-4 pb-8 pt-4 sm:pb-10 lg:pb-12">
-        <div className="flex items-center" aria-label="Elegir diapositiva">
-          {slides.map((slide, index) => (
-            <button
-              key={slide.id}
-              type="button"
-              onClick={() => setActiveSlide(index)}
-              aria-label={`Ir a la diapositiva ${index + 1}`}
-              aria-current={index === activeSlide ? "true" : undefined}
-              className="grid size-8 place-items-center rounded-full"
-            >
-              <span aria-hidden="true" className={`h-2 rounded-full transition-[width,background-color] duration-200 motion-reduce:transition-none ${index === activeSlide ? "w-6 bg-[#FF8A00]" : "w-2 bg-[#302E2A]/20"}`} />
-            </button>
-          ))}
-        </div>
-        <Link
-          href="/menu"
-          className="group mt-5 inline-flex min-h-12 items-center justify-center gap-5 whitespace-nowrap rounded-full bg-[#FF8A00] py-2 pl-7 pr-2 text-sm font-semibold text-[#302E2A] transition-colors duration-200 hover:bg-[#E67C00] focus-visible:outline-2 focus-visible:outline-offset-4"
+        {/* INDICADORES */}
+        <div
+          className="
+            absolute
+            bottom-5
+            left-1/2
+            z-20
+            -translate-x-1/2
+            sm:bottom-6
+            lg:bottom-8
+          "
         >
-          Ver carta
-        </Link>
+          <div
+            className="
+              flex
+              items-center
+              gap-2
+              rounded-full
+              bg-white/90
+              px-3
+              py-2
+              backdrop-blur-md
+            "
+            aria-label="Elegir diapositiva"
+          >
+            {slides.map((slide, index) => {
+              const isActive = index === activeSlide;
+
+              return (
+                <button
+                  key={slide.id}
+                  type="button"
+                  onClick={() => setActiveSlide(index)}
+                  aria-label={`Ir a la diapositiva ${index + 1}`}
+                  aria-current={isActive ? "true" : undefined}
+                  className="
+                    grid
+                    size-5
+                    place-items-center
+                    rounded-full
+                    focus-visible:outline-none
+                  "
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`
+                      block
+                      rounded-full
+                      transition-all
+                      duration-300
+                      ${
+                        isActive
+                          ? "h-2 w-6 bg-[#FF8A00]"
+                          : "size-2 bg-[#302E2A]/25"
+                      }
+                    `}
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

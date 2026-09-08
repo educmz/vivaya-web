@@ -32,16 +32,9 @@ export function VivayaSection() {
               <span className="text-2xl sm:text-3xl">es</span>
             </p>
 
-            <div className="mt-5">
-              {concepts.map((concept) => (
-                <p
-                  key={concept}
-                  className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-[#302E2A] sm:text-5xl lg:text-6xl"
-                >
-                  {concept}
-                </p>
-              ))}
-            </div>
+            <h2 className="mt-5 font-heading text-4xl font-normal leading-[1.08] text-[#302E2A] sm:text-5xl lg:text-6xl">
+              {concepts.map((concept) => <span key={concept} className="block">{concept}</span>)}
+            </h2>
 
             <p className="mt-8 max-w-md text-base leading-7 text-[#77736D] sm:text-lg sm:leading-8">
               Una propuesta que acompaña desde esos pequeños antojos del día

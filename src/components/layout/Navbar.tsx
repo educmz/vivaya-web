@@ -14,7 +14,8 @@ export function Navbar({ className }: { className?: string }) {
   return (
     <nav
       className={cn(
-        "hidden items-center gap-7 font-sans lg:flex xl:gap-9",
+        "hidden items-center gap-7 lg:flex xl:gap-9",
+        "[font-family:var(--font-dm-sans)]",
         className,
       )}
       aria-label="Navegación principal"
@@ -33,23 +34,37 @@ export function Navbar({ className }: { className?: string }) {
             aria-current={isActive ? "page" : undefined}
             className={cn(
               "relative isolate flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full",
-              "text-sm font-semibold normal-case tracking-[-0.015em]",
+              "px-1 text-[15px] font-medium normal-case tracking-[-0.02em]",
               "transition-colors duration-200",
               isActive
                 ? "text-white"
-                : "text-[#302E2A]/65 hover:text-[#302E2A]",
+                : "text-[#302E2A]/70 hover:text-[#302E2A]",
             )}
           >
             {isActive && (
               <motion.span
                 layoutId="vivaya-active-nav"
                 aria-hidden="true"
-                className="absolute -inset-x-3 inset-y-0 -z-10 rounded-full bg-[#FF8A00]"
-                transition={reducedMotion
-                  ? { duration: 0 }
-                  : { type: "spring", stiffness: 420, damping: 32 }}
+                className="
+                  absolute
+                  -inset-x-3
+                  inset-y-0
+                  -z-10
+                  rounded-full
+                  bg-[#FF8A00]
+                "
+                transition={
+                  reducedMotion
+                    ? { duration: 0 }
+                    : {
+                        type: "spring",
+                        stiffness: 420,
+                        damping: 32,
+                      }
+                }
               />
             )}
+
             {item.label}
           </Link>
         );

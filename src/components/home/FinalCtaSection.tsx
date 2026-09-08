@@ -1,118 +1,54 @@
+"use client";
+
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { useState, type CSSProperties } from "react";
+import { HomeHeading } from "./HomeHeading";
+import { HomeImage } from "./HomeImage";
+import styles from "./Home.module.css";
+
+const actions = [
+  {
+    id: "menu",
+    href: "/menu",
+    label: "Ver carta",
+    description: "Encuentra tu próximo antojo.",
+    number: "01",
+    image: "/images/home/cta/carta.webp",
+  },
+  {
+    id: "events",
+    href: "/eventos",
+    label: "Ver eventos",
+    description: "Haz especial tu próxima celebración.",
+    number: "02",
+    image: "/images/home/cta/eventos.webp",
+  },
+] as const;
+
 
 export function FinalCtaSection() {
+  const [activePanel, setActivePanel] = useState<string | null>(null);
+  const columns = activePanel === "menu" ? "1.25fr .75fr" : activePanel === "events" ? ".75fr 1.25fr" : "1fr 1fr";
   return (
-    <section className="bg-[#FFF9F3] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-      <div
-        className="
-          relative
-          mx-auto
-          max-w-[1360px]
-          overflow-hidden
-          rounded-[2rem]
-          bg-[#F8D6C3]
-          px-6
-          py-14
-          text-center
-          sm:px-10
-          sm:py-16
-          lg:px-16
-          lg:py-20
-        "
-      >
-        <div
-          aria-hidden="true"
-          className="
-            absolute
-            -left-24
-            -top-24
-            size-64
-            rounded-full
-            bg-[#F7E8B6]/60
-          "
-        />
-
-        <div
-          aria-hidden="true"
-          className="
-            absolute
-            -bottom-28
-            -right-20
-            size-72
-            rounded-full
-            bg-[#BFD9B7]/45
-          "
-        />
-
-        <div className="relative z-10 mx-auto max-w-2xl">
-          <h2
-            className="
-              text-4xl
-              font-semibold
-              leading-[1]
-              tracking-[-0.045em]
-              text-[#302E2A]
-              sm:text-5xl
-              lg:text-6xl
-            "
-          >
-            ¿Ya sabes qué se te antoja?
-          </h2>
-
-          <div
-            className="
-              mt-8
-              flex
-              flex-col
-              items-center
-              justify-center
-              gap-3
-              sm:flex-row
-            "
-          >
-            <Link
-              href="/menu"
-              className="
-                inline-flex
-                min-h-12
-                items-center
-                justify-center
-                rounded-full
-                bg-[#FF8A00]
-                px-7
-                text-sm
-                font-semibold
-                text-white
-                transition-colors
-                hover:bg-[#E67C00]
-              "
-            >
-              Ver carta
-            </Link>
-
-            <Link
-              href="/events"
-              className="
-                inline-flex
-                min-h-12
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#302E2A]/15
-                bg-white/60
-                px-7
-                text-sm
-                font-semibold
-                text-[#302E2A]
-                transition-colors
-                hover:bg-white
-              "
-            >
-              Ver eventos
-            </Link>
-          </div>
-        </div>
+    <section aria-labelledby="final-cta-title" className={styles.section}>
+      <div className={`${styles.container} text-center`}>
+        <HomeHeading id="final-cta-title" eyebrow="¿Y ahora?">Elige cómo quieres disfrutar VIVAYA.</HomeHeading>
+      </div>
+      <div className={styles.panels} style={{ "--cta-columns": columns } as CSSProperties} onMouseLeave={() => setActivePanel(null)}>
+        {actions.map((action) => (
+          <Link key={action.id} href={action.href} className={styles.panel}
+            onPointerEnter={(event) => { if (event.pointerType === "mouse") setActivePanel(action.id); }}
+            onFocus={() => setActivePanel(action.id)} onBlur={() => setActivePanel(null)}>
+            <HomeImage src={action.image} alt="" fill sizes="(min-width: 640px) 65vw, 100vw" />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/5" />
+            <span aria-hidden="true" className="absolute left-5 top-5 text-xs tracking-widest text-white/75 sm:left-7">{action.number}</span>
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 text-white sm:p-7">
+              <div><h3 className={styles.panelTitle}>{action.label}</h3><p className="mt-2 max-w-sm text-sm leading-6 text-white/85">{action.description}</p></div>
+              <ArrowUpRight size={26} aria-hidden="true" className="shrink-0 text-[#FF8A00]" />
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   );
