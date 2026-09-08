@@ -44,7 +44,7 @@ export function VivayaPaymentSection() {
         </div>
 
         <motion.div initial={reduced ? false : { opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-20 flex justify-center">
-          <Button href="/carta" className="min-h-14 bg-[#335C30] px-9 text-white hover:bg-[#467742]">Ver la carta</Button>
+          <Button href="/menu" className="min-h-14 bg-[#335C30] px-9 text-white hover:bg-[#467742]">Ver la carta</Button>
         </motion.div>
         <p className="font-accent ml-auto mt-10 w-fit rotate-[-5deg] text-3xl font-bold text-[#335C30] sm:text-4xl">Pide, recoge y disfruta</p>
       </div>

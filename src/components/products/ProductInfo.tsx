@@ -1,4 +1,4 @@
-import type { Product } from "@/types/product";
+import type { PresentationProduct as Product } from "@/types/presentation-product";
 import { Badge } from "@/components/ui/Badge";
 import { RappiButton } from "@/components/products/RappiButton";
 import { formatPrice } from "@/lib/utils";

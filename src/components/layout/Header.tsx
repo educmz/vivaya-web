@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { MobileMenu } from "@/components/layout/MobileMenu";
@@ -42,53 +42,46 @@ const socialLinks = [
 ];
 
 export function Header() {
-  const [visible, setVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  const pathname = usePathname();
+  const [overHero, setOverHero] = useState(true);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollDifference = currentScrollY - lastScrollY.current;
+    if (pathname !== "/") return;
 
-      // Siempre visible cuando estamos cerca del inicio
-      if (currentScrollY < 80) {
-        setVisible(true);
-      } else if (scrollDifference > 8) {
-        setVisible(false);
-      } else if (scrollDifference < -8) {
-        setVisible(true);
-      }
-
-      lastScrollY.current = currentScrollY;
+    const updateBackground = () => {
+      const hero = document.querySelector("[data-home-hero]");
+      const headerHeight = headerRef.current?.offsetHeight ?? 0;
+      setOverHero(Boolean(hero && hero.getBoundingClientRect().bottom > headerHeight));
     };
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+    const frame = requestAnimationFrame(updateBackground);
+    const observer = new ResizeObserver(updateBackground);
+    const hero = document.querySelector("[data-home-hero]");
+    if (hero) observer.observe(hero);
+    if (headerRef.current) observer.observe(headerRef.current);
+    window.addEventListener("scroll", updateBackground, { passive: true });
+    window.addEventListener("resize", updateBackground);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", updateBackground);
+      window.removeEventListener("resize", updateBackground);
     };
-  }, []);
+  }, [pathname]);
 
   return (
-    <motion.header
-      initial={{ y: 0 }}
-      animate={{
-        y: visible ? 0 : "-110%",
-      }}
-      transition={{
-        duration: 0.55,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="fixed inset-x-0 top-0 z-50 w-full"
+    <header
+      ref={headerRef}
+      className={`fixed inset-x-0 top-0 z-50 w-full transition-colors duration-200 motion-reduce:transition-none ${pathname === "/" && overHero ? "bg-transparent" : "bg-white"}`}
     >
       <div
         className="
-          relative flex w-full items-center justify-between
-          px-4 py-3
-          sm:px-6 sm:py-4
-          lg:px-8 lg:py-4
+          relative flex h-16 w-full items-center justify-between lg:h-[72px]
+          px-4
+          sm:px-6
+          lg:px-8
           xl:px-10
         "
       >
@@ -103,16 +96,15 @@ export function Header() {
           "
         >
           <Image
-            src="/images/brand/vivaya-icon.png"
+            src="/images/brand/logo_negro.png"
             alt="Vivaya"
-            width={150}
-            height={150}
+            width={2172}
+            height={724}
             priority
             className="
-              h-16 w-auto object-contain
-              sm:h-[68px]
-              lg:h-[76px]
-              xl:h-20
+              h-auto w-28 object-contain
+              sm:w-32
+              lg:w-36
             "
             style={{
               filter: "drop-shadow(0 5px 10px rgba(0,0,0,0.10))",
@@ -122,7 +114,7 @@ export function Header() {
 
         <div className="relative z-50 ml-auto hidden items-center gap-2 lg:flex" aria-label="Redes sociales">
           {socialLinks.map((social) => {
-            const styles = "grid size-11 place-items-center rounded-full bg-[#F7FBF3]/90 text-[#335C30] shadow-[0_8px_22px_rgba(7,59,58,0.10)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:bg-white";
+            const styles = "grid size-10 place-items-center rounded-full bg-[#FF6422] text-white transition duration-300 hover:-translate-y-1 hover:bg-[#E95718]";
 
             return social.href ? (
               <a key={social.label} href={social.href} target="_blank" rel="noreferrer" aria-label={social.label} className={styles}>
@@ -140,6 +132,6 @@ export function Header() {
 
         <MobileMenu />
       </div>
-    </motion.header>
+    </header>
   );
 }

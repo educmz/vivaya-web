@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import type { Product } from "@/types/product";
+import type { PresentationProduct as Product } from "@/types/presentation-product";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 

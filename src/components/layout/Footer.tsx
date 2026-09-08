@@ -13,9 +13,8 @@ const columns = [
     title: "Explora",
     links: [
       { label: "Inicio", href: "/" },
-      { label: "Carta", href: "/carta" },
-      { label: "Promociones", href: "/promociones" },
-      { label: "Club", href: "/club" },
+      { label: "Carta", href: "/menu" },
+      { label: "Eventos", href: "/eventos" },
     ],
   },
   {
@@ -23,12 +22,7 @@ const columns = [
     links: [
       { label: "Nosotros", href: "/nosotros" },
       { label: "Locales", href: "/locales" },
-      { label: "Contacto", href: "/contacto" },
     ],
-  },
-  {
-    title: "Ayuda",
-    links: [{ label: "Preguntas frecuentes", href: "/preguntas-frecuentes" }],
   },
 ];
 
@@ -45,8 +39,7 @@ export function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
             <Link href="/" className="flex items-center gap-3">
-              <Image src="/images/brand/vivaya-icon.png" alt="" width={40} height={40} className="size-10 rounded-full object-contain" />
-              <span className="font-accent text-3xl text-[#F36B21]">{siteConfig.name}</span>
+              <Image src="/images/brand/logo_negro.png" alt="Vivaya, inicio" width={2172} height={724} className="h-auto w-40 rounded-lg bg-[#FFF9F3] p-3 object-contain" />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-7 text-[#E7EFE2]/80">Jugos y bebidas naturales pensadas para acompañar tu día, en cada local Vivaya.</p>
           </div>

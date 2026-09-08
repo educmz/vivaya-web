@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
 
-import { CartaCategoryNav } from "@/components/carta/CartaCategoryNav";
-import { CartaMenuCard } from "@/components/carta/CartaMenuCard";
+import { CartaCategoryNav } from "@/components/menu/MenuCategoryNav";
+import { CartaMenuCard } from "@/components/menu/MenuCard";
 
 import { menuCategories } from "@/data/menu/categories";
 import { menuProducts } from "@/data/menu/products";

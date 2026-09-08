@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Anton, Caveat } from "next/font/google";
+import { Anton, Caveat, Manrope } from "next/font/google";
 
-import { CursorOrange } from "@/components/animations/CursorOrange";
 import { Preloader } from "@/components/animations/Preloader";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { siteConfig } from "@/config/site";
 
 import "./globals.css";
+
+const interfaceFont = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 const headingFont = Anton({
   subsets: ["latin"],
@@ -35,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`h-full antialiased ${headingFont.variable} ${accentFont.variable}`}
+      className={`h-full antialiased ${interfaceFont.variable} ${headingFont.variable} ${accentFont.variable}`}
     >
       <body className="flex min-h-full flex-col">
         <Preloader />
@@ -47,8 +52,6 @@ export default function RootLayout({
 
         <Footer />
 
-        {/* Cursor decorativo Vivaya */}
-        <CursorOrange />
       </body>
     </html>
   );

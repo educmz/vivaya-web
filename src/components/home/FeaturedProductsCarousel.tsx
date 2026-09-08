@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import type { Product } from "@/types/product";
+import type { PresentationProduct as Product } from "@/types/presentation-product";
 import { FeaturedProductCard } from "@/components/home/FeaturedProductCard";
 
 export function FeaturedProductsCarousel({ products }: { products: Product[] }) {
