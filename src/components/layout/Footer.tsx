@@ -72,7 +72,7 @@ export function Footer() {
 
             <p className="mt-5 max-w-xs text-sm leading-7 text-[#E7EFE2]/80">
               Jugos y bebidas naturales pensadas para acompañar tu día, en cada
-              local Vivanya.
+              local Vivaya.
             </p>
           </div>
 
@@ -119,7 +119,7 @@ export function Footer() {
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-bold text-[#FFF7E8]">
-              Natural. Fresco. Vivanya.
+              Natural. Fresco. Vivaya.
             </p>
 
             <p className="mt-1 text-xs text-[#E7EFE2]/70">

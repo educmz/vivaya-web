@@ -9,6 +9,6 @@ export async function submitComplaint(
 
   // TODO: Conectar posteriormente con el endpoint de reclamaciones. El backend
   // deberá generar el correlativo, persistir la reclamación, enviar la copia al
-  // consumidor y notificar a Vivanya.
+  // consumidor y notificar a Vivaya.
   throw new Error("Complaint submission is not configured.");
 }

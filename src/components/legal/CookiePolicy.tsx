@@ -32,7 +32,7 @@ export function CookiePolicy() {
 
             <p className="mt-7 max-w-xl text-base leading-7 text-[#302E2A]/70 sm:text-lg">
               Te explicamos de forma sencilla cuándo pueden utilizarse cookies
-              o tecnologías similares al visitar Vivanya.
+              o tecnologías similares al visitar Vivaya.
             </p>
 
             <p className="mt-7 text-xs font-bold uppercase tracking-[0.16em] text-[#302E2A]/45">
@@ -54,9 +54,9 @@ export function CookiePolicy() {
               </p>
             </CookieSection>
 
-            <CookieSection number="02" title="Qué utiliza Vivanya">
+            <CookieSection number="02" title="Qué utiliza Vivaya">
               <p>
-                Actualmente Vivanya no utiliza cookies propias para publicidad,
+                Actualmente Vivaya no utiliza cookies propias para publicidad,
                 analítica de comportamiento ni creación de perfiles.
               </p>
 
@@ -130,7 +130,7 @@ export function CookiePolicy() {
               <p>
                 Las cookies que puedan ser instaladas por servicios externos
                 son gestionadas por sus respectivos proveedores y no
-                directamente por Vivanya.
+                directamente por Vivaya.
               </p>
             </CookieSection>
 

@@ -50,7 +50,7 @@ export function PrivacyPolicy() {
 
             <p className="mt-7 max-w-xl text-base leading-7 text-[#302E2A]/70 sm:text-lg">
               Te contamos de forma sencilla cómo tratamos la información
-              relacionada con tu visita a Vivanya.
+              relacionada con tu visita a Vivaya.
             </p>
 
             <p className="mt-7 text-xs font-bold uppercase tracking-[0.16em] text-[#302E2A]/45">
@@ -64,9 +64,9 @@ export function PrivacyPolicy() {
       <section className="relative pb-24 sm:pb-32">
         <Container>
           <div className="mx-auto max-w-4xl">
-            <PrivacySection number="01" title="Sobre Vivanya">
+            <PrivacySection number="01" title="Sobre Vivaya">
               <p>
-                Vivanya es una marca de bebidas naturales que utiliza este sitio
+                Vivaya es una marca de bebidas naturales que utiliza este sitio
                 para presentar sus productos, locales y contenidos.
               </p>
             </PrivacySection>
@@ -121,7 +121,7 @@ export function PrivacyPolicy() {
 
             <PrivacySection number="05" title="Conservación y seguridad">
               <p>
-                Vivanya procura que la información tratada se conserve únicamente
+                Vivaya procura que la información tratada se conserve únicamente
                 durante el tiempo necesario para las finalidades que correspondan
                 y conforme a las obligaciones legales aplicables.
               </p>
@@ -158,7 +158,7 @@ export function PrivacyPolicy() {
               <p className="mt-7">
                 Las solicitudes relacionadas con datos personales podrán
                 presentarse a través de los canales oficiales de atención que
-                Vivanya mantenga habilitados.
+                Vivaya mantenga habilitados.
               </p>
 
               <Link

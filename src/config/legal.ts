@@ -1,5 +1,5 @@
 export const legalConfig = {
-  commercialName: "Vivanya",
+  commercialName: "Vivaya",
 
   legalName: "[ACÁ VA LA RAZÓN SOCIAL]",
   ruc: "[ACÁ VA EL RUC]",
