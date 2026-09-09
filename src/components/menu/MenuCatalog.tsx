@@ -135,7 +135,7 @@ export function CartaCatalog() {
         onChange={goToCategory}
       />
 
-      <ImageHero image="/images/locals/local-hero.webp" lines={["ELIGE TU", "FAVORITO"]} />
+      <ImageHero image="/images/menu/menu-hero.webp" lines={["ELIGE TU", "FAVORITO"]} />
 
       <div className="mx-auto min-w-0 max-w-7xl px-3 pb-16 sm:px-6 sm:pb-24 lg:px-10 lg:pb-28">
         {sections.map(({ category, items }) => (
@@ -150,7 +150,7 @@ export function CartaCatalog() {
               className="break-words text-center text-2xl min-[400px]:text-3xl font-extrabold uppercase tracking-[0.01em] text-[color:var(--carta-ink)] sm:text-5xl lg:text-6xl"
             />
 
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-5 min-[900px]:grid-cols-3 lg:mt-14 lg:gap-6 xl:grid-cols-4">
+            <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 sm:mt-8 sm:gap-x-6 sm:gap-y-5 min-[900px]:grid-cols-3 lg:mt-14 lg:gap-x-7 lg:gap-y-6 xl:grid-cols-4">
               {items.map((item, itemIndex) => (
                 <CartaMenuCard
                   key={item.id}

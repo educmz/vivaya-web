@@ -35,7 +35,7 @@ export function FinalCtaSection() {
       <div className={`${styles.container} text-center`}>
         <HomeHeading id="final-cta-title" eyebrow="¿Y ahora?">Elige cómo quieres disfrutar VIVAYA.</HomeHeading>
       </div>
-      <div className={styles.panels} style={{ "--cta-columns": columns } as CSSProperties} onMouseLeave={() => setActivePanel(null)}>
+      <div className={`${styles.container} ${styles.panels}`} style={{ "--cta-columns": columns } as CSSProperties} onMouseLeave={() => setActivePanel(null)}>
         {actions.map((action) => (
           <Link key={action.id} href={action.href} className={styles.panel}
             onPointerEnter={(event) => { if (event.pointerType === "mouse") setActivePanel(action.id); }}

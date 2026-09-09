@@ -30,7 +30,7 @@ export function PopcornPanchosManzanasSection() {
 
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
-      <div className="mx-auto w-full max-w-[1160px] px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
 
           {/* IMAGEN */}
@@ -122,16 +122,6 @@ export function PopcornPanchosManzanasSection() {
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                   <UserRound className="h-4 w-4 shrink-0 text-[#FF8A00]" />
                   1 personal de atención
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-[#6F6962]">
-                  <Popcorn className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                  Pop Corn ilimitado
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-[#6F6962]">
-                  <Apple className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                  Manzanas acarameladas
                 </div>
               </div>
 

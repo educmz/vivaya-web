@@ -8,42 +8,42 @@ import { HomeHeading } from "./HomeHeading";
 const visuals: Record<MenuCategoryId, { background: string; image: string; alt: string }> = {
   smoothies: {
     background: "#DCEEF2",
-    image: "/images/products/Carta/naranja-fresa.webp",
+    image: "/images/products/menu/naranja-fresa.webp",
     alt: "Naranja Fresa de Vivaya",
   },
   "tes-helados": {
     background: "#F6E9B8",
-    image: "/images/products/Carta/jamaica.webp",
+    image: "/images/products/menu/jamaica.webp",
     alt: "Té helado Jamaica de Vivaya",
   },
   "bebidas-calientes": {
     background: "#F5D6C2",
-    image: "/images/products/Carta/chocolate-caliente.webp",
+    image: "/images/products/menu/chocolate-caliente.webp",
     alt: "Chocolate Caliente de Vivaya",
   },
   frappes: {
     background: "#E6E1F0",
-    image: "/images/products/Carta/mocaccino.webp",
+    image: "/images/products/menu/mocaccino.webp",
     alt: "Frappé Mocaccino de Vivaya",
   },
   waffles: {
     background: "#F6E9B8",
-    image: "/images/products/Carta/waffle.webp",
+    image: "/images/products/menu/waffle.webp",
     alt: "Waffle de Vivaya",
   },
   sandwiches: {
     background: "#DFEACF",
-    image: "/images/products/Carta/mixto.png",
+    image: "/images/products/menu/mixto.png",
     alt: "Sándwich Mixto Ninfit de Vivaya",
   },
   tostones: {
     background: "#F5D6C2",
-    image: "/images/products/Carta/toston-benedictino.webp",
+    image: "/images/products/menu/toston-benedictino.webp",
     alt: "Tostón Benedictino de Vivaya",
   },
   pizzas: {
     background: "#DCEEF2",
-    image: "/images/products/Carta/pizza-hawaiana.webp",
+    image: "/images/products/menu/pizza-hawaiana.webp",
     alt: "Pizza Hawaiana de Vivaya",
   },
 };
@@ -51,7 +51,7 @@ const visuals: Record<MenuCategoryId, { background: string; image: string; alt: 
 export function CravingsSection() {
   return (
     <section aria-labelledby="cravings-title" className="bg-background pb-12 sm:pb-16 lg:pb-20">
-      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-10">
         <HomeHeading id="cravings-title" eyebrow="A tu gusto">
           ¿Qué se te antoja?
         </HomeHeading>

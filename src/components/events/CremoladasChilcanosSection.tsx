@@ -82,8 +82,8 @@ const packages = [
 
 export function CremoladasChilcanosSection() {
   return (
-    <section className="bg-[#FFF8F3] py-8 sm:py-10 lg:py-12">
-      <div className="mx-auto w-full max-w-[1160px] px-3 sm:px-6 lg:px-10">
+    <section className="bg-[#FFF8F3] pt-8 pb-16 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-24">
+      <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         {/* ENCABEZADO */}
         <div className="mx-auto max-w-2xl text-center">
           <p

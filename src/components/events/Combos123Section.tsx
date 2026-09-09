@@ -51,7 +51,7 @@ const combos = [
 export function Combos123Section() {
   return (
     <section className="bg-[#FFF8F3] py-8 sm:py-10 lg:py-12">
-      <div className="mx-auto w-full max-w-[1160px] px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         {/* ENCABEZADO */}
         <div className="mx-auto max-w-2xl text-center">
           <p

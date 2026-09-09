@@ -12,7 +12,7 @@ const storyImages = [
 export function StorySection() {
   return (
     <section className="bg-background py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         <div className="mb-10 max-w-3xl sm:mb-12">
           <p className="text-2xl text-[#FF8A00] sm:text-3xl" style={{ fontFamily: "var(--font-script), 'Pacifico', cursive" }}>Nuestra historia</p>
           <h2 className="mt-4 text-4xl  leading-[1.08] tracking-[-0.02em] text-[#302E2A] sm:text-5xl lg:text-6xl font-heading font-normal">

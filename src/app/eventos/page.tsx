@@ -18,7 +18,7 @@ export const metadata: Metadata = { title: "Eventos" };
 export default function EventsPage() {
   return (
     <div className="bg-background pt-16 lg:pt-[72px]">
-      <ImageHero image="/images/about/about-hero.webp" lines={["CELEBRAMOS", "CONTIGO"]} />
+      <ImageHero image="/images/events/event-hero.webp" lines={["CELEBRAMOS", "CONTIGO"]} />
       <ChocolateCafeSection />
       <FuenteChocolateSection />
       <SnacksSection />
