@@ -127,7 +127,6 @@ export function CartaCatalog() {
         "--carta-ribbon": "#FF8A00",
       } as CSSProperties}
     >
-      <h1 className="sr-only">Carta Vivaya</h1>
 
       <CartaCategoryNav
         categories={sections.map(({ category }) => category)}

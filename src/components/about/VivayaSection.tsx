@@ -1,69 +1,77 @@
-import Image from "next/image";
+"use client";
 
-const concepts = [
-  "Sabor.",
-  "Momentos.",
-  "Compartir.",
-  "Celebrar.",
-];
+import Image from "next/image";
+import { motion } from "motion/react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function VivayaSection() {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <section className="bg-background py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10">
-        <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+    <section className="bg-background py-10 sm:py-12 lg:py-16">
+      <div className="mx-auto w-full max-w-[1160px] px-5 sm:px-8 lg:px-10">
+        <div className="grid items-center gap-8 md:grid-cols-2 lg:gap-12">
+
           {/* TEXTO */}
-          <div className="max-w-xl">
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: reducedMotion ? 0 : 0.45, ease: "easeOut" }}
+            className="min-w-0 max-w-lg"
+          >
             <p
-              className="flex items-center gap-2 leading-none text-[#FF8A00]"
+              className="text-2xl leading-none text-[#FF8A00] sm:text-3xl"
               style={{
-                fontFamily:
-                  "var(--font-script), 'Pacifico', cursive",
+                fontFamily: "var(--font-script), 'Pacifico', cursive",
               }}
             >
-              <Image
-                src="/images/brand/logo_naranja.png"
-                alt="Vivaya"
-                width={1774}
-                height={887}
-                className="inline-block h-9 w-auto translate-y-[3px] sm:h-11 sm:translate-y-[5px]"
-                priority
-              />
-              <span className="text-2xl sm:text-3xl">es</span>
+              Nuestra esencia
             </p>
 
-            <h2 className="mt-5 font-heading text-4xl font-normal leading-[1.08] text-[#302E2A] sm:text-5xl lg:text-6xl">
-              {concepts.map((concept) => <span key={concept} className="block">{concept}</span>)}
+            <h2 className="mt-4 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl">
+              Sabor para
+              <span className="block">cada momento.</span>
             </h2>
 
-            <p className="mt-8 max-w-md text-base leading-7 text-[#77736D] sm:text-lg sm:leading-8">
-              Una propuesta que acompaña desde esos pequeños antojos del día
-              hasta los momentos que merecen celebrarse.
+            <p className="mt-5 max-w-md text-sm leading-6 text-[#77736D] sm:text-base sm:leading-7">
+              Una propuesta pensada para acompañar tus antojos,
+              tus pausas y esos momentos que simplemente se disfrutan.
             </p>
-          </div>
+          </motion.div>
 
           {/* COMPOSICIÓN DE IMÁGENES */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem] bg-[#F3EADF] sm:rounded-[2rem]">
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: reducedMotion ? 0 : 0.5, ease: "easeOut" }}
+            className="relative mx-auto aspect-square w-full max-w-[440px]"
+          >
+
+            {/* Imagen principal */}
+            <div className="absolute right-0 top-0 aspect-[2/3] w-[62%] overflow-hidden rounded-2xl bg-[#F3EADF] sm:rounded-3xl">
               <Image
                 src="/images/about/about-lifestyle.webp"
-                alt="Experiencia VIVAYA"
+                alt="Mujer disfrutando una bebida a la entrada de Vivaya"
                 fill
-                sizes="(max-width: 1024px) 50vw, 28vw"
+                sizes="(max-width: 480px) 58vw, (max-width: 767px) 273px, (max-width: 1023px) 28vw, 273px"
                 className="object-cover"
               />
             </div>
 
-            <div className="relative mt-10 aspect-[4/5] overflow-hidden rounded-[1.6rem] bg-[#E2ECD4] sm:mt-16 sm:rounded-[2rem]">
+            {/* Imagen secundaria */}
+            <div className="absolute bottom-0 left-0 aspect-[2/3] w-[44%] overflow-hidden rounded-2xl border-[6px] border-background bg-[#F3EADF] sm:rounded-3xl sm:border-8">
               <Image
-                src="/images/about/about-team.webp"
-                alt="Momentos VIVAYA"
+                src="/images/about/about-product.webp"
+                alt="Waffle con frutas, smoothie y sándwich en una mesa de Vivaya"
                 fill
-                sizes="(max-width: 1024px) 50vw, 28vw"
+                sizes="(max-width: 480px) 40vw, (max-width: 767px) 194px, (max-width: 1023px) 20vw, 194px"
                 className="object-cover"
               />
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

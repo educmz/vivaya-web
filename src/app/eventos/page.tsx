@@ -1,15 +1,38 @@
-import type { Metadata } from "next";
+import { ChocolateCafeSection } from "@/components/events/ChocolateCafeSection";
+import { ImageHero } from "@/components/sections/ImageHero";
+import { FuenteChocolateSection } from "@/components/events/FuenteChocolateSection";
+import { SnacksSection } from "@/components/events/SnacksSection";
+import { Combos123Section } from "@/components/events/Combos123Section";
+import { PopcornAlgodonHotdogSection } from "@/components/events/PopcornAlgodonHotdogSection";
+import { AlgodonPopcornBurgersSection } from "@/components/events/AlgodonPopcornBurgersSection";
+import { PanchosManzanasSection } from "@/components/events/PanchosManzanasSection";
+import { Combo6Section } from "@/components/events/Combo6Section";
+import { SalchinuggetsSection } from "@/components/events/SalchinuggetsSection";
+import { WafflesSalchipapasChurrosSection } from "@/components/events/WafflesSalchipapasChurrosSection";
+import { PromocionLocuraSection } from "@/components/events/PromocionLocuraSection";
+import { HeladoSoftSection } from "@/components/events/HeladoSoftSection";
+import { CremoladasChilcanosSection } from "@/components/events/CremoladasChilcanosSection";
 
-import { EventCatalog } from "@/components/events/EventsCatalog";
-
-export const metadata: Metadata = {
-  title: "Eventos",
-};
+export const metadata: Metadata = { title: "Eventos" };
 
 export default function EventsPage() {
   return (
     <div className="bg-background pt-16 lg:pt-[72px]">
-      <EventCatalog />
+      <ImageHero image="/images/about/about-hero.webp" lines={["CELEBRAMOS", "CONTIGO"]} />
+      <ChocolateCafeSection />
+      <FuenteChocolateSection />
+      <SnacksSection />
+      <Combos123Section />
+      <PopcornAlgodonHotdogSection />
+      <AlgodonPopcornBurgersSection />
+      <PanchosManzanasSection />
+      <Combo6Section />
+      <SalchinuggetsSection />
+      <WafflesSalchipapasChurrosSection />
+      <PromocionLocuraSection />
+      <HeladoSoftSection />
+      <CremoladasChilcanosSection />
     </div>
   );
 }
+import type { Metadata } from "next";
