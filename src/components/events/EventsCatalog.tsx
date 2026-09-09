@@ -122,15 +122,15 @@ export function EventCatalog() {
         activeCategory={activeCategory}
         onChange={goToCategory}
       />
-      <div className="mx-auto max-w-7xl px-5 pb-28 sm:px-8 lg:px-10">
+      <div className="mx-auto min-w-0 max-w-7xl px-3 pb-16 sm:px-6 sm:pb-24 lg:px-10 lg:pb-28">
         {sections.map(({ category, items }) => (
-          <section key={category.id} id={`eventos-${category.id}`} data-category={category.id} aria-labelledby={`eventos-title-${category.id}`} className="scroll-mt-16 pt-16 sm:pt-24">
+          <section key={category.id} id={`eventos-${category.id}`} data-category={category.id} aria-labelledby={`eventos-title-${category.id}`} className="scroll-mt-[60px] pt-8 sm:pt-16 lg:pt-24">
             <AnimatedTitle
               id={`eventos-title-${category.id}`}
               text={category.name}
-              className="text-center text-4xl font-extrabold uppercase tracking-[0.01em] text-[color:var(--carta-ink)] sm:text-5xl lg:text-6xl"
+              className="break-words text-center text-2xl min-[400px]:text-3xl font-extrabold uppercase tracking-[0.01em] text-[color:var(--carta-ink)] sm:text-5xl lg:text-6xl"
             />
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-5 min-[900px]:grid-cols-3 lg:mt-14 lg:gap-6 xl:grid-cols-4">
               {items.map((eventPackage, index) => (
                 <EventCard key={eventPackage.id} eventPackage={eventPackage} index={index} onDetails={setSelectedEvent} />
               ))}

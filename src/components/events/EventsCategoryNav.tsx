@@ -31,7 +31,7 @@ export function EventCategoryNav({
 
     const navRect = nav.getBoundingClientRect();
     const elRect = activeEl.getBoundingClientRect();
-    if (elRect.left < navRect.left || elRect.right > navRect.right) {
+    if (elRect.left < navRect.left + 8 || elRect.right > navRect.right - 8) {
       nav.scrollTo({
         left:
           nav.scrollLeft +
@@ -51,7 +51,7 @@ export function EventCategoryNav({
 
   return (
     <div
-      className="sticky top-0 z-[55] bg-[color:var(--carta-ribbon,#FF8A00)]"
+      className="sticky top-0 z-[55] min-w-0 max-w-full bg-[color:var(--carta-ribbon,#FF8A00)]"
       style={{
         fontFamily:
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",
@@ -64,10 +64,13 @@ export function EventCategoryNav({
           relative
           flex
           items-start
-          gap-5
+          gap-3
+          min-w-0
+          max-w-full
           overflow-x-auto
           overscroll-x-contain
-          px-4
+          px-3
+          h-[52px]
           py-2.5
           sm:gap-9
           sm:px-8
