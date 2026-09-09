@@ -17,7 +17,7 @@ const includes = [
   "Personal de atención uniformado",
 ];
 
-const whatsappNumber = "51999999999";
+const whatsappNumber = "51948742332";
 
 export function FuenteChocolateSection() {
   const whatsappMessage =

@@ -10,19 +10,16 @@ import {
 } from "lucide-react";
 
 const includes = [
-  "50 mini waffles",
-  "50 mini salchipapas",
-  "50 churros",
+  "50 mini burgers",
+  "50 hotdog",
   "Pop Corn ilimitado",
-  "3 carritos decorados",
-  "3 personales de atención",
 ];
 
 const whatsappNumber = "51999999999";
 
-export function WafflesSalchipapasChurrosSection() {
+export function MiniBurgersHotdogPopcornSection() {
   const whatsappMessage =
-    "Hola, quisiera información sobre la promoción de Mini Waffles, Mini Salchipapas, Churros y Pop Corn ilimitado para mi evento.";
+    "Hola, quisiera información sobre la promoción 50 Mini Burgers, 50 Hotdog y Pop Corn ilimitado para mi evento.";
 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage
@@ -32,7 +29,6 @@ export function WafflesSalchipapasChurrosSection() {
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
       <div className="mx-auto w-full max-w-[1160px] px-5 sm:px-8 lg:px-10">
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
-
           {/* CONTENIDO */}
           <div className="order-2 min-w-0 max-w-xl md:order-1">
             <p
@@ -42,21 +38,20 @@ export function WafflesSalchipapasChurrosSection() {
                   "var(--font-script), 'Pacifico', cursive",
               }}
             >
-              Dulce, salado y para compartir
+              Diversión y sabor sin límites
             </p>
 
             <h2 className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl">
-              Waffles & Salchipapas
+              Mini Burgers & Hotdog
             </h2>
 
             <p className="mt-2 font-heading text-xl text-[#302E2A] sm:text-2xl">
-              + Churros & Pop Corn
+              + Pop Corn ilimitado
             </p>
 
             <p className="mt-4 max-w-lg text-sm leading-6 text-[#77736D]">
-              Una combinación variada de snacks dulces y salados pensada
-              para acompañar celebraciones con diferentes opciones para
-              compartir.
+              Una combinación completa de opciones saladas con Pop Corn
+              ilimitado para acompañar tu celebración.
             </p>
 
             {/* INCLUYE */}
@@ -90,7 +85,11 @@ export function WafflesSalchipapasChurrosSection() {
               </p>
 
               <p className="mt-1 font-heading text-3xl text-[#302E2A]">
-                S/ 680
+                S/ 490
+              </p>
+
+              <p className="mt-2 text-sm text-[#77736D]">
+                Algodón ilimitado por S/ 1 adicional
               </p>
             </div>
 
@@ -98,23 +97,23 @@ export function WafflesSalchipapasChurrosSection() {
             <div className="mt-5 border-t border-[#E6DDD5] pt-4">
               <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
-                  <Clock3 className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                  3 horas de servicio
+                  <Popcorn className="h-4 w-4 shrink-0 text-[#FF8A00]" />
+                  Pop Corn ilimitado
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                   <Store className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                  3 carritos decorados
+                  Carrito temático
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                   <UserRound className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                  3 personales de atención
+                  Personal de atención
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
-                  <Popcorn className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                  Pop Corn ilimitado
+                  <Clock3 className="h-4 w-4 shrink-0 text-[#FF8A00]" />
+                  Servicio para evento
                 </div>
               </div>
 
@@ -133,15 +132,14 @@ export function WafflesSalchipapasChurrosSection() {
           <div className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] md:order-2">
             <div className="relative aspect-[1122/1402]">
               <Image
-                src="/images/events/waffles-salchipapas-churros.webp"
-                alt="Carritos de waffles, salchipapas, churros y Pop Corn para eventos"
+                src="/images/events/mini-burgers-hotdog-popcorn.webp"
+                alt="Carrito con mini burgers, hotdog y Pop Corn para eventos"
                 fill
                 sizes="(max-width: 575px) 90vw, (max-width: 767px) 520px, (max-width: 1159px) 45vw, 520px"
                 className="object-contain"
               />
             </div>
           </div>
-
         </div>
       </div>
     </section>

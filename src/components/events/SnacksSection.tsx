@@ -71,7 +71,7 @@ const snacks: SnackOption[] = [
   },
 ];
 
-const whatsappNumber = "51999999999";
+const whatsappNumber = "51948742332";
 
 export function SnacksSection() {
   const [selectedSnackId, setSelectedSnackId] =

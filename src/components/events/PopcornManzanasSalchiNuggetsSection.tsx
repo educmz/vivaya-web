@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import {
+  Apple,
   Check,
   Clock3,
   Store,
@@ -10,19 +11,18 @@ import {
 } from "lucide-react";
 
 const includes = [
-  "50 mini waffles",
-  "50 mini salchipapas",
-  "50 churros",
   "Pop Corn ilimitado",
-  "3 carritos decorados",
-  "3 personales de atención",
+  "50 manzanas acarameladas",
+  "50 salchi nuggets",
+  "2 carritos",
+  "2 personales de atención",
 ];
 
 const whatsappNumber = "51999999999";
 
-export function WafflesSalchipapasChurrosSection() {
+export function PopcornManzanasSalchiNuggetsSection() {
   const whatsappMessage =
-    "Hola, quisiera información sobre la promoción de Mini Waffles, Mini Salchipapas, Churros y Pop Corn ilimitado para mi evento.";
+    "Hola, quisiera información sobre la promoción Pop Corn, Manzanas Acarameladas y Salchi Nuggets para mi evento.";
 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage
@@ -32,9 +32,22 @@ export function WafflesSalchipapasChurrosSection() {
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
       <div className="mx-auto w-full max-w-[1160px] px-5 sm:px-8 lg:px-10">
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
+          
+          {/* IMAGEN */}
+          <div className="relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF]">
+            <div className="relative aspect-[1122/1402]">
+              <Image
+                src="/images/events/popcorn-manzanas-salchi-nuggets.webp"
+                alt="Carritos de Pop Corn, manzanas acarameladas y salchi nuggets para eventos"
+                fill
+                sizes="(max-width: 575px) 90vw, (max-width: 767px) 520px, (max-width: 1159px) 45vw, 520px"
+                className="object-contain"
+              />
+            </div>
+          </div>
 
           {/* CONTENIDO */}
-          <div className="order-2 min-w-0 max-w-xl md:order-1">
+          <div className="min-w-0 max-w-xl">
             <p
               className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
               style={{
@@ -42,21 +55,21 @@ export function WafflesSalchipapasChurrosSection() {
                   "var(--font-script), 'Pacifico', cursive",
               }}
             >
-              Dulce, salado y para compartir
+              Tres favoritos en una sola experiencia
             </p>
 
             <h2 className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl">
-              Waffles & Salchipapas
+              Pop Corn & Manzanas
             </h2>
 
             <p className="mt-2 font-heading text-xl text-[#302E2A] sm:text-2xl">
-              + Churros & Pop Corn
+              + 50 Salchi Nuggets
             </p>
 
             <p className="mt-4 max-w-lg text-sm leading-6 text-[#77736D]">
-              Una combinación variada de snacks dulces y salados pensada
-              para acompañar celebraciones con diferentes opciones para
-              compartir.
+              Una combinación de snacks dulces y salados con Pop Corn
+              ilimitado, pensada para acompañar celebraciones durante
+              tres horas de servicio.
             </p>
 
             {/* INCLUYE */}
@@ -90,7 +103,7 @@ export function WafflesSalchipapasChurrosSection() {
               </p>
 
               <p className="mt-1 font-heading text-3xl text-[#302E2A]">
-                S/ 680
+                S/ 490
               </p>
             </div>
 
@@ -104,17 +117,22 @@ export function WafflesSalchipapasChurrosSection() {
 
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                   <Store className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                  3 carritos decorados
+                  2 carritos
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                   <UserRound className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                  3 personales de atención
+                  2 personales de atención
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                   <Popcorn className="h-4 w-4 shrink-0 text-[#FF8A00]" />
                   Pop Corn ilimitado
+                </div>
+
+                <div className="flex items-center gap-2 text-xs text-[#6F6962]">
+                  <Apple className="h-4 w-4 shrink-0 text-[#FF8A00]" />
+                  50 manzanas
                 </div>
               </div>
 
@@ -128,20 +146,6 @@ export function WafflesSalchipapasChurrosSection() {
               </a>
             </div>
           </div>
-
-          {/* IMAGEN */}
-          <div className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] md:order-2">
-            <div className="relative aspect-[1122/1402]">
-              <Image
-                src="/images/events/waffles-salchipapas-churros.webp"
-                alt="Carritos de waffles, salchipapas, churros y Pop Corn para eventos"
-                fill
-                sizes="(max-width: 575px) 90vw, (max-width: 767px) 520px, (max-width: 1159px) 45vw, 520px"
-                className="object-contain"
-              />
-            </div>
-          </div>
-
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Check, Clock3, Store, UserRound } from "lucide-react";
 
-const whatsappNumber = "51999999999";
+const whatsappNumber = "51948742332";
 
 const combos = [
   {
@@ -50,7 +50,7 @@ const combos = [
 
 export function Combos123Section() {
   return (
-    <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
+    <section className="bg-[#FFF8F3] py-8 sm:py-10 lg:py-12">
       <div className="mx-auto w-full max-w-[1160px] px-5 sm:px-8 lg:px-10">
         {/* ENCABEZADO */}
         <div className="mx-auto max-w-2xl text-center">
@@ -64,13 +64,13 @@ export function Combos123Section() {
             Todo combina mejor
           </p>
 
-          <h2 className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl">
+          <h2 className="mt-2 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl">
             Combos para compartir
-          </h2> 
+          </h2>
         </div>
 
         {/* COMBOS */}
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {combos.map((combo) => {
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
               combo.message
@@ -82,23 +82,23 @@ export function Combos123Section() {
                 className="flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E9DED4] bg-white md:row-span-5 md:grid md:grid-rows-subgrid md:gap-y-0"
               >
                 {/* IMAGEN */}
-                <div className="relative aspect-square bg-[#F4E8DF]">
+                <div className="relative aspect-[4/3] max-h-[260px] w-full overflow-hidden bg-[#F4E8DF]">
                   <Image
                     src={combo.image}
                     alt={`${combo.name} para eventos`}
                     fill
                     sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                    className="object-cover"
+                    className="object-cover object-center"
                   />
                 </div>
 
                 {/* CONTENIDO */}
-                <div className="flex flex-1 flex-col p-5 md:row-span-4 md:grid md:grid-rows-subgrid md:gap-y-0">
+                <div className="flex flex-1 flex-col p-4 md:row-span-4 md:grid md:grid-rows-subgrid md:gap-y-0">
                   <h3 className="font-heading text-2xl text-[#302E2A]">
                     {combo.name}
                   </h3>
 
-                  <div className="mt-4 space-y-2">
+                  <div className="mt-3 space-y-1.5">
                     {combo.includes.map((item) => (
                       <div
                         key={item}
@@ -116,7 +116,7 @@ export function Combos123Section() {
                   </div>
 
                   {/* PRECIO */}
-                  <div className="mt-5">
+                  <div className="mt-3">
                     <p className="text-sm text-[#8C867F]">Por solo</p>
 
                     <p className="mt-1 font-heading text-3xl text-[#302E2A]">
@@ -134,8 +134,8 @@ export function Combos123Section() {
                   </div>
 
                   {/* DETALLES */}
-                  <div className="mt-5 border-t border-[#E6DDD5] pt-4">
-                    <div className="flex flex-wrap gap-x-4 gap-y-2">
+                  <div className="mt-3 border-t border-[#E6DDD5] pt-3">
+                    <div className="flex flex-wrap gap-x-3 gap-y-1.5">
                       <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                         <Clock3 className="h-4 w-4 shrink-0 text-[#FF8A00]" />
                         3 horas
@@ -156,7 +156,7 @@ export function Combos123Section() {
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FF8A00] px-6 py-3 text-sm font-semibold text-white transition hover:scale-[1.01] hover:bg-[#F57F00]"
+                      className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FF8A00] px-4 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.01] hover:bg-[#F57F00]"
                     >
                       Quiero este combo
                     </a>
