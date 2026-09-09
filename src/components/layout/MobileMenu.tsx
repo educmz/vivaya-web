@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 const menuItems = [
   {
@@ -12,7 +13,7 @@ const menuItems = [
   },
   {
     label: "CARTA",
-    href: "/carta",
+    href: "/menu",
   },
   {
     label: "EVENTOS",
@@ -39,10 +40,30 @@ export function MobileMenu({
 }: MobileMenuProps) {
   const pathname = usePathname();
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const handleResize = () => {
+      if (desktop.matches) onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    desktop.addEventListener("change", handleResize);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+      desktop.removeEventListener("change", handleResize);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9998] bg-[#FFF9F4]">
+    <div id="mobile-navigation" className="fixed inset-0 z-[9998] overflow-y-auto overscroll-contain bg-[#FFF9F4]">
       <div className="flex h-full flex-col px-5 pb-6 pt-4">
         {/* HEADER */}
         <div className="flex items-center justify-between">

@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback, useState } from "react";
+import { Menu } from "lucide-react";
 
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { Navbar } from "@/components/layout/Navbar";
@@ -40,6 +42,9 @@ const socialLinks = [
 ];
 
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+
   return (
     <header className="absolute inset-x-0 top-0 z-50 w-full bg-background">
       <div
@@ -95,7 +100,17 @@ export function Header() {
 
         <Navbar className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 
-        <MobileMenu />
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen(true)}
+          aria-label="Abrir menú"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          className="grid size-12 place-items-center rounded-full bg-[#FF8A00] text-white lg:hidden"
+        >
+          <Menu size={22} aria-hidden="true" />
+        </button>
+        <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
       </div>
     </header>
   );
