@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div
-      className="bg-background pt-16 lg:pt-[72px]"
+      className="bg-background pt-[88px] sm:pt-24 lg:pt-28"
       style={{
         fontFamily:
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",

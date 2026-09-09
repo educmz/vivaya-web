@@ -129,13 +129,13 @@ export function CartaCatalog() {
       } as CSSProperties}
     >
 
+      <ImageHero image="/images/menu/menu-hero.webp" lines={["ELIGE TU", "FAVORITO"]} />
+
       <CartaCategoryNav
         categories={sections.map(({ category }) => category)}
         activeCategory={activeCategory}
         onChange={goToCategory}
       />
-
-      <ImageHero image="/images/menu/menu-hero.webp" lines={["ELIGE TU", "FAVORITO"]} />
 
       <div className="mx-auto min-w-0 max-w-7xl px-3 pb-16 sm:px-6 sm:pb-24 lg:px-10 lg:pb-28">
         {sections.map(({ category, items }) => (

@@ -14,7 +14,7 @@ export function Navbar({ className }: { className?: string }) {
   return (
     <nav
       className={cn(
-        "hidden items-center gap-7 lg:flex xl:gap-9",
+        "hidden items-center gap-9 lg:flex xl:gap-12",
         "[font-family:var(--font-dm-sans)]",
         className,
       )}
@@ -34,7 +34,7 @@ export function Navbar({ className }: { className?: string }) {
             aria-current={isActive ? "page" : undefined}
             className={cn(
               "relative isolate flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full",
-              "px-1 text-[15px] font-medium normal-case tracking-[-0.02em]",
+              "px-1 text-[15px] font-medium normal-case tracking-[0.025em]",
               "transition-colors duration-200",
               isActive
                 ? "text-white"

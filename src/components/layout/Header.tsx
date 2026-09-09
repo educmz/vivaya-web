@@ -44,11 +44,10 @@ export function Header() {
     <header className="absolute inset-x-0 top-0 z-50 w-full bg-background">
       <div
         className="
-          relative flex h-16 w-full items-center justify-between lg:h-[72px]
-          px-4
+          relative flex h-[88px] w-full items-center justify-between sm:h-24 lg:h-28
+          px-3
           sm:px-6
-          lg:px-8
-          xl:px-10
+          lg:px-6
         "
       >
         <Link

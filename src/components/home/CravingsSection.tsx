@@ -8,42 +8,42 @@ import { HomeHeading } from "./HomeHeading";
 const visuals: Record<MenuCategoryId, { background: string; image: string; alt: string }> = {
   smoothies: {
     background: "#DCEEF2",
-    image: "/images/products/menu/naranja-fresa.webp",
+    image: "/images/menu/naranja-fresa.webp",
     alt: "Naranja Fresa de Vivaya",
   },
   "tes-helados": {
     background: "#F6E9B8",
-    image: "/images/products/menu/jamaica.webp",
+    image: "/images/menu/jamaica.webp",
     alt: "Té helado Jamaica de Vivaya",
   },
   "bebidas-calientes": {
     background: "#F5D6C2",
-    image: "/images/products/menu/chocolate-caliente.webp",
+    image: "/images/menu/chocolate-caliente.webp",
     alt: "Chocolate Caliente de Vivaya",
   },
   frappes: {
     background: "#E6E1F0",
-    image: "/images/products/menu/mocaccino.webp",
+    image: "/images/menu/mocaccino.webp",
     alt: "Frappé Mocaccino de Vivaya",
   },
   waffles: {
     background: "#F6E9B8",
-    image: "/images/products/menu/waffle.webp",
+    image: "/images/menu/waffle.webp",
     alt: "Waffle de Vivaya",
   },
   sandwiches: {
     background: "#DFEACF",
-    image: "/images/products/menu/mixto.png",
+    image: "/images/menu/mixto.png",
     alt: "Sándwich Mixto Ninfit de Vivaya",
   },
   tostones: {
     background: "#F5D6C2",
-    image: "/images/products/menu/toston-benedictino.webp",
+    image: "/images/menu/toston-benedictino.webp",
     alt: "Tostón Benedictino de Vivaya",
   },
   pizzas: {
     background: "#DCEEF2",
-    image: "/images/products/menu/pizza-hawaiana.webp",
+    image: "/images/menu/pizza-hawaiana.webp",
     alt: "Pizza Hawaiana de Vivaya",
   },
 };
@@ -89,7 +89,7 @@ export function CravingsSection() {
 
           <Link href="/eventos" className="group flex min-h-[360px] flex-col overflow-hidden rounded-lg bg-[#E5EBD8] text-[#302E2A] transition-transform duration-200 hover:-translate-y-1 motion-reduce:transform-none sm:min-h-[420px] lg:min-h-0">
             <div className="relative min-h-[260px] flex-1 overflow-hidden">
-              <Image src="/images/home/events/eventos.webp" alt="Equipo de Vivaya" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover object-center" />
+              <Image src="/images/events/waffles-salchipapas-churros.webp" alt="Waffles, salchipapas y churros para eventos Vivaya" fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover object-center" />
             </div>
             <div className="flex items-center justify-center px-6 py-8 text-center lg:py-10">
               <h3 className="font-heading text-4xl uppercase leading-none sm:text-5xl">Eventos</h3>

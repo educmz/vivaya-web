@@ -1,52 +1,13 @@
 ﻿"use client";
 
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const slides = [
-  {
-    id: "slide-1",
-    image: "/images/home/hero/inicio-1.png",
-    alt: "Bebidas frescas y momento lifestyle",
-    position: "center",
-    fit: "contain",
-  },
-  {
-    id: "slide-2",
-    image: "/images/home/hero/inicio-2.png",
-    alt: "Mesa brunch con productos frescos",
-    position: "center",
-    fit: "cover",
-  },
-  {
-    id: "slide-3",
-    image: "/images/home/hero/inicio-3.png",
-    alt: "Comida, bebida y momento cotidiano",
-    position: "center",
-    fit: "contain",
-  },
-  {
-    id: "slide-4",
-    image: "/images/home/hero/inicio-4.png",
-    alt: "Momento de comida para compartir",
-    position: "center",
-    fit: "cover",
-  },
-  {
-    id: "slide-5",
-    image: "/images/home/hero/inicio-5.png",
-    alt: "Bebidas y alimentos para distintos momentos del día",
-    position: "center",
-    fit: "contain",
-  },
-  {
-    id: "slide-6",
-    image: "/images/home/hero/inicio-6.png",
-    alt: "Montaje de catering para eventos",
-    position: "center",
-    fit: "cover",
-  },
+  { id: "products", desktop: "/images/home/banners/home-products-desktop.webp", mobile: "/images/home/banners/home-products-mobile.webp", alt: "Hecho para disfrutar: antojos, bebidas y momentos para compartir" },
+  { id: "events", desktop: "/images/home/banners/home-events-desktop.webp", mobile: "/images/home/banners/home-events-mobile.webp", alt: "Eventos Vivaya: opciones para compartir y celebrar" },
+  { id: "drinks", desktop: "/images/home/banners/home-drinks-desktop.webp", mobile: "/images/home/banners/home-drinks-mobile.webp", alt: "Bebidas Vivaya para disfrutar en cada momento" },
 ] as const;
 
 export function HeroSection() {
@@ -79,7 +40,8 @@ export function HeroSection() {
         bg-background
         pt-[88px]
         pb-6
-        lg:pt-[120px]
+        sm:pt-24
+        lg:pt-28
         lg:pb-12
       "
       onMouseEnter={() => setPaused(true)}
@@ -108,7 +70,9 @@ export function HeroSection() {
         className="
           group
           relative
-          h-[clamp(280px,34.6vw,650px)]
+          aspect-[1122/1402]
+          md:aspect-auto
+          md:h-[clamp(280px,34.6vw,650px)]
           w-full
           overflow-hidden
         "
@@ -116,7 +80,16 @@ export function HeroSection() {
         {/* SLIDES */}
         {slides.map((slide, index) => {
           const isActive = index === activeSlide;
-          const shouldContain = slide.fit === "contain";
+          const shared = {
+            alt: slide.alt,
+            fill: true,
+            sizes: "100vw",
+            loading: index === 0 ? "eager" as const : "lazy" as const,
+            fetchPriority: index === 0 ? "high" as const : "auto" as const,
+            className: "object-cover object-center",
+          };
+          const { props: desktop } = getImageProps({ ...shared, src: slide.desktop });
+          const { props: mobile } = getImageProps({ ...shared, src: slide.mobile });
 
           return (
             <div
@@ -140,53 +113,10 @@ export function HeroSection() {
                 }
               `}
             >
-              {/* FONDO PARA SLIDES PANORÁMICOS */}
-              {shouldContain && (
-                <>
-                  <Image
-                    src={slide.image}
-                    alt=""
-                    fill
-                    aria-hidden="true"
-                    sizes="100vw"
-                    className="
-                      scale-110
-                      object-cover
-                      object-center
-                      blur-2xl
-                    "
-                  />
-
-                  <div
-                    aria-hidden="true"
-                    className="
-                      absolute
-                      inset-0
-                      bg-background/25
-                    "
-                  />
-                </>
-              )}
-
-              {/* IMAGEN PRINCIPAL */}
-              <Image
-                src={slide.image}
-                alt={slide.alt}
-                fill
-                priority={index === 0}
-                sizes="100vw"
-                className={`
-                  z-10
-                  ${
-                    shouldContain
-                      ? "object-contain"
-                      : "object-cover"
-                  }
-                `}
-                style={{
-                  objectPosition: slide.position,
-                }}
-              />
+              <picture>
+                <source media="(min-width: 768px)" srcSet={desktop.srcSet} sizes={desktop.sizes} />
+                <img {...mobile} alt={slide.alt} />
+              </picture>
             </div>
           );
         })}

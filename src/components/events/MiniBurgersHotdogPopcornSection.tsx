@@ -136,7 +136,7 @@ export function MiniBurgersHotdogPopcornSection() {
                 alt="Carrito con mini burgers, hotdog y Pop Corn para eventos"
                 fill
                 sizes="(max-width: 575px) 90vw, (max-width: 767px) 520px, (max-width: 1159px) 45vw, 520px"
-                className="object-contain"
+                className="object-cover object-center"
               />
             </div>
           </div>

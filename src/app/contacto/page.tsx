@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/contact/ContactForm";
 export const metadata: Metadata = { title: "Contacto" };
 export default function ContactPage() {
   return (
-    <div className="bg-background pt-16 lg:pt-[72px]">
+    <div className="bg-background pt-[88px] sm:pt-24 lg:pt-28">
       <ContactForm />
       <ContactInfo />
     </div>
