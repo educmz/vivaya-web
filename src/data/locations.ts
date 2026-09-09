@@ -18,9 +18,8 @@ export const locations: VivayaLocation[] = [
       "Lunes a sábado: 8:00 a.m. – 10:00 p.m.",
       "Domingo: 8:00 a.m. – 9:00 p.m.",
     ],
-    image: "/images/about/about-lifestyle.webp",
+    image: "/images/locals/locals-miraflores.webp",
     mapsUrl: "#",
-    note: "Dirección y fotografía temporales de muestra.",
   },
   {
     id: "local-2",
@@ -30,8 +29,7 @@ export const locations: VivayaLocation[] = [
       "Lunes a sábado: 8:00 a.m. – 10:00 p.m.",
       "Domingo: 8:00 a.m. – 9:00 p.m.",
     ],
-    image: "/images/about/about-team.webp",
+    image: "/images/locals/locals-surco.webp",
     mapsUrl: "#",
-    note: "Dirección y fotografía temporales de muestra.",
   },
 ];

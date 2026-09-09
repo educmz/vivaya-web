@@ -1,6 +1,6 @@
 import { locations } from "@/data/locations";
 import { LocationCard } from "./LocationCard";
-import { PanoramicBanner } from "@/components/sections/PanoramicBanner";
+import { LocationsBanner } from "./LocationsBanner";
 
 export function LocationsCatalog() {
   return (
@@ -12,8 +12,7 @@ export function LocationsCatalog() {
         background: "var(--background)",
       }}
     >
-      <h1 className="sr-only">Locales VIVAYA</h1>
-      <PanoramicBanner />
+      <LocationsBanner />
 
       <div className="mx-auto w-full max-w-[1160px] px-5 pb-28 pt-10 sm:px-8 sm:pb-36 sm:pt-14 lg:px-10">
         <div className="mb-10 sm:mb-12">

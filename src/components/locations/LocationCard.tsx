@@ -30,7 +30,7 @@ export function LocationCard({ location, index }: LocationCardProps) {
         delay: index * 0.08,
         ease,
       }}
-      className="group grid overflow-hidden bg-white text-[#302E2A] shadow-[0_2px_14px_rgba(48,46,42,0.06)] transition-shadow duration-300 hover:shadow-[0_18px_44px_rgba(48,46,42,0.14)] md:grid-cols-2"
+      className="grid overflow-hidden rounded-2xl bg-white text-[#302E2A] shadow-[0_4px_18px_rgba(48,46,42,0.07)] transition-shadow duration-300 hover:shadow-[0_16px_40px_rgba(48,46,42,0.16)] focus-within:shadow-[0_16px_40px_rgba(48,46,42,0.16)] motion-reduce:transition-none md:grid-cols-2"
     >
       {/* IMAGEN */}
       <div className="relative aspect-[16/11] overflow-hidden bg-[#F5EDDF] md:aspect-auto md:min-h-[380px]">
@@ -39,16 +39,12 @@ export function LocationCard({ location, index }: LocationCardProps) {
           alt={`Local VIVAYA ${location.name}`}
           fill
           sizes="(min-width: 1160px) 560px, (min-width: 768px) 45vw, 92vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          className="object-cover"
         />
       </div>
 
       {/* INFO */}
       <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
-        <p className="font-[family-name:var(--font-script)] text-2xl font-normal lowercase leading-relaxed text-[#FF8A00] sm:text-3xl">
-          Local
-        </p>
-
         <h2 className="mt-3 text-3xl font-normal uppercase leading-[1.05] tracking-[0.01em] sm:text-4xl font-heading font-normal">
           <span className="block text-[#302E2A]/35">VIVAYA</span>
           {location.name}

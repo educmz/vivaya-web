@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { PanoramicBanner } from "@/components/sections/PanoramicBanner";
+import { AboutBanner } from "@/components/about/AboutBanner";
 import { EssenceSection } from "@/components/about/EssenceSection";
 import { StorySection } from "@/components/about/StorySection";
 import { TimelineSection } from "@/components/about/TimelineSection";
@@ -21,8 +21,7 @@ export default function AboutPage() {
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",
       }}
     >
-      <h1 className="sr-only">Nosotros VIVAYA</h1>
-      <PanoramicBanner />
+      <AboutBanner />
       <VivayaSection />
       <TimelineSection />
       <EssenceSection />
