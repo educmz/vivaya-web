@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { EventImage } from "./EventImage";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 
@@ -49,16 +49,14 @@ export function EventCard({
     >
       {/* IMAGEN */}
       <div className="relative aspect-[4/3] shrink-0 overflow-hidden bg-[#F5EDDF]">
-        <Image
+        <EventImage
           src={eventPackage.image}
           alt={eventPackage.name}
-          fill
           sizes="
             (max-width: 899px) 50vw,
             (max-width: 1279px) 33vw,
             25vw
           "
-          className="object-cover"
         />
       </div>
 
