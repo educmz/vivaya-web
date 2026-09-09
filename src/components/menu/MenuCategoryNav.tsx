@@ -116,7 +116,7 @@ export function CartaCategoryNav({
         {dotX !== null && (
           <motion.span
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-2.5 left-0 -ml-[3px] h-1.5 w-1.5 rounded-full bg-[#FFF7E8]"
+            className="pointer-events-none absolute bottom-2.5 left-0 -ml-[3px] h-1.5 w-1.5 rounded-full bg-background"
             initial={false}
             animate={{ x: dotX }}
             transition={

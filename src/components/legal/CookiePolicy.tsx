@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 
 export function CookiePolicy() {
   return (
-    <div className="relative overflow-hidden bg-[#FFF7E8] pt-24 text-[#302E2A] sm:pt-[100px] lg:pt-[108px]">
+    <div className="relative overflow-hidden bg-background pt-24 text-[#302E2A] sm:pt-[100px] lg:pt-[108px]">
       {/* Decoración pastel */}
       <div
         className="pointer-events-none absolute -left-36 top-40 size-[28rem] rounded-full bg-[#F7CFAE]/35 blur-[120px]"

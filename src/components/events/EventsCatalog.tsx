@@ -111,7 +111,7 @@ export function EventCatalog() {
       style={{
         fontFamily:
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",
-        background: "#FBF4EF",
+        background: "var(--background)",
         "--carta-ink": "#302E2A",
         "--carta-ribbon": "#FF8A00",
       } as CSSProperties}

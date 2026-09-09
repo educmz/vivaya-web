@@ -41,7 +41,7 @@ const socialLinks = [
 
 export function Header() {
   return (
-    <header className="absolute inset-x-0 top-0 z-50 w-full bg-white">
+    <header className="absolute inset-x-0 top-0 z-50 w-full bg-background">
       <div
         className="
           relative flex h-16 w-full items-center justify-between lg:h-[72px]

@@ -7,39 +7,45 @@ import { useEffect, useState } from "react";
 const slides = [
   {
     id: "slide-1",
-    image: "/images/home/hero/inicio-1.webp",
-    alt: "Productos de Vivaya",
+    image: "/images/home/hero/inicio-1.png",
+    alt: "Bebidas frescas y momento lifestyle",
     position: "center",
+    fit: "contain",
   },
   {
     id: "slide-2",
-    image: "/images/home/hero/inicio-2.webp",
-    alt: "Experiencia Vivaya",
+    image: "/images/home/hero/inicio-2.png",
+    alt: "Mesa brunch con productos frescos",
     position: "center",
+    fit: "cover",
   },
   {
     id: "slide-3",
-    image: "/images/home/hero/inicio-3.webp",
-    alt: "Preparación en Vivaya",
+    image: "/images/home/hero/inicio-3.png",
+    alt: "Comida, bebida y momento cotidiano",
     position: "center",
+    fit: "contain",
   },
   {
     id: "slide-4",
-    image: "/images/home/hero/inicio-4.webp",
-    alt: "Equipo de Vivaya",
+    image: "/images/home/hero/inicio-4.png",
+    alt: "Momento de comida para compartir",
     position: "center",
+    fit: "cover",
   },
   {
     id: "slide-5",
-    image: "/images/home/hero/inicio-5.webp",
-    alt: "Local Vivaya en Miraflores",
+    image: "/images/home/hero/inicio-5.png",
+    alt: "Bebidas y alimentos para distintos momentos del día",
     position: "center",
+    fit: "contain",
   },
   {
     id: "slide-6",
-    image: "/images/home/hero/inicio-6.webp",
-    alt: "Local Vivaya en Surco",
+    image: "/images/home/hero/inicio-6.png",
+    alt: "Montaje de catering para eventos",
     position: "center",
+    fit: "cover",
   },
 ] as const;
 
@@ -59,15 +65,23 @@ export function HeroSection() {
 
   function changeSlide(direction: number) {
     setActiveSlide(
-      (current) => (current + direction + slides.length) % slides.length
+      (current) =>
+        (current + direction + slides.length) % slides.length,
     );
   }
 
   return (
     <section
-      aria-label="Fotografías de Vivaya"
+      aria-label="Carrusel principal"
       aria-roledescription="carrusel"
-      className="w-full bg-[#FFF9F3] pt-16 lg:pt-[72px]"
+      className="
+        w-full
+        bg-background
+        pt-[88px]
+        pb-6
+        lg:pt-[120px]
+        lg:pb-12
+      "
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -77,9 +91,15 @@ export function HeroSection() {
         }
       }}
       onKeyDown={(event) => {
-        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        if (
+          event.key === "ArrowLeft" ||
+          event.key === "ArrowRight"
+        ) {
           event.preventDefault();
-          changeSlide(event.key === "ArrowLeft" ? -1 : 1);
+
+          changeSlide(
+            event.key === "ArrowLeft" ? -1 : 1,
+          );
         }
       }}
     >
@@ -88,53 +108,88 @@ export function HeroSection() {
         className="
           group
           relative
-          h-[calc(100svh-64px)]
+          h-[clamp(280px,34.6vw,650px)]
           w-full
           overflow-hidden
-          lg:h-[calc(100svh-72px)]
         "
       >
         {/* SLIDES */}
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            role="group"
-            aria-roledescription="diapositiva"
-            aria-label={`${index + 1} de ${slides.length}`}
-            aria-hidden={index !== activeSlide}
-            className={`
-              absolute
-              inset-0
-              overflow-hidden
-              transition-opacity
-              duration-700
-              ease-out
-              motion-reduce:transition-none
-              ${
-                index === activeSlide
-                  ? "opacity-100"
-                  : "pointer-events-none opacity-0"
-              }
-            `}
-          >
-            <Image
-              src={slide.image}
-              alt={slide.alt}
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="
-                object-cover
-                transition-transform
+        {slides.map((slide, index) => {
+          const isActive = index === activeSlide;
+          const shouldContain = slide.fit === "contain";
+
+          return (
+            <div
+              key={slide.id}
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label={`${index + 1} de ${slides.length}`}
+              aria-hidden={!isActive}
+              className={`
+                absolute
+                inset-0
+                overflow-hidden
+                transition-opacity
                 duration-700
                 ease-out
-              "
-              style={{
-                objectPosition: slide.position,
-              }}
-            />
-          </div>
-        ))}
+                motion-reduce:transition-none
+                ${
+                  isActive
+                    ? "opacity-100"
+                    : "pointer-events-none opacity-0"
+                }
+              `}
+            >
+              {/* FONDO PARA SLIDES PANORÁMICOS */}
+              {shouldContain && (
+                <>
+                  <Image
+                    src={slide.image}
+                    alt=""
+                    fill
+                    aria-hidden="true"
+                    sizes="100vw"
+                    className="
+                      scale-110
+                      object-cover
+                      object-center
+                      blur-2xl
+                    "
+                  />
+
+                  <div
+                    aria-hidden="true"
+                    className="
+                      absolute
+                      inset-0
+                      bg-background/25
+                    "
+                  />
+                </>
+              )}
+
+              {/* IMAGEN PRINCIPAL */}
+              <Image
+                src={slide.image}
+                alt={slide.alt}
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className={`
+                  z-10
+                  ${
+                    shouldContain
+                      ? "object-contain"
+                      : "object-cover"
+                  }
+                `}
+                style={{
+                  objectPosition: slide.position,
+                }}
+              />
+            </div>
+          );
+        })}
 
         {/* FLECHA IZQUIERDA */}
         <button
@@ -145,7 +200,7 @@ export function HeroSection() {
             absolute
             left-4
             top-1/2
-            z-20
+            z-30
             grid
             size-11
             -translate-y-1/2
@@ -184,7 +239,7 @@ export function HeroSection() {
             absolute
             right-4
             top-1/2
-            z-20
+            z-30
             grid
             size-11
             -translate-y-1/2
@@ -220,19 +275,19 @@ export function HeroSection() {
             absolute
             bottom-5
             left-1/2
-            z-20
+            z-30
             -translate-x-1/2
             sm:bottom-6
-            lg:bottom-8
+            lg:bottom-7
           "
         >
           <div
             className="
               flex
               items-center
-              gap-2
+              gap-2.5
               rounded-full
-              bg-white/90
+              bg-black/15
               px-3
               py-2
               backdrop-blur-md
@@ -248,7 +303,9 @@ export function HeroSection() {
                   type="button"
                   onClick={() => setActiveSlide(index)}
                   aria-label={`Ir a la diapositiva ${index + 1}`}
-                  aria-current={isActive ? "true" : undefined}
+                  aria-current={
+                    isActive ? "true" : undefined
+                  }
                   className="
                     grid
                     size-5
@@ -266,8 +323,8 @@ export function HeroSection() {
                       duration-300
                       ${
                         isActive
-                          ? "h-2 w-6 bg-[#FF8A00]"
-                          : "size-2 bg-[#302E2A]/25"
+                          ? "size-2 bg-white"
+                          : "size-1.5 bg-white/55 hover:bg-white/80"
                       }
                     `}
                   />

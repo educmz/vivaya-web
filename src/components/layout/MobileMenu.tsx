@@ -67,7 +67,7 @@ export function MobileMenu() {
         id="mobile-navigation"
         aria-labelledby="mobile-menu-title"
         onClose={() => setOpen(false)}
-        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 bg-[#FFF7E8] p-0 text-[#174C2C] backdrop:bg-[#073B3A]/40"
+        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 bg-background p-0 text-[#174C2C] backdrop:bg-[#073B3A]/40"
       >
         {open && (
           <motion.div

@@ -43,7 +43,7 @@ function ChannelCard({ channel, index }: { channel: (typeof channels)[number]; i
       className="group relative"
     >
       <div aria-hidden="true" className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-[1.6rem] border-2 border-[#302E2A]" style={{ backgroundColor: accent }} />
-      <motion.div whileHover={reducedMotion ? undefined : { y: -6, rotate: 0 }} transition={{ duration: 0.4, ease }} className="relative flex items-center gap-4 rounded-[1.6rem] border-2 border-[#302E2A] bg-[#FFF7E8] p-6">
+      <motion.div whileHover={reducedMotion ? undefined : { y: -6, rotate: 0 }} transition={{ duration: 0.4, ease }} className="relative flex items-center gap-4 rounded-[1.6rem] border-2 border-[#302E2A] bg-background p-6">
         {channel.href ? (
           <a href={channel.href} target={channel.href.startsWith("http") ? "_blank" : undefined} rel={channel.href.startsWith("http") ? "noopener noreferrer" : undefined} className="flex items-center gap-4">
             {content}
@@ -60,7 +60,7 @@ export function ContactInfo() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-[#FFF7E8] py-20 text-[#302E2A] sm:py-28">
+    <section className="bg-background py-20 text-[#302E2A] sm:py-28">
       <Container>
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, y: 35 }}

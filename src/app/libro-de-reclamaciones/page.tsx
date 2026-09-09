@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ComplaintBookPage() {
   return (
-    <div className="complaint-page bg-[#FFF7E8] pt-24 sm:pt-[100px] lg:pt-[108px]">
+    <div className="complaint-page bg-background pt-24 sm:pt-[100px] lg:pt-[108px]">
       <ComplaintBook />
     </div>
   );

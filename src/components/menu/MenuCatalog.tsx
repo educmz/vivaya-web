@@ -121,7 +121,7 @@ export function CartaCatalog() {
       style={{
         fontFamily:
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",
-        background: "#FBF4EF",
+        background: "var(--background)",
         "--carta-ink": "#302E2A",
         // Cinta de categorías: naranja vibrante (las letras negras se leen bien)
         "--carta-ribbon": "#FF8A00",

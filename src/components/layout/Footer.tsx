@@ -67,7 +67,7 @@ export function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
             <Link href="/" className="flex items-center gap-3">
-              <Image src="/images/brand/logo_negro.png" alt="Vivaya, inicio" width={2172} height={724} className="h-auto w-40 rounded-lg bg-[#FFF9F3] p-3 object-contain" />
+              <Image src="/images/brand/logo_negro.png" alt="Vivaya, inicio" width={2172} height={724} className="h-auto w-40 rounded-lg bg-background p-3 object-contain" />
             </Link>
 
             <p className="mt-5 max-w-xs text-sm leading-7 text-[#E7EFE2]/80">

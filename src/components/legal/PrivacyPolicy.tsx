@@ -23,7 +23,7 @@ const rights = [
 
 export function PrivacyPolicy() {
   return (
-    <div className="relative overflow-hidden bg-[#FFF7E8] pt-24 text-[#302E2A] sm:pt-[100px] lg:pt-[108px]">
+    <div className="relative overflow-hidden bg-background pt-24 text-[#302E2A] sm:pt-[100px] lg:pt-[108px]">
       {/* Decoración pastel */}
       <div
         className="pointer-events-none absolute -left-32 top-36 size-[26rem] rounded-full bg-[#F7CFAE]/35 blur-[110px]"

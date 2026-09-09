@@ -12,7 +12,7 @@ export function ContactHero() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#FFF7E8] text-[#302E2A]">
+    <section className="relative overflow-hidden bg-background text-[#302E2A]">
       <Container className="relative grid min-h-[68svh] items-center gap-8 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
         {/* Texto */}
         <div className="relative z-20">

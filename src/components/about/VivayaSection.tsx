@@ -9,7 +9,7 @@ const concepts = [
 
 export function VivayaSection() {
   return (
-    <section className="bg-[#FFF9F3] py-16 sm:py-20 lg:py-24">
+    <section className="bg-background py-16 sm:py-20 lg:py-24">
       <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10">
         <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           {/* TEXTO */}

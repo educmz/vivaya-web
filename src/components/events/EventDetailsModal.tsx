@@ -109,7 +109,7 @@ export function EventDetailsModal({
               fontFamily:
                 "var(--font-carta), 'Montserrat', system-ui, sans-serif",
             }}
-            className="relative flex max-h-[94svh] w-full flex-col overflow-hidden rounded-t-[2.25rem] bg-[#FBF4EF] shadow-[0_40px_120px_-20px_rgba(48,46,42,0.55)] sm:max-h-[90svh] sm:max-w-4xl sm:rounded-[2.25rem] lg:max-w-5xl"
+            className="relative flex max-h-[94svh] w-full flex-col overflow-hidden rounded-t-[2.25rem] bg-background shadow-[0_40px_120px_-20px_rgba(48,46,42,0.55)] sm:max-h-[90svh] sm:max-w-4xl sm:rounded-[2.25rem] lg:max-w-5xl"
           >
             {/* CERRAR */}
             <button
@@ -208,7 +208,7 @@ export function EventDetailsModal({
                     stiffness: 320,
                     damping: 18,
                   }}
-                  className="mt-5 inline-flex items-baseline gap-2 rounded-full bg-[#FFF7E8] px-4 py-2 shadow-lg"
+                  className="mt-5 inline-flex items-baseline gap-2 rounded-full bg-background px-4 py-2 shadow-lg"
                 >
                   <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#302E2A]/55">
                     Desde
@@ -239,7 +239,7 @@ export function EventDetailsModal({
                         whileHover={
                           reducedMotion ? undefined : { x: 4 }
                         }
-                        className={`flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-[#FFF7E8] ${
+                        className={`flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-background ${
                           index > 0 ? "border-t border-[#302E2A]/10" : ""
                         }`}
                       >

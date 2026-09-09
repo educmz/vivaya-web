@@ -9,7 +9,7 @@ export function LocationsCatalog() {
       style={{
         fontFamily:
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",
-        background: "#FBF4EF",
+        background: "var(--background)",
       }}
     >
       <h1 className="sr-only">Locales VIVAYA</h1>

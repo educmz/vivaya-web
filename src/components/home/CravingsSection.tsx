@@ -51,7 +51,7 @@ const visuals: Record<MenuCategoryId, { background: string; image: string; alt: 
 
 export function CravingsSection() {
   return (
-    <section aria-labelledby="cravings-title" className="bg-[#FFF9F3] py-12 sm:py-16 lg:py-20">
+    <section aria-labelledby="cravings-title" className="bg-background pb-12 sm:pb-16 lg:pb-20">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
         <HomeHeading id="cravings-title" eyebrow="A tu gusto">
           ¿Qué se te antoja?

@@ -51,7 +51,7 @@ type FormErrors = Partial<Record<FieldName, string>>;
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const inputClass =
-  "min-h-12 w-full rounded-xl border-2 border-[#302E2A]/20 bg-[#FFFDF8] px-4 text-base font-normal text-[#302E2A] outline-none transition placeholder:text-[#302E2A]/35 focus:border-[#FF8A00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF8A00]";
+  "min-h-12 w-full rounded-xl border-2 border-[#302E2A]/20 bg-background px-4 text-base font-normal text-[#302E2A] outline-none transition placeholder:text-[#302E2A]/35 focus:border-[#FF8A00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF8A00]";
 const textareaClass = `${inputClass} min-h-32 resize-y py-3 leading-6`;
 
 const initialData: ComplaintFormData = {
@@ -288,7 +288,7 @@ function ChoiceCard<T extends string>({
   onChange: (value: T) => void;
 }) {
   return (
-    <label className={`relative flex cursor-pointer gap-3 rounded-2xl border-2 p-4 transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#FF8A00] ${checked ? "border-[#3F7D4F] bg-[#EAF2E7]" : "border-[#302E2A]/15 bg-[#FFFDF8]"}`}>
+    <label className={`relative flex cursor-pointer gap-3 rounded-2xl border-2 p-4 transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#FF8A00] ${checked ? "border-[#3F7D4F] bg-[#EAF2E7]" : "border-[#302E2A]/15 bg-background"}`}>
       <input
         type="radio"
         name={name}
@@ -422,7 +422,7 @@ export function ComplaintBook() {
   }
 
   return (
-    <section className="complaint-page relative overflow-hidden bg-[#FFF7E8] pb-24 text-[#302E2A] sm:pb-32">
+    <section className="complaint-page relative overflow-hidden bg-background pb-24 text-[#302E2A] sm:pb-32">
       <div className="pointer-events-none absolute -right-40 top-0 size-[30rem] rounded-full bg-[#3F7D4F]/10 blur-[110px] print:hidden" aria-hidden="true" />
       <div className="pointer-events-none absolute -left-48 top-[34rem] size-[28rem] rounded-full bg-[#FF8A00]/10 blur-[110px] print:hidden" aria-hidden="true" />
 
@@ -556,7 +556,7 @@ export function ComplaintBook() {
                   </fieldset>
 
                   <Field id="amount" label="Monto reclamado" error={errors.amount} hint="Puedes dejarlo vacío si no corresponde.">
-                    <div className="flex rounded-xl border-2 border-[#302E2A]/20 bg-[#FFFDF8] focus-within:border-[#FF8A00] focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#FF8A00]">
+                    <div className="flex rounded-xl border-2 border-[#302E2A]/20 bg-background focus-within:border-[#FF8A00] focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#FF8A00]">
                       <span className="grid min-h-12 place-items-center border-r border-[#302E2A]/15 px-4 font-bold text-[#073B3A]" aria-hidden="true">S/</span>
                       <input id="amount" name="amount" type="number" inputMode="decimal" min="0" step="0.01" value={data.contractedItem.amount} onChange={(event) => updateItem("amount", event.target.value)} aria-invalid={Boolean(errors.amount)} aria-describedby={describedBy("amount", errors.amount, true)} className="min-h-12 min-w-0 flex-1 bg-transparent px-4 outline-none" />
                     </div>
