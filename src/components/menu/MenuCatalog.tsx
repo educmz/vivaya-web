@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react"
 import { CartaCategoryNav } from "@/components/menu/MenuCategoryNav";
 import { CartaMenuCard } from "@/components/menu/MenuCard";
 import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+import { ImageHero } from "@/components/sections/ImageHero";
 
 import { menuCategories } from "@/data/menu/categories";
 import { menuProducts } from "@/data/menu/products";
@@ -133,6 +134,8 @@ export function CartaCatalog() {
         activeCategory={activeCategory}
         onChange={goToCategory}
       />
+
+      <ImageHero image="/images/locals/local-hero.webp" lines={["ELIGE TU", "FAVORITO"]} />
 
       <div className="mx-auto min-w-0 max-w-7xl px-3 pb-16 sm:px-6 sm:pb-24 lg:px-10 lg:pb-28">
         {sections.map(({ category, items }) => (
