@@ -65,11 +65,7 @@ export function DeliveryPopover({ id, onClose }: DeliveryPopoverProps) {
             aria-label={`Pedir en ${platform.name}`}
             className="flex min-h-11 min-w-0 items-center justify-center overflow-hidden rounded-xl border border-[#E7DED8] bg-white transition-colors duration-200 hover:border-[#FF8A00] focus-visible:outline-[#FF8A00]"
           >
-            {platform.logo ? (
-              <Image src={platform.logo} alt={platform.name} width={1672} height={941} sizes="(min-width: 640px) 160px, 200px" className="h-auto w-full object-contain" />
-            ) : (
-              <span className="text-sm font-bold tracking-tight">{platform.name}</span>
-            )}
+            <Image src={platform.logo} alt={platform.name} width={1672} height={941} sizes="(min-width: 640px) 160px, 200px" className="h-auto w-full object-contain" />
           </a>
         ))}
       </div>
