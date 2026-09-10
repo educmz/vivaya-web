@@ -1,6 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
 
 import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+import {
+  AboutItem,
+  AboutLine,
+  AboutReveal,
+  aboutDotVariants,
+  aboutItemVariants,
+} from "@/components/about/AboutMotion";
 
 const timelineItems = [
   {
@@ -26,15 +36,17 @@ export function TimelineSection() {
     <section className="bg-background py-16 sm:py-20 lg:py-24">
       <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         {/* CABECERA */}
-        <div className="max-w-2xl">
-          <p
-            className="text-2xl text-[#FF8A00] sm:text-3xl"
-            style={{
-              fontFamily: "var(--font-script), 'Pacifico', cursive",
-            }}
-          >
-            Nuestro camino
-          </p>
+        <AboutReveal className="max-w-2xl" amount={0.5}>
+          <AboutItem>
+            <p
+              className="text-2xl text-[#FF8A00] sm:text-3xl"
+              style={{
+                fontFamily: "var(--font-script), 'Pacifico', cursive",
+              }}
+            >
+              Nuestro camino
+            </p>
+          </AboutItem>
 
           <AnimatedTitle
             text={"Una historia que\nsigue creciendo."}
@@ -49,17 +61,26 @@ export function TimelineSection() {
               lg:text-6xl
              font-heading font-normal"
           />
-        </div>
+        </AboutReveal>
 
         {/* DESKTOP */}
         <div className="relative mt-14 hidden md:block lg:mt-20">
           {/* LÍNEA */}
-          <div className="absolute left-0 right-0 top-[9px] h-px bg-[#302E2A]/15" />
+          <AboutLine
+            axis="x"
+            className="absolute left-0 right-0 top-[9px] h-px bg-[#302E2A]/15"
+          />
 
-          <div className="relative grid grid-cols-4">
+          <AboutReveal
+            className="relative grid grid-cols-4"
+            amount={0.3}
+            stagger={0.16}
+            delay={0.2}
+          >
             {timelineItems.map((item, index) => (
-              <article
+              <motion.article
                 key={item.year}
+                variants={aboutItemVariants}
                 className={`
                   relative
                   pt-10
@@ -67,7 +88,8 @@ export function TimelineSection() {
                 `}
               >
                 {/* PUNTO */}
-                <div
+                <motion.div
+                  variants={aboutDotVariants}
                   className={`
                     absolute
                     top-0
@@ -105,7 +127,7 @@ export function TimelineSection() {
                     className="
                       mt-2
                       text-2xl
-                      
+
                       leading-[1.1]
                       tracking-[-0.02em]
                       text-[#302E2A]
@@ -125,22 +147,31 @@ export function TimelineSection() {
                     )}
                   </h3>
                 </div>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </AboutReveal>
         </div>
 
         {/* MOBILE */}
         <div className="relative mt-12 md:hidden">
-          <div className="absolute bottom-0 left-[7px] top-0 w-px bg-[#302E2A]/15" />
+          <AboutLine
+            axis="y"
+            className="absolute bottom-0 left-[7px] top-0 w-px bg-[#302E2A]/15"
+          />
 
-          <div className="space-y-10">
+          <AboutReveal
+            className="space-y-10"
+            amount={0.15}
+            stagger={0.14}
+          >
             {timelineItems.map((item) => (
-              <article
+              <motion.article
                 key={item.year}
+                variants={aboutItemVariants}
                 className="relative pl-10"
               >
-                <div
+                <motion.div
+                  variants={aboutDotVariants}
                   className="
                     absolute
                     left-0
@@ -167,7 +198,7 @@ export function TimelineSection() {
                   className="
                     mt-1
                     text-2xl
-                    
+
                     tracking-[-0.02em]
                     text-[#302E2A]
                    font-heading font-normal"
@@ -184,9 +215,9 @@ export function TimelineSection() {
                     item.title
                   )}
                 </h3>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </AboutReveal>
         </div>
       </div>
     </section>
