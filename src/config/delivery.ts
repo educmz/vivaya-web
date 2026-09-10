@@ -1,6 +1,14 @@
-// URL de tienda por defecto para los botones "Comprar" de la carta.
-// Se usa cuando un producto no define su propio enlace en `delivery.rappi`.
-// Deja el string vacío hasta tener una URL https válida de Rappi.
 export const deliveryConfig = {
-  rappiStoreUrl: "",
-};
+  rappi: {
+    enabled: true,
+    name: "Rappi",
+    url: "https://www.rappi.com.pe/restaurantes/184-pickadeli-saludable",
+    isTest: true,
+  },
+  pedidosYa: {
+    enabled: true,
+    name: "PedidosYa",
+    url: "https://www.pedidosya.com.pe/cadenas/pickadeli",
+    isTest: true,
+  },
+} as const;

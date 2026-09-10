@@ -173,6 +173,7 @@ export function Preloader() {
         <div
           ref={logoRef}
           className="w-64 sm:w-80 lg:w-[26rem]"
+          style={{ opacity: 0 }}
         >
           <Image
             ref={imageRef}
