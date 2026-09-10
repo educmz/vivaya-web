@@ -8,13 +8,9 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-
       <CravingsSection />
-
       <HealthyProductsSection />
-
       <EventsPreviewSection />
-
       <FinalCtaSection />
     </main>
   );

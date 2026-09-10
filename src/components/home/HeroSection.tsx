@@ -22,7 +22,10 @@ export function HeroSection() {
     }, 6000);
 
     return () => window.clearInterval(interval);
-  }, [paused]);
+    // Depender de `activeSlide` reinicia el temporizador cada vez que la
+    // diapositiva cambia (también por flechas o indicadores), para que
+    // siempre pase cada 6s completos y no se acelere tras interactuar.
+  }, [paused, activeSlide]);
 
   function changeSlide(direction: number) {
     setActiveSlide(

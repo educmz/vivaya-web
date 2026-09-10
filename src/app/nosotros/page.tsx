@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 import { AboutBanner } from "@/components/about/AboutBanner";
+import { TeamSection } from "@/components/about/TeamSection";
 import { EssenceSection } from "@/components/about/EssenceSection";
-import { StorySection } from "@/components/about/StorySection";
-import { TimelineSection } from "@/components/about/TimelineSection";
-import { VivayaSection } from "@/components/about/VivayaSection";
+import { AboutIntroSection } from "@/components/about/AboutIntroSection";
+import { SocialSection } from "@/components/about/SocialSection";
 
 export const metadata: Metadata = {
-  title: "Nosotros | VIVAYA",
+  title: "Nosotros",
   description:
-    "Conoce la historia, esencia y propuesta que hay detrás de VIVAYA.",
+    "Conoce la historia, esencia y propuesta que hay detrás de Vivaya.",
 };
 
 export default function AboutPage() {
@@ -22,10 +22,10 @@ export default function AboutPage() {
       }}
     >
       <AboutBanner />
-      <VivayaSection />
-      <TimelineSection />
+      <AboutIntroSection />
+      <TeamSection />
       <EssenceSection />
-      <StorySection />
+      <SocialSection />   
     </div>
   );
 }
