@@ -19,19 +19,23 @@ export function CartaCatalog() {
   const navStartedAt = useRef(0);
   const navTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
+  const [openOrderId, setOpenOrderId] = useState<string | null>(null);
+
   useEffect(() => {
-    // Un gesto real de scroll del usuario (>200ms tras el click) reanuda el spy.
     const maybeResume = () => {
       if (Date.now() - navStartedAt.current > 200) {
         navigating.current = false;
       }
     };
+
     const onScrollEnd = () => {
       navigating.current = false;
     };
+
     window.addEventListener("wheel", maybeResume, { passive: true });
     window.addEventListener("touchmove", maybeResume, { passive: true });
     window.addEventListener("scrollend", onScrollEnd);
+
     return () => {
       window.removeEventListener("wheel", maybeResume);
       window.removeEventListener("touchmove", maybeResume);
@@ -69,6 +73,7 @@ export function CartaCatalog() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (navigating.current) return;
+
         const visibleSection = entries
           .filter((entry) => entry.isIntersecting)
           .sort(
@@ -98,6 +103,7 @@ export function CartaCatalog() {
 
   function goToCategory(category: CartaCategoryId) {
     const target = document.getElementById(`carta-${category}`);
+
     if (!target) return;
 
     navigating.current = true;
@@ -109,8 +115,8 @@ export function CartaCatalog() {
       block: "start",
     });
 
-    // Respaldo por si el navegador no dispara "scrollend".
     clearTimeout(navTimeout.current);
+
     navTimeout.current = setTimeout(() => {
       navigating.current = false;
     }, 1000);
@@ -124,12 +130,13 @@ export function CartaCatalog() {
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",
         background: "var(--background)",
         "--carta-ink": "#302E2A",
-        // Cinta de categorías: naranja vibrante (las letras negras se leen bien)
         "--carta-ribbon": "#FF8A00",
       } as CSSProperties}
     >
-
-      <ImageHero image="/images/carta/carta-hero.webp" lines={["ELIGE TU", "FAVORITO"]} />
+      <ImageHero
+        image="/images/carta/carta-hero.webp"
+        lines={["ELIGE TU", "FAVORITO"]}
+      />
 
       <CartaCategoryNav
         categories={sections.map(({ category }) => category)}
@@ -147,7 +154,7 @@ export function CartaCatalog() {
           >
             <AnimatedTitle
               text={category.name}
-              className="break-words text-center text-2xl min-[400px]:text-3xl font-extrabold uppercase tracking-[0.01em] text-[color:var(--carta-ink)] sm:text-5xl lg:text-6xl"
+              className="break-words text-center text-2xl font-extrabold uppercase tracking-[0.01em] text-[color:var(--carta-ink)] min-[400px]:text-3xl sm:text-5xl lg:text-6xl"
             />
 
             <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 sm:mt-8 sm:gap-x-6 sm:gap-y-5 min-[900px]:grid-cols-3 lg:mt-14 lg:gap-x-7 lg:gap-y-6 xl:grid-cols-4">
@@ -156,6 +163,12 @@ export function CartaCatalog() {
                   key={item.id}
                   item={item}
                   index={itemIndex}
+                  isOrderOpen={openOrderId === item.id}
+                  onToggleOrder={() =>
+                    setOpenOrderId((current) =>
+                      current === item.id ? null : item.id
+                    )
+                  }
                 />
               ))}
             </div>
