@@ -55,7 +55,7 @@ export function CartaCategoryNav({
 
   return (
     <div
-      className="sticky top-0 z-[55] min-w-0 max-w-full bg-[color:var(--carta-ribbon,#FF8A00)]"
+      className="sticky top-0 z-30 min-w-0 max-w-full bg-[color:var(--carta-ribbon,#FF8A00)]"
       style={{
         fontFamily:
           "var(--font-carta), 'Montserrat', system-ui, sans-serif",

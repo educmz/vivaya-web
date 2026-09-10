@@ -14,7 +14,7 @@ const actions = [
     label: "Ver carta",
     description: "Encuentra tu próximo antojo.",
     number: "01",
-    image: "/images/home/cta/carta.webp",
+    image: "/images/home/cta/cta-carta-products.webp",
   },
   {
     id: "events",
@@ -22,7 +22,7 @@ const actions = [
     label: "Ver eventos",
     description: "Haz especial tu próxima celebración.",
     number: "02",
-    image: "/images/home/cta/eventos.webp",
+    image: "/images/home/cta/cta-eventos-carts.webp",
   },
 ] as const;
 
@@ -31,7 +31,7 @@ export function FinalCtaSection() {
   const [activePanel, setActivePanel] = useState<string | null>(null);
   const columns = activePanel === "carta" ? "1.25fr .75fr" : activePanel === "events" ? ".75fr 1.25fr" : "1fr 1fr";
   return (
-    <section aria-labelledby="final-cta-title" className={styles.section}>
+    <section aria-labelledby="final-cta-title" className={`${styles.section} ${styles.finalSection}`}>
       <div className={`${styles.container} text-center`}>
         <HomeHeading id="final-cta-title" eyebrow="¿Y ahora?">Elige cómo quieres disfrutar VIVAYA.</HomeHeading>
       </div>

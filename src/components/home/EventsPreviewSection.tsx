@@ -97,7 +97,7 @@ export function EventsPreviewSection() {
           <div className="max-w-3xl">
             <HomeHeading
               id="events-preview-title"
-              eyebrow="eventos VIVAYA"
+              eyebrow="eventos vivaya"
             >
               Celebramos contigo.
             </HomeHeading>
