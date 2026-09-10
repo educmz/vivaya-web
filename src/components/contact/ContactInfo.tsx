@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { AtSign, Mail, Phone } from "lucide-react";
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
 import { Container } from "@/components/ui/Container";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { siteConfig } from "@/config/site";
@@ -70,7 +71,10 @@ export function ContactInfo() {
           className="border-b-2 border-[#302E2A] pb-6"
         >
           <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#3F7D4F]">Estamos disponibles</p>
-          <h2 className="font-accent text-[clamp(3rem,7vw,5.5rem)] leading-[0.9] text-[#FF8A00]">Hablemos.</h2>
+          <AnimatedTitle
+            text="Hablemos."
+            className="font-accent text-[clamp(3rem,7vw,5.5rem)] leading-[0.9] text-[#FF8A00]"
+          />
         </motion.div>
 
         <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-3">

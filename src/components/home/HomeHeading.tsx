@@ -1,11 +1,11 @@
-import type { ReactNode } from "react";
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
 import styles from "./Home.module.css";
 
-export function HomeHeading({ id, eyebrow, children }: { id: string; eyebrow: string; children: ReactNode }) {
+export function HomeHeading({ id, eyebrow, children }: { id: string; eyebrow: string; children: string }) {
   return (
     <div className={styles.header}>
       <p className={styles.eyebrow}>{eyebrow}</p>
-      <h2 id={id} className={styles.heading}>{children}</h2>
+      <AnimatedTitle id={id} text={children} className={styles.heading} />
     </div>
   );
 }

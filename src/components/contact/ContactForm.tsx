@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -17,7 +18,10 @@ export function ContactForm() {
       <Container className="relative">
         <motion.div initial={reducedMotion ? false : { opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.4 }} transition={{ duration: 0.75, ease }} className="mx-auto max-w-xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.24em] text-[#3F7D4F]">Escríbenos</p>
-          <h2 className="font-accent mt-3 text-[clamp(2.5rem,6vw,4rem)] leading-[0.9] text-[#FF8A00]">Cuéntanos qué necesitas.</h2>
+          <AnimatedTitle
+            text="Cuéntanos qué necesitas."
+            className="font-accent mt-3 text-[clamp(2.5rem,6vw,4rem)] leading-[0.9] text-[#FF8A00]"
+          />
         </motion.div>
 
         <motion.form

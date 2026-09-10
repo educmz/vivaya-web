@@ -9,6 +9,14 @@ import {
   Popcorn,
 } from "lucide-react";
 
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+import {
+  EventReveal,
+  EventRevealImage,
+  EventGroup,
+  EventItem,
+} from "@/components/events/EventReveal";
+
 const includes = [
   "Algodón de azúcar ilimitado",
   "Pop Corn ilimitado",
@@ -31,39 +39,46 @@ export function AlgodonPopcornBurgersSection() {
       <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
           {/* CONTENIDO */}
-          <div className="order-2 min-w-0 max-w-xl md:order-1">
-            <p
-              className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
-              style={{
-                fontFamily:
-                  "var(--font-script), 'Pacifico', cursive",
-              }}
-            >
-              Dulce, salado y listo para disfrutar
-            </p>
+          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl md:order-1">
+            <EventItem>
+              <p
+                className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+                style={{
+                  fontFamily:
+                    "var(--font-script), 'Pacifico', cursive",
+                }}
+              >
+                Dulce, salado y listo para disfrutar
+              </p>
+            </EventItem>
 
-            <h2 className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl">
-              Algodón & Pop Corn
-            </h2>
+            <AnimatedTitle
+              text="Algodón & Pop Corn"
+              className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+            />
 
-            <p className="mt-2 font-heading text-xl text-[#302E2A] sm:text-2xl">
-              + 50 Mini Burgers
-            </p>
+            <EventItem className="mt-2">
+              <p className="font-heading text-xl text-[#302E2A] sm:text-2xl">
+                + 50 Mini Burgers
+              </p>
+            </EventItem>
 
-            <p className="mt-4 max-w-lg text-sm leading-6 text-[#77736D]">
-              Una promoción que combina opciones dulces y saladas,
-              ideal para compartir y disfrutar durante tu evento.
-            </p>
+            <EventItem className="mt-4">
+              <p className="max-w-lg text-sm leading-6 text-[#77736D]">
+                Una promoción que combina opciones dulces y saladas,
+                ideal para compartir y disfrutar durante tu evento.
+              </p>
+            </EventItem>
 
             {/* INCLUYE */}
-            <div className="mt-5">
+            <EventItem className="mt-5">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#302E2A]">
                 Incluye
               </p>
 
-              <div className="mt-3 grid grid-cols-2 gap-2">
+              <EventGroup className="mt-3 grid grid-cols-2 gap-2">
                 {includes.map((item) => (
-                  <div
+                  <EventItem
                     key={item}
                     className="flex min-w-0 items-start gap-2 rounded-xl bg-white px-3 py-2"
                   >
@@ -74,13 +89,13 @@ export function AlgodonPopcornBurgersSection() {
                     <span className="text-xs leading-5 text-[#5F5A54]">
                       {item}
                     </span>
-                  </div>
+                  </EventItem>
                 ))}
-              </div>
-            </div>
+              </EventGroup>
+            </EventItem>
 
             {/* PRECIO */}
-            <div className="mt-5">
+            <EventItem className="mt-5">
               <p className="text-sm text-[#8C867F]">
                 Promoción completa
               </p>
@@ -88,10 +103,10 @@ export function AlgodonPopcornBurgersSection() {
               <p className="mt-1 font-heading text-3xl text-[#302E2A]">
                 S/ 380
               </p>
-            </div>
+            </EventItem>
 
             {/* DETALLES + CTA */}
-            <div className="mt-5 border-t border-[#E6DDD5] pt-4">
+            <EventItem className="mt-5 border-t border-[#E6DDD5] pt-4">
               <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                   <Popcorn className="h-4 w-4 shrink-0 text-[#FF8A00]" />
@@ -122,11 +137,11 @@ export function AlgodonPopcornBurgersSection() {
               >
                 Quiero esta promoción
               </a>
-            </div>
-          </div>
+            </EventItem>
+          </EventReveal>
 
           {/* IMAGEN */}
-          <div className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] md:order-2">
+          <EventRevealImage className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] md:order-2">
             <div className="relative aspect-[1122/1402]">
               <Image
                 src="/images/events/algodon-popcorn-mini-burgers.webp"
@@ -136,7 +151,7 @@ export function AlgodonPopcornBurgersSection() {
                 className="object-contain"
               />
             </div>
-          </div>
+          </EventRevealImage>
         </div>
       </div>
     </section>

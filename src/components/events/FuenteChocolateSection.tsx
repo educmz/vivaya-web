@@ -3,6 +3,14 @@
 import Image from "next/image";
 import { Clock3, Store, UserRound, Check, Candy } from "lucide-react";
 
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+import {
+  EventReveal,
+  EventRevealImage,
+  EventGroup,
+  EventItem,
+} from "@/components/events/EventReveal";
+
 const pricing = [
   { label: "50 unidades", price: 280 },
   { label: "80 unidades", price: 370 },
@@ -33,34 +41,39 @@ export function FuenteChocolateSection() {
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
 
           {/* CONTENIDO */}
-          <div className="order-2 min-w-0 max-w-xl md:order-1">
-            <p
-              className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
-              style={{
-                fontFamily: "var(--font-script), 'Pacifico', cursive",
-              }}
-            >
-              Un momento para endulzar
-            </p>
+          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl md:order-1">
+            <EventItem>
+              <p
+                className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+                style={{
+                  fontFamily: "var(--font-script), 'Pacifico', cursive",
+                }}
+              >
+                Un momento para endulzar
+              </p>
+            </EventItem>
 
-            <h2 className="mt-3 whitespace-nowrap font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl">
-              Fuente de Chocolate
-            </h2>
+            <AnimatedTitle
+              text="Fuente de Chocolate"
+              className="mt-3 whitespace-nowrap font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+            />
 
-            <p className="mt-4 max-w-lg text-sm leading-6 text-[#77736D]">
-              Una estación dulce con fuente de chocolate, frutas,
-              marshmallows y toppings para compartir durante tu evento.
-            </p>
+            <EventItem className="mt-4">
+              <p className="max-w-lg text-sm leading-6 text-[#77736D]">
+                Una estación dulce con fuente de chocolate, frutas,
+                marshmallows y toppings para compartir durante tu evento.
+              </p>
+            </EventItem>
 
             {/* INCLUYE */}
-            <div className="mt-5">
+            <EventItem className="mt-5">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#302E2A]">
                 Incluye
               </p>
 
-              <div className="mt-3 grid grid-cols-2 gap-2">
+              <EventGroup className="mt-3 grid grid-cols-2 gap-2">
                 {includes.map((item) => (
-                  <div
+                  <EventItem
                     key={item}
                     className="flex min-w-0 items-start gap-2 rounded-xl bg-white px-3 py-2"
                   >
@@ -71,13 +84,13 @@ export function FuenteChocolateSection() {
                     <span className="text-xs leading-5 text-[#5F5A54]">
                       {item}
                     </span>
-                  </div>
+                  </EventItem>
                 ))}
-              </div>
-            </div>
+              </EventGroup>
+            </EventItem>
 
             {/* PRECIOS */}
-            <div className="mt-5">
+            <EventItem className="mt-5">
               <div className="flex items-end justify-between">
                 <div>
                   <p className="text-sm text-[#8C867F]">Desde</p>
@@ -111,10 +124,10 @@ export function FuenteChocolateSection() {
                   </div>
                 ))}
               </div>
-            </div>
+            </EventItem>
 
             {/* DETALLES + CTA */}
-            <div className="mt-5 border-t border-[#E6DDD5] pt-4">
+            <EventItem className="mt-5 border-t border-[#E6DDD5] pt-4">
               <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                   <Clock3 className="h-4 w-4 shrink-0 text-[#FF8A00]" />
@@ -145,11 +158,11 @@ export function FuenteChocolateSection() {
               >
                 Quiero esta promoción
               </a>
-            </div>
-          </div>
+            </EventItem>
+          </EventReveal>
 
           {/* IMAGEN */}
-          <div className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] md:order-2">
+          <EventRevealImage className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] md:order-2">
             <div className="relative aspect-[1122/1402]">
               <Image
                 src="/images/events/fuente-chocolate.webp"
@@ -159,7 +172,7 @@ export function FuenteChocolateSection() {
                 className="object-contain"
               />
             </div>
-          </div>
+          </EventRevealImage>
 
         </div>
       </div>
