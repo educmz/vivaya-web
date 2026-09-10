@@ -73,7 +73,7 @@ export function CartaCategoryNav({
           max-w-full
           overflow-x-auto
           overscroll-x-contain
-          px-3
+          px-6
           h-[52px]
           py-2.5
           sm:gap-9

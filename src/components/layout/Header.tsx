@@ -50,7 +50,7 @@ export function Header() {
       <div
         className="
           relative flex h-[88px] w-full items-center justify-between sm:h-24 lg:h-28
-          px-3
+          px-6
           sm:px-6
           lg:px-6
         "

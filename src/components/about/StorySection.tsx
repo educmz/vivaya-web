@@ -23,7 +23,7 @@ const storyImages = [
 export function StorySection() {
   return (
     <section className="bg-background py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-10">
         <AboutReveal className="mb-10 max-w-3xl sm:mb-12" amount={0.6}>
           <AboutItem>
             <p className="text-2xl text-[#FF8A00] sm:text-3xl" style={{ fontFamily: "var(--font-script), 'Pacifico', cursive" }}>Nuestra historia</p>

@@ -218,7 +218,7 @@ export function HeroSection() {
               gap-2.5
               rounded-full
               bg-black/15
-              px-3
+              px-6
               py-2
               backdrop-blur-md
             "

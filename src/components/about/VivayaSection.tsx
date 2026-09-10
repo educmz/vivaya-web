@@ -8,7 +8,7 @@ import { AboutImage, AboutItem, AboutReveal } from "@/components/about/AboutMoti
 export function VivayaSection() {
   return (
     <section className="bg-background py-10 sm:py-12 lg:py-16">
-      <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-10">
         <div className="grid items-center gap-8 md:grid-cols-2 lg:gap-12">
 
           {/* TEXTO */}

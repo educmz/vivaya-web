@@ -12,7 +12,7 @@ export function CartaOrderBar() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-background px-5 pb-20 sm:px-8 sm:pb-24 lg:px-10">
+    <section className="bg-background px-6 pb-20 sm:px-8 sm:pb-24 lg:px-10">
       <Container>
         <motion.div
           initial={

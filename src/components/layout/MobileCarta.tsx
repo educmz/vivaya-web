@@ -64,7 +64,7 @@ export function MobileCarta({
 
   return (
     <div id="mobile-navigation" className="fixed inset-0 z-[9998] overflow-y-auto overscroll-contain bg-[#FFF8F3] text-[#302E2A]">
-      <div className="flex min-h-full flex-col px-5 pb-[max(24px,env(safe-area-inset-bottom))] pt-[max(20px,env(safe-area-inset-top))] sm:px-8">
+      <div className="flex min-h-full flex-col px-6 pb-[max(24px,env(safe-area-inset-bottom))] pt-[max(20px,env(safe-area-inset-top))] sm:px-8">
         {/* HEADER */}
         <div className="flex items-center justify-between">
           <Link

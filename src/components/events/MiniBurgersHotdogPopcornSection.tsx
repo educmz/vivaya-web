@@ -35,7 +35,7 @@ export function MiniBurgersHotdogPopcornSection() {
 
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
-      <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-10">
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
           {/* CONTENIDO */}
           <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl md:order-1">

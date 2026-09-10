@@ -137,7 +137,7 @@ export function CartaCatalog() {
         onChange={goToCategory}
       />
 
-      <div className="mx-auto min-w-0 max-w-7xl px-3 pb-16 sm:px-6 sm:pb-24 lg:px-10 lg:pb-28">
+      <div className="mx-auto min-w-0 max-w-7xl px-6 pb-16 sm:px-6 sm:pb-24 lg:px-10 lg:pb-28">
         {sections.map(({ category, items }) => (
           <section
             key={category.id}
