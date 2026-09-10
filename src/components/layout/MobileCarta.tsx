@@ -63,14 +63,14 @@ export function MobileCarta({
   if (!isOpen) return null;
 
   return (
-    <div id="mobile-navigation" className="fixed inset-0 z-[9998] overflow-y-auto overscroll-contain bg-[#FFF9F4]">
-      <div className="flex h-full flex-col px-5 pb-6 pt-4">
+    <div id="mobile-navigation" className="fixed inset-0 z-[9998] overflow-y-auto overscroll-contain bg-[#FFF8F3] text-[#302E2A]">
+      <div className="flex min-h-full flex-col px-5 pb-[max(24px,env(safe-area-inset-bottom))] pt-[max(20px,env(safe-area-inset-top))] sm:px-8">
         {/* HEADER */}
         <div className="flex items-center justify-between">
           <Link
             href="/"
             onClick={onClose}
-            className="relative block w-[132px]"
+            className="relative flex min-h-12 w-[120px] shrink-0 items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF8A00]"
           >
             <Image
               src="/images/brand/logo_negro.png"
@@ -86,20 +86,15 @@ export function MobileCarta({
             type="button"
             onClick={onClose}
             aria-label="Cerrar carta"
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-[#FF8A00] bg-white text-[#155E38] transition duration-300 hover:bg-[#FFF3E4]"
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#302E2A]/15 text-[#302E2A] transition-colors duration-200 hover:border-[#FF8A00] hover:bg-[#FF8A00]/5 active:bg-[#FF8A00]/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF8A00] motion-reduce:transition-none"
           >
-            <X className="h-5 w-5" strokeWidth={1.8} />
+            <X className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
           </button>
         </div>
 
-        {/* CONTENIDO */}
-        <div className="mt-7">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#77A48B]">
-            Explora Vivaya
-          </p>
-
-          <nav className="mt-5">
-            <ul className="space-y-1.5">
+        <div className="mt-9 border-t border-[#302E2A]/10 pt-6 sm:mt-12">
+          <nav aria-label="Navegación principal">
+            <ul className="space-y-2">
               {cartaItems.map((item) => {
                 const isActive =
                   item.href === "/"
@@ -111,48 +106,28 @@ export function MobileCarta({
                     <Link
                       href={item.href}
                       onClick={onClose}
-                      className={`group flex min-h-[56px] items-center justify-between rounded-2xl px-4 transition-all duration-300 ${
+                      aria-current={isActive ? "page" : undefined}
+                      className={`group flex min-h-16 items-center justify-between gap-5 rounded-xl px-5 py-4 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF8A00] motion-reduce:transition-none ${
                         isActive
-                          ? "bg-[#185C36] text-white"
-                          : "text-[#165A36] hover:bg-[#F3EEE7]"
+                          ? "bg-[#FF8A00] text-[#302E2A] hover:bg-[#F58200] active:bg-[#EB7C00]"
+                          : "text-[#302E2A] hover:bg-[#302E2A]/5 active:bg-[#302E2A]/10"
                       }`}
                     >
-                      <span className="font-heading text-[28px] leading-none">
-                        {item.label}
+                      <span className="font-[family-name:var(--font-carta)] text-xl font-semibold normal-case leading-tight tracking-[-0.025em] sm:text-2xl">
+                        {item.label.charAt(0) + item.label.slice(1).toLowerCase()}
                       </span>
 
-                      <span
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
-                          isActive
-                            ? "border-[#F7D278] bg-[#F7D278] text-[#185C36]"
-                            : "border-[#DED8CF] bg-transparent text-[#185C36] group-hover:border-[#185C36]"
-                        }`}
-                      >
-                        <ArrowUpRight
-                          className="h-4 w-4"
-                          strokeWidth={1.8}
-                        />
-                      </span>
+                      <ArrowUpRight
+                        aria-hidden="true"
+                        className={`h-5 w-5 shrink-0 ${isActive ? "text-[#302E2A]" : "text-[#918A82] group-hover:text-[#302E2A]"}`}
+                        strokeWidth={1.5}
+                      />
                     </Link>
                   </li>
                 );
               })}
             </ul>
           </nav>
-        </div>
-
-        {/* ESPACIO FLEXIBLE */}
-        <div className="flex-1" />
-
-        {/* OPCIONAL: FOOTER MOBILE */}
-        <div className="border-t border-[#E8E1D9] pt-4">
-          <p className="text-xs leading-5 text-[#918A82]">
-            Natural. Fresco. Vivaya.
-          </p>
-
-          <p className="mt-1 text-xs leading-5 text-[#B0A9A1]">
-            Activa lo natural en tu día a día.
-          </p>
         </div>
       </div>
     </div>

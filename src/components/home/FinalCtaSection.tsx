@@ -13,7 +13,6 @@ const actions = [
     href: "/carta",
     label: "Ver carta",
     description: "Encuentra tu próximo antojo.",
-    number: "01",
     image: "/images/home/cta/cta-carta-products.webp",
   },
   {
@@ -21,7 +20,6 @@ const actions = [
     href: "/eventos",
     label: "Ver eventos",
     description: "Haz especial tu próxima celebración.",
-    number: "02",
     image: "/images/home/cta/cta-eventos-carts.webp",
   },
 ] as const;
@@ -42,7 +40,6 @@ export function FinalCtaSection() {
             onFocus={() => setActivePanel(action.id)} onBlur={() => setActivePanel(null)}>
             <HomeImage src={action.image} alt="" fill sizes="(min-width: 640px) 65vw, 100vw" />
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/5" />
-            <span aria-hidden="true" className="absolute left-5 top-5 text-xs tracking-widest text-white/75 sm:left-7">{action.number}</span>
             <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 text-white sm:p-7">
               <div><h3 className={styles.panelTitle}>{action.label}</h3><p className="mt-2 max-w-sm text-sm leading-6 text-white/85">{action.description}</p></div>
               <ArrowUpRight size={26} aria-hidden="true" className="shrink-0 text-[#FF8A00]" />

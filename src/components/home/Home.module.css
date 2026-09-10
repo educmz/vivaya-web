@@ -20,24 +20,27 @@
 .eventControl:disabled { color: #302e2a40; border-color: #302e2a14; cursor: default; }
 .eventControl:focus-visible, .eventLink:focus-visible { outline: 2px solid #ff8a00; outline-offset: 4px; }
 .eventGallery { min-width: 0; }
-.eventTrack { display: flex; gap: 20px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; cursor: grab; }
+.eventTrack { display: flex; gap: 20px; padding-top: 4px; margin-top: -4px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; cursor: grab; }
 .eventTrack:focus-visible { outline: 2px solid #ff8a00; outline-offset: 4px; border-radius: 12px; }
 .eventTrack::-webkit-scrollbar { display: none; }
 .eventTrack[data-dragging="true"] { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; user-select: none; }
 .eventPhoto { position: relative; flex: 0 0 82%; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; background: #efe8e2; scroll-snap-align: start; }
-.eventImage { object-fit: cover; object-position: center; transition: transform 600ms cubic-bezier(.22,1,.36,1); }
+.eventImage { object-fit: cover; object-position: center; }
+.photo, .eventPhoto { transition: transform 200ms ease-out; }
 .eventFooter { display: flex; justify-content: flex-end; margin-top: clamp(20px, 2.5vw, 32px); }
 .eventLink { display: inline-flex; align-items: center; gap: 12px; padding: 14px 24px; border-radius: 9999px; background: #302e2a; font-size: 14px; line-height: 20px; font-weight: 600; color: #fff; transition: background-color 300ms, transform 300ms; }
 .eventLinkIcon { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #ffffff1a; color: #fff; transition: transform 300ms, background-color 300ms, color 300ms; }
 @media (hover: hover) and (pointer: fine) {
   .eventControl:not(:disabled):hover { border-color: #c96532; color: #c96532; background: #ff8a0008; }
-  .eventPhoto:hover .eventImage { transform: scale(1.015); }
-  .eventTrack[data-dragging="true"] .eventImage { transform: none; }
+  .photo:hover, .eventPhoto:hover { transform: translateY(-4px); }
+  .eventTrack[data-dragging="true"] .eventPhoto { transform: none; }
   .eventLink:hover { background: #ff8a00; transform: translateY(-2px); }
   .eventLink:hover .eventLinkIcon { transform: rotate(45deg); background: #fff; color: #ff8a00; }
 }
-.panels { display: grid; grid-template-columns: minmax(0, 1fr); }
+.panels { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
 .panel { position: relative; min-width: 0; min-height: 230px; overflow: hidden; }
+.panel:first-child { border-radius: 12px 12px 0 0; }
+.panel:last-child { border-radius: 0 0 12px 12px; }
 .panel:focus-visible { outline: 3px solid #ff8a00; outline-offset: -3px; }
 .panelTitle { font-family: var(--font-carta), sans-serif; font-size: clamp(1.5rem, 2.2vw, 2.25rem); font-weight: 800; line-height: 1.12; letter-spacing: -.03em; text-transform: uppercase; }
 @media (min-width: 640px) {
@@ -48,6 +51,8 @@
   .eventPhoto { flex-basis: 46%; }
   .panel { min-height: 280px; }
   .panels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .panel:first-child { border-radius: 12px 0 0 12px; }
+  .panel:last-child { border-radius: 0 12px 12px 0; }
 }
 @media (min-width: 1024px) {
   .section.finalSection { padding-bottom: 7rem; }
@@ -66,6 +71,6 @@
 @media (prefers-reduced-motion: reduce) { .panels, .link, .control { transition: none; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .eventImage, .eventControl, .eventLink, .eventLinkIcon { transition: none; }
-  .eventPhoto:hover .eventImage, .eventLink:hover, .eventLink:hover .eventLinkIcon { transform: none; }
+  .photo, .eventPhoto, .eventControl, .eventLink, .eventLinkIcon { transition: none; }
+  .photo:hover, .eventPhoto:hover, .eventLink:hover, .eventLink:hover .eventLinkIcon { transform: none; }
 }
