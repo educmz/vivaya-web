@@ -75,7 +75,7 @@ export function Combos123Section() {
 
           <AnimatedTitle
             text="Combos para compartir"
-            className="mt-2 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl"
+            className="mt-2 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl"
           />
         </EventReveal>
 
@@ -106,7 +106,7 @@ export function Combos123Section() {
 
                 {/* CONTENIDO */}
                 <div className="flex flex-1 flex-col p-4 md:row-span-4 md:grid md:grid-rows-subgrid md:gap-y-0">
-                  <h3 className="font-heading text-2xl text-[#302E2A]">
+                  <h3 className="font-extrabold uppercase text-2xl text-[#302E2A]">
                     {combo.name}
                   </h3>
 
@@ -131,7 +131,7 @@ export function Combos123Section() {
                   <div className="mt-3">
                     <p className="text-sm text-[#8C867F]">Por solo</p>
 
-                    <p className="mt-1 font-heading text-3xl text-[#302E2A]">
+                    <p className="mt-1 font-extrabold uppercase text-3xl text-[#302E2A]">
                       S/ {combo.price}
                     </p>
 

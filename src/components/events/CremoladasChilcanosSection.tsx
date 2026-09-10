@@ -107,7 +107,7 @@ export function CremoladasChilcanosSection() {
 
           <AnimatedTitle
             text="Cremoladas & Chilcanos"
-            className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl"
+            className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl"
           />
         </EventReveal>
 
@@ -138,11 +138,11 @@ export function CremoladasChilcanosSection() {
 
                 {/* CONTENIDO */}
                 <div className="flex min-w-0 flex-1 flex-col p-3">
-                  <h3 className="font-heading text-xl sm:text-2xl text-[#302E2A]">
+                  <h3 className="font-extrabold uppercase text-xl sm:text-2xl text-[#302E2A]">
                     {item.name}
                   </h3>
 
-                  <p className="mt-1 font-heading text-base leading-snug text-[#302E2A]">
+                  <p className="mt-1 font-extrabold uppercase text-base leading-snug text-[#302E2A]">
                     {item.subtitle}
                   </p>
 
@@ -170,7 +170,7 @@ export function CremoladasChilcanosSection() {
                       Desde
                     </p>
 
-                    <p className="mt-1 font-heading text-3xl text-[#302E2A]">
+                    <p className="mt-1 font-extrabold uppercase text-3xl text-[#302E2A]">
                       S/ {item.price}
                     </p>
                   </div>

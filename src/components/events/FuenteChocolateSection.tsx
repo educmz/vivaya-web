@@ -55,7 +55,7 @@ export function FuenteChocolateSection() {
 
             <AnimatedTitle
               text="Fuente de Chocolate"
-              className="mt-3 whitespace-nowrap font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+              className="mt-3 whitespace-nowrap font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
             />
 
             <EventItem className="mt-4">
@@ -94,7 +94,7 @@ export function FuenteChocolateSection() {
               <div className="flex items-end justify-between">
                 <div>
                   <p className="text-sm text-[#8C867F]">Desde</p>
-                  <p className="mt-1 font-heading text-3xl text-[#302E2A]">
+                  <p className="mt-1 font-extrabold uppercase text-3xl text-[#302E2A]">
                     S/ 280
                   </p>
                 </div>

@@ -30,7 +30,7 @@ export function StorySection() {
           </AboutItem>
           <AnimatedTitle
             text={"Todo empieza con\nuna buena idea."}
-            className="mt-4 text-4xl leading-[1.08] tracking-[-0.02em] text-[#302E2A] sm:text-5xl lg:text-6xl font-heading font-normal"
+            className="mt-4 text-4xl leading-[1.08] tracking-[0.01em] text-[#302E2A] sm:text-5xl lg:text-6xl font-extrabold uppercase"
           />
         </AboutReveal>
         <AboutReveal

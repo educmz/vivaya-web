@@ -49,7 +49,7 @@ export function EssenceSection() {
 
           <AnimatedTitle
             text="Lo que nos mueve."
-            className="mt-4 text-4xl tracking-[-0.02em] text-[#302E2A] sm:text-5xl lg:text-6xl font-heading font-normal"
+            className="mt-4 text-4xl tracking-[0.01em] text-[#302E2A] sm:text-5xl lg:text-6xl font-extrabold uppercase"
           />
         </AboutReveal>
 
@@ -104,11 +104,11 @@ export function EssenceSection() {
                   text-3xl
 
                   leading-[1.05]
-                  tracking-[-0.02em]
+                  tracking-[0.01em]
                   text-[#302E2A]
                   sm:text-4xl
                   lg:text-[2.5rem]
-                 font-heading font-normal"
+                 font-extrabold uppercase"
               >
                 {item.title}
               </h3>

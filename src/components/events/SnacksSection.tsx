@@ -98,7 +98,7 @@ export function SnacksSection() {
 
           <AnimatedTitle
             text="Snacks para tu evento"
-            className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl"
+            className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl"
           />
 
           <EventItem className="mt-4">
@@ -141,7 +141,7 @@ export function SnacksSection() {
 
                 {/* CONTENIDO */}
                 <div className="row-span-6 grid min-w-0 grid-rows-subgrid gap-y-0 p-3">
-                  <h3 className="break-words font-heading text-xl font-normal leading-tight text-[#302E2A] sm:text-2xl">
+                  <h3 className="break-words font-extrabold uppercase text-xl leading-tight text-[#302E2A] sm:text-2xl">
                     {snack.name}
                   </h3>
 
@@ -156,7 +156,7 @@ export function SnacksSection() {
                         Desde
                       </p>
 
-                      <p className="mt-1 font-heading text-3xl text-[#302E2A]">
+                      <p className="mt-1 font-extrabold uppercase text-3xl text-[#302E2A]">
                         S/ {priceFrom}
                       </p>
                     </div>

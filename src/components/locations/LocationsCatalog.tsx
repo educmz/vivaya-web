@@ -20,7 +20,7 @@ export function LocationsCatalog() {
           <p className="mb-3 font-[family-name:var(--font-script)] text-2xl font-normal lowercase leading-relaxed tracking-normal text-[#FF8A00] sm:text-3xl">Encuéntranos</p>
           <AnimatedTitle
             text="Nuestros locales"
-            className="font-heading text-4xl font-normal leading-[1.08] text-[#302E2A] sm:text-5xl lg:text-6xl"
+            className="text-4xl font-extrabold uppercase leading-[1.08] text-[#302E2A] sm:text-5xl lg:text-6xl"
           />
         </div>
         <div className="flex flex-col gap-14 sm:gap-20">
