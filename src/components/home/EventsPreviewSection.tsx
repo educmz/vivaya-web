@@ -93,7 +93,7 @@ export function EventsPreviewSection() {
     >
       <div className={styles.container}>
         {/* Heading */}
-        <div className="flex items-end justify-between gap-6">
+        <div className={styles.eventHeader}>
           <div className="max-w-3xl">
             <HomeHeading
               id="events-preview-title"
@@ -102,24 +102,20 @@ export function EventsPreviewSection() {
               Celebramos contigo.
             </HomeHeading>
 
-            <p className="mt-3 max-w-xl text-sm leading-6 text-[#77736D] sm:text-base">
-              Momentos reales, sabores para compartir y experiencias
-              que forman parte de cada celebración.
-            </p>
           </div>
 
           {/* Desktop controls */}
-          <div className="mb-1 hidden shrink-0 items-center gap-2 sm:flex">
+          <div className={styles.eventControls}>
             <button
               type="button"
               onClick={() => scroll(-1)}
               disabled={!edges.left}
               aria-label="Ver eventos anteriores"
-              className="group flex h-11 w-11 items-center justify-center rounded-full border border-[#DDD4CD] bg-white text-[#302E2A] transition duration-300 hover:border-[#302E2A] hover:bg-[#302E2A] hover:text-white disabled:pointer-events-none disabled:opacity-30"
+              className={styles.eventControl}
             >
               <ArrowLeft
                 size={18}
-                className="transition-transform duration-300 group-hover:-translate-x-0.5"
+                aria-hidden="true"
               />
             </button>
 
@@ -128,38 +124,25 @@ export function EventsPreviewSection() {
               onClick={() => scroll(1)}
               disabled={!edges.right}
               aria-label="Ver más eventos"
-              className="group flex h-11 w-11 items-center justify-center rounded-full border border-[#DDD4CD] bg-white text-[#302E2A] transition duration-300 hover:border-[#302E2A] hover:bg-[#302E2A] hover:text-white disabled:pointer-events-none disabled:opacity-30"
+              className={styles.eventControl}
             >
               <ArrowRight
                 size={18}
-                className="transition-transform duration-300 group-hover:translate-x-0.5"
+                aria-hidden="true"
               />
             </button>
           </div>
         </div>
 
         {/* Gallery */}
-        <div className="relative mt-8">
-          <div
-            aria-hidden="true"
-            className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#FFF9F3] via-[#FFF9F3]/70 to-transparent transition-opacity duration-300 sm:w-16 ${
-              edges.left ? "opacity-100" : "opacity-0"
-            }`}
-          />
-
-          <div
-            aria-hidden="true"
-            className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#FFF9F3] via-[#FFF9F3]/70 to-transparent transition-opacity duration-300 sm:w-16 ${
-              edges.right ? "opacity-100" : "opacity-0"
-            }`}
-          />
+        <div className={styles.eventGallery}>
 
           <div
             ref={scrollRef}
             tabIndex={0}
             role="region"
             aria-label="Fotografías de eventos"
-            className={`${styles.eventTrack} scroll-smooth`}
+            className={styles.eventTrack}
             onScroll={updateEdges}
             onKeyDown={(event) => {
               if (
@@ -221,7 +204,7 @@ export function EventsPreviewSection() {
             {events.map((event) => (
               <div
                 key={event.id}
-                className={`${styles.eventPhoto} group relative overflow-hidden rounded-2xl bg-[#EFE8E2]`}
+                className={styles.eventPhoto}
               >
                 <HomeImage
                   src={event.image}
@@ -229,24 +212,23 @@ export function EventsPreviewSection() {
                   fill
                   sizes="(min-width: 1360px) 550px, (min-width: 640px) 43vw, 82vw"
                   draggable={false}
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                  className={styles.eventImage}
                 />
 
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
             ))}
           </div>
         </div>
 
         {/* CTA */}
-        <div className="mt-7 flex justify-end">
+        <div className={styles.eventFooter}>
           <Link
             href="/eventos"
-            className="group inline-flex items-center gap-3 rounded-full bg-[#302E2A] px-6 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#FF8A00]"
+            className={styles.eventLink}
           >
             Conoce nuestros eventos
 
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition duration-300 group-hover:rotate-45 group-hover:bg-white group-hover:text-[#FF8A00]">
+            <span className={styles.eventLinkIcon}>
               <ArrowUpRight
                 size={17}
                 aria-hidden="true"
