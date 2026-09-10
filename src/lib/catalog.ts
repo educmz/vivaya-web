@@ -1,35 +1,35 @@
-import { menuProducts } from "@/data/menu/products";
+import { cartaProducts } from "@/data/carta/products";
 
-import type { MenuCategoryId } from "@/types/catalog";
+import type { CartaCategoryId } from "@/types/catalog";
 
-export function getAllMenuProducts() {
-  return menuProducts.filter(
+export function getAllCartaProducts() {
+  return cartaProducts.filter(
     (product) => product.available,
   );
 }
 
-export function getMenuProductsByCategory(
-  category: MenuCategoryId,
+export function getCartaProductsByCategory(
+  category: CartaCategoryId,
 ) {
-  return menuProducts.filter(
+  return cartaProducts.filter(
     (product) =>
       product.available &&
       product.category === category,
   );
 }
 
-export function getFeaturedMenuProducts() {
-  return menuProducts.filter(
+export function getFeaturedCartaProducts() {
+  return cartaProducts.filter(
     (product) =>
       product.available &&
       product.featured,
   );
 }
 
-export function getMenuProductBySlug(
+export function getCartaProductBySlug(
   slug: string,
 ) {
-  return menuProducts.find(
+  return cartaProducts.find(
     (product) =>
       product.available &&
       product.slug === slug,

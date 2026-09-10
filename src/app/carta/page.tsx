@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { CartaCatalog } from "@/components/menu/MenuCatalog";
+import { CartaCatalog } from "@/components/carta/CartaCatalog";
 
 export const metadata: Metadata = {
   title: "Carta",

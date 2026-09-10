@@ -5,24 +5,24 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 
-import type { MenuProduct } from "@/types/catalog";
+import type { CartaProduct } from "@/types/catalog";
 import { deliveryConfig } from "@/config/delivery";
 import { isSafeExternalUrl } from "@/lib/utils";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-interface CartaMenuCardProps {
-  item: MenuProduct;
+interface CartaCardProps {
+  item: CartaProduct;
   index: number;
-  onOrder?: (product: MenuProduct) => void;
+  onOrder?: (product: CartaProduct) => void;
 }
 
-export function CartaMenuCard({
+export function CartaCard({
   item,
   index,
   onOrder,
-}: CartaMenuCardProps) {
+}: CartaCardProps) {
   const reducedMotion = useReducedMotion();
   const [imageFailed, setImageFailed] = useState(false);
 

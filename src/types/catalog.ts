@@ -1,4 +1,4 @@
-export type MenuCategoryId =
+export type CartaCategoryId =
   | "smoothies"
   | "tes-helados"
   | "bebidas-calientes"
@@ -28,7 +28,7 @@ export interface CustomizationGroup {
   options: CustomizationOption[];
 }
 
-export interface MenuProduct {
+export interface CartaProduct {
   id: string;
   slug: string;
 
@@ -37,7 +37,7 @@ export interface MenuProduct {
 
   price: number;
 
-  category: MenuCategoryId;
+  category: CartaCategoryId;
 
   image: string;
   // Escala la foto dentro de la card (1 = llena el cuadro, <1 la achica).

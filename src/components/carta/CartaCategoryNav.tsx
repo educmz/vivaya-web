@@ -3,14 +3,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 
-import type { MenuCategory } from "@/data/menu/categories";
-import type { MenuCategoryId } from "@/types/catalog";
+import type { CartaCategory } from "@/data/carta/categories";
+import type { CartaCategoryId } from "@/types/catalog";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface CartaCategoryNavProps {
-  categories: MenuCategory[];
-  activeCategory: MenuCategoryId;
-  onChange: (category: MenuCategoryId) => void;
+  categories: CartaCategory[];
+  activeCategory: CartaCategoryId;
+  onChange: (category: CartaCategoryId) => void;
 }
 
 export function CartaCategoryNav({

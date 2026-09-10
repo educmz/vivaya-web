@@ -6,14 +6,14 @@ import { ArrowUpRight, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-const menuItems = [
+const cartaItems = [
   {
     label: "INICIO",
     href: "/",
   },
   {
     label: "CARTA",
-    href: "/menu",
+    href: "/carta",
   },
   {
     label: "EVENTOS",
@@ -29,15 +29,15 @@ const menuItems = [
   },
 ];
 
-interface MobileMenuProps {
+interface MobileCartaProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function MobileMenu({
+export function MobileCarta({
   isOpen,
   onClose,
-}: MobileMenuProps) {
+}: MobileCartaProps) {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export function MobileMenu({
           <button
             type="button"
             onClick={onClose}
-            aria-label="Cerrar menú"
+            aria-label="Cerrar carta"
             className="flex h-12 w-12 items-center justify-center rounded-full border border-[#FF8A00] bg-white text-[#155E38] transition duration-300 hover:bg-[#FFF3E4]"
           >
             <X className="h-5 w-5" strokeWidth={1.8} />
@@ -100,7 +100,7 @@ export function MobileMenu({
 
           <nav className="mt-5">
             <ul className="space-y-1.5">
-              {menuItems.map((item) => {
+              {cartaItems.map((item) => {
                 const isActive =
                   item.href === "/"
                     ? pathname === "/"

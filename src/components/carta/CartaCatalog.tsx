@@ -2,15 +2,15 @@
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
-import { CartaCategoryNav } from "@/components/menu/MenuCategoryNav";
-import { CartaMenuCard } from "@/components/menu/MenuCard";
+import { CartaCategoryNav } from "@/components/carta/CartaCategoryNav";
+import { CartaCard } from "@/components/carta/CartaCard";
 import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
 import { ImageHero } from "@/components/sections/ImageHero";
 
-import { menuCategories } from "@/data/menu/categories";
-import { menuProducts } from "@/data/menu/products";
+import { cartaCategories } from "@/data/carta/categories";
+import { cartaProducts } from "@/data/carta/products";
 
-import type { MenuCategoryId } from "@/types/catalog";
+import type { CartaCategoryId } from "@/types/catalog";
 
 export function CartaCatalog() {
   // Mientras dura un salto por click, el scroll-spy se pausa para que la
@@ -42,11 +42,11 @@ export function CartaCatalog() {
 
   const sections = useMemo(
     () =>
-      [...menuCategories]
+      [...cartaCategories]
         .sort((a, b) => a.order - b.order)
         .map((category) => ({
           category,
-          items: menuProducts.filter(
+          items: cartaProducts.filter(
             (product) =>
               product.category === category.id && product.available,
           ),
@@ -55,8 +55,8 @@ export function CartaCatalog() {
     [],
   );
 
-  const [activeCategory, setActiveCategory] = useState<MenuCategoryId>(
-    sections[0]?.category.id ?? menuCategories[0].id,
+  const [activeCategory, setActiveCategory] = useState<CartaCategoryId>(
+    sections[0]?.category.id ?? cartaCategories[0].id,
   );
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export function CartaCatalog() {
 
         const category = visibleSection.target.getAttribute(
           "data-category",
-        ) as MenuCategoryId | null;
+        ) as CartaCategoryId | null;
 
         if (category) {
           setActiveCategory(category);
@@ -96,7 +96,7 @@ export function CartaCatalog() {
     return () => observer.disconnect();
   }, [sections]);
 
-  function goToCategory(category: MenuCategoryId) {
+  function goToCategory(category: CartaCategoryId) {
     const target = document.getElementById(`carta-${category}`);
     if (!target) return;
 
@@ -129,7 +129,7 @@ export function CartaCatalog() {
       } as CSSProperties}
     >
 
-      <ImageHero image="/images/menu/menu-hero.webp" lines={["ELIGE TU", "FAVORITO"]} />
+      <ImageHero image="/images/carta/carta-hero.webp" lines={["ELIGE TU", "FAVORITO"]} />
 
       <CartaCategoryNav
         categories={sections.map(({ category }) => category)}
@@ -152,7 +152,7 @@ export function CartaCatalog() {
 
             <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 sm:mt-8 sm:gap-x-6 sm:gap-y-5 min-[900px]:grid-cols-3 lg:mt-14 lg:gap-x-7 lg:gap-y-6 xl:grid-cols-4">
               {items.map((item, itemIndex) => (
-                <CartaMenuCard
+                <CartaCard
                   key={item.id}
                   item={item}
                   index={itemIndex}

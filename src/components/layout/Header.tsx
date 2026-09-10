@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 import { Menu } from "lucide-react";
 
-import { MobileMenu } from "@/components/layout/MobileMenu";
+import { MobileCarta } from "@/components/layout/MobileCarta";
 import { Navbar } from "@/components/layout/Navbar";
 import { socialConfig } from "@/config/socials";
 
@@ -42,8 +42,8 @@ const socialLinks = [
 ];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+  const [isCartaOpen, setIsCartaOpen] = useState(false);
+  const closeCarta = useCallback(() => setIsCartaOpen(false), []);
 
   return (
     <header className="absolute inset-x-0 top-0 z-50 w-full bg-background">
@@ -102,15 +102,15 @@ export function Header() {
 
         <button
           type="button"
-          onClick={() => setIsMenuOpen(true)}
-          aria-label="Abrir menú"
-          aria-expanded={isMenuOpen}
+          onClick={() => setIsCartaOpen(true)}
+          aria-label="Abrir carta"
+          aria-expanded={isCartaOpen}
           aria-controls="mobile-navigation"
           className="grid size-12 place-items-center rounded-full bg-[#FF8A00] text-white lg:hidden"
         >
           <Menu size={22} aria-hidden="true" />
         </button>
-        <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
+        <MobileCarta isOpen={isCartaOpen} onClose={closeCarta} />
       </div>
     </header>
   );

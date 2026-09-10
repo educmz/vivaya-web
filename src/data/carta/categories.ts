@@ -1,12 +1,12 @@
-import type { MenuCategoryId } from "@/types/catalog";
+import type { CartaCategoryId } from "@/types/catalog";
 
-export interface MenuCategory {
-  id: MenuCategoryId;
+export interface CartaCategory {
+  id: CartaCategoryId;
   name: string;
   order: number;
 }
 
-export const menuCategories: MenuCategory[] = [
+export const cartaCategories: CartaCategory[] = [
   {
     id: "smoothies",
     name: "Smoothies",

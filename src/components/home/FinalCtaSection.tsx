@@ -9,8 +9,8 @@ import styles from "./Home.module.css";
 
 const actions = [
   {
-    id: "menu",
-    href: "/menu",
+    id: "carta",
+    href: "/carta",
     label: "Ver carta",
     description: "Encuentra tu próximo antojo.",
     number: "01",
@@ -29,7 +29,7 @@ const actions = [
 
 export function FinalCtaSection() {
   const [activePanel, setActivePanel] = useState<string | null>(null);
-  const columns = activePanel === "menu" ? "1.25fr .75fr" : activePanel === "events" ? ".75fr 1.25fr" : "1fr 1fr";
+  const columns = activePanel === "carta" ? "1.25fr .75fr" : activePanel === "events" ? ".75fr 1.25fr" : "1fr 1fr";
   return (
     <section aria-labelledby="final-cta-title" className={styles.section}>
       <div className={`${styles.container} text-center`}>

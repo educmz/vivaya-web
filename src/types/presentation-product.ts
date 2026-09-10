@@ -1,4 +1,4 @@
-// Product presentations shown on the home page, separate from the menu catalog.
+// Product presentations shown on the home page, separate from the carta catalog.
 export interface PresentationProduct {
   id: string;
   slug: string;

@@ -19,7 +19,7 @@ const columns = [
     title: "Explora",
     links: [
       { label: "Inicio", href: "/" },
-      { label: "Carta", href: "/menu" },
+      { label: "Carta", href: "/carta" },
       { label: "Eventos", href: "/eventos" },
     ],
   },

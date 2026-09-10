@@ -1,49 +1,49 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
 
-import { menuCategories } from "@/data/menu/categories";
-import type { MenuCategoryId } from "@/types/catalog";
+import { cartaCategories } from "@/data/carta/categories";
+import type { CartaCategoryId } from "@/types/catalog";
 import { HomeHeading } from "./HomeHeading";
 
-const visuals: Record<MenuCategoryId, { background: string; image: string; alt: string }> = {
+const visuals: Record<CartaCategoryId, { background: string; image: string; alt: string }> = {
   smoothies: {
     background: "#DCEEF2",
-    image: "/images/menu/naranja-fresa.webp",
+    image: "/images/carta/naranja-fresa.webp",
     alt: "Naranja Fresa de Vivaya",
   },
   "tes-helados": {
     background: "#F6E9B8",
-    image: "/images/menu/jamaica.webp",
+    image: "/images/carta/jamaica.webp",
     alt: "Té helado Jamaica de Vivaya",
   },
   "bebidas-calientes": {
     background: "#F5D6C2",
-    image: "/images/menu/chocolate-caliente.webp",
+    image: "/images/carta/chocolate-caliente.webp",
     alt: "Chocolate Caliente de Vivaya",
   },
   frappes: {
     background: "#E6E1F0",
-    image: "/images/menu/mocaccino.webp",
+    image: "/images/carta/mocaccino.webp",
     alt: "Frappé Mocaccino de Vivaya",
   },
   waffles: {
     background: "#F6E9B8",
-    image: "/images/menu/waffle.webp",
+    image: "/images/carta/waffle.webp",
     alt: "Waffle de Vivaya",
   },
   sandwiches: {
     background: "#DFEACF",
-    image: "/images/menu/mixto.png",
+    image: "/images/carta/mixto.png",
     alt: "Sándwich Mixto Ninfit de Vivaya",
   },
   tostones: {
     background: "#F5D6C2",
-    image: "/images/menu/toston-benedictino.webp",
+    image: "/images/carta/toston-benedictino.webp",
     alt: "Tostón Benedictino de Vivaya",
   },
   pizzas: {
     background: "#DCEEF2",
-    image: "/images/menu/pizza-hawaiana.webp",
+    image: "/images/carta/pizza-hawaiana.webp",
     alt: "Pizza Hawaiana de Vivaya",
   },
 };
@@ -58,13 +58,13 @@ export function CravingsSection() {
 
         <div className="grid gap-5 lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] lg:gap-6">
           <div className="grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-4">
-            {[...menuCategories].sort((a, b) => a.order - b.order).map((category) => {
+            {[...cartaCategories].sort((a, b) => a.order - b.order).map((category) => {
               const visual = visuals[category.id];
 
               return (
                 <Link
                   key={category.id}
-                  href={`/menu#carta-${category.id}`}
+                  href={`/carta#carta-${category.id}`}
                   className="group flex aspect-[4/5] min-w-0 flex-col items-center overflow-hidden rounded-lg px-3 pb-4 pt-5 text-[#302E2A] transition-transform duration-200 hover:-translate-y-1 motion-reduce:transform-none sm:px-4 sm:pb-5 sm:pt-6"
                   style={{ backgroundColor: visual.background }}
                 >
