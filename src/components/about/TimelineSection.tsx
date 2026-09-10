@@ -55,11 +55,11 @@ export function TimelineSection() {
               text-4xl
 
               leading-[1.08]
-              tracking-[-0.02em]
+              tracking-[0.01em]
               text-[#302E2A]
               sm:text-5xl
               lg:text-6xl
-             font-heading font-normal"
+             font-extrabold uppercase"
           />
         </AboutReveal>
 
@@ -129,10 +129,10 @@ export function TimelineSection() {
                       text-2xl
 
                       leading-[1.1]
-                      tracking-[-0.02em]
+                      tracking-[0.01em]
                       text-[#302E2A]
                       lg:text-3xl
-                     font-heading font-normal"
+                     font-extrabold uppercase"
                   >
                     {item.title === "VIVAYA" ? (
                       <Image
@@ -199,9 +199,9 @@ export function TimelineSection() {
                     mt-1
                     text-2xl
 
-                    tracking-[-0.02em]
+                    tracking-[0.01em]
                     text-[#302E2A]
-                   font-heading font-normal"
+                   font-extrabold uppercase"
                 >
                   {item.title === "VIVAYA" ? (
                     <Image

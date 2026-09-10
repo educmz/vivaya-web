@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { ChocolateCafeSection } from "@/components/events/ChocolateCafeSection";
 import { ImageHero } from "@/components/sections/ImageHero";
 import { FuenteChocolateSection } from "@/components/events/FuenteChocolateSection";
@@ -17,7 +19,12 @@ export const metadata: Metadata = { title: "Eventos" };
 
 export default function EventsPage() {
   return (
-    <div className="bg-background pt-[88px] sm:pt-24 lg:pt-28">
+    <div
+      className="bg-background pt-[88px] sm:pt-24 lg:pt-28"
+      style={{
+        fontFamily: "var(--font-carta), 'Montserrat', system-ui, sans-serif",
+      }}
+    >
       <ImageHero image="/images/events/event-hero.webp" lines={["CELEBRAMOS", "CONTIGO"]} />
       <ChocolateCafeSection />
       <FuenteChocolateSection />
@@ -35,4 +42,3 @@ export default function EventsPage() {
     </div>
   );
 }
-import type { Metadata } from "next";

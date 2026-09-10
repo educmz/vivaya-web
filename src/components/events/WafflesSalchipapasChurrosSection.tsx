@@ -57,11 +57,11 @@ export function WafflesSalchipapasChurrosSection() {
 
             <AnimatedTitle
               text="Waffles & Salchipapas"
-              className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+              className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
             />
 
             <EventItem className="mt-2">
-              <p className="font-heading text-xl text-[#302E2A] sm:text-2xl">
+              <p className="font-extrabold uppercase text-xl text-[#302E2A] sm:text-2xl">
                 + Churros & Pop Corn
               </p>
             </EventItem>
@@ -104,7 +104,7 @@ export function WafflesSalchipapasChurrosSection() {
                 Promoción completa
               </p>
 
-              <p className="mt-1 font-heading text-3xl text-[#302E2A]">
+              <p className="mt-1 font-extrabold uppercase text-3xl text-[#302E2A]">
                 S/ 680
               </p>
             </EventItem>

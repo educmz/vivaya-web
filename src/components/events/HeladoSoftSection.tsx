@@ -65,7 +65,7 @@ export function HeladoSoftSection() {
 
           <AnimatedTitle
             text="Helado Soft"
-            className="mt-1 font-heading text-2xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl"
+            className="mt-1 font-extrabold uppercase text-2xl leading-[1.08] text-[#302E2A] sm:text-4xl"
           />
         </EventReveal>
 
@@ -100,7 +100,7 @@ export function HeladoSoftSection() {
                     Paquete
                   </p>
 
-                  <h3 className="mt-1 font-heading text-2xl text-[#302E2A]">
+                  <h3 className="mt-1 font-extrabold uppercase text-2xl text-[#302E2A]">
                     {item.name}
                   </h3>
 
@@ -125,7 +125,7 @@ export function HeladoSoftSection() {
                   <div className="mt-auto pt-3">
                     <p className="text-sm text-[#8C867F]">Desde</p>
 
-                    <p className="mt-1 font-heading text-3xl text-[#302E2A]">
+                    <p className="mt-1 font-extrabold uppercase text-3xl text-[#302E2A]">
                       S/ {item.price}
                     </p>
                   </div>
