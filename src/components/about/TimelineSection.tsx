@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+
 const timelineItems = [
   {
     year: "2022",
@@ -34,22 +36,19 @@ export function TimelineSection() {
             Nuestro camino
           </p>
 
-          <h2
+          <AnimatedTitle
+            text={"Una historia que\nsigue creciendo."}
             className="
               mt-4
               text-4xl
-              
+
               leading-[1.08]
               tracking-[-0.02em]
               text-[#302E2A]
               sm:text-5xl
               lg:text-6xl
              font-heading font-normal"
-          >
-            Una historia que
-            <br />
-            sigue creciendo.
-          </h2>
+          />
         </div>
 
         {/* DESKTOP */}

@@ -8,6 +8,13 @@ import {
   Wine,
 } from "lucide-react";
 
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+import {
+  EventReveal,
+  EventItem,
+  EventCard,
+} from "@/components/events/EventReveal";
+
 const whatsappNumber = "51999999999";
 
 const packages = [
@@ -85,34 +92,38 @@ export function CremoladasChilcanosSection() {
     <section className="bg-[#FFF8F3] pt-8 pb-16 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-24">
       <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         {/* ENCABEZADO */}
-        <div className="mx-auto max-w-2xl text-center">
-          <p
-            className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
-            style={{
-              fontFamily:
-                "var(--font-script), 'Pacifico', cursive",
-            }}
-          >
-            Algo fresco para cada celebración
-          </p>
+        <EventReveal delay={0.05} className="mx-auto max-w-2xl text-center">
+          <EventItem>
+            <p
+              className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+              style={{
+                fontFamily:
+                  "var(--font-script), 'Pacifico', cursive",
+              }}
+            >
+              Algo fresco para cada celebración
+            </p>
+          </EventItem>
 
-          <h2 className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl">
-            Cremoladas & Chilcanos
-          </h2>
-
-        </div>
+          <AnimatedTitle
+            text="Cremoladas & Chilcanos"
+            className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl"
+          />
+        </EventReveal>
 
         {/* PAQUETES */}
         <div className="mt-6 grid gap-3 min-[360px]:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-          {packages.map((item) => {
+          {packages.map((item, index) => {
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
               item.message
             )}`;
 
             return (
-              <article
+              <EventCard
                 key={item.id}
-                className="flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E9DED4] bg-white"
+                index={index}
+                columns={4}
+                className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E9DED4] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)]"
               >
                 {/* IMAGEN */}
                 <div className="relative h-36 shrink-0 overflow-hidden bg-[#F4E8DF] sm:h-44">
@@ -121,7 +132,7 @@ export function CremoladasChilcanosSection() {
                     alt={`${item.name} ${item.subtitle} para eventos`}
                     fill
                     sizes="(max-width: 359px) 100vw, (max-width: 1023px) 50vw, 25vw"
-                    className="object-cover"
+                    className="object-cover transition duration-500 group-hover:scale-[1.035]"
                   />
                 </div>
 
@@ -197,7 +208,7 @@ export function CremoladasChilcanosSection() {
                     </div>
                   </div>
                 </div>
-              </article>
+              </EventCard>
             );
           })}
         </div>

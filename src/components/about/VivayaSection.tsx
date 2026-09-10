@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function VivayaSection() {
@@ -29,10 +30,10 @@ export function VivayaSection() {
               Nuestra esencia
             </p>
 
-            <h2 className="mt-4 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl">
-              Sabor para
-              <span className="block">cada momento.</span>
-            </h2>
+            <AnimatedTitle
+              text={"Sabor para\ncada momento."}
+              className="mt-4 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+            />
 
             <p className="mt-5 max-w-md text-sm leading-6 text-[#77736D] sm:text-base sm:leading-7">
               Una propuesta pensada para acompañar tus antojos,

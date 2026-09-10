@@ -3,6 +3,13 @@
 import Image from "next/image";
 import { Clock3, Store, UserRound } from "lucide-react";
 
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+import {
+  EventReveal,
+  EventItem,
+  EventCard,
+} from "@/components/events/EventReveal";
+
 type SnackId =
   | "popcorn"
   | "hamburguesitas"
@@ -77,28 +84,33 @@ export function SnacksSection() {
     <section className="bg-[#FFF8F3] py-8 sm:py-10 lg:py-12">
       <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         {/* ENCABEZADO */}
-        <div className="mx-auto max-w-2xl text-center">
-          <p
-            className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
-            style={{
-              fontFamily: "var(--font-script), 'Pacifico', cursive",
-            }}
-          >
-            Elige tu favorito
-          </p>
+        <EventReveal delay={0.05} className="mx-auto max-w-2xl text-center">
+          <EventItem>
+            <p
+              className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+              style={{
+                fontFamily: "var(--font-script), 'Pacifico', cursive",
+              }}
+            >
+              Elige tu favorito
+            </p>
+          </EventItem>
 
-          <h2 className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl">
-            Snacks para tu evento
-          </h2>
+          <AnimatedTitle
+            text="Snacks para tu evento"
+            className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl"
+          />
 
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-[#77736D] sm:text-base">
-            Opciones prácticas y deliciosas para acompañar tus celebraciones.
-          </p>
-        </div>
+          <EventItem className="mt-4">
+            <p className="mx-auto max-w-xl text-sm leading-6 text-[#77736D] sm:text-base">
+              Opciones prácticas y deliciosas para acompañar tus celebraciones.
+            </p>
+          </EventItem>
+        </EventReveal>
 
         {/* CARDS */}
         <div className="mt-6 grid gap-3 min-[360px]:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-          {snacks.map((snack) => {
+          {snacks.map((snack, index) => {
             const priceFrom = Math.min(
               ...snack.pricing.map((option) => option.price)
             );
@@ -110,9 +122,11 @@ export function SnacksSection() {
             )}`;
 
             return (
-              <article
+              <EventCard
                 key={snack.id}
-                className="group row-span-7 grid h-full min-w-0 grid-rows-subgrid gap-y-0 overflow-hidden rounded-2xl border border-[#EDE3DA] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)]"
+                index={index}
+                columns={4}
+                className="group row-span-7 grid h-full min-w-0 grid-rows-subgrid gap-y-0 overflow-hidden rounded-2xl border border-[#EDE3DA] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)]"
               >
                 {/* IMAGEN */}
                 <div className="relative h-36 overflow-hidden sm:h-44 bg-[#F4E8DF]">
@@ -202,7 +216,7 @@ export function SnacksSection() {
                     Quiero esta opción
                   </a>
                 </div>
-              </article>
+              </EventCard>
             );
           })}
         </div>

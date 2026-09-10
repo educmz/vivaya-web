@@ -1,3 +1,5 @@
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+
 const essenceItems = [
   {
     id: "purpose",
@@ -34,9 +36,10 @@ export function EssenceSection() {
             Nuestra esencia
           </p>
 
-          <h2 className="mt-4 text-4xl  tracking-[-0.02em] text-[#302E2A] sm:text-5xl lg:text-6xl font-heading font-normal">
-            Lo que nos mueve.
-          </h2>
+          <AnimatedTitle
+            text="Lo que nos mueve."
+            className="mt-4 text-4xl tracking-[-0.02em] text-[#302E2A] sm:text-5xl lg:text-6xl font-heading font-normal"
+          />
         </div>
 
         {/* BLOQUES */}

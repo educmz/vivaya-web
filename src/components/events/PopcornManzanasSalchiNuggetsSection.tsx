@@ -10,6 +10,14 @@ import {
   Popcorn,
 } from "lucide-react";
 
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+import {
+  EventReveal,
+  EventRevealImage,
+  EventGroup,
+  EventItem,
+} from "@/components/events/EventReveal";
+
 const includes = [
   "Pop Corn ilimitado",
   "50 manzanas acarameladas",
@@ -32,9 +40,9 @@ export function PopcornManzanasSalchiNuggetsSection() {
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
       <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
-          
+
           {/* IMAGEN */}
-          <div className="relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF]">
+          <EventRevealImage className="relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF]">
             <div className="relative aspect-[1122/1402]">
               <Image
                 src="/images/events/popcorn-manzanas-salchi-nuggets.webp"
@@ -44,43 +52,50 @@ export function PopcornManzanasSalchiNuggetsSection() {
                 className="object-contain"
               />
             </div>
-          </div>
+          </EventRevealImage>
 
           {/* CONTENIDO */}
-          <div className="min-w-0 max-w-xl">
-            <p
-              className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
-              style={{
-                fontFamily:
-                  "var(--font-script), 'Pacifico', cursive",
-              }}
-            >
-              Tres favoritos en una sola experiencia
-            </p>
+          <EventReveal delay={0.05} className="min-w-0 max-w-xl">
+            <EventItem>
+              <p
+                className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+                style={{
+                  fontFamily:
+                    "var(--font-script), 'Pacifico', cursive",
+                }}
+              >
+                Tres favoritos en una sola experiencia
+              </p>
+            </EventItem>
 
-            <h2 className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl">
-              Pop Corn & Manzanas
-            </h2>
+            <AnimatedTitle
+              text="Pop Corn & Manzanas"
+              className="mt-3 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+            />
 
-            <p className="mt-2 font-heading text-xl text-[#302E2A] sm:text-2xl">
-              + 50 Salchi Nuggets
-            </p>
+            <EventItem className="mt-2">
+              <p className="font-heading text-xl text-[#302E2A] sm:text-2xl">
+                + 50 Salchi Nuggets
+              </p>
+            </EventItem>
 
-            <p className="mt-4 max-w-lg text-sm leading-6 text-[#77736D]">
-              Una combinación de snacks dulces y salados con Pop Corn
-              ilimitado, pensada para acompañar celebraciones durante
-              tres horas de servicio.
-            </p>
+            <EventItem className="mt-4">
+              <p className="max-w-lg text-sm leading-6 text-[#77736D]">
+                Una combinación de snacks dulces y salados con Pop Corn
+                ilimitado, pensada para acompañar celebraciones durante
+                tres horas de servicio.
+              </p>
+            </EventItem>
 
             {/* INCLUYE */}
-            <div className="mt-5">
+            <EventItem className="mt-5">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#302E2A]">
                 Incluye
               </p>
 
-              <div className="mt-3 grid grid-cols-2 gap-2">
+              <EventGroup className="mt-3 grid grid-cols-2 gap-2">
                 {includes.map((item) => (
-                  <div
+                  <EventItem
                     key={item}
                     className="flex min-w-0 items-start gap-2 rounded-xl bg-white px-3 py-2"
                   >
@@ -91,13 +106,13 @@ export function PopcornManzanasSalchiNuggetsSection() {
                     <span className="text-xs leading-5 text-[#5F5A54]">
                       {item}
                     </span>
-                  </div>
+                  </EventItem>
                 ))}
-              </div>
-            </div>
+              </EventGroup>
+            </EventItem>
 
             {/* PRECIO */}
-            <div className="mt-5">
+            <EventItem className="mt-5">
               <p className="text-sm text-[#8C867F]">
                 Promoción completa
               </p>
@@ -105,10 +120,10 @@ export function PopcornManzanasSalchiNuggetsSection() {
               <p className="mt-1 font-heading text-3xl text-[#302E2A]">
                 S/ 490
               </p>
-            </div>
+            </EventItem>
 
             {/* DETALLES + CTA */}
-            <div className="mt-5 border-t border-[#E6DDD5] pt-4">
+            <EventItem className="mt-5 border-t border-[#E6DDD5] pt-4">
               <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
                 <div className="flex items-center gap-2 text-xs text-[#6F6962]">
                   <Clock3 className="h-4 w-4 shrink-0 text-[#FF8A00]" />
@@ -144,8 +159,9 @@ export function PopcornManzanasSalchiNuggetsSection() {
               >
                 Quiero esta promoción
               </a>
-            </div>
-          </div>
+            </EventItem>
+          </EventReveal>
+
         </div>
       </div>
     </section>

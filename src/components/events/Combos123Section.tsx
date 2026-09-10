@@ -3,6 +3,13 @@
 import Image from "next/image";
 import { Check, Clock3, Store, UserRound } from "lucide-react";
 
+import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
+import {
+  EventReveal,
+  EventItem,
+  EventCard,
+} from "@/components/events/EventReveal";
+
 const whatsappNumber = "51948742332";
 
 const combos = [
@@ -53,33 +60,38 @@ export function Combos123Section() {
     <section className="bg-[#FFF8F3] py-8 sm:py-10 lg:py-12">
       <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10">
         {/* ENCABEZADO */}
-        <div className="mx-auto max-w-2xl text-center">
-          <p
-            className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
-            style={{
-              fontFamily:
-                "var(--font-script), 'Pacifico', cursive",
-            }}
-          >
-            Todo combina mejor
-          </p>
+        <EventReveal delay={0.05} className="mx-auto max-w-2xl text-center">
+          <EventItem>
+            <p
+              className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+              style={{
+                fontFamily:
+                  "var(--font-script), 'Pacifico', cursive",
+              }}
+            >
+              Todo combina mejor
+            </p>
+          </EventItem>
 
-          <h2 className="mt-2 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl">
-            Combos para compartir
-          </h2>
-        </div>
+          <AnimatedTitle
+            text="Combos para compartir"
+            className="mt-2 font-heading text-3xl font-normal leading-[1.08] text-[#302E2A] sm:text-4xl"
+          />
+        </EventReveal>
 
         {/* COMBOS */}
         <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {combos.map((combo) => {
+          {combos.map((combo, index) => {
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
               combo.message
             )}`;
 
             return (
-              <article
+              <EventCard
                 key={combo.id}
-                className="flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E9DED4] bg-white md:row-span-5 md:grid md:grid-rows-subgrid md:gap-y-0"
+                index={index}
+                columns={3}
+                className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E9DED4] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)] md:row-span-5 md:grid md:grid-rows-subgrid md:gap-y-0"
               >
                 {/* IMAGEN */}
                 <div className="relative aspect-[4/3] max-h-[260px] w-full overflow-hidden bg-[#F4E8DF]">
@@ -88,7 +100,7 @@ export function Combos123Section() {
                     alt={`${combo.name} para eventos`}
                     fill
                     sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                    className="object-cover object-center"
+                    className="object-cover object-center transition duration-500 group-hover:scale-[1.035]"
                   />
                 </div>
 
@@ -162,7 +174,7 @@ export function Combos123Section() {
                     </a>
                   </div>
                 </div>
-              </article>
+              </EventCard>
             );
           })}
         </div>
