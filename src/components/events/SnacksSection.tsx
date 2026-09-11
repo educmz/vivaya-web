@@ -127,7 +127,7 @@ export function SnacksSection() {
                 key={snack.id}
                 index={index}
                 columns={4}
-                className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#EDE3DA] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)]"
+                className="group row-span-7 grid min-w-0 grid-rows-subgrid gap-y-0 overflow-hidden rounded-2xl border border-[#EDE3DA] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)]"
               >
                 {/* IMAGEN */}
                 <div className="relative h-36 shrink-0 overflow-hidden sm:h-44 bg-[#F4E8DF]">
@@ -141,7 +141,7 @@ export function SnacksSection() {
                 </div>
 
                 {/* CONTENIDO */}
-                <div className="flex min-w-0 flex-1 flex-col p-3">
+                <div className="row-span-6 grid min-w-0 grid-rows-subgrid gap-y-0 p-3">
                   <h3 className="[overflow-wrap:anywhere] font-extrabold uppercase text-xl leading-tight text-[#302E2A] sm:text-2xl">
                     {snack.name}
                   </h3>
@@ -168,7 +168,7 @@ export function SnacksSection() {
                   </div>
 
                   {/* PRECIOS */}
-                  <div className="mt-3 w-full overflow-hidden rounded-xl border border-[#E9DED4] bg-[#FFFDFC]">
+                  <div className="mt-3 w-full self-start overflow-hidden rounded-xl border border-[#E9DED4] bg-[#FFFDFC]">
                     {snack.pricing.map((option, index) => (
                       <div
                         key={option.label}

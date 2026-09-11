@@ -1,10 +1,13 @@
 import type { ReactNode } from "react";
 
+import { LegalPageHeader } from "@/components/legal/LegalPageHeader";
 import { Container } from "@/components/ui/Container";
 
 export function CookiePolicy() {
   return (
-    <div className="relative overflow-hidden bg-background pt-24 text-[#302E2A] sm:pt-[100px] lg:pt-[108px]">
+    <div className="relative overflow-hidden bg-background pt-24 text-[#302E2A] sm:pt-[100px] lg:pt-[108px]"
+      style={{ fontFamily: "var(--font-carta), 'Montserrat', system-ui, sans-serif" }}
+    >
       {/* Decoración pastel */}
       <div
         className="pointer-events-none absolute -left-36 top-40 size-[28rem] rounded-full bg-[#F7CFAE]/35 blur-[120px]"
@@ -16,36 +19,18 @@ export function CookiePolicy() {
         aria-hidden="true"
       />
 
-      {/* Hero */}
-      <section className="relative pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-24">
-        <Container>
-          <div className="mx-auto max-w-4xl">
-            <p className="text-xs font-black uppercase tracking-[0.26em] text-[#3F7D4F]">
-              Política de cookies
-            </p>
-
-            <h1 className="font-accent mt-5 max-w-3xl text-[clamp(3.2rem,8vw,6.6rem)] leading-[0.82] text-[#FF8A00]">
-              Navegar,
-              <br />
-              sin complicaciones.
-            </h1>
-
-            <p className="mt-7 max-w-xl text-base leading-7 text-[#302E2A]/70 sm:text-lg">
-              Te explicamos de forma sencilla cuándo pueden utilizarse cookies
-              o tecnologías similares al visitar Vivaya.
-            </p>
-
-            <p className="mt-7 text-xs font-bold uppercase tracking-[0.16em] text-[#302E2A]/45">
-              Última actualización · Septiembre de 2026
-            </p>
-          </div>
-        </Container>
-      </section>
+      <Container className="relative sm:px-6">
+        <LegalPageHeader eyebrow="Política de cookies" title="Navegar, sin complicaciones." description="Te explicamos de forma sencilla cuándo pueden utilizarse cookies o tecnologías similares al visitar Vivaya.">
+          <p className="mt-5 text-center text-xs text-[#8C867F]">
+            Última actualización · Septiembre de 2026
+          </p>
+        </LegalPageHeader>
+      </Container>
 
       {/* Contenido */}
-      <section className="relative pb-24 sm:pb-32">
-        <Container>
-          <div className="mx-auto max-w-4xl">
+      <section className="relative pb-16 sm:pb-20 lg:pb-24">
+        <Container className="sm:px-6">
+          <div className="mx-auto max-w-4xl space-y-6">
             <CookieSection number="01" title="Qué son las cookies">
               <p>
                 Las cookies son pequeños archivos o identificadores que algunos
@@ -148,12 +133,12 @@ export function CookiePolicy() {
             </CookieSection>
 
             {/* Cierre */}
-            <div className="mt-16 overflow-hidden rounded-[2rem] bg-[#073B3A] px-6 py-9 text-[#FFF7E8] sm:px-9 sm:py-10">
+            <div className="overflow-hidden rounded-2xl bg-[#073B3A] p-5 text-[#FFF7E8] sm:p-6 lg:p-8">
               <p className="text-xs font-black uppercase tracking-[0.22em] text-[#DCEBD7]">
                 Cookies
               </p>
 
-              <p className="font-accent mt-3 text-4xl leading-none text-[#FF8A00] sm:text-5xl">
+              <p className="mt-3 text-xl font-extrabold uppercase leading-tight text-[#FF8A00] sm:text-2xl">
                 Tú decides.
               </p>
 
@@ -179,19 +164,19 @@ function CookieSection({
   children: ReactNode;
 }) {
   return (
-    <section className="border-t border-[#073B3A]/12 py-10 sm:grid sm:grid-cols-[7rem_1fr] sm:gap-6 sm:py-12">
+    <section className="rounded-2xl border border-[#E9DED4] bg-white p-5 sm:grid sm:grid-cols-[2.5rem_1fr] sm:gap-4 sm:p-6 lg:p-8">
       <div className="mb-4 sm:mb-0">
-        <span className="font-accent text-3xl font-bold text-[#FF8A00]">
+        <span className="text-xl font-extrabold text-[#FF8A00] sm:text-2xl">
           {number}
         </span>
       </div>
 
       <div>
-        <h2 className="text-2xl font-black tracking-[-0.03em] text-[#073B3A] sm:text-3xl">
+        <h2 className="text-xl font-extrabold uppercase leading-tight text-[#302E2A] sm:text-2xl">
           {title}
         </h2>
 
-        <div className="mt-5 max-w-2xl space-y-4 text-[0.95rem] leading-7 text-[#302E2A]/72 sm:text-base">
+        <div className="mt-4 max-w-3xl space-y-4 text-sm leading-6 text-[#77736D] sm:text-base sm:leading-7">
           {children}
         </div>
       </div>

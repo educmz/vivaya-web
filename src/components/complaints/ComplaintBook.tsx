@@ -12,6 +12,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { AlertCircle, Check, FileText, Printer } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { LegalPageHeader } from "@/components/legal/LegalPageHeader";
 import { Container } from "@/components/ui/Container";
 import { legalConfig } from "@/config/legal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -261,11 +262,11 @@ function FormSection({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
       transition={{ duration: 0.55, ease }}
-      className="complaint-print-section rounded-[1.75rem] border-2 border-[#302E2A]/15 bg-white p-5 shadow-[0_18px_55px_rgba(62,42,27,0.06)] sm:p-8"
+      className="complaint-print-section rounded-2xl border border-[#E9DED4] bg-white p-5 sm:p-6 lg:p-8"
     >
-      <div className="mb-7 flex items-baseline gap-3 border-b border-[#302E2A]/12 pb-5">
-        <span className="font-accent text-3xl font-bold text-[#FF8A00]">{number}</span>
-        <h2 className="text-2xl font-black tracking-[-0.035em] text-[#073B3A]">{title}</h2>
+      <div className="mb-5 flex items-baseline gap-3 border-b border-[#E9DED4] pb-4">
+        <span className="text-xl font-extrabold text-[#FF8A00] sm:text-2xl">{number}</span>
+        <h2 className="text-xl font-extrabold uppercase leading-tight text-[#302E2A] sm:text-2xl">{title}</h2>
       </div>
       {children}
     </motion.section>
@@ -422,33 +423,19 @@ export function ComplaintBook() {
   }
 
   return (
-    <section className="complaint-page relative overflow-hidden bg-background pb-24 text-[#302E2A] sm:pb-32">
+    <section className="complaint-page relative overflow-hidden bg-background pb-16 text-[#302E2A] sm:pb-20 lg:pb-24"
+      style={{ fontFamily: "var(--font-carta), 'Montserrat', system-ui, sans-serif" }}
+    >
       <div className="pointer-events-none absolute -right-40 top-0 size-[30rem] rounded-full bg-[#3F7D4F]/10 blur-[110px] print:hidden" aria-hidden="true" />
       <div className="pointer-events-none absolute -left-48 top-[34rem] size-[28rem] rounded-full bg-[#FF8A00]/10 blur-[110px] print:hidden" aria-hidden="true" />
 
-      <Container className="relative">
-        <header className="mx-auto max-w-3xl pb-12 pt-16 sm:pb-16 sm:pt-20">
-          <motion.p
-            initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease }}
-            className="text-xs font-black uppercase tracking-[0.24em] text-[#3F7D4F]"
-          >
-            Libro de Reclamaciones
-          </motion.p>
-          <motion.h1
-            initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.05, ease }}
-            className="font-accent mt-4 text-[clamp(3.4rem,9vw,6rem)] leading-[0.88] text-[#FF8A00]"
-          >
-            Queremos escucharte.
-          </motion.h1>
-          <p className="mt-6 max-w-xl text-base leading-7 text-[#302E2A]/70 sm:text-lg">
-            Si algo no salió como esperabas, cuéntanos qué ocurrió.
-          </p>
-
-          <div className="complaint-print-section mt-9 border-l-2 border-[#3F7D4F] pl-4 text-sm leading-6">
+      <Container className="relative sm:px-6">
+        <LegalPageHeader
+          eyebrow="Libro de reclamaciones"
+          title="Queremos escucharte."
+          description="Si algo no salió como esperabas, cuéntanos qué ocurrió."
+        >
+          <div className="complaint-print-section mt-6 border-l-2 border-[#3F7D4F] pl-4 text-sm leading-6">
             <p className="font-black text-[#073B3A]">{legalConfig.commercialName}</p>
             <p>{legalConfig.legalName}</p>
             <p>RUC {legalConfig.ruc}</p>
@@ -456,11 +443,11 @@ export function ComplaintBook() {
             <p className="text-[#302E2A]/65">Código de establecimiento: {legalConfig.establishmentCode}</p>
           </div>
 
-          <dl className="mt-7 grid gap-3 text-sm sm:grid-cols-2">
+          <dl className="mt-5 grid gap-3 text-sm sm:grid-cols-2">
             <div><dt className="font-bold text-[#073B3A]">Fecha</dt><dd>{date}</dd></div>
             <div><dt className="font-bold text-[#073B3A]">Hoja de reclamación</dt><dd>Se generará al registrar</dd></div>
           </dl>
-        </header>
+        </LegalPageHeader>
 
         <AnimatePresence mode="wait" initial={false}>
           {view === "form" ? (
@@ -473,7 +460,7 @@ export function ComplaintBook() {
               animate={{ opacity: 1, y: 0 }}
               exit={reducedMotion ? undefined : { opacity: 0, y: -12 }}
               transition={{ duration: 0.4, ease }}
-              className="mx-auto grid max-w-3xl gap-7"
+              className="mx-auto grid max-w-4xl gap-6"
             >
               <FormSection number="01" title="Tus datos" reducedMotion={reducedMotion}>
                 <div className="grid gap-5">
@@ -631,7 +618,7 @@ export function ComplaintBook() {
               </div>
             </motion.form>
           ) : (
-            <motion.div key="review" initial={reducedMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease }} className="mx-auto max-w-3xl">
+            <motion.div key="review" initial={reducedMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease }} className="mx-auto max-w-4xl">
               <div className="mb-7 flex flex-col gap-4 border-y-2 border-[#9F321D] py-5 text-[#9F321D] sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.2em]">Vista de revisión</p>
@@ -641,8 +628,8 @@ export function ComplaintBook() {
               </div>
 
               <div className="grid gap-6">
-                <section className="complaint-print-section rounded-2xl border border-[#302E2A]/20 bg-white p-5 sm:p-7">
-                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#FF8A00]">01</span>Tus datos</h3>
+                <section className="complaint-print-section rounded-2xl border border-[#E9DED4] bg-white p-5 sm:p-6 lg:p-8">
+                  <h3 className="mb-5 text-xl font-extrabold uppercase leading-tight text-[#302E2A]"><span className="mr-2 text-xl font-extrabold text-[#FF8A00]">01</span>Tus datos</h3>
                   <dl className="grid gap-5 sm:grid-cols-2">
                     <ReviewItem label="Nombre completo" value={data.consumer.fullName.trim()} />
                     <ReviewItem label="Documento" value={`${data.consumer.documentType}: ${data.consumer.documentNumber.trim()}`} />
@@ -665,8 +652,8 @@ export function ComplaintBook() {
                   )}
                 </section>
 
-                <section className="complaint-print-section rounded-2xl border border-[#302E2A]/20 bg-white p-5 sm:p-7">
-                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#FF8A00]">02</span>Sobre tu compra</h3>
+                <section className="complaint-print-section rounded-2xl border border-[#E9DED4] bg-white p-5 sm:p-6 lg:p-8">
+                  <h3 className="mb-5 text-xl font-extrabold uppercase leading-tight text-[#302E2A]"><span className="mr-2 text-xl font-extrabold text-[#FF8A00]">02</span>Sobre tu compra</h3>
                   <dl className="grid gap-5 sm:grid-cols-2">
                     <ReviewItem label="Bien contratado" value={data.contractedItem.type === "product" ? "Producto" : "Servicio"} />
                     <ReviewItem label="Monto reclamado" value={data.contractedItem.amount ? `S/ ${Number(data.contractedItem.amount).toFixed(2)}` : "No indicado"} />
@@ -676,8 +663,8 @@ export function ComplaintBook() {
                   </dl>
                 </section>
 
-                <section className="complaint-print-section rounded-2xl border border-[#302E2A]/20 bg-white p-5 sm:p-7">
-                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#FF8A00]">03</span>Reclamación</h3>
+                <section className="complaint-print-section rounded-2xl border border-[#E9DED4] bg-white p-5 sm:p-6 lg:p-8">
+                  <h3 className="mb-5 text-xl font-extrabold uppercase leading-tight text-[#302E2A]"><span className="mr-2 text-xl font-extrabold text-[#FF8A00]">03</span>Reclamación</h3>
                   <dl className="grid gap-5">
                     <ReviewItem label="Tipo" value={data.complaint.type === "claim" ? "Reclamo" : "Queja"} />
                     <ReviewItem label="Detalle" value={data.complaint.detail.trim()} />
@@ -687,7 +674,7 @@ export function ComplaintBook() {
                 </section>
 
                 <section className="complaint-print-section rounded-2xl border border-dashed border-[#302E2A]/30 bg-white/65 p-5 sm:p-7">
-                  <h3 className="mb-5 text-xl font-black text-[#073B3A]"><span className="mr-2 font-accent text-2xl text-[#FF8A00]">04</span>Uso del proveedor</h3>
+                  <h3 className="mb-5 text-xl font-extrabold uppercase leading-tight text-[#302E2A]"><span className="mr-2 text-xl font-extrabold text-[#FF8A00]">04</span>Uso del proveedor</h3>
                   <dl className="grid gap-5">
                     <ReviewItem label="Fecha de comunicación de la respuesta" value="Pendiente" />
                     <ReviewItem label="Observaciones / acciones adoptadas" value="Pendiente" />

@@ -114,7 +114,7 @@ export function CremoladasChilcanosSection() {
                 key={item.id}
                 index={index}
                 columns={4}
-                className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E9DED4] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)]"
+                className="group row-span-7 grid min-w-0 grid-rows-subgrid gap-y-0 overflow-hidden rounded-2xl border border-[#E9DED4] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)]"
               >
                 {/* IMAGEN */}
                 <div className="relative h-36 shrink-0 overflow-hidden bg-[#F4E8DF] sm:h-44">
@@ -128,7 +128,7 @@ export function CremoladasChilcanosSection() {
                 </div>
 
                 {/* CONTENIDO */}
-                <div className="flex min-w-0 flex-1 flex-col p-3">
+                <div className="row-span-6 grid min-w-0 grid-rows-subgrid gap-y-0 p-3">
                   <h3 className="[overflow-wrap:anywhere] font-extrabold uppercase text-xl sm:text-2xl text-[#302E2A]">
                     {item.name}
                   </h3>
@@ -156,7 +156,7 @@ export function CremoladasChilcanosSection() {
                   </div>
 
                   {/* PRECIO */}
-                  <div className="mt-auto pt-3">
+                  <div className="pt-3">
                     <p className="text-xs text-[#8C867F]">
                       Desde
                     </p>
@@ -167,37 +167,35 @@ export function CremoladasChilcanosSection() {
                   </div>
 
                   {/* DETALLES + CTA */}
-                  <div className="pt-3">
-                    <div className="border-t border-[#E6DDD5] pt-3">
-                      <div className="flex flex-wrap gap-x-2 gap-y-1.5">
-                        <div className="flex items-center gap-2 text-xs text-[#6F6962]">
-                          <Clock3 className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                          3 horas
-                        </div>
-
-                        <div className="flex items-center gap-2 text-xs text-[#6F6962]">
-                          <UserRound className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                          1 operador
-                        </div>
-
-                        {item.alcohol && (
-                          <div className="flex items-center gap-2 text-xs text-[#6F6962]">
-                            <Wine className="h-4 w-4 shrink-0 text-[#FF8A00]" />
-                            Con alcohol
-                          </div>
-                        )}
+                  <div className="mt-3 border-t border-[#E6DDD5] pt-3">
+                    <div className="flex flex-wrap gap-x-2 gap-y-1.5">
+                      <div className="flex items-center gap-2 text-xs text-[#6F6962]">
+                        <Clock3 className="h-4 w-4 shrink-0 text-[#FF8A00]" />
+                        3 horas
                       </div>
 
-                      <a
-                        href={whatsappUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FF8A00] px-2 py-2 text-xs font-semibold text-white transition hover:scale-[1.01] hover:bg-[#F57F00]"
-                      >
-                        Quiero este paquete
-                      </a>
+                      <div className="flex items-center gap-2 text-xs text-[#6F6962]">
+                        <UserRound className="h-4 w-4 shrink-0 text-[#FF8A00]" />
+                        1 operador
+                      </div>
+
+                      {item.alcohol && (
+                        <div className="flex items-center gap-2 text-xs text-[#6F6962]">
+                          <Wine className="h-4 w-4 shrink-0 text-[#FF8A00]" />
+                          Con alcohol
+                        </div>
+                      )}
                     </div>
                   </div>
+
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FF8A00] px-2 py-2 text-xs font-semibold text-white transition hover:scale-[1.01] hover:bg-[#F57F00]"
+                  >
+                    Quiero este paquete
+                  </a>
                 </div>
               </EventCard>
             );
