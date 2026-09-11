@@ -38,10 +38,10 @@ export function FuenteChocolateSection() {
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-10">
-        <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
+        <div className="grid grid-cols-1 items-center gap-7 lg:grid-cols-2 lg:gap-10">
 
           {/* TÍTULO — en móvil va sobre la imagen */}
-          <div className="md:hidden">
+          <div className="min-w-0 lg:hidden">
             <p
               className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
               style={{ fontFamily: "var(--font-script), 'Pacifico', cursive" }}
@@ -51,13 +51,13 @@ export function FuenteChocolateSection() {
 
             <AnimatedTitle
               text="Fuente de Chocolate"
-              className="mt-3 whitespace-nowrap font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+              className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
             />
           </div>
 
           {/* CONTENIDO */}
-          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl md:order-1">
-            <div className="hidden md:block">
+          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl lg:order-1">
+            <div className="hidden lg:block">
               <EventItem>
                 <p
                   className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
@@ -71,7 +71,7 @@ export function FuenteChocolateSection() {
 
               <AnimatedTitle
                 text="Fuente de Chocolate"
-                className="mt-3 whitespace-nowrap font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+                className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
               />
             </div>
 
@@ -88,7 +88,7 @@ export function FuenteChocolateSection() {
                 Incluye
               </p>
 
-              <EventGroup className="mt-3 grid grid-cols-2 gap-2">
+              <EventGroup className="mt-3 grid event-includes-grid gap-2">
                 {includes.map((item) => (
                   <EventItem
                     key={item}
@@ -108,7 +108,7 @@ export function FuenteChocolateSection() {
 
             {/* PRECIOS */}
             <EventItem className="mt-5">
-              <div className="flex items-end justify-between">
+              <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
                 <div>
                   <p className="text-sm text-[#8C867F]">Desde</p>
                   <p className="mt-1 font-extrabold uppercase text-3xl text-[#302E2A]">
@@ -179,13 +179,13 @@ export function FuenteChocolateSection() {
           </EventReveal>
 
           {/* IMAGEN */}
-          <EventRevealImage className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] md:order-2">
+          <EventRevealImage className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] lg:order-2">
             <div className="relative aspect-[1122/1402]">
               <Image
                 src="/images/events/fuente-chocolate.webp"
                 alt="Fuente de chocolate para eventos"
                 fill
-                sizes="(max-width: 575px) 90vw, (max-width: 767px) 520px, (max-width: 1159px) 45vw, 520px"
+                sizes="(max-width: 575px) 90vw, (max-width: 1023px) 520px, (max-width: 1159px) 45vw, 520px"
                 className="object-contain"
               />
             </div>

@@ -112,7 +112,7 @@ export function CremoladasChilcanosSection() {
         </EventReveal>
 
         {/* PAQUETES */}
-        <div className="mt-6 grid gap-3 min-[360px]:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-6 grid event-cards-grid gap-4">
           {packages.map((item, index) => {
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
               item.message
@@ -131,14 +131,14 @@ export function CremoladasChilcanosSection() {
                     src={item.image}
                     alt={`${item.name} ${item.subtitle} para eventos`}
                     fill
-                    sizes="(max-width: 359px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                    sizes="(max-width: 607px) calc(100vw - 48px), (max-width: 911px) 50vw, (max-width: 1215px) 33vw, 25vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.035]"
                   />
                 </div>
 
                 {/* CONTENIDO */}
                 <div className="flex min-w-0 flex-1 flex-col p-3">
-                  <h3 className="font-extrabold uppercase text-xl sm:text-2xl text-[#302E2A]">
+                  <h3 className="[overflow-wrap:anywhere] font-extrabold uppercase text-xl sm:text-2xl text-[#302E2A]">
                     {item.name}
                   </h3>
 
@@ -153,7 +153,7 @@ export function CremoladasChilcanosSection() {
                         key={include}
                         className="flex items-start gap-1.5"
                       >
-                        <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#FFF1E0]">
+                        <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center text-center rounded-full bg-[#FFF1E0]">
                           <Check className="h-3 w-3 text-[#FF8A00]" />
                         </div>
 

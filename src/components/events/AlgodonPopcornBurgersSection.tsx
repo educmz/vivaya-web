@@ -37,9 +37,9 @@ export function AlgodonPopcornBurgersSection() {
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-10">
-        <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
+        <div className="grid grid-cols-1 items-center gap-7 lg:grid-cols-2 lg:gap-10">
           {/* TÍTULO — en móvil va sobre la imagen */}
-          <div className="md:hidden">
+          <div className="min-w-0 lg:hidden">
             <p
               className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
               style={{ fontFamily: "var(--font-script), 'Pacifico', cursive" }}
@@ -58,8 +58,8 @@ export function AlgodonPopcornBurgersSection() {
           </div>
 
           {/* CONTENIDO */}
-          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl md:order-1">
-            <div className="hidden md:block">
+          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl lg:order-1">
+            <div className="hidden lg:block">
               <EventItem>
                 <p
                   className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
@@ -97,7 +97,7 @@ export function AlgodonPopcornBurgersSection() {
                 Incluye
               </p>
 
-              <EventGroup className="mt-3 grid grid-cols-2 gap-2">
+              <EventGroup className="mt-3 grid event-includes-grid gap-2">
                 {includes.map((item) => (
                   <EventItem
                     key={item}
@@ -162,13 +162,13 @@ export function AlgodonPopcornBurgersSection() {
           </EventReveal>
 
           {/* IMAGEN */}
-          <EventRevealImage className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] md:order-2">
+          <EventRevealImage className="order-1 relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF] lg:order-2">
             <div className="relative aspect-[1122/1402]">
               <Image
                 src="/images/events/algodon-popcorn-mini-burgers.webp"
                 alt="Carrito de algodón, Pop Corn y mini burgers para eventos"
                 fill
-                sizes="(max-width: 575px) 90vw, (max-width: 767px) 520px, (max-width: 1159px) 45vw, 520px"
+                sizes="(max-width: 575px) 90vw, (max-width: 1023px) 520px, (max-width: 1159px) 45vw, 520px"
                 className="object-contain"
               />
             </div>

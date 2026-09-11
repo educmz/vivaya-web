@@ -110,7 +110,7 @@ export function HeladoSoftSection() {
                         key={include}
                         className="flex items-start gap-2"
                       >
-                        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FFF1E0]">
+                        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center text-center rounded-full bg-[#FFF1E0]">
                           <Check className="h-3.5 w-3.5 text-[#FF8A00]" />
                         </div>
 
@@ -154,7 +154,7 @@ export function HeladoSoftSection() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FF8A00] px-4 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.01] hover:bg-[#F57F00]"
+                    className="mt-3 inline-flex min-h-11 w-full items-center justify-center text-center rounded-full bg-[#FF8A00] px-4 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.01] hover:bg-[#F57F00]"
                   >
                     Quiero este paquete
                   </a>

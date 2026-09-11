@@ -39,9 +39,9 @@ export function PopcornAlgodonHotdogSection() {
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-10">
-        <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
+        <div className="grid grid-cols-1 items-center gap-7 lg:grid-cols-2 lg:gap-10">
           {/* TÍTULO — en móvil va sobre la imagen */}
-          <div className="md:hidden">
+          <div className="min-w-0 lg:hidden">
             <p
               className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
               style={{ fontFamily: "var(--font-script), 'Pacifico', cursive" }}
@@ -66,7 +66,7 @@ export function PopcornAlgodonHotdogSection() {
                 src="/images/events/popcorn-algodon-hotdog.webp"
                 alt="Carritos de Pop Corn, algodón de azúcar y hotdog para eventos"
                 fill
-                sizes="(max-width: 575px) 90vw, (max-width: 767px) 520px, (max-width: 1159px) 45vw, 520px"
+                sizes="(max-width: 575px) 90vw, (max-width: 1023px) 520px, (max-width: 1159px) 45vw, 520px"
                 className="object-contain"
               />
             </div>
@@ -74,7 +74,7 @@ export function PopcornAlgodonHotdogSection() {
 
           {/* CONTENIDO */}
           <EventReveal delay={0.05} className="min-w-0 max-w-xl">
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <EventItem>
                 <p
                   className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
@@ -113,7 +113,7 @@ export function PopcornAlgodonHotdogSection() {
                 Incluye
               </p>
 
-              <EventGroup className="mt-3 grid grid-cols-2 gap-2">
+              <EventGroup className="mt-3 grid event-includes-grid gap-2">
                 {includes.map((item) => (
                   <EventItem
                     key={item}

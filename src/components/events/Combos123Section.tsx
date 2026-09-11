@@ -91,7 +91,7 @@ export function Combos123Section() {
                 key={combo.id}
                 index={index}
                 columns={3}
-                className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E9DED4] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)] md:row-span-5 md:grid md:grid-rows-subgrid md:gap-y-0"
+                className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E9DED4] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)] md:row-span-5 md:grid md:grid-cols-1 md:grid-rows-subgrid md:gap-y-0"
               >
                 {/* IMAGEN */}
                 <div className="relative aspect-[4/3] max-h-[260px] w-full overflow-hidden bg-[#F4E8DF]">
@@ -105,7 +105,7 @@ export function Combos123Section() {
                 </div>
 
                 {/* CONTENIDO */}
-                <div className="flex flex-1 flex-col p-4 md:row-span-4 md:grid md:grid-rows-subgrid md:gap-y-0">
+                <div className="flex min-w-0 flex-1 flex-col p-4 md:row-span-4 md:grid md:grid-cols-1 md:grid-rows-subgrid md:gap-y-0">
                   <h3 className="font-extrabold uppercase text-2xl text-[#302E2A]">
                     {combo.name}
                   </h3>
@@ -116,7 +116,7 @@ export function Combos123Section() {
                         key={item}
                         className="flex items-start gap-2"
                       >
-                        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FFF1E0]">
+                        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center text-center rounded-full bg-[#FFF1E0]">
                           <Check className="h-3.5 w-3.5 text-[#FF8A00]" />
                         </div>
 
@@ -168,7 +168,7 @@ export function Combos123Section() {
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FF8A00] px-4 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.01] hover:bg-[#F57F00]"
+                      className="mt-3 inline-flex min-h-11 w-full items-center justify-center text-center rounded-full bg-[#FF8A00] px-4 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.01] hover:bg-[#F57F00]"
                     >
                       Quiero este combo
                     </a>

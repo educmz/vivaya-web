@@ -109,7 +109,7 @@ export function SnacksSection() {
         </EventReveal>
 
         {/* CARDS */}
-        <div className="mt-6 grid gap-3 min-[360px]:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-6 grid event-cards-grid gap-4">
           {snacks.map((snack, index) => {
             const priceFrom = Math.min(
               ...snack.pricing.map((option) => option.price)
@@ -126,22 +126,22 @@ export function SnacksSection() {
                 key={snack.id}
                 index={index}
                 columns={4}
-                className="group row-span-7 grid h-full min-w-0 grid-rows-subgrid gap-y-0 overflow-hidden rounded-2xl border border-[#EDE3DA] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)]"
+                className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#EDE3DA] bg-white transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(48,46,42,0.08)]"
               >
                 {/* IMAGEN */}
-                <div className="relative h-36 overflow-hidden sm:h-44 bg-[#F4E8DF]">
+                <div className="relative h-36 shrink-0 overflow-hidden sm:h-44 bg-[#F4E8DF]">
                   <Image
                     src={snack.image}
                     alt={`${snack.name} para eventos`}
                     fill
-                    sizes="(max-width: 359px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                    sizes="(max-width: 607px) calc(100vw - 48px), (max-width: 911px) 50vw, (max-width: 1215px) 33vw, 25vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.035]"
                   />
                 </div>
 
                 {/* CONTENIDO */}
-                <div className="row-span-6 grid min-w-0 grid-rows-subgrid gap-y-0 p-3">
-                  <h3 className="break-words font-extrabold uppercase text-xl leading-tight text-[#302E2A] sm:text-2xl">
+                <div className="flex min-w-0 flex-1 flex-col p-3">
+                  <h3 className="[overflow-wrap:anywhere] font-extrabold uppercase text-xl leading-tight text-[#302E2A] sm:text-2xl">
                     {snack.name}
                   </h3>
 
@@ -167,7 +167,7 @@ export function SnacksSection() {
                   </div>
 
                   {/* PRECIOS */}
-                  <div className="mt-3 self-start overflow-hidden rounded-xl border border-[#E9DED4] bg-[#FFFDFC]">
+                  <div className="mt-3 w-full overflow-hidden rounded-xl border border-[#E9DED4] bg-[#FFFDFC]">
                     {snack.pricing.map((option, index) => (
                       <div
                         key={option.label}
@@ -211,7 +211,7 @@ export function SnacksSection() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FF8A00] px-2 py-2 text-xs font-semibold text-white transition duration-300 hover:bg-[#F57F00]"
+                    className="mt-3 inline-flex min-h-11 w-full items-center justify-center text-center rounded-full bg-[#FF8A00] px-2 py-2 text-xs font-semibold text-white transition duration-300 hover:bg-[#F57F00]"
                   >
                     Quiero esta opción
                   </a>

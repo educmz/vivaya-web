@@ -62,3 +62,11 @@ button, input, select, textarea { font-family: inherit; font-size: 100%; line-he
     grid-template-columns: var(--cta-columns);
   }
 }
+
+.event-cards-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+
+.event-includes-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+}
