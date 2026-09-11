@@ -26,19 +26,21 @@ export default function EventsPage() {
       }}
     >
       <ImageHero image="/images/events/event-hero.webp" lines={["CELEBRAMOS", "CONTIGO"]} />
-      <ChocolateCafeSection />
-      <FuenteChocolateSection />
-      <SnacksSection />
-      <Combos123Section />
-      <PopcornAlgodonHotdogSection />
-      <AlgodonPopcornBurgersSection />
-      <PopcornPanchosManzanasSection />
-      <MiniBurgersHotdogPopcornSection />
-      <PopcornManzanasSalchiNuggetsSection />
-      <WafflesSalchipapasChurrosSection />
-      <PromocionLocuraSection />
-      <HeladoSoftSection />
-      <CremoladasChilcanosSection />
+      <div className="[&>section:nth-child(odd)]:bg-[#FFF8F3] [&>section:nth-child(even)]:bg-[#FFF0E6]">
+        <ChocolateCafeSection />
+        <FuenteChocolateSection />
+        <SnacksSection />
+        <Combos123Section />
+        <PopcornAlgodonHotdogSection />
+        <AlgodonPopcornBurgersSection />
+        <PopcornPanchosManzanasSection />
+        <MiniBurgersHotdogPopcornSection />
+        <PopcornManzanasSalchiNuggetsSection />
+        <WafflesSalchipapasChurrosSection />
+        <PromocionLocuraSection />
+        <HeladoSoftSection />
+        <CremoladasChilcanosSection />
+      </div>
     </div>
   );
 }
