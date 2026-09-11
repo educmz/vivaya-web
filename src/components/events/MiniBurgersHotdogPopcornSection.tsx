@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { buildEventWhatsAppUrl } from "@/lib/event-whatsapp";
 import {
   Check,
   Clock3,
@@ -25,13 +26,17 @@ const includes = [
 
 const whatsappNumber = "51999999999";
 
-export function MiniBurgersHotdogPopcornSection() {
-  const whatsappMessage =
-    "Hola, quisiera información sobre la promoción 50 Mini Burgers, 50 Hotdog y Pop Corn ilimitado para mi evento.";
+const promotion = {
+  name: "Mini Burgers & Hotdog + Pop Corn ilimitado",
+  category: "Eventos",
+  description: "Una combinación completa de opciones saladas con Pop Corn ilimitado para acompañar tu celebración.",
+  includes,
+  price: 490,
+  details: ["Algodón ilimitado por S/ 1 adicional", "Pop Corn ilimitado", "Carrito temático", "Personal de atención", "Servicio para evento"],
+};
 
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+export function MiniBurgersHotdogPopcornSection() {
+  const whatsappUrl = buildEventWhatsAppUrl(whatsappNumber, promotion);
 
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">

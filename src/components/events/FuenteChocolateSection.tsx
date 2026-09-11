@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { buildEventWhatsAppUrl } from "@/lib/event-whatsapp";
 import { Clock3, Store, UserRound, Check, Candy } from "lucide-react";
 
 import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
@@ -27,13 +28,17 @@ const includes = [
 
 const whatsappNumber = "51948742332";
 
-export function FuenteChocolateSection() {
-  const whatsappMessage =
-    "Hola, quisiera información sobre la promoción Fuente de Chocolate para mi evento.";
+const promotion = {
+  name: "Fuente de Chocolate",
+  category: "Eventos",
+  description: "Una estación dulce con fuente de chocolate, frutas, marshmallows y toppings para compartir durante tu evento.",
+  includes,
+  pricing,
+  details: ["según cantidad de unidades", "3 horas de servicio", "Carrito temático", "Personal de atención", "Frutas y toppings"],
+};
 
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+export function FuenteChocolateSection() {
+  const whatsappUrl = buildEventWhatsAppUrl(whatsappNumber, promotion);
 
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">

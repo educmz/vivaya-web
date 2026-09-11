@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { buildEventWhatsAppUrl } from "@/lib/event-whatsapp";
 import { Check, Clock3, Store, UserRound } from "lucide-react";
 
 import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
@@ -22,8 +23,6 @@ const combos = [
       "50 mini hamburguesas",
       "50 mini salchipapas",
     ],
-    message:
-      "Hola, quisiera información sobre el Combo 1 para mi evento.",
   },
   {
     id: "combo-2",
@@ -35,8 +34,6 @@ const combos = [
       "50 mini salchipapas",
       "Pop Corn ilimitado",
     ],
-    message:
-      "Hola, quisiera información sobre el Combo 2 para mi evento.",
   },
   {
     id: "combo-3",
@@ -50,8 +47,6 @@ const combos = [
       "50 salchipapas adulta",
       "Papas fritas opcional",
     ],
-    message:
-      "Hola, quisiera información sobre el Combo 3 para mi evento.",
   },
 ];
 
@@ -82,9 +77,7 @@ export function Combos123Section() {
         {/* COMBOS */}
         <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {combos.map((combo, index) => {
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-              combo.message
-            )}`;
+            const whatsappUrl = buildEventWhatsAppUrl(whatsappNumber, { ...combo, category: "Combos para compartir", details: ["3 horas", "Carrito temático", "Atención personalizada"] });
 
             return (
               <EventCard

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { buildEventWhatsAppUrl } from "@/lib/event-whatsapp";
 import {
   Check,
   Clock3,
@@ -26,13 +27,17 @@ const includes = [
 
 const whatsappNumber = "51948742332";
 
-export function PopcornPanchosManzanasSection() {
-  const whatsappMessage =
-    "Hola, quisiera información sobre la promoción Pop Corn, Panchos y Manzanas Acarameladas para mi evento.";
+const promotion = {
+  name: "Pop Corn & Panchos + 50 Manzanas Acarameladas",
+  category: "Eventos",
+  description: "Una combinación pensada para acompañar celebraciones con opciones dulces y saladas en un solo carrito temático.",
+  includes,
+  price: 380,
+  details: ["3 horas de servicio", "1 carrito decorado", "1 personal de atención"],
+};
 
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+export function PopcornPanchosManzanasSection() {
+  const whatsappUrl = buildEventWhatsAppUrl(whatsappNumber, promotion);
 
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">

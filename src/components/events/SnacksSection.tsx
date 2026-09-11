@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { buildEventWhatsAppUrl } from "@/lib/event-whatsapp";
 import { Clock3, Store, UserRound } from "lucide-react";
 
 import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
@@ -115,11 +116,11 @@ export function SnacksSection() {
               ...snack.pricing.map((option) => option.price)
             );
 
-            const whatsappMessage = `Hola, quisiera información sobre ${snack.name} para mi evento.`;
-
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-              whatsappMessage
-            )}`;
+            const whatsappUrl = buildEventWhatsAppUrl(whatsappNumber, {
+              ...snack,
+              category: "Snacks para tu evento",
+              details: ["3 horas de servicio", "Carrito temático", "Personal uniformado"],
+            });
 
             return (
               <EventCard

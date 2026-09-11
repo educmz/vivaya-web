@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { buildEventWhatsAppUrl } from "@/lib/event-whatsapp";
 import { Coffee, Clock3, Store, UserRound, Check } from "lucide-react";
 
 import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
@@ -27,13 +28,17 @@ const includes = [
 
 const whatsappNumber = "51948742332";
 
-export function ChocolateCafeSection() {
-  const whatsappMessage =
-    "Hola, quisiera información sobre la promoción Chocolate y Café para mi evento.";
+const promotion = {
+  name: "Chocolate & Café",
+  category: "Eventos",
+  description: "Una estación de café, chocolate e infusiones pensada para acompañar tu evento durante tres horas de servicio.",
+  includes,
+  pricing,
+  details: ["según cantidad de vasos", "3 horas de servicio", "Carrito temático", "Personal de atención", "Café e infusiones"],
+};
 
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+export function ChocolateCafeSection() {
+  const whatsappUrl = buildEventWhatsAppUrl(whatsappNumber, promotion);
 
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">

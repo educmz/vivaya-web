@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { buildEventWhatsAppUrl } from "@/lib/event-whatsapp";
 import {
   Check,
   Clock3,
@@ -29,12 +30,14 @@ const includes = [
 const whatsappNumber = "51999999999";
 
 export function WafflesSalchipapasChurrosSection() {
-  const whatsappMessage =
-    "Hola, quisiera información sobre la promoción de Mini Waffles, Mini Salchipapas, Churros y Pop Corn ilimitado para mi evento.";
-
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+  const whatsappUrl = buildEventWhatsAppUrl(whatsappNumber, {
+    name: "Waffles & Salchipapas + Churros & Pop Corn",
+    category: "Eventos",
+    description: "Una combinación variada de snacks dulces y salados pensada para acompañar celebraciones con diferentes opciones para compartir.",
+    includes,
+    price: 680,
+    details: ["3 horas de servicio", "3 carritos decorados", "3 personales de atención", "Pop Corn ilimitado"],
+  });
 
   return (
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">

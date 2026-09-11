@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { buildEventWhatsAppUrl } from "@/lib/event-whatsapp";
 import {
   Check,
   Clock3,
@@ -31,8 +32,6 @@ const packages = [
       "Vasos incluidos",
       "1 operador uniformado",
     ],
-    message:
-      "Hola, quisiera información sobre el paquete de Cremoladas de 2 Sabores para mi evento.",
   },
   {
     id: "cremoladas-2-sabores-alcohol",
@@ -48,8 +47,6 @@ const packages = [
       "Vasos incluidos",
       "1 operador uniformado",
     ],
-    message:
-      "Hola, quisiera información sobre el paquete de Cremoladas de 2 Sabores con Pisco o Ron para mi evento.",
   },
   {
     id: "cremoladas-3-sabores",
@@ -65,8 +62,6 @@ const packages = [
       "Vasos incluidos",
       "1 operador uniformado",
     ],
-    message:
-      "Hola, quisiera información sobre el paquete de Cremoladas de 3 Sabores para mi evento.",
   },
   {
     id: "chilcanos-3-sabores",
@@ -82,8 +77,6 @@ const packages = [
       "Vasos incluidos",
       "1 operador uniformado",
     ],
-    message:
-      "Hola, quisiera información sobre el paquete de Chilcanos de 3 Sabores para mi evento.",
   },
 ];
 
@@ -114,9 +107,7 @@ export function CremoladasChilcanosSection() {
         {/* PAQUETES */}
         <div className="mt-6 grid event-cards-grid gap-4">
           {packages.map((item, index) => {
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-              item.message
-            )}`;
+            const whatsappUrl = buildEventWhatsAppUrl(whatsappNumber, { ...item, category: "Cremoladas & Chilcanos", priceFrom: true, details: ["3 horas", "1 operador"] });
 
             return (
               <EventCard

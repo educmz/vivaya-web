@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { buildEventWhatsAppUrl } from "@/lib/event-whatsapp";
 import { Check, Clock3, UserRound, IceCreamBowl } from "lucide-react";
 
 import { AnimatedTitle } from "@/components/sections/AnimatedTitle";
@@ -25,8 +26,6 @@ const packages = [
       "Vasos y/o barquillos incluidos",
       "1 operador uniformado",
     ],
-    message:
-      "Hola, quisiera información sobre el Paquete Básico de Helado Soft para mi evento.",
   },
   {
     id: "premium",
@@ -41,8 +40,6 @@ const packages = [
       "Estación de toppings gourmet",
       "1 operador uniformado",
     ],
-    message:
-      "Hola, quisiera información sobre el Paquete Premium de Helado Soft para mi evento.",
   },
 ];
 
@@ -72,9 +69,7 @@ export function HeladoSoftSection() {
         {/* PAQUETES */}
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {packages.map((item, index) => {
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-              item.message
-            )}`;
+            const whatsappUrl = buildEventWhatsAppUrl(whatsappNumber, { ...item, name: `Paquete ${item.name} de Helado Soft`, category: "Helado Soft", priceFrom: true, details: ["3 horas", "1 operador"] });
 
             return (
               <EventCard
