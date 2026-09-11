@@ -141,7 +141,6 @@ function SocialButton({
 
 export function SocialSection() {
   const reducedMotion = useReducedMotion();
-  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
   const [instagramSaved, setInstagramSaved] = useState(false);
   const [instagramLiked, setInstagramLiked] = useState(false);
   const [facebookLiked, setFacebookLiked] = useState(false);
@@ -201,9 +200,19 @@ export function SocialSection() {
                 <div className="flex items-center gap-3">
                   <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#FEDA75] via-[#FA7E1E] to-[#D62976] p-[2px]">
                     <div className="flex size-full items-center justify-center rounded-full bg-white">
-                      <span className="text-xs font-bold text-[#302E2A]">
-                        V
-                      </span>
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <defs>
+                          <linearGradient id="instagram-profile-color" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#FEDA75" />
+                            <stop offset="0.35" stopColor="#FA7E1E" />
+                            <stop offset="0.65" stopColor="#D62976" />
+                            <stop offset="1" stopColor="#7638FA" />
+                          </linearGradient>
+                        </defs>
+                        <rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#instagram-profile-color)" strokeWidth="2" />
+                        <circle cx="12" cy="12" r="4" stroke="url(#instagram-profile-color)" strokeWidth="2" />
+                        <circle cx="17.5" cy="6.5" r="1.2" fill="#D62976" />
+                      </svg>
                     </div>
                   </div>
 
@@ -221,11 +230,10 @@ export function SocialSection() {
               {/* IMAGEN */}
               <div className={styles.media}>
                 <Image
-                  src={failedImages["1"] ? "/images/about/about-product.webp" : "/images/1.png"}
-                  onError={() => setFailedImages((current) => ({ ...current, "1": true }))}
+                  src="/images/about/social/instagram.webp"
                   alt="Publicación de Instagram de Vivaya"
                   fill
-                  sizes="(max-width: 767px) 100vw, 33vw"
+                  sizes="(min-width: 1280px) 384px, (min-width: 1024px) calc((100vw - 128px) / 3), (min-width: 768px) calc((100vw - 72px) / 2), calc(100vw - 48px)"
                   className="object-cover"
                 />
               </div>
@@ -316,11 +324,10 @@ export function SocialSection() {
             >
 <div className={styles.media}>
                 <Image
-                  src={failedImages["3"] ? "/images/about/equipo-vivaya.webp" : "/images/3.png"}
-                  onError={() => setFailedImages((current) => ({ ...current, "3": true }))}
+                  src="/images/about/social/tiktok.webp"
                   alt="Publicación de TikTok de Vivaya"
                   fill
-                  sizes="(max-width: 767px) 100vw, 33vw"
+                  sizes="(min-width: 1280px) 384px, (min-width: 1024px) calc((100vw - 128px) / 3), (min-width: 768px) calc((100vw - 72px) / 2), calc(100vw - 48px)"
                   className="object-cover"
                 />
 
@@ -421,8 +428,10 @@ export function SocialSection() {
               {/* HEADER */}
               <div className="flex shrink-0 items-center justify-between px-4 py-3">
                 <div className="flex items-center gap-3">
-                  <div className="grid size-10 place-items-center rounded-full bg-[#1877F2] text-white">
-                    <FacebookIcon className="size-6" />
+                  <div className="grid size-10 place-items-center rounded-full bg-white" style={{ color: "#1877F2" }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill="#1877F2" d="M13.7 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5H17V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.5V13h2.8v8h3.4Z" />
+                    </svg>
                   </div>
 
                   <div>
@@ -451,11 +460,10 @@ export function SocialSection() {
               {/* IMAGEN */}
               <div className={styles.media}>
                 <Image
-                  src={failedImages["2"] ? "/images/about/about-lifestyle.webp" : "/images/2.png"}
-                  onError={() => setFailedImages((current) => ({ ...current, "2": true }))}
+                  src="/images/about/social/facebook.webp"
                   alt="Publicación de Facebook de Vivaya"
                   fill
-                  sizes="(max-width: 767px) 100vw, 33vw"
+                  sizes="(min-width: 1280px) 384px, (min-width: 1024px) calc((100vw - 128px) / 3), (min-width: 768px) calc((100vw - 72px) / 2), calc(100vw - 48px)"
                   className="object-cover"
                 />
               </div>

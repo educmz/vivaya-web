@@ -28,6 +28,7 @@ const legalLinks = [
 
 export function Footer() {
   const pathname = usePathname();
+  const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
   const footerLinks = [
     { label: "Inicio", href: "/" },
     { label: "Carta", href: "/carta" },
@@ -41,24 +42,81 @@ export function Footer() {
       <Container className="pb-5 pt-7 sm:pt-8">
         <div className="grid grid-cols-1 items-center justify-items-center gap-x-8 gap-y-5 sm:grid-cols-[1fr_auto] sm:justify-items-stretch lg:grid-cols-[auto_1fr_auto]">
           <div className="justify-self-center sm:justify-self-start">
-            <Link href="/" aria-label="Vivaya, inicio" className="inline-flex rounded-lg bg-[#FFF8F3] px-4 py-2.5">
-              <Image src="/images/brand/logo_negro.png" alt="Vivaya" width={2172} height={724} className="h-auto w-28 object-contain" />
+            <Link
+              href="/"
+              aria-label="Vivaya, inicio"
+              className="
+                inline-flex
+                items-center
+                justify-center
+                overflow-hidden
+                rounded-lg
+                px-4
+                py-2.5
+              "
+              style={{
+                backgroundColor: "#FBF4EF",
+              }}
+            >
+              <Image
+                src="/images/brand/logo_negro.png"
+                alt="Vivaya"
+                width={2172}
+                height={724}
+                className="h-auto w-28 object-contain"
+              />
             </Link>
-
           </div>
           <nav aria-label="Navegación del pie de página" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 sm:order-3 sm:col-span-2 sm:justify-start lg:order-none lg:col-span-1 lg:justify-center">
             {footerLinks.map((item) => (
-              <Link key={item.href} href={item.href} className="flex min-h-11 items-center text-sm font-medium text-[#D0E0D7] underline-offset-8 transition-colors hover:text-[#FFB45C] hover:underline">{item.label}</Link>
+              <Link key={item.href} href={item.href} className="flex min-h-11 items-center text-sm font-medium text-[#D0E0D7] transition-colors hover:text-[#FFB45C]">{item.label}</Link>
             ))}
           </nav>
           <div className="sm:col-start-2 sm:row-start-1 sm:justify-self-end lg:col-start-3">
             <p className="mb-3 text-center text-xs font-bold uppercase tracking-[0.18em] sm:text-left">Síguenos</p>
-            <div className="flex justify-center gap-2 sm:justify-start md:justify-end" aria-label="Redes sociales">
-              {socialLinks.map((social) => (
-                <Link key={social.label} href={pathname} scroll={false} aria-label={social.label} className="grid size-11 place-items-center rounded-full border border-white/25 text-[#FFF8F3] transition-colors hover:border-[#FF8A00] hover:bg-[#FF8A00] hover:text-[#302E2A]">
-                  {social.icon}
-                </Link>
-              ))}
+            <div
+              className="flex justify-center gap-2 sm:justify-start md:justify-end"
+              aria-label="Redes sociales"
+            >
+              {socialLinks.map((social) => {
+                const isHovered = hoveredSocial === social.label;
+
+                return (
+                  <Link
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={social.label}
+                    onMouseEnter={() => setHoveredSocial(social.label)}
+                    onMouseLeave={() => setHoveredSocial(null)}
+                    onFocus={() => setHoveredSocial(social.label)}
+                    onBlur={() => setHoveredSocial(null)}
+                    className="
+                      grid
+                      size-11
+                      place-items-center
+                      rounded-full
+                      border
+                      transition-all
+                      duration-300
+                    "
+                    style={{
+                      backgroundColor: isHovered
+                        ? "#FBF4EF"
+                        : "transparent",
+                      borderColor: isHovered
+                        ? "#FBF4EF"
+                        : "rgba(255, 255, 255, 0.25)",
+                      color: isHovered
+                        ? "#302E2A"
+                        : "#FFF8F3",
+                    }}
+                  >
+                    {social.icon}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
