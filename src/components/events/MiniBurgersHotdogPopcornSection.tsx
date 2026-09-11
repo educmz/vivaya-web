@@ -37,30 +37,51 @@ export function MiniBurgersHotdogPopcornSection() {
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-10">
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
-          {/* CONTENIDO */}
-          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl md:order-1">
-            <EventItem>
-              <p
-                className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
-                style={{
-                  fontFamily:
-                    "var(--font-script), 'Pacifico', cursive",
-                }}
-              >
-                Diversión y sabor sin límites
-              </p>
-            </EventItem>
+          {/* TÍTULO — en móvil va sobre la imagen */}
+          <div className="md:hidden">
+            <p
+              className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+              style={{ fontFamily: "var(--font-script), 'Pacifico', cursive" }}
+            >
+              Diversión y sabor sin límites
+            </p>
 
             <AnimatedTitle
               text="Mini Burgers & Hotdog"
               className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
             />
 
-            <EventItem className="mt-2">
-              <p className="font-extrabold uppercase text-xl text-[#302E2A] sm:text-2xl">
-                + Pop Corn ilimitado
-              </p>
-            </EventItem>
+            <p className="mt-2 font-extrabold uppercase text-xl text-[#302E2A] sm:text-2xl">
+              + Pop Corn ilimitado
+            </p>
+          </div>
+
+          {/* CONTENIDO */}
+          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl md:order-1">
+            <div className="hidden md:block">
+              <EventItem>
+                <p
+                  className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+                  style={{
+                    fontFamily:
+                      "var(--font-script), 'Pacifico', cursive",
+                  }}
+                >
+                  Diversión y sabor sin límites
+                </p>
+              </EventItem>
+
+              <AnimatedTitle
+                text="Mini Burgers & Hotdog"
+                className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+              />
+
+              <EventItem className="mt-2">
+                <p className="font-extrabold uppercase text-xl text-[#302E2A] sm:text-2xl">
+                  + Pop Corn ilimitado
+                </p>
+              </EventItem>
+            </div>
 
             <EventItem className="mt-4">
               <p className="max-w-lg text-sm leading-6 text-[#77736D]">

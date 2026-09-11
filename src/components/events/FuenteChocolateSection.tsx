@@ -40,23 +40,40 @@ export function FuenteChocolateSection() {
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-10">
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
 
-          {/* CONTENIDO */}
-          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl md:order-1">
-            <EventItem>
-              <p
-                className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
-                style={{
-                  fontFamily: "var(--font-script), 'Pacifico', cursive",
-                }}
-              >
-                Un momento para endulzar
-              </p>
-            </EventItem>
+          {/* TÍTULO — en móvil va sobre la imagen */}
+          <div className="md:hidden">
+            <p
+              className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+              style={{ fontFamily: "var(--font-script), 'Pacifico', cursive" }}
+            >
+              Un momento para endulzar
+            </p>
 
             <AnimatedTitle
               text="Fuente de Chocolate"
               className="mt-3 whitespace-nowrap font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
             />
+          </div>
+
+          {/* CONTENIDO */}
+          <EventReveal delay={0.05} className="order-2 min-w-0 max-w-xl md:order-1">
+            <div className="hidden md:block">
+              <EventItem>
+                <p
+                  className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+                  style={{
+                    fontFamily: "var(--font-script), 'Pacifico', cursive",
+                  }}
+                >
+                  Un momento para endulzar
+                </p>
+              </EventItem>
+
+              <AnimatedTitle
+                text="Fuente de Chocolate"
+                className="mt-3 whitespace-nowrap font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+              />
+            </div>
 
             <EventItem className="mt-4">
               <p className="max-w-lg text-sm leading-6 text-[#77736D]">

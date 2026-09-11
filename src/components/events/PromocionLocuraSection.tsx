@@ -37,6 +37,25 @@ export function PromocionLocuraSection() {
     <section className="bg-[#FFF8F3] py-10 sm:py-12 lg:py-16">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-10">
         <div className="grid items-center gap-7 md:grid-cols-2 lg:gap-10">
+          {/* TÍTULO — en móvil va sobre la imagen */}
+          <div className="md:hidden">
+            <p
+              className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+              style={{ fontFamily: "var(--font-script), 'Pacifico', cursive" }}
+            >
+              Sabor para celebrar en grande
+            </p>
+
+            <AnimatedTitle
+              text="Mini Burgers & Salchipapas"
+              className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+            />
+
+            <p className="mt-2 font-extrabold uppercase text-xl text-[#302E2A] sm:text-2xl">
+              + Algodón & Pop Corn ilimitado
+            </p>
+          </div>
+
           {/* IMAGEN */}
           <EventRevealImage className="relative mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#F4E8DF]">
             <div className="relative aspect-[1122/1402]">
@@ -52,28 +71,30 @@ export function PromocionLocuraSection() {
 
           {/* CONTENIDO */}
           <EventReveal delay={0.05} className="min-w-0 max-w-xl">
-            <EventItem>
-              <p
-                className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
-                style={{
-                  fontFamily:
-                    "var(--font-script), 'Pacifico', cursive",
-                }}
-              >
-                Sabor para celebrar en grande
-              </p>
-            </EventItem>
+            <div className="hidden md:block">
+              <EventItem>
+                <p
+                  className="text-xl leading-relaxed text-[#FF8A00] sm:text-2xl"
+                  style={{
+                    fontFamily:
+                      "var(--font-script), 'Pacifico', cursive",
+                  }}
+                >
+                  Sabor para celebrar en grande
+                </p>
+              </EventItem>
 
-            <AnimatedTitle
-              text="Mini Burgers & Salchipapas"
-              className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
-            />
+              <AnimatedTitle
+                text="Mini Burgers & Salchipapas"
+                className="mt-3 font-extrabold uppercase text-3xl leading-[1.08] text-[#302E2A] sm:text-4xl lg:text-5xl"
+              />
 
-            <EventItem className="mt-2">
-              <p className="font-extrabold uppercase text-xl text-[#302E2A] sm:text-2xl">
-                + Algodón & Pop Corn ilimitado
-              </p>
-            </EventItem>
+              <EventItem className="mt-2">
+                <p className="font-extrabold uppercase text-xl text-[#302E2A] sm:text-2xl">
+                  + Algodón & Pop Corn ilimitado
+                </p>
+              </EventItem>
+            </div>
 
             <EventItem className="mt-4">
               <p className="max-w-lg text-sm leading-6 text-[#77736D]">
