@@ -1,0 +1,46 @@
+.section {
+  padding-top: 4rem;
+  padding-bottom: 8rem;
+}
+
+.reaction {
+  transition: color 250ms ease, fill 250ms ease;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reaction { transition: none; }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 1.4rem;
+}
+
+.media {
+  position: relative;
+  flex: 1 1 0%;
+  min-height: 120px;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 6rem;
+    padding-bottom: 12rem;
+  }
+
+  .card {
+    height: clamp(420px, calc(100svh - 260px), 520px);
+  }
+}
