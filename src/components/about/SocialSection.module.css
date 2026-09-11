@@ -1,6 +1,6 @@
 .section {
   padding-top: 4rem;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
 }
 
 .reaction {
@@ -10,7 +10,7 @@
 @media (min-width: 640px) {
   .section {
     padding-top: 5rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -37,10 +37,42 @@
 @media (min-width: 1024px) {
   .section {
     padding-top: 6rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 6rem;
   }
 
   .card {
     height: clamp(420px, calc(100svh - 260px), 520px);
   }
+}
+
+.facebookActions {
+  container-type: inline-size;
+  display: flex;
+  align-items: stretch;
+  padding-top: 0.25rem;
+}
+
+.facebookAction {
+  display: flex;
+  flex: 1 1 0%;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2px, 1cqw, 6px);
+  border-radius: 0.375rem;
+  font-size: clamp(10px, 3.6cqw, 14px);
+  font-weight: 600;
+  white-space: nowrap;
+  color: #65676b;
+}
+
+.facebookAction:hover {
+  background: #f0f2f5;
+}
+
+.facebookAction svg {
+  width: clamp(14px, 5cqw, 18px);
+  height: clamp(14px, 5cqw, 18px);
+  flex-shrink: 0;
 }

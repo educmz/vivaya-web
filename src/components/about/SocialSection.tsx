@@ -491,15 +491,14 @@ export function SocialSection() {
                   <span>34 comentarios</span>
                 </div>
 
-                {/* IMPORTANTE: FLEX, NO GRID */}
-                <div className="flex items-stretch pt-1">
+                <div className={styles.facebookActions}>
                   <motion.button whileTap={reducedMotion ? undefined : { scale: 0.9 }}
                     type="button"
                     onClick={() =>
                       setFacebookLiked((value) => !value)
                     }
                     aria-pressed={facebookLiked}
-                    className={`flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-md text-xs font-semibold hover:bg-[#F0F2F5] sm:text-sm ${styles.reaction}`}
+                    className={`${styles.facebookAction} ${styles.reaction}`}
                     style={{ color: facebookLiked ? "#1877F2" : "#65676B" }}
                   >
                     <ThumbsUp
@@ -514,7 +513,7 @@ export function SocialSection() {
 
                   <motion.button whileTap={reducedMotion ? undefined : { scale: 0.9 }}
                     type="button"
-                    className="flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-md text-xs font-semibold text-[#65676B] transition hover:bg-[#F0F2F5] sm:text-sm"
+                    className={styles.facebookAction}
                   >
                     <MessageCircle
                       className="size-[18px] shrink-0"
@@ -526,7 +525,7 @@ export function SocialSection() {
 
                   <motion.button whileTap={reducedMotion ? undefined : { scale: 0.9 }}
                     type="button"
-                    className="flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-md text-xs font-semibold text-[#65676B] transition hover:bg-[#F0F2F5] sm:text-sm"
+                    className={styles.facebookAction}
                   >
                     <Share2
                       className="size-[18px] shrink-0"

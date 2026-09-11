@@ -109,7 +109,7 @@ export function EssenceSection() {
               </div>
 
               {/* CONTENIDO */}
-              <div className="flex min-h-[210px] flex-col justify-between p-6 sm:min-h-[230px] sm:p-7 lg:min-h-[250px] lg:p-8">
+              <div className="flex flex-col p-6 sm:p-7 md:min-h-[230px] md:justify-between lg:min-h-[250px] lg:p-8">
                 {/* LABEL */}
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#302E2A]/60">
@@ -122,7 +122,7 @@ export function EssenceSection() {
                 {/* FRASE */}
                 <h3
                   className="
-                    mt-8
+                    mt-4 md:mt-8
                     max-w-[300px]
                     text-2xl
                     font-extrabold
